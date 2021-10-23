@@ -1,5 +1,5 @@
 public class App {
-    public static void main(String[] args) {
+    public static void main(String[] group3) {
         System.out.println("Print Your Name Below:");
         System.out.println("Timothy");
     }
