@@ -10,12 +10,17 @@ public class InOut {
     private Scanner fileIn; 
     private PrintWriter saved;
 
+    /**
+     * Initiate File, Scanner and PrintWriter
+     * @throws FileNotFoundException
+     */
     public InOut() throws FileNotFoundException{
         inputFile = new File("input.txt");
         fileIn = new Scanner(inputFile);
         saved = new PrintWriter("saved.txt");
     }
 
+    // TEMP METHOD AS DEMO
     public void printFile(LinkedList names) {
         while (fileIn.hasNextLine()) {
             String s = fileIn.nextLine();
@@ -23,11 +28,23 @@ public class InOut {
             System.out.println(s);
         }
     }
+
+    // TEMP METHOD AS DEMO
     public void printToFile(LinkedList names) {
         saved.println(names.toString());
     }
-    public void close() {
-        saved.close();
+
+    /**
+     * Close Scanner
+     */
+    public void closeScanner() {
         fileIn.close();
+    }
+
+    /**
+     * Close PrintWriter and Overwrite file
+     */
+    public void overrideFile() {
+        saved.close();
     }
 }
