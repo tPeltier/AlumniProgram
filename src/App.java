@@ -12,6 +12,7 @@ public class App {
         System.out.println("Expected Name List:");
         io.printFile(names);
         io.printToFile(names);
-        io.close();
+        io.closeScanner();
+        io.overrideFile();
     }
 }
