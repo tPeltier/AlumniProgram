@@ -13,13 +13,13 @@ public class AlumniMap {
      * assigns the initial values to the alumni map
      */
     public void constructAlumniMap() {
-
+        alumni = new HashMap<>();
     }
 
     /**
      * edits and adds to alumni map
      */
-    public void editAlumniMap() {
+    public void addAlumni() {
 
     }
 
