@@ -6,10 +6,10 @@ import java.util.Scanner;
 
 public class InOut {
     
-    private File inputFile;
     private Scanner fileIn; 
+    private Scanner in;
+    private File inputFile;
     private PrintWriter saved;
-
     /**
      * Initiate File, Scanner and PrintWriter
      * @throws FileNotFoundException
@@ -18,6 +18,7 @@ public class InOut {
         inputFile = new File("input.txt");
         fileIn = new Scanner(inputFile);
         saved = new PrintWriter("saved.txt");
+        in = new Scanner(System.in);
     }
 
     // TEMP METHOD AS DEMO
@@ -32,6 +33,30 @@ public class InOut {
     // TEMP METHOD AS DEMO
     public void printToFile(LinkedList names) {
         saved.println(names.toString());
+    }
+
+    /**
+     * Get User Text Input
+     * @return User input : nextLine
+     */
+    public String stringInput() {
+        return in.nextLine();
+    }
+
+    /**
+     * Get User Integer Input
+     * @return User input : int
+     */
+    public int intInput() {
+        return in.nextInt();
+    }
+
+    /**
+     * Get User Double Input
+     * @return User input : double
+     */
+    public double doubleInput() {
+        return in.nextDouble();
     }
 
     /**
