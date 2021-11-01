@@ -13,13 +13,13 @@ public class EventMap {
      * assigns the initial values to the event map
      */
     public void constructEventMap() {
-
+        event = new HashMap<>();
     }
 
     /**
      * edits and adds to event map
      */
-    public void editEventMap() {
+    public void addEvent() {
 
     }
 
