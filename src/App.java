@@ -10,9 +10,9 @@ public class App {
         System.out.println("Andrew");
 
         System.out.println("Expected Name List:");
-        io.printFile(names);
+        io.displayFile(names);
         io.printToFile(names);
         io.closeScanner();
-        io.overrideFile();
+        io.saveToFile();
     }
 }
