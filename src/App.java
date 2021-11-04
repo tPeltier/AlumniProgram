@@ -8,6 +8,7 @@ public class App {
         System.out.println("Print Your Name Below:");
         System.out.println("Timothy");
         System.out.println("Andrew");
+        System.out.println("Cornelius");
 
         System.out.println("Expected Name List:");
         io.displayFile(names);
