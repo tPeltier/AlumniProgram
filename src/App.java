@@ -13,7 +13,7 @@ public class App {
         System.out.println("Expected Name List:");
         io.displayFile(names);
         io.printToFile(names);
-        io.closeScanner();
+        io.closeFileScanner();
         io.saveToFile();
     }
 }

@@ -62,10 +62,13 @@ public class InOut {
     /**
      * Close Scanner
      */
-    public void closeScanner() {
+    public void closeFileScanner() {
         fileIn.close();
     }
 
+    public void closeUserScanner() {
+        in.close();
+    }
     /**
      * Close PrintWriter and Overwrite file
      */
