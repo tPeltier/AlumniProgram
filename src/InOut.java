@@ -22,7 +22,7 @@ public class InOut {
     }
 
     // TEMP METHOD AS DEMO
-    public void displayFile(LinkedList names) {
+    public void displayFile(LinkedList<String> names) {
         while (fileIn.hasNextLine()) {
             String s = fileIn.nextLine();
             names.add(s);
@@ -31,7 +31,7 @@ public class InOut {
     }
 
     // TEMP METHOD AS DEMO
-    public void printToFile(LinkedList names) {
+    public void printToFile(LinkedList<String> names) {
         saved.println(names.toString());
     }
 
