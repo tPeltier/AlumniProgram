@@ -1,3 +1,5 @@
+package src;
+
 public class Alumni {
     private String name;
     private String address;
