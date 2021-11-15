@@ -19,12 +19,19 @@ public class InOut {
      */
     public InOut() throws FileNotFoundException{
         alumniFile = new File("alumni.txt");
-        alumniFileIn = new Scanner(alumniFile);
-        alumniSaved = new PrintWriter("alumni.txt");
+        alumniFileIn = new Scanner(alumniFile).useDelimiter(",");
+        // alumniSaved = new PrintWriter("alumni.txt");
         eventFile = new File("events.txt");
         eventFileIn = new Scanner(eventFile);
-        eventSaved = new PrintWriter("events.txt");
+        // eventSaved = new PrintWriter("events.txt");
         in = new Scanner(System.in);
+    }
+
+
+    public void displayAlumni() {
+        while (alumniFileIn.hasNext()) {
+            System.out.println(alumniFileIn.next());
+        }
     }
 
     /**
