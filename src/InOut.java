@@ -1,38 +1,30 @@
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
-import java.util.LinkedList;
 import java.util.Scanner;
 
 public class InOut {
     
-    private Scanner fileIn; 
     private Scanner in;
-    private File inputFile;
-    private PrintWriter saved;
+    private File alumniFile;
+    private Scanner alumniFileIn; 
+    private PrintWriter alumniSaved;
+    private File eventFile;
+    private Scanner eventFileIn;
+    private PrintWriter eventSaved; 
     /**
      * Initiate File, Scanner and PrintWriter
      * @throws FileNotFoundException
      */
     public InOut() throws FileNotFoundException{
-        inputFile = new File("input.txt");
-        fileIn = new Scanner(inputFile);
-        saved = new PrintWriter("saved.txt");
+        alumniFile = new File("alumni.txt");
+        alumniFileIn = new Scanner(alumniFile);
+        alumniSaved = new PrintWriter("alumni.txt");
+        eventFile = new File("events.txt");
+        eventFileIn = new Scanner(eventFile);
+        eventSaved = new PrintWriter("events.txt");
         in = new Scanner(System.in);
-    }
-
-    // TEMP METHOD AS DEMO
-    public void displayFile(LinkedList names) {
-        while (fileIn.hasNextLine()) {
-            String s = fileIn.nextLine();
-            names.add(s);
-            System.out.println(s);
-        }
-    }
-
-    // TEMP METHOD AS DEMO
-    public void printToFile(LinkedList names) {
-        saved.println(names.toString());
     }
 
     /**
@@ -59,17 +51,4 @@ public class InOut {
         return in.nextDouble();
     }
 
-    /**
-     * Close Scanner
-     */
-    public void closeScanner() {
-        fileIn.close();
-    }
-
-    /**
-     * Close PrintWriter and Overwrite file
-     */
-    public void saveToFile() {
-        saved.close();
-    }
 }
