@@ -34,6 +34,11 @@ public class InOut {
         }
     }
 
+    public void existingAlumni() {
+        while (alumniFileIn.hasNext()){
+            
+        }
+    }
     /**
      * Get User Text Input
      * @return User input : nextLine

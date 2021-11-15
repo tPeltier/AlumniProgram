@@ -39,6 +39,10 @@ public class Alumni {
         this.organization = organization;
     }
 
+
+    public int getId() {
+        return id;
+    }
     /**
      * to get the name of alumni
      * @return returns the name of alumni 
