@@ -1,3 +1,5 @@
+package src;
+
 import java.util.HashMap;
 
 public class EventMap {
@@ -30,4 +32,5 @@ public class EventMap {
     public HashMap<Integer, Object> getEvent() {
         return event;
     }
+    
 }
