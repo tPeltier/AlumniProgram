@@ -10,9 +10,6 @@ public class Events {
 
     // constructors 
     public Events(){
-         name =
-         time = 
-         startDate =
 
      }
      public Events(String name, String time,  int room, int numberOfParticipants, String startDate){
@@ -22,11 +19,8 @@ public class Events {
          this.numberOfParticipants = numberOfParticipants;
          this.startDate = startDate;
      }
-     public Events(String name, String time, int room, int numberOfParticipants, String startDate){
-         this(name, time, room, numberOfParticipants, start);
 
 
-     }
 // getters and setters
     public String getName() {
         return this.name;
