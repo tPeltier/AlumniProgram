@@ -1,4 +1,3 @@
-package src;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -53,20 +52,4 @@ public class InOut {
         return in.nextDouble();
     }
 
-    /**
-     * Close Scanner
-     */
-    public void closeFileScanner() {
-        fileIn.close();
-    }
-
-    public void closeUserScanner() {
-        in.close();
-    }
-    /**
-     * Close PrintWriter and Overwrite file
-     */
-    public void saveToFile() {
-        saved.close();
-    }
 }

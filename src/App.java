@@ -1,7 +1,5 @@
-package src;
 
 import java.io.FileNotFoundException;
-import java.util.LinkedList;
 
 
 public class App {
