@@ -71,4 +71,7 @@ public class Events {
         this.startDate = startDate;
     }
 
+    public void addAttendant(String name){
+        attendants.add(name);
+    }
 }
