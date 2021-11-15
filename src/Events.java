@@ -12,10 +12,18 @@ public class Events {
     private ArrayList<String> attendants;
 
     // constructors
-    public Events() {
-
+    // existing event
+    public Events(int id, String name, String time, int room, int numberOfParticipants, String startDate, ArrayList<String> attendant) {
+        this.id = id;
+        this.name = name;
+        this.time = time;
+        this.room = room;
+        this.numberOfParticipants = numberOfParticipants;
+        this.startDate = startDate;
+        this.attendants = new ArrayList<>();
     }
 
+    // new event
     public Events(String name, String time, int room, int numberOfParticipants, String startDate) {
         this.id = eventId;
         this.name = name;

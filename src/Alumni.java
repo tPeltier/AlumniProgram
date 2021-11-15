@@ -1,5 +1,7 @@
 
 public class Alumni {
+    private static int alumniId = 0000;
+    private int id;
     private String name;
     private String address;
     private String major;
@@ -7,9 +9,17 @@ public class Alumni {
     private String job;
     private String organization;
 
-    public Alumni() {
-
+    // existing alumni
+    public Alumni(int id, String name, String address, String major, String gradYear, String job, String organization) {
+        this.id = id;
+        this.name = name;
+        this.address = address;
+        this.major = major;
+        this.gradYear = gradYear;
+        this.job = job;
+        this.organization = organization;
     }
+    // new alumni
     /**
      * passing in values for alumni
      * @param name name of alumni
@@ -20,6 +30,7 @@ public class Alumni {
      * @param organization employer of almuni
      */
     public Alumni(String name, String address, String major, String gradYear, String job, String organization) {
+        this.id = alumniId;
         this.name = name;
         this.address = address;
         this.major = major;
