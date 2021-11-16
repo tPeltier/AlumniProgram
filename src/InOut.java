@@ -48,10 +48,10 @@ public class InOut {
             int numberOfParticipants = Integer.parseInt(s[4]);
             String startDate = s[5];
             String list = eventFileIn.nextLine();
-            String[] listarr = list.split(",");
+            String[] listArr = list.split(",");
             ArrayList<String> att = new ArrayList<>();
-            for (int i = 0; i < listarr.length; i++) {
-                att.add(listarr[i]);
+            for (int i = 0; i < listArr.length; i++) {
+                att.add(listArr[i]);
             }
             e = new Events(id, name, time, room, numberOfParticipants, startDate, att);
             return e;
