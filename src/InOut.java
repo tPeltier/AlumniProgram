@@ -15,8 +15,8 @@ public class InOut {
     private File eventFile;
     private Scanner eventFileIn;
     private PrintWriter eventSaved;
-    private TreeMap<Integer, Object> alumniMap;
-    private TreeMap<Integer, Object> eventMap;
+    private TreeMap<Integer, Alumni> alumniMap;
+    private TreeMap<Integer, Events> eventMap;
 
     /**
      * Initiate File, Scanner and PrintWriter
@@ -73,9 +73,14 @@ public class InOut {
     }
 
     public void displayEvents() {
-        for (Object events : eventMap.values()) {
-            Events e = (Events) events;    
-            System.out.println(e.toString());
+        for (Events events : eventMap.values()) {
+            System.out.println(events.toString());
+        }
+    }
+
+    public void displayAlumni() {
+        for (Alumni alumni : alumniMap.values()) {
+           System.out.println(alumni.toString()); 
         }
     }
 

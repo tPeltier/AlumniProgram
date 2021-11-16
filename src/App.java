@@ -9,5 +9,6 @@ public class App {
         io.existingAlumni();
         io.existingEvents();
         io.displayEvents();
+        io.displayAlumni();
     }
 }
