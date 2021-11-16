@@ -9,6 +9,7 @@ public class Events {
     private int room;
     private int numberOfParticipants;
     private String startDate;
+    private Speaker speaker;
     private ArrayList<String> attendants;
 
     // constructors
