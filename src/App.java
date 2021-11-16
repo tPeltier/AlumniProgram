@@ -8,5 +8,6 @@ public class App {
         InOut io = new InOut();
         io.existingAlumni();
         io.existingEvents();
+        io.displayEvents();
     }
 }

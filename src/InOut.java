@@ -72,6 +72,13 @@ public class InOut {
         }
     }
 
+    public void displayEvents() {
+        for (Object events : eventMap.values()) {
+            Events e = (Events) events;    
+            System.out.println(e.toString());
+        }
+    }
+
     /**
      * Get User Text Input
      * 
