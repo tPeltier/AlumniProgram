@@ -58,15 +58,6 @@ public class InOut {
         alumniMap = new TreeMap<>();
         Alumni a = new Alumni();
         while (alumniFileIn.hasNextLine()) {
-            // String idString = alumniFileIn.next();
-            // String name = alumniFileIn.next();
-            // String address = alumniFileIn.next();
-            // String major = alumniFileIn.next();
-            // String gradYear = alumniFileIn.next();
-            // String job = alumniFileIn.next();
-            // String organization = alumniFileIn.next();
-            // alumniFileIn.next(); // consume whitespace
-            // int id = Integer.parseInt(idString.trim());
             String line = alumniFileIn.nextLine();
             String[] s = line.split(",");
             int id = Integer.parseInt(s[0]);
@@ -76,7 +67,6 @@ public class InOut {
             String gradYear = s[4];
             String job = s[5];
             String organization = s[6];
-            // int id = Integer.parseInt(idString.trim());
             a = new Alumni(id, name, address, major, gradYear, job, organization);
             alumniMap.put(id, a);
         }
@@ -90,7 +80,6 @@ public class InOut {
     public String stringInput() {
         return in.nextLine();
     }
-
 
     /**
      * Get User Integer Input
