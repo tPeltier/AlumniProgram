@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 
+
 public class Events {
 
     private static int eventId = 0000;
@@ -12,6 +13,9 @@ public class Events {
     private ArrayList<String> attendants;
 
     // constructors
+    public  Events () {
+
+    }
     // existing event
     public Events(int id, String name, String time, int room, int numberOfParticipants, String startDate, ArrayList<String> attendant) {
         this.id = id;
@@ -25,6 +29,7 @@ public class Events {
 
     // new event
     public Events(String name, String time, int room, int numberOfParticipants, String startDate) {
+        eventId++;
         this.id = eventId;
         this.name = name;
         this.time = time;

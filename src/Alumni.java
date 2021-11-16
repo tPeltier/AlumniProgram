@@ -9,6 +9,9 @@ public class Alumni {
     private String job;
     private String organization;
 
+    public Alumni() {
+
+    }
     // existing alumni
     public Alumni(int id, String name, String address, String major, String gradYear, String job, String organization) {
         this.id = id;
@@ -30,6 +33,7 @@ public class Alumni {
      * @param organization employer of almuni
      */
     public Alumni(String name, String address, String major, String gradYear, String job, String organization) {
+        alumniId++;
         this.id = alumniId;
         this.name = name;
         this.address = address;
@@ -98,6 +102,19 @@ public class Alumni {
     public void setOrganization(String organization) {
         this.organization = organization;
     }
-    
+   
+    // 
 
+    @Override
+    public String toString() {
+        return "{" +
+            " id='" + getId() + "'" +
+            ", name='" + getName() + "'" +
+            ", address='" + getAddress() + "'" +
+            ", major='" + getMajor() + "'" +
+            ", gradYear='" + getGradYear() + "'" +
+            ", job='" + getJob() + "'" +
+            ", organization='" + getOrganization() + "'" +
+            "}";
+    }
 }
