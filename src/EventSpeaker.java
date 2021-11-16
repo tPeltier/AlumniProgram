@@ -1,4 +1,4 @@
 
-public class EventSpeaker {
+public class EventSpeaker extends Speaker {
     
 }

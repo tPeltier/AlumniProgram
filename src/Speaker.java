@@ -14,6 +14,10 @@ public class Speaker {
         this.untitledField = untitledField;
     }
 
+    public Speaker() {
+    }
+
+
     public String getName() {
         return name;
     }
