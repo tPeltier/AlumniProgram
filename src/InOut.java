@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.TreeMap;
 
 public class InOut {
 
@@ -14,6 +15,8 @@ public class InOut {
     private File eventFile;
     private Scanner eventFileIn;
     private PrintWriter eventSaved;
+    private TreeMap<Integer, Object> alumniMap;
+    private TreeMap<Integer, Object> eventMap;
 
     /**
      * Initiate File, Scanner and PrintWriter
@@ -23,20 +26,13 @@ public class InOut {
     public InOut() throws FileNotFoundException {
         alumniFile = new File("alumni.txt");
         alumniFileIn = new Scanner(alumniFile);
-        // alumniSaved = new PrintWriter("alumni.txt");
         eventFile = new File("events.txt");
         eventFileIn = new Scanner(eventFile);
-        // eventSaved = new PrintWriter("events.txt");
         in = new Scanner(System.in);
     }
 
-    public void displayAlumni() {
-        while (alumniFileIn.hasNext()) {
-            System.out.println(alumniFileIn.next());
-        }
-    }
-
-    public Events existingEvents() {
+    public void existingEvents() {
+        eventMap = new TreeMap<>();
         Events e = new Events();
         while (eventFileIn.hasNextLine()) {
             String line = eventFileIn.nextLine();
@@ -54,13 +50,12 @@ public class InOut {
                 att.add(listArr[i]);
             }
             e = new Events(id, name, time, room, numberOfParticipants, startDate, att);
-            return e;
+            eventMap.put(id, e);
         }
-        return e;
-
     }
 
-    public Alumni existingAlumni() {
+    public void existingAlumni() {
+        alumniMap = new TreeMap<>();
         Alumni a = new Alumni();
         while (alumniFileIn.hasNextLine()) {
             // String idString = alumniFileIn.next();
@@ -83,9 +78,8 @@ public class InOut {
             String organization = s[6];
             // int id = Integer.parseInt(idString.trim());
             a = new Alumni(id, name, address, major, gradYear, job, organization);
-            return a;
+            alumniMap.put(id, a);
         }
-        return a;
     }
 
     /**
@@ -96,6 +90,7 @@ public class InOut {
     public String stringInput() {
         return in.nextLine();
     }
+
 
     /**
      * Get User Integer Input
