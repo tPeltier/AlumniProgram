@@ -29,6 +29,8 @@ public class InOut {
         eventFile = new File("events.txt");
         eventFileIn = new Scanner(eventFile);
         in = new Scanner(System.in);
+        existingAlumni();
+        existingEvents();
     }
 
     public void existingEvents() {
@@ -79,7 +81,7 @@ public class InOut {
      */
     public String stringInput() {
         return in.nextLine();
-        
+
     }
 
     /**
