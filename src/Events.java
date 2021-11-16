@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 
-
 public class Events {
 
     private static int eventId = 0000;
@@ -13,18 +12,20 @@ public class Events {
     private ArrayList<String> attendants;
 
     // constructors
-    public  Events () {
+    public Events() {
 
     }
+
     // existing event
-    public Events(int id, String name, String time, int room, int numberOfParticipants, String startDate, ArrayList<String> attendant) {
+    public Events(int id, String name, String time, int room, int numberOfParticipants, String startDate,
+            ArrayList<String> attendant) {
         this.id = id;
         this.name = name;
         this.time = time;
         this.room = room;
         this.numberOfParticipants = numberOfParticipants;
         this.startDate = startDate;
-        this.attendants = new ArrayList<>();
+        this.attendants = attendant;
     }
 
     // new event
@@ -40,7 +41,7 @@ public class Events {
     }
 
     // getters and setters
-    public int id() {
+    public int getId() {
         return this.id;
     }
 
@@ -84,7 +85,15 @@ public class Events {
         this.startDate = startDate;
     }
 
-    public void addAttendant(String name){
+    public void addAttendant(String name) {
         attendants.add(name);
     }
+
+    @Override
+    public String toString() {
+        return "{" + " id='" + getId() + "'" + ", name='" + getName() + "'" + ", time='" + getTime() + "'" + ", room='"
+                + getRoom() + "'" + ", numberOfParticipants='" + getNumberOfParticipants() + "'" + ", startDate='"
+                + getStartDate() + "'" + "}";
+    }
+
 }

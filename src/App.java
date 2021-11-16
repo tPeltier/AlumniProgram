@@ -12,5 +12,10 @@ public class App {
            a[i] = io.existingAlumni(); 
            System.out.println(a[i].toString());
         }
+        Events[] e = new Events[2];
+        for (int i = 0; i < e.length; i++) {
+            e[i] = io.existingEvents();
+            System.out.println(e[i].toString());
+        }
     }
 }

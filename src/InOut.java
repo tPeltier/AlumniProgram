@@ -2,22 +2,25 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class InOut {
-    
+
     private Scanner in;
     private File alumniFile;
-    private Scanner alumniFileIn; 
+    private Scanner alumniFileIn;
     private PrintWriter alumniSaved;
     private File eventFile;
     private Scanner eventFileIn;
-    private PrintWriter eventSaved; 
+    private PrintWriter eventSaved;
+
     /**
      * Initiate File, Scanner and PrintWriter
+     * 
      * @throws FileNotFoundException
      */
-    public InOut() throws FileNotFoundException{
+    public InOut() throws FileNotFoundException {
         alumniFile = new File("alumni.txt");
         alumniFileIn = new Scanner(alumniFile);
         // alumniSaved = new PrintWriter("alumni.txt");
@@ -27,29 +30,51 @@ public class InOut {
         in = new Scanner(System.in);
     }
 
-
     public void displayAlumni() {
         while (alumniFileIn.hasNext()) {
             System.out.println(alumniFileIn.next());
         }
     }
 
-    
+    public Events existingEvents() {
+        Events e = new Events();
+        while (eventFileIn.hasNextLine()) {
+            String line = eventFileIn.nextLine();
+            String[] s = line.split(",");
+            int id = Integer.parseInt(s[0]);
+            String name = s[1];
+            String time = s[2];
+            int room = Integer.parseInt(s[3]);
+            int numberOfParticipants = Integer.parseInt(s[4]);
+            String startDate = s[5];
+            String list = eventFileIn.nextLine();
+            String[] listarr = list.split(",");
+            ArrayList<String> att = new ArrayList<>();
+            for (int i = 0; i < listarr.length; i++) {
+                att.add(listarr[i]);
+            }
+            e = new Events(id, name, time, room, numberOfParticipants, startDate, att);
+            return e;
+        }
+        return e;
+
+    }
+
     public Alumni existingAlumni() {
         Alumni a = new Alumni();
-        while (alumniFileIn.hasNextLine()){
-            // String idString  = alumniFileIn.next();
-            // String name =  alumniFileIn.next();
-            // String address =  alumniFileIn.next();
-            // String major =  alumniFileIn.next();
-            // String gradYear =  alumniFileIn.next();
-            // String job =  alumniFileIn.next();
-            // String organization =  alumniFileIn.next();
+        while (alumniFileIn.hasNextLine()) {
+            // String idString = alumniFileIn.next();
+            // String name = alumniFileIn.next();
+            // String address = alumniFileIn.next();
+            // String major = alumniFileIn.next();
+            // String gradYear = alumniFileIn.next();
+            // String job = alumniFileIn.next();
+            // String organization = alumniFileIn.next();
             // alumniFileIn.next(); // consume whitespace
             // int id = Integer.parseInt(idString.trim());
             String line = alumniFileIn.nextLine();
             String[] s = line.split(",");
-            int id  = Integer.parseInt(s[0]);
+            int id = Integer.parseInt(s[0]);
             String name = s[1];
             String address = s[2];
             String major = s[3];
@@ -62,8 +87,10 @@ public class InOut {
         }
         return a;
     }
+
     /**
      * Get User Text Input
+     * 
      * @return User input : nextLine
      */
     public String stringInput() {
@@ -72,6 +99,7 @@ public class InOut {
 
     /**
      * Get User Integer Input
+     * 
      * @return User input : int
      */
     public int intInput() {
@@ -80,6 +108,7 @@ public class InOut {
 
     /**
      * Get User Double Input
+     * 
      * @return User input : double
      */
     public double doubleInput() {
