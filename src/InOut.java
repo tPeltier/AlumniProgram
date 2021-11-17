@@ -9,11 +9,11 @@ import java.util.TreeMap;
 public class InOut {
 
     private Scanner in;
-    private File alumniFile;
     private Scanner alumniFileIn;
-    private PrintWriter alumniSaved;
-    private File eventFile;
     private Scanner eventFileIn;
+    private File alumniFile;
+    private File eventFile;
+    private PrintWriter alumniSaved;
     private PrintWriter eventSaved;
     private TreeMap<Integer, Alumni> alumniMap;
     private TreeMap<Integer, Events> eventMap;
@@ -33,6 +33,14 @@ public class InOut {
         existingEvents();
     }
 
+    public void closeEverythingAndSave() {
+        in.close();
+        alumniFileIn.close();
+        alumniSaved.close();
+        eventFileIn.close();
+        eventSaved.close();
+
+    }
     public void existingEvents() {
         eventMap = new TreeMap<>();
         Events e = new Events();
