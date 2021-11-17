@@ -5,7 +5,7 @@ public class Speaker {
     int phoneNumber;
     String emailAddress;
 
-    public Speaker(String name, String topic, int phoneNumber, String emailAddress, ) {
+    public Speaker(String name, String topic, int phoneNumber, String emailAddress) {
         this.name = name;
         this.topic = topic;
         this.phoneNumber = phoneNumber;
@@ -14,7 +14,6 @@ public class Speaker {
 
     public Speaker() {
     }
-
 
     public String getName() {
         return name;
@@ -30,10 +29,6 @@ public class Speaker {
 
     public String getEmailAddress() {
         return emailAddress;
-    }
-
-    public Object getUntitledField() {
-        return untitledField;
     }
 
     public void setName(String name) {
