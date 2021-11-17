@@ -4,14 +4,12 @@ public class Speaker {
     String topic;
     int phoneNumber;
     String emailAddress;
-    Object untitledField;
 
-    public Speaker(String name, String topic, int phoneNumber, String emailAddress, Object untitledField) {
+    public Speaker(String name, String topic, int phoneNumber, String emailAddress, ) {
         this.name = name;
         this.topic = topic;
         this.phoneNumber = phoneNumber;
         this.emailAddress = emailAddress;
-        this.untitledField = untitledField;
     }
 
     public Speaker() {
@@ -53,9 +51,4 @@ public class Speaker {
     public void setEmailAddress(String emailAddress) {
         this.emailAddress = emailAddress;
     }
-
-    public void setUntitledField(Object untitledField) {
-        this.untitledField = untitledField;
-    }
-    
 }
