@@ -1,3 +1,3 @@
-public class Training {
+public class Training extends Events {
     
 }

@@ -82,7 +82,7 @@ public class InOut {
 
     public void displayAlumni() {
         for (Alumni alumni : alumniMap.values()) {
-           System.out.println(alumni.toString()); 
+            System.out.println(alumni.toString());
         }
     }
 
@@ -102,7 +102,15 @@ public class InOut {
      * @return User input : int
      */
     public int intInput() {
-        return in.nextInt();
+        int n;
+        do {
+            while (!in.hasNextInt()) {
+                String s = in.next();
+                System.out.printf("\"%s\" is not a valid number", s);
+            }
+            n = in.nextInt();
+        } while (n < 0);
+        return n;
     }
 
     /**
@@ -111,7 +119,15 @@ public class InOut {
      * @return User input : double
      */
     public double doubleInput() {
-        return in.nextDouble();
+        double n;
+        do {
+            while (!in.hasNextDouble()) {
+                String s = in.next();
+                System.out.printf("\"%s\" is not a valid number", s);
+            }
+            n = in.nextDouble();
+        } while (n < 0);
+        return n;
     }
 
 }
