@@ -94,6 +94,64 @@ public class InOut {
         }
     }
 
+    // ---------- getters -------------- 
+
+    public String getAlumniName(int id) {
+        return alumniMap.get(id).getName();
+    } 
+
+    public String getAlumniAddress(int id) {
+        return alumniMap.get(id).getAddress();
+    }
+
+    public String getAlumniMajor(int id) {
+        return alumniMap.get(id).getMajor();
+    }
+
+    public String getAlumniGradYear(int id) {
+        return alumniMap.get(id).getGradYear();
+    }
+
+    public String getAlumniJob(int id) {
+        return alumniMap.get(id).getJob();
+    }
+
+    public String getAlumniOrg(int id) {
+        return alumniMap.get(id).getOrganization();
+    }
+    
+    // ---------- setters-------------- 
+    public void setAlumniName(int id, String name) {
+        alumniMap.get(id).setName(name);
+    }
+
+    public void setAlumniAddress(int id, String address) {
+        alumniMap.get(id).setAddress(address); 
+    }
+    
+    public void setAlumniMajor(int id, String major) {
+        alumniMap.get(id).setMajor(major);
+    }
+    
+    public void setAlumniGradYear(int id, String gradYear) {
+        alumniMap.get(id).setGradYear(gradYear); 
+    }
+
+    public void setAlumniJob(int id, String job) {
+        alumniMap.get(id).setJob(job); 
+    }
+
+    public void setAlumniOrg(int id, String org) {
+        alumniMap.get(id).setOrganization(org); 
+    }
+
+    // ------- remove --------------
+    public void deleteAlumni(int id){
+        alumniMap.remove(id);
+    }
+
+
+
     /**
      * Get User Text Input
      * 

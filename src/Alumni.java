@@ -1,5 +1,6 @@
 
 public class Alumni {
+    // TODO need to set this off of the last existing alumni id
     private static int alumniId = 0000;
     private int id;
     private String name;
@@ -116,5 +117,9 @@ public class Alumni {
             ", job='" + getJob() + "'" +
             ", organization='" + getOrganization() + "'" +
             "}";
+    }
+
+    public String save() {
+        return getId() + "," + getName() + "," + getAddress() + "," + getMajor() + "," + getGradYear() + "," + getJob() + "," + getOrganization();
     }
 }
