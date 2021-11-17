@@ -6,8 +6,9 @@ public class UI {
     public UI() throws FileNotFoundException {
         io = new InOut();
     }
-//hi from me
-    private void userInterface() {
+
+    // hi from me
+    public void userInterface() {
         System.out.println("Hello and welcome to the Alumni program \nPlease enter what you would like to do");
         boolean run = true;
         while (run) {
@@ -31,7 +32,7 @@ public class UI {
         }
     }
 
-    private void alumniInterface() {
+    public void alumniInterface() {
         System.out.println("Alumni Interface\n" + "please enter a choice");
         boolean run = true;
         while (run) {
@@ -46,12 +47,15 @@ public class UI {
                 break;
             case 2:
                 // Add new alumni
+                
                 break;
             case 3:
                 // edit Alumni
+                editAlumni();
                 break;
             case 4:
                 // Delete Alumni
+                io.deleteAlumni(id);
                 break;
             case 5:
                 // go back to main menu
@@ -61,11 +65,11 @@ public class UI {
         }
     }
 
-    private void eventInterface() {
+    public void eventInterface() {
         System.out.println("Event Interface");
         boolean run = true;
-        System.out.println(" ----------------------------------------------------- ");
         while (run) {
+            System.out.println(" ----------------------------------------------------- ");
             System.out.println("1. See a list of events \n2. Sign up to attend an Event \n3. Make a donation \n"
                     + "4. See my donations \n5. Sign up to speak\n6. Exit");
             int choice = io.intInput();
@@ -92,4 +96,60 @@ public class UI {
             }
         }
     }
+
+    public void editAlumni() {
+        boolean run = true;
+        while (run) {
+            System.out.println("Enter the id of who you want to change");
+            io.displayAlumni();
+            int id = io.intInput();
+            System.out.println("what would you like to change? \n1. edit name \n2. edit address \n3. edit major \n4. edit gradYear \n5. edit job \n6. edit organization \n7. exit");
+            int choice = io.intInput();
+            
+            switch (choice) {
+            case 1:
+                // edit name
+                System.out.println("Enter a new name:");
+                io.setAlumniName(id, io.stringInput());
+                break;
+
+            case 2:
+                // edit address
+                System.out.println("Enter a new Addres");
+                io.setAlumniAddress(id, io.stringInput());
+                break;
+
+            case 3:
+                // edit major
+                System.out.println("Enter a new Major:");
+                io.setAlumniMajor(id, io.stringInput());
+                break;
+
+            case 4:
+                // edit gradYear
+                System.out.println("Enter a new Graduation Year:");
+                io.setAlumniGradYear(id, io.stringInput());
+                break;
+
+            case 5:
+                // edit job
+                System.out.println("Enter a new Job:");
+                io.setAlumniJob(id, io.stringInput());
+                break;
+
+            case 6:
+                // edit organization
+                System.out.println("Enter a new organizaton");
+                io.setAlumniOrg(id, io.stringInput());
+                break;
+
+            case 7:
+                // exit
+                System.out.println("NO CHANGES");
+                break;
+            }
+
+        }
+    }
+
 }
