@@ -2,10 +2,10 @@
 ---
 [] training
 [] speaker
-    [] guestspeaker
+    [] guestSpeaker
 [] events
+[x] donor -> donation?
 ---
-* donor -> donation?
 * donation 
     * who donated (could be org?)
         * obj?
@@ -14,3 +14,11 @@
     * amount of donation
     * mark time of donation (creation) with the Date class (see hw 4)
     * make a receipt txt file (to save donations)
+---
+* training (implies something being taught)
+    * name of skill being taught
+    * number of open seats(?)
+        * total slots - attending
+---
+* speaker
+    * if an alumni creates an event they will be the guest speaker of it
