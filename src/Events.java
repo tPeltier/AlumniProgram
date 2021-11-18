@@ -1,15 +1,15 @@
 
 public class Events {
 
-    String name;
-    String time;
-    int room;
-    int numberOfParticipants;
-    String startDate;
+   private String name;
+   private String time;
+   private int room;
+   private int numberOfParticipants;
+   private String startDate;
 
 
 
-    // constructors 
+    // constructor
     public Events(){
 
      }
