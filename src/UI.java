@@ -89,10 +89,12 @@ public class UI {
                 // see my donations
                 break;
             case 5:
-                // sign up to speak
+                // create event
+                createEvent();
                 break;
             case 6:
                 // go back to main menu
+                run = false;
                 break;
             }
         }
@@ -170,4 +172,16 @@ public class UI {
         String organization = io.stringInput();
         io.addAlumni(name, address, major, gradYear, job, organization);
     }
+     public void createEvent() {
+        System.out.println("Enter the name of Event");
+        String name = io.stringInput();
+        System.out.println("Enter the time of Event");
+        String time = io.stringInput();
+        System.out.println("Enter the room of Event");
+        int room = io.intInput();
+        System.out.println("Enter number of participants");
+        int numberOfParticipants = io.intInput();
+        System.out.println("Enter the date of Event");
+        String eventDate = io.stringInput();
+        io.createEvent(name, time, room, numberOfParticipants, eventDate);
 }

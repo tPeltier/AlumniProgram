@@ -28,6 +28,16 @@ public class Events {
         this.attendants = attendant;
     }
 
+    public Events(int id, String name, String time, int room, int numberOfParticipants, String startDate) {
+        this.id = id;
+        this.name = name;
+        this.time = time;
+        this.room = room;
+        this.numberOfParticipants = numberOfParticipants;
+        this.startDate = startDate;
+    }
+
+
 
     // getters and setters
     public int getId() {
