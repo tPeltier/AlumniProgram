@@ -4,7 +4,7 @@
 [] speaker
     [] guestspeaker
 [] events
-[] donor -> donation?
+[x] donor -> donation?
 ---
 * donation 
     * who donated (could be org?)
@@ -14,3 +14,8 @@
     * amount of donation
     * mark time of donation (creation) with the Date class (see hw 4)
     * make a receipt txt file (to save donations)
+---
+* training (implies something being taught)
+    * name of skill being taught
+    * number of open seats(?)
+    
