@@ -156,7 +156,12 @@ public class InOut {
     public void deleteAlumni(int id){
         alumniMap.remove(id);
     }
-
+public void createEvent(String name, String time, int room, int numberOfParticipants, String startDate){
+    int id = eventMap.lastKey();
+    id++;
+    Events e = new Events(id, name, time, room, numberOfParticipants, startDate);
+    eventMap.put(id, e);
+}
 
 
     /**
