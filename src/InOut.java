@@ -145,6 +145,12 @@ public class InOut {
         alumniMap.get(id).setOrganization(org); 
     }
 
+    public void addAlumni(String name, String address, String major, String gradYear, String job, String organization){
+        Alumni a = new Alumni(name, address, major, gradYear, job, organization);
+        int id = a.getId();
+        alumniMap.put(id, a);
+    }
+
     // ------- remove --------------
     public void deleteAlumni(int id){
         alumniMap.remove(id);

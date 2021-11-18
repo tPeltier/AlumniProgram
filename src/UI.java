@@ -47,7 +47,7 @@ public class UI {
                 break;
             case 2:
                 // Add new alumni
-                
+                newAlumniInfo();
                 break;
             case 3:
                 // edit Alumni
@@ -103,9 +103,10 @@ public class UI {
             System.out.println("Enter the id of who you want to change");
             io.displayAlumni();
             int id = io.intInput();
-            System.out.println("what would you like to change? \n1. edit name \n2. edit address \n3. edit major \n4. edit gradYear \n5. edit job \n6. edit organization \n7. exit");
+            System.out.println(
+                    "what would you like to change? \n1. edit name \n2. edit address \n3. edit major \n4. edit gradYear \n5. edit job \n6. edit organization \n7. exit");
             int choice = io.intInput();
-            
+
             switch (choice) {
             case 1:
                 // edit name
@@ -150,6 +151,22 @@ public class UI {
             }
 
         }
+
     }
 
+    public void newAlumniInfo() {
+        System.out.println("Enter the name of the Alumni");
+        String name = io.stringInput();
+        System.out.println("Enter the Address of the Alumni");
+        String address = io.stringInput();
+        System.out.println("Enter the Major of the Alumni");
+        String major = io.stringInput();
+        System.out.println("Enter the Alumni's graduation year");
+        String gradYear = io.stringInput();
+        System.out.println("Enter the Alumnis current occupation");
+        String job = io.stringInput();
+        System.out.println("Enter the company that the Alumni Currently works for");
+        String organization = io.stringInput();
+        io.addAlumni(name, address, major, gradYear, job, organization);
+    }
 }
