@@ -1,7 +1,5 @@
 
 public class Alumni {
-    // TODO need to set this off of the last existing alumni id
-    private static int alumniId = 0000;
     private int id;
     private String name;
     private String address;
@@ -13,17 +11,7 @@ public class Alumni {
     public Alumni() {
 
     }
-    // existing alumni
-    public Alumni(int id, String name, String address, String major, String gradYear, String job, String organization) {
-        this.id = id;
-        this.name = name;
-        this.address = address;
-        this.major = major;
-        this.gradYear = gradYear;
-        this.job = job;
-        this.organization = organization;
-    }
-    // new alumni
+
     /**
      * passing in values for alumni
      * @param name name of alumni
@@ -33,9 +21,8 @@ public class Alumni {
      * @param job employment of alumni
      * @param organization employer of almuni
      */
-    public Alumni(String name, String address, String major, String gradYear, String job, String organization) {
-        alumniId++;
-        this.id = alumniId;
+    public Alumni(int id, String name, String address, String major, String gradYear, String job, String organization) {
+        this.id = id;
         this.name = name;
         this.address = address;
         this.major = major;

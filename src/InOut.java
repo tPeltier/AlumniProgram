@@ -146,8 +146,9 @@ public class InOut {
     }
 
     public void addAlumni(String name, String address, String major, String gradYear, String job, String organization){
-        Alumni a = new Alumni(name, address, major, gradYear, job, organization);
-        int id = a.getId();
+        int id = alumniMap.lastKey();
+        id++;
+        Alumni a = new Alumni(id, name, address, major, gradYear, job, organization);
         alumniMap.put(id, a);
     }
 
