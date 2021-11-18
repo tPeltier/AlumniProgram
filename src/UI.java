@@ -55,7 +55,8 @@ public class UI {
                 break;
             case 4:
                 // Delete Alumni
-                io.deleteAlumni(id);
+                System.out.println("Enter the ID of the Alumni you would like to delete");
+                io.deleteAlumni(io.intInput());
                 break;
             case 5:
                 // go back to main menu
