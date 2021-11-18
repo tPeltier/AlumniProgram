@@ -4,8 +4,8 @@
 [] speaker
     [] guestspeaker
 [] events
+[] donor -> donation?
 ---
-* donor -> donation?
 * donation 
     * who donated (could be org?)
         * obj?
