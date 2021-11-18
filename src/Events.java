@@ -1,8 +1,6 @@
 import java.util.ArrayList;
 
 public class Events {
-
-    private static int eventId = 0000;
     private int id;
     private String name;
     private String time;
@@ -30,17 +28,6 @@ public class Events {
         this.attendants = attendant;
     }
 
-    // new event
-    public Events(String name, String time, int room, int numberOfParticipants, String startDate) {
-        eventId++;
-        this.id = eventId;
-        this.name = name;
-        this.time = time;
-        this.room = room;
-        this.numberOfParticipants = numberOfParticipants;
-        this.startDate = startDate;
-        this.attendants = new ArrayList<>();
-    }
 
     // getters and setters
     public int getId() {
