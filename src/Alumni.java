@@ -1,5 +1,6 @@
 
 public class Alumni {
+    private int id;
     private String name;
     private String address;
     private String major;
@@ -10,6 +11,7 @@ public class Alumni {
     public Alumni() {
 
     }
+
     /**
      * passing in values for alumni
      * @param name name of alumni
@@ -19,7 +21,8 @@ public class Alumni {
      * @param job employment of alumni
      * @param organization employer of almuni
      */
-    public Alumni(String name, String address, String major, String gradYear, String job, String organization) {
+    public Alumni(int id, String name, String address, String major, String gradYear, String job, String organization) {
+        this.id = id;
         this.name = name;
         this.address = address;
         this.major = major;
@@ -28,6 +31,10 @@ public class Alumni {
         this.organization = organization;
     }
 
+
+    public int getId() {
+        return id;
+    }
     /**
      * to get the name of alumni
      * @return returns the name of alumni 
@@ -83,6 +90,23 @@ public class Alumni {
     public void setOrganization(String organization) {
         this.organization = organization;
     }
-    
+   
+    // 
 
+    @Override
+    public String toString() {
+        return "{" +
+            " id='" + getId() + "'" +
+            ", name='" + getName() + "'" +
+            ", address='" + getAddress() + "'" +
+            ", major='" + getMajor() + "'" +
+            ", gradYear='" + getGradYear() + "'" +
+            ", job='" + getJob() + "'" +
+            ", organization='" + getOrganization() + "'" +
+            "}";
+    }
+
+    public String save() {
+        return getId() + "," + getName() + "," + getAddress() + "," + getMajor() + "," + getGradYear() + "," + getJob() + "," + getOrganization();
+    }
 }

@@ -1,6 +1,20 @@
+import java.util.ArrayList;
 
 public class Events {
+    private int id;
+    private String name;
+    private String time;
+    private int room;
+    private int numberOfParticipants;
+    // TODO change date format
+    private String startDate;
+    private Speaker speaker;
+    private ArrayList<String> attendants;
 
+    // constructors
+    public Events() {
+
+<<<<<<< HEAD
    private String name;
    private String time;
    private int room;
@@ -11,18 +25,28 @@ public class Events {
 
     // constructor
     public Events(){
+=======
+    }
 
-     }
-     public Events(String name, String time,  int room, int numberOfParticipants, String startDate){
-         this.name = name;
-         this.time = time;
-         this. room = room;
-         this.numberOfParticipants = numberOfParticipants;
-         this.startDate = startDate;
-     }
+    // existing event
+    public Events(int id, String name, String time, int room, int numberOfParticipants, String startDate,
+            ArrayList<String> attendant) {
+        this.id = id;
+        this.name = name;
+        this.time = time;
+        this.room = room;
+        this.numberOfParticipants = numberOfParticipants;
+        this.startDate = startDate;
+        this.attendants = attendant;
+    }
+>>>>>>> 87520634fe5ed6af1b12b4de45393acf4f3726fa
 
 
-// getters and setters
+    // getters and setters
+    public int getId() {
+        return this.id;
+    }
+
     public String getName() {
         return this.name;
     }
@@ -63,5 +87,15 @@ public class Events {
         this.startDate = startDate;
     }
 
+    public void addAttendant(String name) {
+        attendants.add(name);
+    }
+
+    @Override
+    public String toString() {
+        return "{" + " id='" + getId() + "'" + ", name='" + getName() + "'" + ", time='" + getTime() + "'" + ", room='"
+                + getRoom() + "'" + ", numberOfParticipants='" + getNumberOfParticipants() + "'" + ", startDate='"
+                + getStartDate() + "'" + "}";
+    }
+
 }
-      

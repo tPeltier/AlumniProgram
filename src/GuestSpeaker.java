@@ -1,4 +1,7 @@
 
-public class GuestSpeaker {
+public class GuestSpeaker extends Speaker {
     
+    public GuestSpeaker() {
+        super();
+    }
 }
