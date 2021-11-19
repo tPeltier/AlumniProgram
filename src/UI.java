@@ -200,4 +200,5 @@ public class UI {
         System.out.println("Enter the date of Event");
         String eventDate = io.stringInput();
         io.createEvent(name, time, room, numberOfParticipants, eventDate);
+    }
 }
