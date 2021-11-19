@@ -114,7 +114,6 @@ public class UI {
         }
     }
 
-    
     public void editAlumni() {
         boolean run = true;
         while (run) {
