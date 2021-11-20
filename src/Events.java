@@ -14,17 +14,8 @@ public class Events {
     // constructors
     public Events() {
 
-   private String name;
-   private String time;
-   private int room;
-   private int numberOfParticipants;
-   private String startDate;
 
-
-
-    // constructor
-    public Events(){
-
+    }
     public Events(int id, String name, String time, int room, int numberOfParticipants, String startDate) {
         this.id = id;
         this.name = name;
