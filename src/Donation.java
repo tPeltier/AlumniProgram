@@ -6,7 +6,7 @@ public class Donation {
     private String personName;
     private String donationTowards;
     private Double amountDonated;
-    private java.util.Date dateCreated;
+    private Date dateCreated;
     //Still need receipt?? 
 
     
