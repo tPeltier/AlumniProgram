@@ -1,5 +1,6 @@
 import java.util.Date;
 
+
 public class Donation {
     
     private String personName;
@@ -40,5 +41,4 @@ public class Donation {
     public void setAmountDonated(Double amountDonated) {
         this.amountDonated = amountDonated;
     }
-    
 }
