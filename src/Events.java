@@ -13,7 +13,7 @@ public class Events {
 
     // constructors
     public Events() {
-
+        //empty
     }
 
     // existing event
