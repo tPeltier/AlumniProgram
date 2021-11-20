@@ -14,7 +14,6 @@ public class Events {
     // constructors
     public Events() {
 
-<<<<<<< HEAD
    private String name;
    private String time;
    private int room;
@@ -25,21 +24,6 @@ public class Events {
 
     // constructor
     public Events(){
-=======
-    }
-
-    // existing event
-    public Events(int id, String name, String time, int room, int numberOfParticipants, String startDate,
-            ArrayList<String> attendant) {
-        this.id = id;
-        this.name = name;
-        this.time = time;
-        this.room = room;
-        this.numberOfParticipants = numberOfParticipants;
-        this.startDate = startDate;
-        this.attendants = attendant;
-    }
->>>>>>> 87520634fe5ed6af1b12b4de45393acf4f3726fa
 
 
     // getters and setters
