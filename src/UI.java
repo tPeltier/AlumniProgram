@@ -7,7 +7,6 @@ public class UI {
         io = new InOut();
     }
 
-    // hi from me
     public void userInterface() {
         System.out.println("Hello and welcome to the Alumni program \nPlease enter what you would like to do");
         boolean run = true;
@@ -59,6 +58,7 @@ public class UI {
                 io.deleteAlumni(io.intInput());
                 break;
             case 5:
+                run = false;
                 // go back to main menu
                 break;
             }
@@ -81,18 +81,34 @@ public class UI {
                 break;
             case 2:
                 // sign up for events
+                // may add methods to handle prints
+                System.out.println("enter the id");
+                int id = io.intInput();
+                System.out.println("enter your name");
+                io.joinEvent(id, io.stringInput());
                 break;
             case 3:
                 // make donation
+                System.out.println("enter the id of the event you want to donate to");
+                // id var?
+                System.out.println("how much would you like to donate");
+                // donation call int id, int donation amount
                 break;
             case 4:
                 // see my donations
                 break;
             case 5:
-                // sign up to speak
+                // create event
+                createEvent();
                 break;
             case 6:
+                // Delete events(potentially only ones the user creates)
+                System.out.println("please enter the id of the event that you want to delete");
+                io.deleteEvent(io.intInput());
+                break;
+            case 7:
                 // go back to main menu
+                run = false;
                 break;
             }
         }
@@ -169,5 +185,19 @@ public class UI {
         System.out.println("Enter the company that the Alumni Currently works for");
         String organization = io.stringInput();
         io.addAlumni(name, address, major, gradYear, job, organization);
+    }
+
+    public void createEvent() {
+        System.out.println("Enter the name of Event");
+        String name = io.stringInput();
+        System.out.println("Enter the time of Event");
+        String time = io.stringInput();
+        System.out.println("Enter the room of Event");
+        int room = io.intInput();
+        System.out.println("Enter number of participants");
+        int numberOfParticipants = io.intInput();
+        System.out.println("Enter the date of Event");
+        String eventDate = io.stringInput();
+        io.createEvent(name, time, room, numberOfParticipants, eventDate);
     }
 }

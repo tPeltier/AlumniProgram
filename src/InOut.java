@@ -41,6 +41,7 @@ public class InOut {
         eventSaved.close();
 
     }
+
     public void existingEvents() {
         eventMap = new TreeMap<>();
         Events e = new Events();
@@ -94,11 +95,11 @@ public class InOut {
         }
     }
 
-    // ---------- getters -------------- 
+    // ---------- getters --------------
 
     public String getAlumniName(int id) {
         return alumniMap.get(id).getName();
-    } 
+    }
 
     public String getAlumniAddress(int id) {
         return alumniMap.get(id).getAddress();
@@ -119,45 +120,60 @@ public class InOut {
     public String getAlumniOrg(int id) {
         return alumniMap.get(id).getOrganization();
     }
-    
-    // ---------- setters-------------- 
+
+    // ---------- setters--------------
     public void setAlumniName(int id, String name) {
         alumniMap.get(id).setName(name);
     }
 
     public void setAlumniAddress(int id, String address) {
-        alumniMap.get(id).setAddress(address); 
+        alumniMap.get(id).setAddress(address);
     }
-    
+
     public void setAlumniMajor(int id, String major) {
         alumniMap.get(id).setMajor(major);
     }
-    
+
     public void setAlumniGradYear(int id, String gradYear) {
-        alumniMap.get(id).setGradYear(gradYear); 
+        alumniMap.get(id).setGradYear(gradYear);
     }
 
     public void setAlumniJob(int id, String job) {
-        alumniMap.get(id).setJob(job); 
+        alumniMap.get(id).setJob(job);
     }
 
     public void setAlumniOrg(int id, String org) {
-        alumniMap.get(id).setOrganization(org); 
+        alumniMap.get(id).setOrganization(org);
     }
 
-    public void addAlumni(String name, String address, String major, String gradYear, String job, String organization){
+    public void addAlumni(String name, String address, String major, String gradYear, String job, String organization) {
         int id = alumniMap.lastKey();
         id++;
         Alumni a = new Alumni(id, name, address, major, gradYear, job, organization);
         alumniMap.put(id, a);
     }
 
+    //--------- Event Methods here ---------------
+
+    public void joinEvent(int id, String name){
+        eventMap.get(id).addAttendant(name);
+    }
+
     // ------- remove --------------
-    public void deleteAlumni(int id){
+    public void deleteAlumni(int id) {
         alumniMap.remove(id);
     }
 
+    public void deleteEvent(int id) {
+        eventMap.remove(id);
+    }
 
+    public void createEvent(String name, String time, int room, int numberOfParticipants, String startDate) {
+        int id = eventMap.lastKey();
+        id++;
+        Events e = new Events(id, name, time, room, numberOfParticipants, startDate);
+        eventMap.put(id, e);
+    }
 
     /**
      * Get User Text Input

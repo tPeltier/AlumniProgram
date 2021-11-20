@@ -19,7 +19,7 @@ public class Alumni {
      * @param major School Major for alumni's degree
      * @param gradYear Year of graduation 
      * @param job employment of alumni
-     * @param organization employer of almuni
+     * @param organization employer of alumni
      */
     public Alumni(int id, String name, String address, String major, String gradYear, String job, String organization) {
         this.id = id;
