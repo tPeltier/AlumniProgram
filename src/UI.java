@@ -102,7 +102,7 @@ public class UI {
                 createEvent();
                 break;
             case 6:
-                // Delete events(potentiallyonly ones the user creates)
+                // Delete events(potentially only ones the user creates)
                 System.out.println("please enter the id of the event that you want to delete");
                 io.deleteEvent(io.intInput());
                 break;
