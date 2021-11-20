@@ -1,4 +1,3 @@
-
 import java.util.Date;
 
 
@@ -6,13 +5,13 @@ public class Donation {
     
     private String personName;
     private String donationTowards;
-    private Double ammountDonated;
+    private Double amountDonated;
     private java.util.Date dateCreated;
     //Still need receipt?? 
 
     
     public Donation() {
-        super();
+        dateCreated = new  Date();
     }
 
     public String getPersonName() {
@@ -23,8 +22,8 @@ public class Donation {
         return donationTowards;
     }
 
-    public Double getAmmountDonated() {
-        return ammountDonated;
+    public Double getAmountDonated() {
+        return amountDonated;
     }
 
     public Date getDateCreated() {
@@ -39,13 +38,7 @@ public class Donation {
         this.donationTowards = donationTowards;
     }
 
-    public void setAmmountDonated(Double ammountDonated) {
-        this.ammountDonated = ammountDonated;
+    public void setAmountDonated(Double amountDonated) {
+        this.amountDonated = amountDonated;
     }
-
-    public void setDateCreated(Date dateCreated) {
-        this.dateCreated = dateCreated;
-    }
-    
-    
 }

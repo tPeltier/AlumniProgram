@@ -29,7 +29,7 @@ public class Training extends Events {
     }
 
     public void setOpenSeats(){
-       openSeats=total-numberOfParticipants;
+       openSeats=total-super.getNumberOfParticipants();
     }
     
 
