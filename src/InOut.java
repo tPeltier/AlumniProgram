@@ -17,6 +17,7 @@ public class InOut {
     private PrintWriter eventSaved;
     private TreeMap<Integer, Alumni> alumniMap;
     private TreeMap<Integer, Events> eventMap;
+    private ArrayList<Donation> donationList;
 
     /**
      * Initiate File, Scanner and PrintWriter
@@ -153,52 +154,61 @@ public class InOut {
         alumniMap.put(id, a);
     }
 
-    //--------- Event Methods here ---------------
+    // --------- Event Methods here ---------------
 
-    public void joinEvent(int id, String name){
+    public void joinEvent(int id, String name) {
         eventMap.get(id).addAttendant(name);
     }
 
-    //-----------Edit Event Methods----------------
+    // -----------Edit Event Methods----------------
 
     /**
-     * sets event name 
-     * @param id event id
+     * sets event name
+     * 
+     * @param id   event id
      * @param name event name
      */
-    public void setName(int id, String name){
-      eventMap.get(id).setName(name);
+    public void setName(int id, String name) {
+        eventMap.get(id).setName(name);
     }
+
     /**
      * sets a name for the event
-     * @param id event id
-     * @param time event time 
+     * 
+     * @param id   event id
+     * @param time event time
      */
-    public void setTime(int id, String time){
+    public void setTime(int id, String time) {
         eventMap.get(id).setTime(time);
     }
+
     /**
      * sets a room for event
-     * @param id event id 
-     * @param room event room 
+     * 
+     * @param id   event id
+     * @param room event room
      */
-    public void setRoom(int id, int room){
+    public void setRoom(int id, int room) {
         eventMap.get(id).setRoom(room);
     }
+
     /**
      * sets the number of each particpant in the event
-     * @param id event id 
+     * 
+     * @param id                   event id
      * @param numberOfParticipants event numberOfParticipants
      */
-    public void setNumberOfParticipants(int id, int numberOfParticipants){
+    public void setNumberOfParticipants(int id, int numberOfParticipants) {
         eventMap.get(id).setNumberOfParticipants(numberOfParticipants);
     }
-     /**
+
+    /**
      * sets event date
-     * @param id event id
+     * 
+     * @param id   event id
      * @param date event date
      */
-    public void setDate(int id, String date){
+    public void setDate(int id, String date) {
         eventMap.get(id).setStartDate(date);
     }
 
@@ -216,6 +226,28 @@ public class InOut {
         id++;
         Events e = new Events(id, name, time, room, numberOfParticipants, startDate);
         eventMap.put(id, e);
+    }
+
+    // ------- donation list methods ------
+    public void addDonationToList(int alumniId, int eventId, double donationAmount) {
+        donationList.add(new Donation(alumniId, eventId, donationAmount));
+    }
+
+    public void displayDonationsAlumni(int id) {
+        for (int i = 0; i < donationList.size(); i++) {
+            if (id == donationList.get(i).getAlumniId()) {
+                System.out.println("Donation amount" + donationList.get(i).getAmountDonated());
+            }
+        }
+    }
+
+    public void displayDonationsEvents(int id) {
+        for (int i = 0; i < donationList.size(); i++){
+            if (id == donationList.get(i).getEventId()) {
+                System.out.println("Donation amount" + donationList.get(i).getAmountDonated());
+            }
+        }
+
     }
 
     /**

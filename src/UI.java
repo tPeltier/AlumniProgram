@@ -6,7 +6,7 @@ public class UI {
     public UI() throws FileNotFoundException {
         io = new InOut();
     }
-	
+
     public void userInterface() {
         System.out.println("Hello and welcome to the Alumni program \nPlease enter what you would like to do");
         boolean run = true;
@@ -200,4 +200,28 @@ public class UI {
         String eventDate = io.stringInput();
         io.createEvent(name, time, room, numberOfParticipants, eventDate);
     }
+
+    // ----- donation stuff ------
+    public void addDonation() {
+        System.out.println("Enter your ID number");
+        int id = io.intInput();
+        System.out.println("Enter the event ID");
+        int eventID = io.intInput();
+        System.out.println("Enter the amount donated");
+        double amountDonated = io.doubleInput();
+        io.addDonationToList(id, eventID, amountDonated);
+    }
+
+    public void displayDonationsAlumni() {
+        System.out.println("Enter your id number");
+        int id = io.intInput();
+        io.displayDonationsAlumni(id);
+    }
+
+    public void displayDonationsEvents() {
+        System.out.println("Enter the event id");
+        int id = io.intInput();
+        io.displayDonationsEvents(id);
+    }
+
 }

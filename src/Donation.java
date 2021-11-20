@@ -3,26 +3,29 @@ import java.util.Date;
 
 public class Donation {
     
-    private String personName;
-    private String donationTowards;
-    private Double amountDonated;
+    private int alumniId;
+    private int eventId;
+    private double amountDonated;
     private Date dateCreated;
     //Still need receipt?? 
 
     
-    public Donation() {
-        dateCreated = new  Date();
+    public Donation(int alumniId, int  eventId, double donationAmount) {
+        dateCreated = new Date();
+        this.alumniId = alumniId;
+        this.eventId = eventId;
+        this.amountDonated = donationAmount;
     }
 
-    public String getPersonName() {
-        return personName;
+    public int getAlumniId() {
+        return alumniId;
     }
 
-    public String getDonationTowards() {
-        return donationTowards;
+    public int getEventId() {
+        return eventId;
     }
 
-    public Double getAmountDonated() {
+    public double getAmountDonated() {
         return amountDonated;
     }
 
@@ -30,15 +33,15 @@ public class Donation {
         return dateCreated;
     }
 
-    public void setPersonName(String personName) {
-        this.personName = personName;
+    public void setAlumniId(int alumniId) {
+        this.alumniId = alumniId;
     }
 
-    public void setDonationTowards(String donationTowards) {
-        this.donationTowards = donationTowards;
+    public void setEventId(int eventId) {
+        this.eventId = eventId;
     }
 
-    public void setAmountDonated(Double amountDonated) {
+    public void setAmountDonated(double amountDonated) {
         this.amountDonated = amountDonated;
     }
 }
