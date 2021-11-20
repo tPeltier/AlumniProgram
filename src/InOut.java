@@ -159,6 +159,49 @@ public class InOut {
         eventMap.get(id).addAttendant(name);
     }
 
+    //-----------Edit Event Methods----------------
+
+    /**
+     * sets event name 
+     * @param id event id
+     * @param name event name
+     */
+    public void setName(int id, String name){
+      eventMap.get(id).setName(name);
+    }
+    /**
+     * sets a name for the event
+     * @param id event id
+     * @param time event time 
+     */
+    public void setTime(int id, String time){
+        eventMap.get(id).setTime(time);
+    }
+    /**
+     * sets a room for event
+     * @param id event id 
+     * @param room event room 
+     */
+    public void setRoom(int id, int room){
+        eventMap.get(id).setRoom(room);
+    }
+    /**
+     * sets the number of each particpant in the event
+     * @param id event id 
+     * @param numberOfParticipants event numberOfParticipants
+     */
+    public void setNumberOfParticipants(int id, int numberOfParticipants){
+        eventMap.get(id).setNumberOfParticipants(numberOfParticipants);
+    }
+     /**
+     * sets event date
+     * @param id event id
+     * @param date event date
+     */
+    public void setDate(int id, String date){
+        eventMap.get(id).setStartDate(date);
+    }
+
     // ------- remove --------------
     public void deleteAlumni(int id) {
         alumniMap.remove(id);
