@@ -45,7 +45,7 @@ public class InOut {
     }
 
     /**
-     * Close all Scanners
+     * Close all Scanners and PrintWriters
      */
     public void closeEverythingAndSave() {
         in.close();
