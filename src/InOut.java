@@ -52,7 +52,7 @@ public class InOut {
         alumniFileIn.close();
         alumniSaved.close();
         eventFileIn.close();
-        eventSaved.close();
+        // eventSaved.close();
 
     }
 
