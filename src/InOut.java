@@ -34,7 +34,8 @@ public class InOut {
         existingEvents();
     }
 
-    public void saveAlumniToFile() {
+    public void saveAlumniToFile() throws FileNotFoundException {
+        alumniSaved = new PrintWriter("alumni.txt");
         for (Alumni alumni : alumniMap.values()) {
             alumniSaved.println(alumni.save());
         }
