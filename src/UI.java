@@ -125,11 +125,11 @@ public class UI {
     public void editAlumni() {
         boolean run = true;
 
+        io.displayAlumni();
         System.out.println("Enter the id of who you want to change");
         int id = io.intInput();
 
         while (run) {
-            io.displayAlumni();
             System.out.println(
                     "what would you like to change? \n1. edit name \n2. edit address \n3. edit major \n4. edit gradYear \n5. edit job \n6. edit organization \n7. exit");
             int choice = io.intInput();
@@ -175,6 +175,7 @@ public class UI {
             case 7:
                 // exit
                 System.out.println("NO CHANGES");
+                io.displayAlumni();
                 run = false;
                 break;
             }
