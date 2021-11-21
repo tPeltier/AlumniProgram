@@ -44,6 +44,12 @@ public class InOut {
         }
     }
 
+    public void saveEventsToFile() {
+        for (Events event : eventMap.values()) {
+           System.out.println(event.saveAttendants()); 
+        }
+    }
+
     /**
      * Close all Scanners and PrintWriters
      */
