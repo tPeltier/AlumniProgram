@@ -95,4 +95,8 @@ public class Events {
                 + getStartDate() + "'" + "}";
     }
 
+    public String save() {
+        return getId() + "," + getName() + "," + getTime() + "," + getRoom() + "," + getNumberOfParticipants() + "," + getStartDate();
+    }
+
 }

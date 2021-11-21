@@ -34,6 +34,10 @@ public class InOut {
         existingEvents();
     }
 
+    public void saveToFile() {
+
+    }
+
     public void closeEverythingAndSave() {
         in.close();
         alumniFileIn.close();
