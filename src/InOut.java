@@ -312,4 +312,8 @@ public class InOut {
         return n;
     }
 
+    public void clearScanner() {
+        in.nextLine();
+    }
+
 }
