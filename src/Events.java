@@ -100,7 +100,7 @@ public class Events {
     }
 
     public String saveAttendants() {
-        String x "";
+        String x = "";
         for (int i = 0; i < attendants.size(); i++) {
            x += attendants.get(i);
         }
