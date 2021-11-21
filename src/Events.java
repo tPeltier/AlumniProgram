@@ -99,4 +99,12 @@ public class Events {
         return getId() + "," + getName() + "," + getTime() + "," + getRoom() + "," + getNumberOfParticipants() + "," + getStartDate();
     }
 
+    public String saveAttendants() {
+        String x "";
+        for (int i = 0; i < attendants.size(); i++) {
+           x += attendants.get(i);
+        }
+        return x;
+    }
+
 }
