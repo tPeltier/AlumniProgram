@@ -34,6 +34,9 @@ public class InOut {
         existingEvents();
     }
 
+    /**
+     * Save the Alumni Map to a text file
+     */
     public void saveAlumniToFile() throws FileNotFoundException {
         alumniSaved = new PrintWriter("temp.txt");
         for (Alumni alumni : alumniMap.values()) {
@@ -41,6 +44,9 @@ public class InOut {
         }
     }
 
+    /**
+     * Close all Scanners
+     */
     public void closeEverythingAndSave() {
         in.close();
         alumniFileIn.close();
@@ -50,6 +56,9 @@ public class InOut {
 
     }
 
+    /**
+     * Create and Fill a TreeMap of Events pulled from a Text File
+     */
     public void existingEvents() {
         eventMap = new TreeMap<>();
         Events e = new Events();
@@ -73,6 +82,9 @@ public class InOut {
         }
     }
 
+    /**
+     * Create and Fill a TreeMap of Alumni pulled from a Text File
+     */
     public void existingAlumni() {
         alumniMap = new TreeMap<>();
         Alumni a = new Alumni();
@@ -91,12 +103,18 @@ public class InOut {
         }
     }
 
+    /**
+     * Display the Events Map
+     */
     public void displayEvents() {
         for (Events events : eventMap.values()) {
             System.out.println(events.toString());
         }
     }
 
+    /**
+     * Display the Alumni Map
+     */
     public void displayAlumni() {
         for (Alumni alumni : alumniMap.values()) {
             System.out.println(alumni.toString());
