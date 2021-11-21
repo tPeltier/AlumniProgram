@@ -32,7 +32,7 @@ public class UI {
                 eventInterface();
                 break;
             case 3:
-                System.out.println("Thanks for using the premium Alumni service");
+                System.out.println("Thanks for using the premium Alumni service \uD83E\uDD70");
                 run = false;
                 break;
             }
