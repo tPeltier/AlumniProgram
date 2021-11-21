@@ -34,8 +34,10 @@ public class InOut {
         existingEvents();
     }
 
-    public void saveToFile() {
-
+    public void saveAlumniToFile() {
+        for (Alumni alumni : alumniMap.values()) {
+            alumniSaved.println(alumni.save());
+        }
     }
 
     public void closeEverythingAndSave() {

@@ -10,6 +10,11 @@ public class UI {
     public void save() {
         io.closeEverythingAndSave();
     }
+
+    public void saveAlumniToFile() {
+        io.saveAlumniToFile();
+    }
+
     public void userInterface() {
         System.out.println("Hello and welcome to the Alumni program \nPlease enter what you would like to do");
         boolean run = true;
@@ -119,9 +124,10 @@ public class UI {
 
     public void editAlumni() {
         boolean run = true;
+
         while (run) {
-            System.out.println("Enter the id of who you want to change");
             io.displayAlumni();
+            System.out.println("Enter the id of who you want to change");
             int id = io.intInput();
             System.out.println(
                     "what would you like to change? \n1. edit name \n2. edit address \n3. edit major \n4. edit gradYear \n5. edit job \n6. edit organization \n7. exit");
