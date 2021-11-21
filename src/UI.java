@@ -182,6 +182,54 @@ public class UI {
         }
 
     }
+    public void editEvents(){
+        boolean run = true;
+        while (run) {
+            System.out.println("Enter the event");
+            io.displayEvents();
+            int id = io.intInput();
+            System.out.println(
+                    "Enter Event. \n1. event name \n2. event time \n3. event room \n4. Number of participants \n5. event date \n6. exit");
+            int choice = io.intInput();
+
+            switch (choice) {
+            case 1:
+                // edit name
+                System.out.println("Enter name of event:");
+                io.setName(id, io.stringInput());
+                break;
+
+            case 2:
+                // edit time
+                System.out.println("Enter time of event");
+                io.setTime(id, io.stringInput());
+                break;
+
+            case 3:
+                // edit room
+                System.out.println("Enter event room:");
+                io.setRoom(id, io.intInput());
+                break;
+
+            case 4:
+                // edit number of participants
+                System.out.println("Enter number of participants:");
+                io.setNumberOfParticipants(id, io.intInput());
+                break;
+
+            case 5:
+                // edit date
+                System.out.println("Enter date of event:");
+                io.setDate(id, io.stringInput());
+                break;
+
+            case 7:
+                // exit
+                System.out.println("NO CHANGES");
+                break;
+    }
+}
+    }
 
     public void newAlumniInfo() {
         System.out.println("Enter the name of the Alumni");
