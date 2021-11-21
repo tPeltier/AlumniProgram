@@ -72,7 +72,7 @@ public class UI {
         while (run) {
             System.out.println(" ----------------------------------------------------- ");
             System.out.println("1. See a list of events \n2. Sign up to attend an Event \n3. Make a donation \n"
-                    + "4. See my donations \n5. Sign up to speak\n6. Exit");
+                    + "4. See my donations \n5. Sign up to speak\n6. Delete Event \n7. Exit");
             int choice = io.intInput();
             switch (choice) {
             case 1:
