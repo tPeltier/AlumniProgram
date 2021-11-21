@@ -7,6 +7,9 @@ public class UI {
         io = new InOut();
     }
 
+    public void save() {
+        io.closeEverythingAndSave();
+    }
     public void userInterface() {
         System.out.println("Hello and welcome to the Alumni program \nPlease enter what you would like to do");
         boolean run = true;
