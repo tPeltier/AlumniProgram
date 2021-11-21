@@ -280,6 +280,7 @@ public class InOut {
                 System.out.printf("\"%s\" is not a valid number", s);
             }
             n = in.nextInt();
+        in.nextLine();
         } while (n < 0);
         return n;
     }
@@ -300,9 +301,4 @@ public class InOut {
         } while (n < 0);
         return n;
     }
-
-    public void clearScanner() {
-        in.nextLine();
-    }
-
 }
