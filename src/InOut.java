@@ -19,11 +19,6 @@ public class InOut {
     private TreeMap<Integer, Events> eventMap;
     private ArrayList<Donation> donationList;
 
-    // temp working vars 
-    private File start;
-    private Scanner startScanner;
-    private PrintWriter out;
-
     /**
      * Initiate File, Scanner and PrintWriter
      * 
@@ -37,19 +32,6 @@ public class InOut {
         in = new Scanner(System.in);
         existingAlumni();
         existingEvents();
-    }
-
-    // // temporary working constructor
-    // public InOut() throws FileNotFoundException {
-    //     start = new File("start.txt");
-    //     startScanner = new Scanner(start);
-    //     out = new PrintWriter("finish.txt");
-    // }
-
-    public void displayStart() {
-        while (startScanner.hasNextLine()) {
-            System.out.println(startScanner.nextLine());
-        }
     }
 
     public void closeEverythingAndSave() {
