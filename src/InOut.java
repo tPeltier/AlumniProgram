@@ -68,6 +68,7 @@ public class InOut {
         eventFileIn.close();
         alumniSaved.close();
         eventSaved.close();
+        donationsSaved.close();
 
     }
 
