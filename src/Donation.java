@@ -8,6 +8,9 @@ public class Donation {
     private double amountDonated;
     private Date dateCreated;
 
+    public Donation() {
+
+    }
     
     public Donation(int alumniId, int  eventId, double donationAmount) {
         dateCreated = new Date();

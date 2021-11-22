@@ -11,10 +11,13 @@ public class InOut {
     private Scanner in;
     private Scanner alumniFileIn;
     private Scanner eventFileIn;
+    private Scanner donationsFileIn;
+    private File donationsFile;
     private File alumniFile;
     private File eventFile;
     private PrintWriter alumniSaved;
     private PrintWriter eventSaved;
+    private PrintWriter donationsSaved;
     private TreeMap<Integer, Alumni> alumniMap;
     private TreeMap<Integer, Events> eventMap;
     private ArrayList<Donation> donationList;
@@ -29,6 +32,8 @@ public class InOut {
         alumniFileIn = new Scanner(alumniFile);
         eventFile = new File("events.txt");
         eventFileIn = new Scanner(eventFile);
+        donationsFile = new File("donations.txt");
+        donationsFileIn = new Scanner(alumniFile);
         in = new Scanner(System.in);
         existingAlumni();
         existingEvents();
@@ -43,6 +48,7 @@ public class InOut {
     public void closeEverythingAndSave() throws FileNotFoundException {
         alumniSaved = new PrintWriter("temp.txt");
         eventSaved = new PrintWriter("temp2.txt");
+        donationsSaved = new PrintWriter("temp3.txt");
 
         for (Alumni alumni : alumniMap.values()) {
             alumniSaved.println(alumni.save());
@@ -53,6 +59,10 @@ public class InOut {
             eventSaved.println(event.saveAttendants());
         }
 
+        for (Donation donation : donationList) {
+            donationsSaved.println(donation.receipt());
+        }
+
         in.close();
         alumniFileIn.close();
         eventFileIn.close();
@@ -61,6 +71,14 @@ public class InOut {
 
     }
 
+    public void existingDonations() {
+        donationList = new ArrayList<>();
+        Donation d = new Donation();
+        while(donationsFileIn.hasNextLine()) {
+
+        }
+
+    }
     /**
      * Create and Fill a TreeMap of Events pulled from a Text File
      */
