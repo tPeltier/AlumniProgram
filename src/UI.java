@@ -7,15 +7,7 @@ public class UI {
         io = new InOut();
     }
 
-    public void save() {
-        io.closeEverythingAndSave();
-    }
-
-    public void saveAlumniToFile() throws FileNotFoundException {
-        io.saveAlumniToFile();
-    }
-
-    public void userInterface() {
+    public void userInterface() throws FileNotFoundException {
         System.out.println("Hello and welcome to the Alumni program \nPlease enter what you would like to do");
         boolean run = true;
         while (run) {
@@ -33,6 +25,7 @@ public class UI {
                 break;
             case 3:
                 System.out.println("Thanks for using the premium Alumni service \uD83E\uDD70");
+                io.closeEverythingAndSave();
                 run = false;
                 break;
             }

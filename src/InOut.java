@@ -34,32 +34,27 @@ public class InOut {
         existingEvents();
     }
 
-    /**
-     * Save the Alumni Map to a text file
-     */
-    public void saveAlumniToFile() throws FileNotFoundException {
-        alumniSaved = new PrintWriter("temp.txt");
-        for (Alumni alumni : alumniMap.values()) {
-            alumniSaved.println(alumni.save());
-        }
-    }
-
-    public void saveEventsToFile() {
-        for (Events event : eventMap.values()) {
-            System.out.println(event.save());
-            System.out.println(event.saveAttendants());
-        }
-    }
 
     /**
      * Close all Scanners and PrintWriters
      */
-    public void closeEverythingAndSave() {
+    public void closeEverythingAndSave() throws FileNotFoundException {
+        alumniSaved = new PrintWriter("temp.txt");
+        eventSaved = new PrintWriter("temp.txt");
+
+        for (Alumni alumni : alumniMap.values()) {
+            alumniSaved.println(alumni.save());
+        }
+        for (Events event : eventMap.values()) {
+            eventSaved.println(event.save());
+            eventSaved.println(event.saveAttendants());
+        }
+
         in.close();
         alumniFileIn.close();
         alumniSaved.close();
         eventFileIn.close();
-        // eventSaved.close();
+        eventSaved.close();
 
     }
 
