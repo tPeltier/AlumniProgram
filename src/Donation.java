@@ -40,5 +40,8 @@ public class Donation {
         return "Date donation was made: " + dateCreated + " Amount Donated: " + amountDonated + " ID of Donator: " + alumniId + " ID of Event: " + eventId;
     }
 
-    public String
+    public String save() {
+        String money = "" + amountDonated;
+        return alumniId + eventId + money;
+    }
 }
