@@ -81,7 +81,7 @@ public class InOut {
             String[] s = line.split(",");
             int alumniID = Integer.parseInt(s[0]);
             int eventID = Integer.parseInt(s[1]);
-            double amount = Double.parseDouble(s[3]);
+            double amount = Double.parseDouble(s[2]);
             new Donation(alumniID, eventID, amount);
             donationList.add(new Donation(alumniID, eventID, amount));
         }
