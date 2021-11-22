@@ -257,10 +257,21 @@ public class InOut {
     }
 
     // ------- donation list methods ------
+
+    /**
+     * Add a Donation and put it in the Donation List
+     * @param alumniId ID of the ALumni making the donation
+     * @param eventId ID of the Event that the donation is going towards
+     * @param donationAmount Amount of the Donation being made
+     */
     public void addDonationToList(int alumniId, int eventId, double donationAmount) {
         donationList.add(new Donation(alumniId, eventId, donationAmount));
     }
 
+    /**
+     * Displays the Donations made by a certain Alumni
+     * @param id ID of the Alumni 
+     */
     public void displayDonationsAlumni(int id) {
         for (int i = 0; i < donationList.size(); i++) {
             if (id == donationList.get(i).getAlumniId()) {
@@ -269,6 +280,10 @@ public class InOut {
         }
     }
 
+    /**
+     * Displays the Donations for a certain Event
+     * @param id ID of the Event
+     */
     public void displayDonationsEvents(int id) {
         for (int i = 0; i < donationList.size(); i++) {
             if (id == donationList.get(i).getEventId()) {
