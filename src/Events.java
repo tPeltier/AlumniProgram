@@ -14,7 +14,7 @@ public class Events {
 
     // constructors
     public Events() {
-        //empty
+        // empty
     }
 
     // existing event
@@ -37,8 +37,6 @@ public class Events {
         this.numberOfParticipants = numberOfParticipants;
         this.startDate = startDate;
     }
-
-
 
     // getters and setters
     public int getId() {
@@ -97,13 +95,14 @@ public class Events {
     }
 
     public String save() {
-        return getId() + "," + getName() + "," + getTime() + "," + getRoom() + "," + getNumberOfParticipants() + "," + getStartDate();
+        return getId() + "," + getName() + "," + getTime() + "," + getRoom() + "," + getNumberOfParticipants() + ","
+                + getStartDate();
     }
 
     public String saveAttendants() {
         String x = "";
         for (int i = 0; i < attendants.size(); i++) {
-           x += attendants.get(i);
+            x += attendants.get(i) + ",";
         }
         return x;
     }

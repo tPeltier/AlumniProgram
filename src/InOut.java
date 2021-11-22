@@ -46,7 +46,8 @@ public class InOut {
 
     public void saveEventsToFile() {
         for (Events event : eventMap.values()) {
-           System.out.println(event.saveAttendants()); 
+            System.out.println(event.save());
+            System.out.println(event.saveAttendants());
         }
     }
 
@@ -273,7 +274,7 @@ public class InOut {
     }
 
     public void displayDonationsEvents(int id) {
-        for (int i = 0; i < donationList.size(); i++){
+        for (int i = 0; i < donationList.size(); i++) {
             if (id == donationList.get(i).getEventId()) {
                 System.out.println("Donation amount" + donationList.get(i).getAmountDonated());
             }
@@ -304,7 +305,7 @@ public class InOut {
                 System.out.printf("\"%s\" is not a valid number", s);
             }
             n = in.nextInt();
-        in.nextLine();
+            in.nextLine();
         } while (n < 0);
         return n;
     }
