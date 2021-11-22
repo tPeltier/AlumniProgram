@@ -7,6 +7,13 @@ public class Training extends Events {
         super();
     }
 
+    public Training(int id, String name, String time, int room, int numberOfParticipants, String startDate, String skill, int openSeats, int total) {
+        super(id, name, time, room, numberOfParticipants, startDate);
+        this.skill = skill;
+        this.openSeats = openSeats;
+        this.total = total;
+    } 
+
     public String getSkill(){
         return skill;
 
@@ -21,15 +28,15 @@ public class Training extends Events {
     }
 
     public void setSkill(String newSkill){
-         skill=newSkill;
+         skill = newSkill;
     }
 
     public void setTotal(int newTotal){
-        total=newTotal;
+        total = newTotal;
     }
 
     public void setOpenSeats(){
-       openSeats=total-super.getNumberOfParticipants();
+       openSeats = total - super.getNumberOfParticipants();
     }
     
 

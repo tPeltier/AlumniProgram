@@ -8,6 +8,7 @@ public class Events {
     private int numberOfParticipants;
     // TODO change date format
     private String startDate;
+    // TODO implement speaker
     private Speaker speaker;
     private ArrayList<String> attendants;
 
