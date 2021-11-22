@@ -42,6 +42,6 @@ public class Donation {
 
     public String save() {
         String money = "" + amountDonated;
-        return alumniId + eventId + money;
+        return alumniId + "," + eventId + "," + money;
     }
 }
