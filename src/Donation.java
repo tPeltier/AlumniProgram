@@ -35,7 +35,10 @@ public class Donation {
         return dateCreated;
     }
 
-    public String receipt() {
+    @Override
+    public String toString() {
         return "Date donation was made: " + dateCreated + " Amount Donated: " + amountDonated + " ID of Donator: " + alumniId + " ID of Event: " + eventId;
     }
+
+    public String
 }
