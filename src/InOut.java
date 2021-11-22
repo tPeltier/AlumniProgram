@@ -40,11 +40,12 @@ public class InOut {
      */
     public void closeEverythingAndSave() throws FileNotFoundException {
         alumniSaved = new PrintWriter("temp.txt");
-        eventSaved = new PrintWriter("temp.txt");
+        eventSaved = new PrintWriter("temp2.txt");
 
         for (Alumni alumni : alumniMap.values()) {
             alumniSaved.println(alumni.save());
         }
+
         for (Events event : eventMap.values()) {
             eventSaved.println(event.save());
             eventSaved.println(event.saveAttendants());
@@ -52,8 +53,8 @@ public class InOut {
 
         in.close();
         alumniFileIn.close();
-        alumniSaved.close();
         eventFileIn.close();
+        alumniSaved.close();
         eventSaved.close();
 
     }
