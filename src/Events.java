@@ -102,7 +102,11 @@ public class Events {
     public String saveAttendants() {
         String x = "";
         for (int i = 0; i < attendants.size(); i++) {
-            x += attendants.get(i) + ",";
+            if (i == attendants.size() - 1) {
+                x += attendants.get(i);
+            } else { 
+                x += attendants.get(i) + ",";
+            }
         }
         return x;
     }
