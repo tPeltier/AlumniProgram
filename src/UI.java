@@ -97,6 +97,7 @@ public class UI {
                 break;
             case 4:
                 // see my donations
+                displayDonationsAlumni();
                 break;
             case 5:
                 // create event
