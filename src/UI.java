@@ -3,10 +3,18 @@ import java.io.FileNotFoundException;
 public class UI {
     private InOut io;
 
+    /**
+     * 
+     * @throws FileNotFoundException
+     */
     public UI() throws FileNotFoundException {
         io = new InOut();
     }
 
+    /**
+     * 
+     * @throws FileNotFoundException
+     */
     public void userInterface() throws FileNotFoundException {
         System.out.println("Hello and welcome to the Alumni program \nPlease enter what you would like to do");
         boolean run = true;

@@ -37,6 +37,8 @@ public class InOut {
 
     /**
      * Close all Scanners and PrintWriters
+     * 
+     * @throws FileNotFoundException
      */
     public void closeEverythingAndSave() throws FileNotFoundException {
         alumniSaved = new PrintWriter("temp.txt");
