@@ -37,6 +37,7 @@ public class InOut {
         in = new Scanner(System.in);
         existingAlumni();
         existingEvents();
+        existingDonations();
     }
 
 
@@ -74,15 +75,15 @@ public class InOut {
 
     public void existingDonations() {
         donationList = new ArrayList<>();
-        Donation d = new Donation();
+
         while(donationsFileIn.hasNextLine()) {
             String line = donationsFileIn.nextLine();
             String[] s = line.split(",");
             int alumniID = Integer.parseInt(s[0]);
             int eventID = Integer.parseInt(s[1]);
             double amount = Double.parseDouble(s[3]);
-            d = new Donation(alumniID, eventID, amount);
-            donationList.add(d);
+            new Donation(alumniID, eventID, amount);
+            donationList.add(new Donation(alumniID, eventID, amount));
         }
 
     }
