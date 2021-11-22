@@ -60,7 +60,7 @@ public class InOut {
         }
 
         for (Donation donation : donationList) {
-            donationsSaved.println(donation.receipt());
+            donationsSaved.println(donation.save());
         }
 
         in.close();
@@ -75,7 +75,13 @@ public class InOut {
         donationList = new ArrayList<>();
         Donation d = new Donation();
         while(donationsFileIn.hasNextLine()) {
-
+            String line = donationsFileIn.nextLine();
+            String[] s = line.split(",");
+            int alumniID = Integer.parseInt(s[0]);
+            int eventID = Integer.parseInt(s[1]);
+            double amount = Double.parseDouble(s[3]);
+            d = new Donation(alumniID, eventID, amount);
+            donationList.add(d);
         }
 
     }
