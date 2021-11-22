@@ -220,7 +220,7 @@ public class InOut {
     }
 
     /**
-     * sets the number of each particpant in the event
+     * sets the number of each participant in the event
      * 
      * @param id                   event id
      * @param numberOfParticipants event numberOfParticipants

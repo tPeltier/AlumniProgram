@@ -136,7 +136,7 @@ public class UI {
 
             case 2:
                 // edit address
-                System.out.println("Enter a new Addres");
+                System.out.println("Enter a new Address");
                 io.setAlumniAddress(id, io.stringInput());
                 break;
 
@@ -160,7 +160,7 @@ public class UI {
 
             case 6:
                 // edit organization
-                System.out.println("Enter a new organizaton");
+                System.out.println("Enter a new organization");
                 io.setAlumniOrg(id, io.stringInput());
                 break;
 
@@ -233,7 +233,7 @@ public class UI {
         String major = io.stringInput();
         System.out.println("Enter the Alumni's graduation year");
         String gradYear = io.stringInput();
-        System.out.println("Enter the Alumnis current occupation");
+        System.out.println("Enter the Alumni's current occupation");
         String job = io.stringInput();
         System.out.println("Enter the company that the Alumni Currently works for");
         String organization = io.stringInput();

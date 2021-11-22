@@ -8,11 +8,5 @@ public class App {
         // InOut io = new InOut();
         UI user = new UI();
         user.userInterface();
-        user.saveAlumniToFile();
-        user.saveEventsToFile();
-        user.save();
-        
-
-        
     }
 }
