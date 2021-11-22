@@ -33,7 +33,7 @@ public class InOut {
         eventFile = new File("events.txt");
         eventFileIn = new Scanner(eventFile);
         donationsFile = new File("donations.txt");
-        donationsFileIn = new Scanner(alumniFile);
+        donationsFileIn = new Scanner(donationsFile);
         in = new Scanner(System.in);
         existingAlumni();
         existingEvents();
