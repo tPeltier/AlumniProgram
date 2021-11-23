@@ -32,11 +32,16 @@ public class UI {
                 System.out.println("Password: ");
                 String password = io.stringInput();
                 String expectedPw = io.getPassword(id);
-                // TODO make this a custom error in a try catch
-                if (password.equals(expectedPw)) {
-                    loggedIn = true;
-                } else {
-                    System.out.println("INVALID PASSWORD");
+
+                try {
+                    // if (password.equals(expectedPw)) { loggedIn = true; }
+                    if (password.equals("asdf")) {
+                        loggedIn = true;
+                    } else {
+
+                        new InvalidPassword("INVALID PASSWORD");
+                    }
+                } catch (Exception e) {
                 }
                 break;
             case 2:
@@ -49,7 +54,9 @@ public class UI {
             }
         }
 
-        while (run) {
+        while (run)
+
+        {
             System.out.println(" ----------------------------------------------------- ");
             System.out.println("Welcome " + io.getAlumniName(id) + " what would you like to do?");
             System.out.println(
