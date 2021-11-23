@@ -36,6 +36,7 @@ public class UI {
                 try {
                     // if (password.equals(expectedPw)) { loggedIn = true; }
                     if (password.equals("asdf")) { loggedIn = true; }
+                    else { throw new InvalidPassword("INVALID PASSWORD"); }
                 } catch (InvalidPassword p) {
                     System.out.println(p.getMessage());
                 }
