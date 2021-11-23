@@ -85,14 +85,10 @@ public class InOut {
     }
 
     public boolean checkId(int id) {
-        boolean b = false;
         for (Alumni alumni : alumniMap.values()) {
-            if (id == alumni.getId())
-                b = true;
-            else
-                b = false;
+            if (id == alumni.getId()) return true;
         }
-        return b;
+        return false;
     }
 
     public void existingDonations() {
