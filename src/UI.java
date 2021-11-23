@@ -29,6 +29,13 @@ public class UI {
                 System.out.println("Please log in by entering you ID and Password:");
                 System.out.println("ID: ");
                 id = io.intInput();
+                try {
+                    if (!io.checkId(id)) throw new InvalidEntry("NOT AN EXISTING ID NUMBER");
+                } catch (InvalidEntry p) {
+                    //TODO: handle exception
+                    System.out.println(p.getMessage());
+                }
+
                 System.out.println("Password: ");
                 String password = io.stringInput();
                 String expectedPw = io.getPassword(id);
@@ -36,8 +43,8 @@ public class UI {
                 try {
                     // if (password.equals(expectedPw)) { loggedIn = true; }
                     if (password.equals("asdf")) { loggedIn = true; }
-                    else { throw new InvalidPassword("INVALID PASSWORD"); }
-                } catch (InvalidPassword p) {
+                    else { throw new InvalidEntry("INVALID PASSWORD"); }
+                } catch (InvalidEntry p) {
                     System.out.println(p.getMessage());
                 }
                 break;
