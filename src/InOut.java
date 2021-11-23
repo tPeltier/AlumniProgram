@@ -13,12 +13,15 @@ public class InOut {
     private Scanner alumniFileIn;
     private Scanner eventFileIn;
     private Scanner donationsFileIn;
+    private Scanner passwordFileIn;
     private File donationsFile;
     private File alumniFile;
     private File eventFile;
+    private File passwordsFile;
     private PrintWriter alumniSaved;
     private PrintWriter eventSaved;
     private PrintWriter donationsSaved;
+    private PrintWriter passwordsSaved;
     private TreeMap<Integer, Alumni> alumniMap;
     private TreeMap<Integer, Event> eventMap;
     private HashMap<Integer, String> passwords;
@@ -36,6 +39,8 @@ public class InOut {
         eventFileIn = new Scanner(eventFile);
         donationsFile = new File("donations.txt");
         donationsFileIn = new Scanner(donationsFile);
+        passwordsFile = new File("passwords.txt");
+        passwordFileIn = new Scanner(passwordsFile);
         in = new Scanner(System.in);
         existingPasswords();
         existingAlumni();
@@ -66,6 +71,8 @@ public class InOut {
             donationsSaved.println(donation.save());
         }
 
+        // TODO SAVE DOWN PASSWORDS
+
         in.close();
         alumniFileIn.close();
         eventFileIn.close();
@@ -77,6 +84,14 @@ public class InOut {
 
     public void existingPasswords() {
         passwords = new HashMap<>();
+
+        while (passwordFileIn.hasNextLine()) {
+            String line = passwordFileIn.nextLine();
+            String[] s = line.split(",");
+            int id = Integer.parseInt(s[0]);
+            String pw = s[1];
+            passwords.put(id, pw);
+        }
 
     }
 
