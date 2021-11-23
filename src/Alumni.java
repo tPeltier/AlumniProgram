@@ -7,6 +7,8 @@ public class Alumni {
     private String gradYear;
     private String job;
     private String organization;
+    private String password;
+    // private boolean admin = false;
 
     public Alumni() {
 
@@ -21,7 +23,7 @@ public class Alumni {
      * @param job employment of alumni
      * @param organization employer of alumni
      */
-    public Alumni(int id, String name, String address, String major, String gradYear, String job, String organization) {
+    public Alumni(int id, String name, String address, String major, String gradYear, String job, String organization, String password) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -29,6 +31,7 @@ public class Alumni {
         this.gradYear = gradYear;
         this.job = job;
         this.organization = organization;
+        this.password = password;
     }
 
 
@@ -90,7 +93,22 @@ public class Alumni {
     public void setOrganization(String organization) {
         this.organization = organization;
     }
-   
+
+    /**
+    * Gets the Alumni's Password
+    * @return Alumni's password
+    */
+    public String getPassword(){
+        return password;
+    }
+
+    /**
+    * sets a new password for the alumni
+    * @param password new password that is a String   
+    */
+    public void setPassword(String password){
+        this.password = password;
+    }
     // 
 
     @Override

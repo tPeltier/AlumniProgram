@@ -21,17 +21,19 @@ public class UI {
         boolean run = true;
         boolean loggedIn = false;
         System.out.println("Hello and welcome to the Alumni program");
-        // "Please enter what you would like to do"
+        System.out.println("Please log in by entering you ID and Password:");
 
         while (!loggedIn) {
-            System.out.println("Please log in by entering you ID and Password:");
             System.out.println("ID: ");
             id = io.intInput();
             System.out.println("Password: ");
             String password = io.stringInput();
             String expectedPw = io.getPassword(id);
-            if (password == expectedPw) {
+            // TODO make this a custom error in a try catch
+            if (password.equals(expectedPw)) {
                 loggedIn = true;
+            } else {
+                System.out.println("INVALID PASSWORD");
             }
         }
 
