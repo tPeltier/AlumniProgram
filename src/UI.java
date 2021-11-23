@@ -4,7 +4,6 @@ public class UI {
     private int id;
     private InOut io;
 
-
     /**
      * 
      * @throws FileNotFoundException
@@ -21,19 +20,32 @@ public class UI {
         boolean run = true;
         boolean loggedIn = false;
         System.out.println("Hello and welcome to the Alumni program");
-        System.out.println("Please log in by entering you ID and Password:");
 
         while (!loggedIn) {
-            System.out.println("ID: ");
-            id = io.intInput();
-            System.out.println("Password: ");
-            String password = io.stringInput();
-            String expectedPw = io.getPassword(id);
-            // TODO make this a custom error in a try catch
-            if (password.equals(expectedPw)) {
+            System.out.println("1. Login to existing account \n2. Create a new account \n3. Exit");
+            int choice = io.intInput();
+            switch (choice) {
+            case 1:
+                System.out.println("Please log in by entering you ID and Password:");
+                System.out.println("ID: ");
+                id = io.intInput();
+                System.out.println("Password: ");
+                String password = io.stringInput();
+                String expectedPw = io.getPassword(id);
+                // TODO make this a custom error in a try catch
+                if (password.equals(expectedPw)) {
+                    loggedIn = true;
+                } else {
+                    System.out.println("INVALID PASSWORD");
+                }
+                break;
+            case 2:
+                newAlumniInfo();
                 loggedIn = true;
-            } else {
-                System.out.println("INVALID PASSWORD");
+                break;
+            case 3:
+                System.exit(0);
+                break;
             }
         }
 
@@ -54,7 +66,7 @@ public class UI {
             case 3:
                 System.out.println("Thanks for using the premium Alumni service \uD83E\uDD70");
                 io.closeEverythingAndSave();
-                run = false;
+                System.exit(0);
                 break;
             }
         }
@@ -74,6 +86,7 @@ public class UI {
                 io.displayAlumni();
                 break;
             case 2:
+                // TODO REMOVE THIS WHOLE CASE (ALREADY TAKEN CARE OF)
                 // Add new alumni
                 newAlumniInfo();
                 break;
@@ -204,7 +217,8 @@ public class UI {
         }
 
     }
-    public void editEvents(){
+
+    public void editEvents() {
         boolean run = true;
         while (run) {
             System.out.println("Enter the event");
@@ -249,8 +263,8 @@ public class UI {
                 // exit
                 System.out.println("NO CHANGES");
                 break;
-    }
-}
+            }
+        }
     }
 
     public void newAlumniInfo() {
