@@ -1,7 +1,7 @@
 import java.io.FileNotFoundException;
 
 public class UI {
-
+    private int id;
     private InOut io;
 
 
@@ -18,10 +18,26 @@ public class UI {
      * @throws FileNotFoundException
      */
     public void userInterface() throws FileNotFoundException {
-        System.out.println("Hello and welcome to the Alumni program \nPlease enter what you would like to do");
         boolean run = true;
+        boolean loggedIn = false;
+        System.out.println("Hello and welcome to the Alumni program");
+        // "Please enter what you would like to do"
+
+        while (!loggedIn) {
+            System.out.println("Please log in by entering you ID and Password:");
+            System.out.println("ID: ");
+            id = io.intInput();
+            System.out.println("Password: ");
+            String password = io.stringInput();
+            String expectedPw = io.getPassword(id);
+            if (password == expectedPw) {
+                loggedIn = true;
+            }
+        }
+
         while (run) {
             System.out.println(" ----------------------------------------------------- ");
+            System.out.println("Welcome " + io.getAlumniName(id) + " what would you like to do?");
             System.out.println(
                     "Please enter a number for what you want to do \n1. for Alumni settings(add, edit, and delete) \n"
                             + "2. for event settings(join, create) \n3. to exit the program");

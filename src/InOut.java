@@ -3,6 +3,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 import java.util.TreeMap;
 
@@ -20,6 +21,7 @@ public class InOut {
     private PrintWriter donationsSaved;
     private TreeMap<Integer, Alumni> alumniMap;
     private TreeMap<Integer, Event> eventMap;
+    private HashMap<Integer, String> passwords;
     private ArrayList<Donation> donationList;
 
     /**
@@ -35,6 +37,7 @@ public class InOut {
         donationsFile = new File("donations.txt");
         donationsFileIn = new Scanner(donationsFile);
         in = new Scanner(System.in);
+        existingPasswords();
         existingAlumni();
         existingEvents();
         existingDonations();
@@ -73,6 +76,14 @@ public class InOut {
 
     }
 
+    public void existingPasswords() {
+        passwords = new HashMap<>();
+        
+    }
+
+    public String getPassword(int id) {
+        return passwords.get(id);
+    }
     public void existingDonations() {
         donationList = new ArrayList<>();
 
