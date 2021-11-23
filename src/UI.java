@@ -32,8 +32,8 @@ public class UI {
                 try {
                     if (!io.checkId(id)) throw new InvalidEntry("NOT AN EXISTING ID NUMBER");
                 } catch (InvalidEntry p) {
-                    //TODO: handle exception
                     System.out.println(p.getMessage());
+                    break;
                 }
 
                 System.out.println("Password: ");
