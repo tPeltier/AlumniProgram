@@ -1,4 +1,4 @@
-public class Training extends Events {
+public class Training extends Event {
     private String skill;
     private int openSeats;
     private int total;

@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Events {
+public class Event {
     private int id;
     private String name;
     private String time;
@@ -14,12 +14,12 @@ public class Events {
     private ArrayList<String> attendants;
 
     // constructors
-    public Events() {
+    public Event() {
         // empty
     }
 
     // existing event
-    public Events(int id, String name, String time, int room, int numberOfParticipants, String startDate,
+    public Event(int id, String name, String time, int room, int numberOfParticipants, String startDate,
             ArrayList<String> attendant) {
         this.id = id;
         this.name = name;
@@ -30,7 +30,7 @@ public class Events {
         this.attendants = attendant;
     }
 
-    public Events(int id, String name, String time, int room, int numberOfParticipants, String startDate) {
+    public Event(int id, String name, String time, int room, int numberOfParticipants, String startDate) {
         this.id = id;
         this.name = name;
         this.time = time;

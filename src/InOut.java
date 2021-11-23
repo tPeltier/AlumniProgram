@@ -19,7 +19,7 @@ public class InOut {
     private PrintWriter eventSaved;
     private PrintWriter donationsSaved;
     private TreeMap<Integer, Alumni> alumniMap;
-    private TreeMap<Integer, Events> eventMap;
+    private TreeMap<Integer, Event> eventMap;
     private ArrayList<Donation> donationList;
 
     /**
@@ -55,7 +55,7 @@ public class InOut {
             alumniSaved.println(alumni.save());
         }
 
-        for (Events event : eventMap.values()) {
+        for (Event event : eventMap.values()) {
             eventSaved.println(event.save());
             eventSaved.println(event.saveAttendants());
         }
@@ -92,7 +92,7 @@ public class InOut {
      */
     public void existingEvents() {
         eventMap = new TreeMap<>();
-        Events e = new Events();
+        Event e = new Event();
         while (eventFileIn.hasNextLine()) {
             String line = eventFileIn.nextLine();
             String[] s = line.split(",");
@@ -108,7 +108,7 @@ public class InOut {
             for (int i = 0; i < listArr.length; i++) {
                 att.add(listArr[i]);
             }
-            e = new Events(id, name, time, room, numberOfParticipants, startDate, att);
+            e = new Event(id, name, time, room, numberOfParticipants, startDate, att);
             eventMap.put(id, e);
         }
     }
@@ -138,7 +138,7 @@ public class InOut {
      * Display the Events Map
      */
     public void displayEvents() {
-        for (Events events : eventMap.values()) {
+        for (Event events : eventMap.values()) {
             System.out.println(events.toString());
         }
     }
@@ -280,7 +280,7 @@ public class InOut {
     public void createEvent(String name, String time, int room, int numberOfParticipants, String startDate) {
         int id = eventMap.lastKey();
         id++;
-        Events e = new Events(id, name, time, room, numberOfParticipants, startDate);
+        Event e = new Event(id, name, time, room, numberOfParticipants, startDate);
         eventMap.put(id, e);
     }
 
