@@ -1,7 +1,9 @@
 import java.io.FileNotFoundException;
 
 public class UI {
+
     private InOut io;
+
 
     /**
      * 

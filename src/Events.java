@@ -10,6 +10,7 @@ public class Events {
     private String startDate;
     // TODO implement speaker
     private Host host;
+    private Alumni guestSpeaker;
     private ArrayList<String> attendants;
 
     // constructors
