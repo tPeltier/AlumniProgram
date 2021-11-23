@@ -1,6 +1,4 @@
-import javax.security.auth.login.AccountException;
-
-public class InvalidPassword extends AccountException {
+public class InvalidPassword extends IllegalArgumentException {
     
     public InvalidPassword(String message) {
         super(message);

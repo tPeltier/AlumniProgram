@@ -35,13 +35,9 @@ public class UI {
 
                 try {
                     // if (password.equals(expectedPw)) { loggedIn = true; }
-                    if (password.equals("asdf")) {
-                        loggedIn = true;
-                    } else {
-
-                        new InvalidPassword("INVALID PASSWORD");
-                    }
-                } catch (Exception e) {
+                    if (password.equals("asdf")) { loggedIn = true; }
+                } catch (InvalidPassword p) {
+                    System.out.println(p.getMessage());
                 }
                 break;
             case 2:
