@@ -30,6 +30,7 @@ public class Event {
         this.attendants = attendant;
     }
 
+    // adding event
     public Event(int id, String name, String time, int room, int numberOfParticipants, String startDate) {
         this.id = id;
         this.name = name;
