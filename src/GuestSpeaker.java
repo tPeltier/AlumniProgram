@@ -1,5 +1,5 @@
 
-public class GuestSpeaker extends Speaker {
+public class GuestSpeaker extends Host {
     
     public GuestSpeaker() {
         super();

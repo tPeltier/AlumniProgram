@@ -1,18 +1,18 @@
 
-public class Speaker {
+public class Host {
     String name;
     String topic;
     int phoneNumber;
     String emailAddress;
 
-    public Speaker(String name, String topic, int phoneNumber, String emailAddress) {
+    public Host(String name, String topic, int phoneNumber, String emailAddress) {
         this.name = name;
         this.topic = topic;
         this.phoneNumber = phoneNumber;
         this.emailAddress = emailAddress;
     }
 
-    public Speaker() {
+    public Host() {
     }
 
     public String getName() {

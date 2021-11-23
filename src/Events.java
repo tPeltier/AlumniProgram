@@ -9,7 +9,7 @@ public class Events {
     // TODO change date format
     private String startDate;
     // TODO implement speaker
-    private Speaker speaker;
+    private Host host;
     private ArrayList<String> attendants;
 
     // constructors
