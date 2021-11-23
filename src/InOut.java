@@ -43,7 +43,6 @@ public class InOut {
         existingDonations();
     }
 
-
     /**
      * Close all Scanners and PrintWriters
      * 
@@ -78,16 +77,28 @@ public class InOut {
 
     public void existingPasswords() {
         passwords = new HashMap<>();
-        
+
     }
 
     public String getPassword(int id) {
         return passwords.get(id);
     }
+
+    public boolean checkId(int id) {
+        boolean b = false;
+        for (Alumni alumni : alumniMap.values()) {
+            if (id == alumni.getId())
+                b = true;
+            else
+                b = false;
+        }
+        return b;
+    }
+
     public void existingDonations() {
         donationList = new ArrayList<>();
 
-        while(donationsFileIn.hasNextLine()) {
+        while (donationsFileIn.hasNextLine()) {
             String line = donationsFileIn.nextLine();
             String[] s = line.split(",");
             int alumniID = Integer.parseInt(s[0]);
@@ -98,6 +109,7 @@ public class InOut {
         }
 
     }
+
     /**
      * Create and Fill a TreeMap of Events pulled from a Text File
      */
@@ -299,8 +311,9 @@ public class InOut {
 
     /**
      * Add a Donation and put it in the Donation List
-     * @param alumniId ID of the ALumni making the donation
-     * @param eventId ID of the Event that the donation is going towards
+     * 
+     * @param alumniId       ID of the ALumni making the donation
+     * @param eventId        ID of the Event that the donation is going towards
      * @param donationAmount Amount of the Donation being made
      */
     public void addDonationToList(int alumniId, int eventId, double donationAmount) {
@@ -309,7 +322,8 @@ public class InOut {
 
     /**
      * Displays the Donations made by a certain Alumni
-     * @param id ID of the Alumni 
+     * 
+     * @param id ID of the Alumni
      */
     public void displayDonationsAlumni(int id) {
         for (int i = 0; i < donationList.size(); i++) {
@@ -321,6 +335,7 @@ public class InOut {
 
     /**
      * Displays the Donations for a certain Event
+     * 
      * @param id ID of the Event
      */
     public void displayDonationsEvents(int id) {
