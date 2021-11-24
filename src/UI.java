@@ -156,13 +156,14 @@ public class UI {
             }
         }
     }
-
+    
+    //TODO add change password method
     public void editAlumni() {
         boolean run = true;
 
         while (run) {
             System.out.println(
-                    "what would you like to change? \n1. edit name \n2. edit address \n3. edit major \n4. edit gradYear \n5. edit job \n6. edit organization \n7. exit");
+                    "what would you like to change? \n1. edit name \n2. edit address \n3. edit major \n4. edit gradYear \n5. edit job \n6. edit organization \n7. change password \n8. exit");
             int choice = io.intInput();
 
             switch (choice) {
@@ -201,8 +202,10 @@ public class UI {
                 System.out.println("Enter a new organization");
                 io.setAlumniOrg(id, io.stringInput());
                 break;
-
             case 7:
+                //change password
+                break;
+            case 8:
                 // exit
                 System.out.println("NO CHANGES");
                 io.displayAlumni();
@@ -213,7 +216,8 @@ public class UI {
         }
 
     }
-    //TODO only can edit 
+
+    //TODO Alumni can only edit their own events
     public void editEvents() {
         boolean run = true;
         while (run) {
