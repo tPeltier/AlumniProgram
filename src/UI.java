@@ -57,6 +57,7 @@ public class UI {
                 loggedIn = true;
                 break;
             case 3:
+                io.closeEverythingAndSave();
                 System.exit(0);
                 break;
             }
