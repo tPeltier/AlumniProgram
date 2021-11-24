@@ -47,6 +47,10 @@ public class Event {
         return this.id;
     }
 
+    public int getHostId() {
+        return host.getId();
+    }
+
     public String getName() {
         return this.name;
     }
