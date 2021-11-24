@@ -1,15 +1,12 @@
 
-public class Host {
-    String name;
+public class Host extends Alumni {
     String topic;
     int phoneNumber;
-    String emailAddress;
 
-    public Host(String name, String topic, int phoneNumber, String emailAddress) {
-        this.name = name;
+    public Host(String topic, int phoneNumber) {
+        super();
         this.topic = topic;
         this.phoneNumber = phoneNumber;
-        this.emailAddress = emailAddress;
     }
 
     public Host() {
