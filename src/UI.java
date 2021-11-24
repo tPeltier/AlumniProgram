@@ -309,8 +309,14 @@ public class UI {
         int numberOfParticipants = io.intInput();
         System.out.println("Enter the date of Event");
         String eventDate = io.stringInput();
-        // TODO need host object passed in
-        Host host = new Host();
+        System.out.println("Enter the topic of the Event:");
+        String topic = io.stringInput();
+        System.out.println("Enter a phone number where you can be reached: ");
+        int phone = io.intInput();
+        System.out.println("Enter an email where you can be reached: ");
+        String email = io.stringInput();
+        // TODO make the alumni into the host
+        Host host = new Host(id, io.getAlumniName(id), io.getAlumniAddress(id), io.getAlumniMajor(id), io.getAlumniGradYear(id), io.getAlumniJob(id), io.getAlumniOrg(id), topic, phone, email);
         io.createEvent(name, time, room, numberOfParticipants, eventDate, host);
     }
 
