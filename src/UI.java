@@ -207,8 +207,7 @@ public class UI {
             case 7:
                 //change password
                 System.out.println("Enter a new password: ");
-                String newPw = io.stringInput();
-                io.setPassword(id, newPw);
+                io.setPassword(id, io.stringInput());
                 break;
             case 8:
                 // exit
