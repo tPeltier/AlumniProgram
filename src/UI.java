@@ -315,7 +315,7 @@ public class UI {
         int phone = io.intInput();
         System.out.println("Enter an email where you can be reached: ");
         String email = io.stringInput();
-        // TODO make the alumni into the host
+        // TODO unfuck this mess (there's got to be a better way, this copying of an alumni into a host is dumb)
         Host host = new Host(id, io.getAlumniName(id), io.getAlumniAddress(id), io.getAlumniMajor(id), io.getAlumniGradYear(id), io.getAlumniJob(id), io.getAlumniOrg(id), topic, phone, email);
         io.createEvent(name, time, room, numberOfParticipants, eventDate, host);
     }
