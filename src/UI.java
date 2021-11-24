@@ -290,6 +290,7 @@ public class UI {
             case 7:
                 // exit
                 System.out.println("NO CHANGES");
+                run = false;
                 break;
             }
         }
