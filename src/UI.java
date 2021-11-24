@@ -213,7 +213,7 @@ public class UI {
         }
 
     }
-
+    //TODO only can edit 
     public void editEvents() {
         boolean run = true;
         while (run) {
@@ -293,23 +293,20 @@ public class UI {
         int numberOfParticipants = io.intInput();
         System.out.println("Enter the date of Event");
         String eventDate = io.stringInput();
+        //TODO need host object passed in
         io.createEvent(name, time, room, numberOfParticipants, eventDate);
     }
 
     // ----- donation stuff ------
     public void addDonation() {
-        System.out.println("Enter your ID number");
-        int id = io.intInput();
         System.out.println("Enter the event ID");
         int eventID = io.intInput();
-        System.out.println("Enter the amount donated");
+        System.out.println("Enter the amount you would like to donate: ");
         double amountDonated = io.doubleInput();
         io.addDonationToList(id, eventID, amountDonated);
     }
 
     public void displayDonationsAlumni() {
-        System.out.println("Enter your id number");
-        int id = io.intInput();
         io.displayDonationsAlumni(id);
     }
 
