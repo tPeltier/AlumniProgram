@@ -167,7 +167,8 @@ public class InOut {
             String gradYear = s[4];
             String job = s[5];
             String organization = s[6];
-            a = new Alumni(id, name, address, major, gradYear, job, organization);
+            String password = getPassword(id);
+            a = new Alumni(id, name, address, major, gradYear, job, organization, password);
             alumniMap.put(id, a);
         }
     }
@@ -241,10 +242,10 @@ public class InOut {
         alumniMap.get(id).setOrganization(org);
     }
 
-    public void addAlumni(String name, String address, String major, String gradYear, String job, String organization) {
+    public void addAlumni(String name, String address, String major, String gradYear, String job, String organization, String password) {
         int id = alumniMap.lastKey();
         id++;
-        Alumni a = new Alumni(id, name, address, major, gradYear, job, organization);
+        Alumni a = new Alumni(id, name, address, major, gradYear, job, organization, password);
         alumniMap.put(id, a);
     }
 
