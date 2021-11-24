@@ -127,11 +127,7 @@ public class UI {
                 break;
             case 2:
                 // sign up for events
-                // may add methods to handle prints
-                System.out.println("enter the id");
-                int id = io.intInput();
-                System.out.println("enter your name");
-                io.joinEvent(id, io.stringInput());
+                io.joinEvent(id, io.getAlumniName(id));
                 break;
             case 3:
                 // make donation
@@ -280,7 +276,10 @@ public class UI {
         String job = io.stringInput();
         System.out.println("Enter the company that the Alumni Currently works for");
         String organization = io.stringInput();
+        System.out.println("Enter a password");
+        String password = io.stringInput();
         io.addAlumni(name, address, major, gradYear, job, organization);
+        
     }
 
     public void createEvent() {
