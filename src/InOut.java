@@ -57,6 +57,7 @@ public class InOut {
         alumniSaved = new PrintWriter("temp.txt");
         eventSaved = new PrintWriter("temp2.txt");
         donationsSaved = new PrintWriter("temp3.txt");
+        passwordsSaved = new PrintWriter("temp4.txt");
 
         for (Alumni alumni : alumniMap.values()) {
             alumniSaved.println(alumni.save());
@@ -64,14 +65,19 @@ public class InOut {
 
         for (Event event : eventMap.values()) {
             eventSaved.println(event.save());
+            eventSaved.println(event.saveHost());
             eventSaved.println(event.saveAttendants());
+
         }
 
         for (Donation donation : donationList) {
             donationsSaved.println(donation.save());
         }
 
-        // TODO SAVE DOWN PASSWORDS
+        for (String pw : passwords.values()) {
+            passwordsSaved.println(pw);
+        }
+
 
         in.close();
         alumniFileIn.close();
@@ -79,6 +85,7 @@ public class InOut {
         alumniSaved.close();
         eventSaved.close();
         donationsSaved.close();
+        passwordsSaved.close();
 
     }
 
@@ -99,9 +106,14 @@ public class InOut {
         return passwords.get(id);
     }
 
+    public void setPassword(int id, String newPw) {
+        passwords.put(id, newPw);
+    }
+
     public boolean checkId(int id) {
         for (Alumni alumni : alumniMap.values()) {
-            if (id == alumni.getId()) return true;
+            if (id == alumni.getId())
+                return true;
         }
         return false;
     }
@@ -128,6 +140,7 @@ public class InOut {
         eventMap = new TreeMap<>();
         Event e = new Event();
         while (eventFileIn.hasNextLine()) {
+            // event info 
             String line = eventFileIn.nextLine();
             String[] s = line.split(",");
             int id = Integer.parseInt(s[0]);
@@ -136,13 +149,29 @@ public class InOut {
             int room = Integer.parseInt(s[3]);
             int numberOfParticipants = Integer.parseInt(s[4]);
             String startDate = s[5];
+            // host info
+            String h = eventFileIn.nextLine();
+            String[] hArr = h.split(",");
+            int hostId = Integer.parseInt(hArr[0]);
+            String hostName = hArr[1];
+            String hostAdd = hArr[2];
+            String hostMaj = hArr[3];
+            String hostGY = hArr[4];
+            String hostJob = hArr[5];
+            String hostOrg = hArr[6];
+            String topic = hArr[7];
+            int phone = Integer.parseInt(hArr[8]);
+            String email = hArr[9];
+            Host host = new Host(hostId, hostName, hostAdd, hostMaj, hostGY,hostJob, hostOrg, topic, phone, email);
+            // attending alumni info
             String list = eventFileIn.nextLine();
             String[] listArr = list.split(",");
             ArrayList<String> att = new ArrayList<>();
             for (int i = 0; i < listArr.length; i++) {
                 att.add(listArr[i]);
             }
-            e = new Event(id, name, time, room, numberOfParticipants, startDate, att);
+
+            e = new Event(id, name, time, room, numberOfParticipants, startDate, att, host);
             eventMap.put(id, e);
         }
     }
@@ -163,7 +192,8 @@ public class InOut {
             String gradYear = s[4];
             String job = s[5];
             String organization = s[6];
-            a = new Alumni(id, name, address, major, gradYear, job, organization);
+            String password = getPassword(id);
+            a = new Alumni(id, name, address, major, gradYear, job, organization, password);
             alumniMap.put(id, a);
         }
     }
@@ -237,10 +267,11 @@ public class InOut {
         alumniMap.get(id).setOrganization(org);
     }
 
-    public void addAlumni(String name, String address, String major, String gradYear, String job, String organization) {
+    public void addAlumni(String name, String address, String major, String gradYear, String job, String organization,
+            String password) {
         int id = alumniMap.lastKey();
         id++;
-        Alumni a = new Alumni(id, name, address, major, gradYear, job, organization);
+        Alumni a = new Alumni(id, name, address, major, gradYear, job, organization, password);
         alumniMap.put(id, a);
     }
 
@@ -302,6 +333,10 @@ public class InOut {
         eventMap.get(id).setStartDate(date);
     }
 
+    public int getHostId(int id){
+        return eventMap.get(id).getHostId();
+    }
+
     // ------- remove --------------
     public void deleteAlumni(int id) {
         alumniMap.remove(id);
@@ -311,10 +346,10 @@ public class InOut {
         eventMap.remove(id);
     }
 
-    public void createEvent(String name, String time, int room, int numberOfParticipants, String startDate) {
+    public void createEvent(String name, String time, int room, int numberOfParticipants, String startDate, Host host) {
         int id = eventMap.lastKey();
         id++;
-        Event e = new Event(id, name, time, room, numberOfParticipants, startDate);
+        Event e = new Event(id, name, time, room, numberOfParticipants, startDate, host);
         eventMap.put(id, e);
     }
 

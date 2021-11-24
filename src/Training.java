@@ -7,8 +7,8 @@ public class Training extends Event {
         super();
     }
 
-    public Training(int id, String name, String time, int room, int numberOfParticipants, String startDate, String skill, int openSeats, int total) {
-        super(id, name, time, room, numberOfParticipants, startDate);
+    public Training(int id, String name, String time, int room, int numberOfParticipants, String startDate, Host host, String skill, int openSeats, int total) {
+        super(id, name, time, room, numberOfParticipants, startDate, host);
         this.skill = skill;
         this.openSeats = openSeats;
         this.total = total;

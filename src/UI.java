@@ -12,15 +12,20 @@ public class UI {
         io = new InOut();
     }
 
+    // TODO way to logout
     /**
      * 
      * @throws FileNotFoundException
      */
     public void userInterface() throws FileNotFoundException {
-        boolean run = true;
-        boolean loggedIn = false;
         System.out.println("Hello and welcome to the Alumni program");
+        login();
+        loggedIn();
 
+    }
+
+    public void login() throws FileNotFoundException {
+        boolean loggedIn = false;
         while (!loggedIn) {
             System.out.println("1. Login to existing account \n2. Create a new account \n3. Exit");
             int choice = io.intInput();
@@ -30,7 +35,8 @@ public class UI {
                 System.out.println("ID: ");
                 id = io.intInput();
                 try {
-                    if (!io.checkId(id)) throw new InvalidEntry("NOT AN EXISTING ID NUMBER");
+                    if (!io.checkId(id))
+                        throw new InvalidEntry("NOT AN EXISTING ID NUMBER");
                 } catch (InvalidEntry p) {
                     System.out.println(p.getMessage());
                     break;
@@ -41,8 +47,11 @@ public class UI {
                 String expectedPw = io.getPassword(id);
 
                 try {
-                    if (password.equals(expectedPw)) { loggedIn = true; }
-                    else { throw new InvalidEntry("INVALID PASSWORD"); }
+                    if (password.equals(expectedPw)) {
+                        loggedIn = true;
+                    } else {
+                        throw new InvalidEntry("INVALID PASSWORD");
+                    }
                 } catch (InvalidEntry p) {
                     System.out.println(p.getMessage());
                 }
@@ -52,18 +61,20 @@ public class UI {
                 loggedIn = true;
                 break;
             case 3:
+                io.closeEverythingAndSave();
                 System.exit(0);
                 break;
             }
         }
+    }
 
-        while (run)
-
-        {
+    public void loggedIn() throws FileNotFoundException {
+        boolean run = true;
+        while (run) {
             System.out.println(" ----------------------------------------------------- ");
             System.out.println("Welcome " + io.getAlumniName(id) + " what would you like to do?");
             System.out.println(
-                    "Please enter a number for what you want to do \n1. for Alumni settings(add, edit, and delete) \n"
+                    "Please enter a number for what you want to do \n1. for Alumni settings(Display, edit, and delete) \n"
                             + "2. for event settings(join, create) \n3. to exit the program");
             int choice = io.intInput();
             switch (choice) {
@@ -82,13 +93,14 @@ public class UI {
         }
     }
 
+
     public void alumniInterface() {
         System.out.println("Alumni Interface\n" + "please enter a choice");
         boolean run = true;
         while (run) {
             System.out.println(" ----------------------------------------------------- ");
-            System.out.println("1. See a list of current Alumni \n2. Add a new Alumni \n3. Edit Alumni \n"
-                    + "4. Delete Alumni \n5. Go back to the main menu");
+            System.out.println("1. See a list of current Alumni \n2. Edit your profile info \n"
+                    + "3. Delete your account \n4. Go back to the main menu");
             int choice = io.intInput();
             switch (choice) {
             case 1:
@@ -96,20 +108,17 @@ public class UI {
                 io.displayAlumni();
                 break;
             case 2:
-                // TODO REMOVE THIS WHOLE CASE (ALREADY TAKEN CARE OF)
-                // Add new alumni
-                newAlumniInfo();
-                break;
-            case 3:
                 // edit Alumni
                 editAlumni();
                 break;
-            case 4:
+            case 3:
                 // Delete Alumni
-                System.out.println("Enter the ID of the Alumni you would like to delete");
-                io.deleteAlumni(io.intInput());
+                String confirmation = io.stringInput().toLowerCase();
+                if (confirmation.charAt(0) == 'y') {
+                    io.deleteAlumni(id);
+                }
                 break;
-            case 5:
+            case 4:
                 run = false;
                 // go back to main menu
                 break;
@@ -124,7 +133,7 @@ public class UI {
         while (run) {
             System.out.println(" ----------------------------------------------------- ");
             System.out.println("1. See a list of events \n2. Sign up to attend an Event \n3. Make a donation \n"
-                    + "4. See my donations \n5. Sign up to speak\n6. Delete Event \n7. Exit");
+                    + "4. See my donations \n5. Sign up to speak\n6. Delete Event \n7. Edit event \n8. Exit");
             int choice = io.intInput();
             switch (choice) {
             case 1:
@@ -133,11 +142,7 @@ public class UI {
                 break;
             case 2:
                 // sign up for events
-                // may add methods to handle prints
-                System.out.println("enter the id");
-                int id = io.intInput();
-                System.out.println("enter your name");
-                io.joinEvent(id, io.stringInput());
+                io.joinEvent(id, io.getAlumniName(id));
                 break;
             case 3:
                 // make donation
@@ -155,11 +160,18 @@ public class UI {
                 createEvent();
                 break;
             case 6:
-                // Delete events(potentially only ones the user creates)
-                System.out.println("please enter the id of the event that you want to delete");
-                io.deleteEvent(io.intInput());
+                System.out.println("Are you sure you want to delete this event y/n");
+                String confirmation = io.stringInput().toLowerCase();
+                if (confirmation.charAt(0) == 'y') {
+                    System.out.println("please enter the id of the event that you want to delete");
+                    io.deleteEvent(io.intInput());
+                }
                 break;
             case 7:
+                // edits events
+                editEvents();
+                break;
+            case 8:
                 // go back to main menu
                 run = false;
                 break;
@@ -170,13 +182,9 @@ public class UI {
     public void editAlumni() {
         boolean run = true;
 
-        io.displayAlumni();
-        System.out.println("Enter the id of who you want to change");
-        int id = io.intInput();
-
         while (run) {
             System.out.println(
-                    "what would you like to change? \n1. edit name \n2. edit address \n3. edit major \n4. edit gradYear \n5. edit job \n6. edit organization \n7. exit");
+                    "what would you like to change? \n1. edit name \n2. edit address \n3. edit major \n4. edit gradYear \n5. edit job \n6. edit organization \n7. change password \n8. exit");
             int choice = io.intInput();
 
             switch (choice) {
@@ -215,8 +223,12 @@ public class UI {
                 System.out.println("Enter a new organization");
                 io.setAlumniOrg(id, io.stringInput());
                 break;
-
             case 7:
+                // change password
+                System.out.println("Enter a new password: ");
+                io.setPassword(id, io.stringInput());
+                break;
+            case 8:
                 // exit
                 System.out.println("NO CHANGES");
                 io.displayAlumni();
@@ -230,48 +242,62 @@ public class UI {
 
     public void editEvents() {
         boolean run = true;
-        while (run) {
-            System.out.println("Enter the event");
+        boolean owner = false;
+        int eventID = 0;
+        while (!owner) {
             io.displayEvents();
-            int id = io.intInput();
+            System.out.println("Enter the event id:");
+            eventID = io.intInput();
+            try {
+                if (id != io.getHostId(eventID)) {
+                    throw new InvalidEntry("YOU DID NOT OWN THIS EVENT");
+                } else
+                    owner = true;
+            } catch (InvalidEntry e) {
+                System.out.println(e.getMessage());
+                return;
+            }
+        }
+        while (run) {
             System.out.println(
-                    "Enter Event. \n1. event name \n2. event time \n3. event room \n4. Number of participants \n5. event date \n6. exit");
+                    "Enter Event ID: \n1. event name \n2. event time \n3. event room \n4. Number of participants \n5. event date \n6. exit");
             int choice = io.intInput();
 
             switch (choice) {
             case 1:
                 // edit name
                 System.out.println("Enter name of event:");
-                io.setName(id, io.stringInput());
+                io.setName(eventID, io.stringInput());
                 break;
 
             case 2:
                 // edit time
                 System.out.println("Enter time of event");
-                io.setTime(id, io.stringInput());
+                io.setTime(eventID, io.stringInput());
                 break;
 
             case 3:
                 // edit room
                 System.out.println("Enter event room:");
-                io.setRoom(id, io.intInput());
+                io.setRoom(eventID, io.intInput());
                 break;
 
             case 4:
                 // edit number of participants
                 System.out.println("Enter number of participants:");
-                io.setNumberOfParticipants(id, io.intInput());
+                io.setNumberOfParticipants(eventID, io.intInput());
                 break;
 
             case 5:
                 // edit date
                 System.out.println("Enter date of event:");
-                io.setDate(id, io.stringInput());
+                io.setDate(eventID, io.stringInput());
                 break;
 
             case 7:
                 // exit
                 System.out.println("NO CHANGES");
+                run = false;
                 break;
             }
         }
@@ -290,7 +316,10 @@ public class UI {
         String job = io.stringInput();
         System.out.println("Enter the company that the Alumni Currently works for");
         String organization = io.stringInput();
-        io.addAlumni(name, address, major, gradYear, job, organization);
+        System.out.println("Enter a password");
+        String password = io.stringInput();
+        io.addAlumni(name, address, major, gradYear, job, organization, password);
+
     }
 
     public void createEvent() {
@@ -304,23 +333,29 @@ public class UI {
         int numberOfParticipants = io.intInput();
         System.out.println("Enter the date of Event");
         String eventDate = io.stringInput();
-        io.createEvent(name, time, room, numberOfParticipants, eventDate);
+        System.out.println("Enter the topic of the Event:");
+        String topic = io.stringInput();
+        System.out.println("Enter a phone number where you can be reached: ");
+        int phone = io.intInput();
+        System.out.println("Enter an email where you can be reached: ");
+        String email = io.stringInput();
+        // TODO unfuck this mess (there's got to be a better way, this copying of an
+        // alumni into a host is dumb)
+        Host host = new Host(id, io.getAlumniName(id), io.getAlumniAddress(id), io.getAlumniMajor(id),
+                io.getAlumniGradYear(id), io.getAlumniJob(id), io.getAlumniOrg(id), topic, phone, email);
+        io.createEvent(name, time, room, numberOfParticipants, eventDate, host);
     }
 
     // ----- donation stuff ------
     public void addDonation() {
-        System.out.println("Enter your ID number");
-        int id = io.intInput();
         System.out.println("Enter the event ID");
         int eventID = io.intInput();
-        System.out.println("Enter the amount donated");
+        System.out.println("Enter the amount you would like to donate: ");
         double amountDonated = io.doubleInput();
         io.addDonationToList(id, eventID, amountDonated);
     }
 
     public void displayDonationsAlumni() {
-        System.out.println("Enter your id number");
-        int id = io.intInput();
         io.displayDonationsAlumni(id);
     }
 
