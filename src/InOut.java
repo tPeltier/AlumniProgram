@@ -64,7 +64,9 @@ public class InOut {
 
         for (Event event : eventMap.values()) {
             eventSaved.println(event.save());
+            eventSaved.println(event.saveHost());
             eventSaved.println(event.saveAttendants());
+
         }
 
         for (Donation donation : donationList) {
@@ -133,6 +135,7 @@ public class InOut {
         eventMap = new TreeMap<>();
         Event e = new Event();
         while (eventFileIn.hasNextLine()) {
+            // event info 
             String line = eventFileIn.nextLine();
             String[] s = line.split(",");
             int id = Integer.parseInt(s[0]);
@@ -141,13 +144,29 @@ public class InOut {
             int room = Integer.parseInt(s[3]);
             int numberOfParticipants = Integer.parseInt(s[4]);
             String startDate = s[5];
+            // host info
+            String h = eventFileIn.nextLine();
+            String[] hArr = h.split(",");
+            int hostId = Integer.parseInt(hArr[0]);
+            String hostName = hArr[1];
+            String hostAdd = hArr[2];
+            String hostMaj = hArr[3];
+            String hostGY = hArr[4];
+            String hostJob = hArr[5];
+            String hostOrg = hArr[6];
+            String topic = hArr[7];
+            int phone = Integer.parseInt(hArr[8]);
+            String email = hArr[9];
+            Host host = new Host(hostId, hostName, hostAdd, hostMaj, hostGY,hostJob, hostOrg, topic, phone, email);
+            // attending alumni info
             String list = eventFileIn.nextLine();
             String[] listArr = list.split(",");
             ArrayList<String> att = new ArrayList<>();
             for (int i = 0; i < listArr.length; i++) {
                 att.add(listArr[i]);
             }
-            e = new Event(id, name, time, room, numberOfParticipants, startDate, att);
+
+            e = new Event(id, name, time, room, numberOfParticipants, startDate, att, host);
             eventMap.put(id, e);
         }
     }
@@ -321,7 +340,7 @@ public class InOut {
     public void createEvent(String name, String time, int room, int numberOfParticipants, String startDate, Host host) {
         int id = eventMap.lastKey();
         id++;
-        Event e = new Event(id, name, time, room, numberOfParticipants, startDate);
+        Event e = new Event(id, name, time, room, numberOfParticipants, startDate, host);
         eventMap.put(id, e);
     }
 
