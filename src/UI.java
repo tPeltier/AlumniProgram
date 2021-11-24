@@ -11,7 +11,7 @@ public class UI {
     public UI() throws FileNotFoundException {
         io = new InOut();
     }
-
+    //TODO way to logout
     /**
      * 
      * @throws FileNotFoundException
@@ -63,7 +63,7 @@ public class UI {
             System.out.println(" ----------------------------------------------------- ");
             System.out.println("Welcome " + io.getAlumniName(id) + " what would you like to do?");
             System.out.println(
-                    "Please enter a number for what you want to do \n1. for Alumni settings(add, edit, and delete) \n"
+                    "Please enter a number for what you want to do \n1. for Alumni settings(Display, edit, and delete) \n"
                             + "2. for event settings(join, create) \n3. to exit the program");
             int choice = io.intInput();
             switch (choice) {
@@ -100,6 +100,7 @@ public class UI {
                 editAlumni();
                 break;
             case 3:
+                //TODO ask if they are sure they want to delete
                 // Delete Alumni
                 io.deleteAlumni(id);
                 break;
@@ -145,6 +146,7 @@ public class UI {
                 createEvent();
                 break;
             case 6:
+                //TODO ask if they are sure they want to delete
                 // Delete events(potentially only ones the user creates)
                 System.out.println("please enter the id of the event that you want to delete");
                 io.deleteEvent(io.intInput());
@@ -156,7 +158,7 @@ public class UI {
             }
         }
     }
-    
+
     //TODO add change password method
     public void editAlumni() {
         boolean run = true;
