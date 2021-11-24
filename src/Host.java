@@ -14,6 +14,10 @@ public class Host extends Alumni {
     public Host() {
     }
 
+    public int getHostId() {
+        return super.getId();
+    }
+
     public String getTopic() {
         return topic;
     }
@@ -36,5 +40,9 @@ public class Host extends Alumni {
 
     public void setEmailAddress(String emailAddress) {
         this.emailAddress = emailAddress;
+    }
+
+    public String save() {
+        return super.getId() + "," + super.getName() + "," + super.getAddress() + "," + super.getMajor()  + "," + super.getGradYear() + "," + super.getJob() + "," + super.getOrganization()  + "," + getTopic() + "," + getPhoneNumber() + "," + getEmailAddress();
     }
 }
