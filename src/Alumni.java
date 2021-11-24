@@ -7,6 +7,7 @@ public class Alumni {
     private String gradYear;
     private String job;
     private String organization;
+    //TODO add back to constructor
     private String password;
     // private boolean admin = false;
 
