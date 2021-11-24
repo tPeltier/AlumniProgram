@@ -328,6 +328,10 @@ public class InOut {
         eventMap.get(id).setStartDate(date);
     }
 
+    public int getHostId(int id){
+        return eventMap.get(id).getHostId();
+    }
+
     // ------- remove --------------
     public void deleteAlumni(int id) {
         alumniMap.remove(id);
