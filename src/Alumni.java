@@ -31,7 +31,18 @@ public class Alumni {
         this.gradYear = gradYear;
         this.job = job;
         this.organization = organization;
-        // this.password = password;
+        this.password = password;
+    }
+
+    // passwordless constructor for host
+    public Alumni(int id, String name, String address, String major, String gradYear, String job, String organization) {
+        this.id = id;
+        this.name = name;
+        this.address = address;
+        this.major = major;
+        this.gradYear = gradYear;
+        this.job = job;
+        this.organization = organization;
     }
 
 
