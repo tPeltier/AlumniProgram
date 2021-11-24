@@ -24,31 +24,6 @@ public class UI {
 
     }
 
-    public void loggedIn() throws FileNotFoundException {
-        boolean run = true;
-        while (run) {
-            System.out.println(" ----------------------------------------------------- ");
-            System.out.println("Welcome " + io.getAlumniName(id) + " what would you like to do?");
-            System.out.println(
-                    "Please enter a number for what you want to do \n1. for Alumni settings(Display, edit, and delete) \n"
-                            + "2. for event settings(join, create) \n3. to exit the program");
-            int choice = io.intInput();
-            switch (choice) {
-            case 1:
-                alumniInterface();
-                break;
-            case 2:
-                eventInterface();
-                break;
-            case 3:
-                System.out.println("Thanks for using the premium Alumni service \uD83E\uDD70");
-                io.closeEverythingAndSave();
-                System.exit(0);
-                break;
-            }
-        }
-    }
-
     public void login() throws FileNotFoundException {
         boolean loggedIn = false;
         while (!loggedIn) {
@@ -92,6 +67,32 @@ public class UI {
             }
         }
     }
+
+    public void loggedIn() throws FileNotFoundException {
+        boolean run = true;
+        while (run) {
+            System.out.println(" ----------------------------------------------------- ");
+            System.out.println("Welcome " + io.getAlumniName(id) + " what would you like to do?");
+            System.out.println(
+                    "Please enter a number for what you want to do \n1. for Alumni settings(Display, edit, and delete) \n"
+                            + "2. for event settings(join, create) \n3. to exit the program");
+            int choice = io.intInput();
+            switch (choice) {
+            case 1:
+                alumniInterface();
+                break;
+            case 2:
+                eventInterface();
+                break;
+            case 3:
+                System.out.println("Thanks for using the premium Alumni service \uD83E\uDD70");
+                io.closeEverythingAndSave();
+                System.exit(0);
+                break;
+            }
+        }
+    }
+
 
     public void alumniInterface() {
         System.out.println("Alumni Interface\n" + "please enter a choice");
