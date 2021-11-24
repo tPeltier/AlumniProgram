@@ -233,7 +233,6 @@ public class UI {
 
     }
 
-    // TODO Alumni can only edit their own events
     public void editEvents() {
         boolean run = true;
         boolean owner = false;
