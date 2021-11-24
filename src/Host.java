@@ -2,18 +2,16 @@
 public class Host extends Alumni {
     String topic;
     int phoneNumber;
+    String emailAddress;
 
-    public Host(String topic, int phoneNumber) {
-        super();
+    public Host(int id, String name, String address, String major, String gradYear, String job,String organization, String topic, int phoneNumber, String emailAddress) {
+        super(id, name, address, major, gradYear, job, organization);
         this.topic = topic;
         this.phoneNumber = phoneNumber;
+        this.emailAddress = emailAddress;
     }
 
     public Host() {
-    }
-
-    public String getName() {
-        return name;
     }
 
     public String getTopic() {
@@ -26,10 +24,6 @@ public class Host extends Alumni {
 
     public String getEmailAddress() {
         return emailAddress;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public void setTopic(String topic) {

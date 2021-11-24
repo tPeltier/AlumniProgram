@@ -11,7 +11,8 @@ public class UI {
     public UI() throws FileNotFoundException {
         io = new InOut();
     }
-    //TODO way to logout
+
+    // TODO way to logout
     /**
      * 
      * @throws FileNotFoundException
@@ -30,7 +31,8 @@ public class UI {
                 System.out.println("ID: ");
                 id = io.intInput();
                 try {
-                    if (!io.checkId(id)) throw new InvalidEntry("NOT AN EXISTING ID NUMBER");
+                    if (!io.checkId(id))
+                        throw new InvalidEntry("NOT AN EXISTING ID NUMBER");
                 } catch (InvalidEntry p) {
                     System.out.println(p.getMessage());
                     break;
@@ -41,8 +43,11 @@ public class UI {
                 String expectedPw = io.getPassword(id);
 
                 try {
-                    if (password.equals(expectedPw)) { loggedIn = true; }
-                    else { throw new InvalidEntry("INVALID PASSWORD"); }
+                    if (password.equals(expectedPw)) {
+                        loggedIn = true;
+                    } else {
+                        throw new InvalidEntry("INVALID PASSWORD");
+                    }
                 } catch (InvalidEntry p) {
                     System.out.println(p.getMessage());
                 }
@@ -100,9 +105,11 @@ public class UI {
                 editAlumni();
                 break;
             case 3:
-                //TODO ask if they are sure they want to delete
                 // Delete Alumni
+                String confirmation = io.stringInput().toLowerCase();
+                if (confirmation.charAt(0) == 'y') {
                 io.deleteAlumni(id);
+                }
                 break;
             case 4:
                 run = false;
@@ -146,10 +153,12 @@ public class UI {
                 createEvent();
                 break;
             case 6:
-                //TODO ask if they are sure they want to delete
-                // Delete events(potentially only ones the user creates)
-                System.out.println("please enter the id of the event that you want to delete");
-                io.deleteEvent(io.intInput());
+                System.out.println("Are you sure you want to delete this event y/n");
+                String confirmation = io.stringInput().toLowerCase();
+                if (confirmation.charAt(0) == 'y') {
+                    System.out.println("please enter the id of the event that you want to delete");
+                    io.deleteEvent(io.intInput());
+                }
                 break;
             case 7:
                 // go back to main menu
@@ -159,7 +168,6 @@ public class UI {
         }
     }
 
-    
     public void editAlumni() {
         boolean run = true;
 
@@ -205,7 +213,7 @@ public class UI {
                 io.setAlumniOrg(id, io.stringInput());
                 break;
             case 7:
-                //change password
+                // change password
                 System.out.println("Enter a new password: ");
                 io.setPassword(id, io.stringInput());
                 break;
@@ -221,7 +229,7 @@ public class UI {
 
     }
 
-    //TODO Alumni can only edit their own events
+    // TODO Alumni can only edit their own events
     public void editEvents() {
         boolean run = true;
         while (run) {
@@ -286,8 +294,8 @@ public class UI {
         String organization = io.stringInput();
         System.out.println("Enter a password");
         String password = io.stringInput();
-        io.addAlumni(name, address, major, gradYear, job, organization);
-        
+        io.addAlumni(name, address, major, gradYear, job, organization, password);
+
     }
 
     public void createEvent() {
@@ -301,8 +309,9 @@ public class UI {
         int numberOfParticipants = io.intInput();
         System.out.println("Enter the date of Event");
         String eventDate = io.stringInput();
-        //TODO need host object passed in
-        io.createEvent(name, time, room, numberOfParticipants, eventDate);
+        // TODO need host object passed in
+        Host host = new Host();
+        io.createEvent(name, time, room, numberOfParticipants, eventDate, host);
     }
 
     // ----- donation stuff ------

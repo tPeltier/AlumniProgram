@@ -34,7 +34,7 @@ public class Alumni {
         this.password = password;
     }
 
-    // passwordless constructor for host
+    // password-less constructor for host
     public Alumni(int id, String name, String address, String major, String gradYear, String job, String organization) {
         this.id = id;
         this.name = name;

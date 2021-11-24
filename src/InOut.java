@@ -105,7 +105,8 @@ public class InOut {
 
     public boolean checkId(int id) {
         for (Alumni alumni : alumniMap.values()) {
-            if (id == alumni.getId()) return true;
+            if (id == alumni.getId())
+                return true;
         }
         return false;
     }
@@ -242,7 +243,8 @@ public class InOut {
         alumniMap.get(id).setOrganization(org);
     }
 
-    public void addAlumni(String name, String address, String major, String gradYear, String job, String organization, String password) {
+    public void addAlumni(String name, String address, String major, String gradYear, String job, String organization,
+            String password) {
         int id = alumniMap.lastKey();
         id++;
         Alumni a = new Alumni(id, name, address, major, gradYear, job, organization, password);
@@ -316,7 +318,7 @@ public class InOut {
         eventMap.remove(id);
     }
 
-    public void createEvent(String name, String time, int room, int numberOfParticipants, String startDate) {
+    public void createEvent(String name, String time, int room, int numberOfParticipants, String startDate, Host host) {
         int id = eventMap.lastKey();
         id++;
         Event e = new Event(id, name, time, room, numberOfParticipants, startDate);
