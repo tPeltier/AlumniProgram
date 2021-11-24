@@ -57,6 +57,7 @@ public class InOut {
         alumniSaved = new PrintWriter("temp.txt");
         eventSaved = new PrintWriter("temp2.txt");
         donationsSaved = new PrintWriter("temp3.txt");
+        passwordsSaved = new PrintWriter("temp4.txt");
 
         for (Alumni alumni : alumniMap.values()) {
             alumniSaved.println(alumni.save());
@@ -73,7 +74,10 @@ public class InOut {
             donationsSaved.println(donation.save());
         }
 
-        // TODO SAVE DOWN PASSWORDS
+        for (String pw : passwords.values()) {
+            passwordsSaved.println(pw);
+        }
+
 
         in.close();
         alumniFileIn.close();
@@ -81,6 +85,7 @@ public class InOut {
         alumniSaved.close();
         eventSaved.close();
         donationsSaved.close();
+        passwordsSaved.close();
 
     }
 
