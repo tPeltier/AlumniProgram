@@ -127,4 +127,5 @@ public class Alumni {
     public String save() {
         return getId() + "," + getName() + "," + getAddress() + "," + getMajor() + "," + getGradYear() + "," + getJob() + "," + getOrganization();
     }
+
 }

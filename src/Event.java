@@ -14,11 +14,23 @@ public class Event {
     private ArrayList<String> attendants;
 
     // constructors
-    public Event() {
-        // empty
-    }
+    public Event(Host host) {
+        this.host = host;
+     }
+    public Host getHost(){
+        return host;
+    } 
 
-    // existing event
+     //method
+    public void Alumni(Alumni alumni){
+        alumni = guestSpeaker;
+        public static void main(String[] args){
+            Alumni obj = new Alumni();
+        }
+    } 
+         
+     
+     // existing event
     public Event(int id, String name, String time, int room, int numberOfParticipants, String startDate,
             ArrayList<String> attendant) {
         this.id = id;
@@ -112,5 +124,9 @@ public class Event {
         }
         return x;
     }
+    
+    }
 
-}
+    
+
+
