@@ -249,6 +249,7 @@ public class UI {
                     owner = true;
             } catch (InvalidEntry e) {
                 System.out.println(e.getMessage());
+                return;
             }
         }
         while (run) {
