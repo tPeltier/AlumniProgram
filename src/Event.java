@@ -24,8 +24,8 @@ public class Event {
     public void Alumni(Alumni alumni){
         alumni = guestSpeaker;}
 
-        public static void main(String[] args){
-    } 
+    
+    
 
      
      // existing event
