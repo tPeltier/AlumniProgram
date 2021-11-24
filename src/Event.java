@@ -41,6 +41,13 @@ public class Event {
     }
 
     // getters and setters
+    public Alumni getAlumni(){
+        return guestSpeaker;
+    }
+    
+    public void setAlumni(Alumni alumni){
+        guestSpeaker = alumni;
+    }
     public int getId() {
         return this.id;
     }
