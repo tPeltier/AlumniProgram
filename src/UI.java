@@ -108,7 +108,7 @@ public class UI {
                 // Delete Alumni
                 String confirmation = io.stringInput().toLowerCase();
                 if (confirmation.charAt(0) == 'y') {
-                io.deleteAlumni(id);
+                    io.deleteAlumni(id);
                 }
                 break;
             case 4:
@@ -126,7 +126,7 @@ public class UI {
         while (run) {
             System.out.println(" ----------------------------------------------------- ");
             System.out.println("1. See a list of events \n2. Sign up to attend an Event \n3. Make a donation \n"
-                    + "4. See my donations \n5. Sign up to speak\n6. Delete Event \n7. Exit");
+                    + "4. See my donations \n5. Sign up to speak\n6. Delete Event \n7. Edit event \n8. Exit");
             int choice = io.intInput();
             switch (choice) {
             case 1:
@@ -161,6 +161,10 @@ public class UI {
                 }
                 break;
             case 7:
+                // edits events
+                editEvents();
+                break;
+            case 8:
                 // go back to main menu
                 run = false;
                 break;
@@ -232,43 +236,55 @@ public class UI {
     // TODO Alumni can only edit their own events
     public void editEvents() {
         boolean run = true;
-        while (run) {
-            System.out.println("Enter the event");
+        boolean owner = false;
+        int eventID = 0;
+        while (!owner) {
             io.displayEvents();
-            int id = io.intInput();
+            System.out.println("Enter the event id:");
+            eventID = io.intInput();
+            try {
+                if (id != io.getHostId(eventID)) {
+                    throw new InvalidEntry("YOU DID NOT OWN THIS EVENT");
+                } else
+                    owner = true;
+            } catch (InvalidEntry e) {
+                System.out.println(e.getMessage());
+            }
+        }
+        while (run) {
             System.out.println(
-                    "Enter Event. \n1. event name \n2. event time \n3. event room \n4. Number of participants \n5. event date \n6. exit");
+                    "Enter Event ID: \n1. event name \n2. event time \n3. event room \n4. Number of participants \n5. event date \n6. exit");
             int choice = io.intInput();
 
             switch (choice) {
             case 1:
                 // edit name
                 System.out.println("Enter name of event:");
-                io.setName(id, io.stringInput());
+                io.setName(eventID, io.stringInput());
                 break;
 
             case 2:
                 // edit time
                 System.out.println("Enter time of event");
-                io.setTime(id, io.stringInput());
+                io.setTime(eventID, io.stringInput());
                 break;
 
             case 3:
                 // edit room
                 System.out.println("Enter event room:");
-                io.setRoom(id, io.intInput());
+                io.setRoom(eventID, io.intInput());
                 break;
 
             case 4:
                 // edit number of participants
                 System.out.println("Enter number of participants:");
-                io.setNumberOfParticipants(id, io.intInput());
+                io.setNumberOfParticipants(eventID, io.intInput());
                 break;
 
             case 5:
                 // edit date
                 System.out.println("Enter date of event:");
-                io.setDate(id, io.stringInput());
+                io.setDate(eventID, io.stringInput());
                 break;
 
             case 7:
@@ -315,8 +331,10 @@ public class UI {
         int phone = io.intInput();
         System.out.println("Enter an email where you can be reached: ");
         String email = io.stringInput();
-        // TODO unfuck this mess (there's got to be a better way, this copying of an alumni into a host is dumb)
-        Host host = new Host(id, io.getAlumniName(id), io.getAlumniAddress(id), io.getAlumniMajor(id), io.getAlumniGradYear(id), io.getAlumniJob(id), io.getAlumniOrg(id), topic, phone, email);
+        // TODO unfuck this mess (there's got to be a better way, this copying of an
+        // alumni into a host is dumb)
+        Host host = new Host(id, io.getAlumniName(id), io.getAlumniAddress(id), io.getAlumniMajor(id),
+                io.getAlumniGradYear(id), io.getAlumniJob(id), io.getAlumniOrg(id), topic, phone, email);
         io.createEvent(name, time, room, numberOfParticipants, eventDate, host);
     }
 
