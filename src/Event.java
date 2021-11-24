@@ -20,7 +20,7 @@ public class Event {
 
     // existing event
     public Event(int id, String name, String time, int room, int numberOfParticipants, String startDate,
-            ArrayList<String> attendant) {
+            ArrayList<String> attendant, Host host) {
         this.id = id;
         this.name = name;
         this.time = time;
@@ -28,16 +28,18 @@ public class Event {
         this.numberOfParticipants = numberOfParticipants;
         this.startDate = startDate;
         this.attendants = attendant;
+        this.host = host;
     }
 
     // adding event
-    public Event(int id, String name, String time, int room, int numberOfParticipants, String startDate) {
+    public Event(int id, String name, String time, int room, int numberOfParticipants, String startDate, Host host) {
         this.id = id;
         this.name = name;
         this.time = time;
         this.room = room;
         this.numberOfParticipants = numberOfParticipants;
         this.startDate = startDate;
+        this.host = host;
     }
 
     // getters and setters
@@ -101,12 +103,16 @@ public class Event {
                 + getStartDate();
     }
 
+    public String saveHost() {
+        return host.save();
+    }
+
     public String saveAttendants() {
         String x = "";
         for (int i = 0; i < attendants.size(); i++) {
             if (i == attendants.size() - 1) {
                 x += attendants.get(i);
-            } else { 
+            } else {
                 x += attendants.get(i) + ",";
             }
         }
