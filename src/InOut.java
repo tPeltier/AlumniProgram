@@ -99,6 +99,10 @@ public class InOut {
         return passwords.get(id);
     }
 
+    public void setPassword(int id, String newPw) {
+        passwords.put(id, newPw);
+    }
+
     public boolean checkId(int id) {
         for (Alumni alumni : alumniMap.values()) {
             if (id == alumni.getId()) return true;

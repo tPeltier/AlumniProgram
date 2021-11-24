@@ -159,7 +159,7 @@ public class UI {
         }
     }
 
-    //TODO add change password method
+    
     public void editAlumni() {
         boolean run = true;
 
@@ -206,6 +206,9 @@ public class UI {
                 break;
             case 7:
                 //change password
+                System.out.println("Enter a new password: ");
+                String newPw = io.stringInput();
+                io.setPassword(id, newPw);
                 break;
             case 8:
                 // exit
