@@ -87,8 +87,8 @@ public class UI {
         boolean run = true;
         while (run) {
             System.out.println(" ----------------------------------------------------- ");
-            System.out.println("1. See a list of current Alumni \n3. Edit your pr \n"
-                    + "4. Delete Alumni \n5. Go back to the main menu");
+            System.out.println("1. See a list of current Alumni \n2. Edit your profile info \n"
+                    + "3. Delete your account \n4. Go back to the main menu");
             int choice = io.intInput();
             switch (choice) {
             case 1:
@@ -101,8 +101,7 @@ public class UI {
                 break;
             case 3:
                 // Delete Alumni
-                System.out.println("Enter the ID of the Alumni you would like to delete");
-                io.deleteAlumni(io.intInput());
+                io.deleteAlumni(id);
                 break;
             case 4:
                 run = false;
@@ -164,10 +163,6 @@ public class UI {
 
     public void editAlumni() {
         boolean run = true;
-
-        io.displayAlumni();
-        System.out.println("Enter the id of who you want to change");
-        int id = io.intInput();
 
         while (run) {
             System.out.println(
