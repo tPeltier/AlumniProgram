@@ -133,7 +133,7 @@ public class UI {
         while (run) {
             System.out.println(" ----------------------------------------------------- ");
             System.out.println("1. See a list of events \n2. Sign up to attend an Event \n3. Make a donation \n"
-                    + "4. See my donations \n5. Sign up to speak\n6. Delete Event \n7. Edit event \n8. Exit");
+                    + "4. See my donations \n5. Sign up to speak\n6. Create Training event \n7. Delete Event \n8. Edit event \n9. Exit");
             int choice = io.intInput();
             switch (choice) {
             case 1:
@@ -160,6 +160,9 @@ public class UI {
                 createEvent();
                 break;
             case 6:
+                //create training event
+                break;
+            case 7:
                 System.out.println("Are you sure you want to delete this event y/n");
                 String confirmation = io.stringInput().toLowerCase();
                 if (confirmation.charAt(0) == 'y') {
@@ -167,11 +170,11 @@ public class UI {
                     io.deleteEvent(io.intInput());
                 }
                 break;
-            case 7:
+            case 8:
                 // edits events
                 editEvents();
                 break;
-            case 8:
+            case 9:
                 // go back to main menu
                 run = false;
                 break;
