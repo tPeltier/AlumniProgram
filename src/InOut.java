@@ -2,6 +2,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -149,6 +150,15 @@ public class InOut {
             int room = Integer.parseInt(s[3]);
             int numberOfParticipants = Integer.parseInt(s[4]);
             String startDate = s[5];
+            // dateTime info
+            String dateTimeString = eventFileIn.nextLine();
+            String[] dt = dateTimeString.split(",");
+            int year = Integer.parseInt(dt[0]);
+            int month = Integer.parseInt(dt[1]);
+            int dayOfMonth = Integer.parseInt(dt[2]);
+            int hour = Integer.parseInt(dt[3]);
+            int minute = Integer.parseInt(dt[4]);
+            LocalDateTime dateTime = LocalDateTime.of(year, month, dayOfMonth, hour, minute);
             // host info
             String h = eventFileIn.nextLine();
             String[] hArr = h.split(",");
@@ -171,7 +181,7 @@ public class InOut {
                 att.add(listArr[i]);
             }
 
-            e = new Event(id, name, time, room, numberOfParticipants, startDate, att, host);
+            e = new Event(id, name, time, room, numberOfParticipants, dateTime, att, host);
             eventMap.put(id, e);
         }
     }
