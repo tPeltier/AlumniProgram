@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.time.LocalDateTime;
 
 public class Event {
     private int id;
@@ -7,7 +8,8 @@ public class Event {
     private int room;
     private int numberOfParticipants;
     // TODO change date format
-    private String startDate;
+    // private String startDate;
+    private LocalDateTime startDate;
     // TODO implement speaker
     private Host host;
     private Alumni guestSpeaker;
@@ -19,7 +21,7 @@ public class Event {
     }
 
     // existing event
-    public Event(int id, String name, String time, int room, int numberOfParticipants, String startDate,
+    public Event(int id, String name, String time, int room, int numberOfParticipants, LocalDateTime startDate,
             ArrayList<String> attendant, Host host) {
         this.id = id;
         this.name = name;
@@ -32,7 +34,7 @@ public class Event {
     }
 
     // adding event
-    public Event(int id, String name, String time, int room, int numberOfParticipants, String startDate, Host host) {
+    public Event(int id, String name, String time, int room, int numberOfParticipants, LocalDateTime startDate, Host host) {
         this.id = id;
         this.name = name;
         this.time = time;
@@ -90,12 +92,12 @@ public class Event {
         this.numberOfParticipants = numberOfParticipants;
     }
 
-    public String getStartDate() {
+    public LocalDateTime getStartDate() {
         return this.startDate;
     }
 
-    public void setStartDate(String startDate) {
-        this.startDate = startDate;
+    public void setStartDate(int year, int month, int dayOfMonth, int hour, int minute) {
+        startDate = LocalDateTime.of(year, month, dayOfMonth, hour, minute);
     }
 
     public void addAttendant(String name) {
