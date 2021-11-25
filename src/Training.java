@@ -1,3 +1,5 @@
+import java.time.LocalDateTime;
+
 public class Training extends Event {
     private String skill;
     private int openSeats;
@@ -7,7 +9,7 @@ public class Training extends Event {
         super();
     }
 
-    public Training(int id, String name, String time, int room, int numberOfParticipants, String startDate, Host host, String skill, int openSeats, int total) {
+    public Training(int id, String name, String time, int room, int numberOfParticipants, LocalDateTime startDate, Host host, String skill, int openSeats, int total) {
         super(id, name, time, room, numberOfParticipants, startDate, host);
         this.skill = skill;
         this.openSeats = openSeats;
