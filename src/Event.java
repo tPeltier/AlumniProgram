@@ -1,7 +1,4 @@
 import java.util.ArrayList;
-
-import javax.swing.text.html.HTMLDocument.RunElement;
-
 import java.time.LocalDateTime;
 
 public class Event {
