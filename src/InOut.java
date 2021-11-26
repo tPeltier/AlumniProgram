@@ -15,7 +15,7 @@ public class InOut {
     private Scanner eventFileIn;
     private Scanner donationsFileIn;
     private Scanner passwordFileIn;
-    private Scanner traingingFileIn;
+    private Scanner trainingFileIn;
     private File donationsFile;
     private File alumniFile;
     private File eventFile;
@@ -28,7 +28,7 @@ public class InOut {
     private PrintWriter trainingSaved;
     private TreeMap<Integer, Alumni> alumniMap;
     private TreeMap<Integer, Event> eventMap;
-    // TODO Scanner, File, PrintWriter, Fill map at runtime
+    // TODO  PrintWriter, Fill map at runtime
     private TreeMap<Integer, Training> trainingMap;
     private HashMap<Integer, String> passwords;
     private ArrayList<Donation> donationList;
@@ -47,7 +47,8 @@ public class InOut {
         donationsFileIn = new Scanner(donationsFile);
         passwordsFile = new File("passwords.txt");
         passwordFileIn = new Scanner(passwordsFile);
-        trainingFile -
+        trainingFile = new File("training.txt");
+        trainingFileIn = new Scanner(trainingFile);
         in = new Scanner(System.in);
         existingPasswords();
         existingAlumni();
@@ -65,6 +66,7 @@ public class InOut {
         eventSaved = new PrintWriter("temp2.txt");
         donationsSaved = new PrintWriter("temp3.txt");
         passwordsSaved = new PrintWriter("temp4.txt");
+        trainingSaved = new PrintWriter("temp5.txt");
 
         for (Alumni alumni : alumniMap.values()) {
             alumniSaved.println(alumni.save());
@@ -85,11 +87,14 @@ public class InOut {
             passwordsSaved.println(pw);
         }
 
+        // TODO save training to file
+
         in.close();
         alumniFileIn.close();
         eventFileIn.close();
         alumniSaved.close();
         eventSaved.close();
+        trainingSaved.close();
         donationsSaved.close();
         passwordsSaved.close();
 
@@ -129,7 +134,7 @@ public class InOut {
 
         while (donationsFileIn.hasNextLine()) {
             String line = donationsFileIn.nextLine();
-            String[] s = line.split(",");
+            String[] s = line.split("|");
             int alumniID = Integer.parseInt(s[0]);
             int eventID = Integer.parseInt(s[1]);
             double amount = Double.parseDouble(s[2]);
@@ -144,18 +149,18 @@ public class InOut {
      */
     public void existingEvents() {
         eventMap = new TreeMap<>();
-        Event e = new Event();
+        // Event e;
         while (eventFileIn.hasNextLine()) {
             // event info
             String line = eventFileIn.nextLine();
-            String[] s = line.split(",");
+            String[] s = line.split("|");
             int id = Integer.parseInt(s[0]);
             String name = s[1];
             int room = Integer.parseInt(s[2]);
             int numberOfParticipants = Integer.parseInt(s[3]);
             // dateTime info
             String dateTimeString = eventFileIn.nextLine();
-            String[] dt = dateTimeString.split(",");
+            String[] dt = dateTimeString.split("|");
             int year = Integer.parseInt(dt[0]);
             int month = Integer.parseInt(dt[1]);
             int dayOfMonth = Integer.parseInt(dt[2]);
@@ -164,7 +169,7 @@ public class InOut {
             LocalDateTime dateTime = LocalDateTime.of(year, month, dayOfMonth, hour, minute);
             // host info
             String h = eventFileIn.nextLine();
-            String[] hArr = h.split(",");
+            String[] hArr = h.split("|");
             int hostId = Integer.parseInt(hArr[0]);
             String hostName = hArr[1];
             String hostAdd = hArr[2];
@@ -178,17 +183,27 @@ public class InOut {
             Host host = new Host(hostId, hostName, hostAdd, hostMaj, hostGY, hostJob, hostOrg, topic, phone, email);
             // attending alumni info
             String list = eventFileIn.nextLine();
-            String[] listArr = list.split(",");
+            String[] listArr = list.split("|");
             ArrayList<String> att = new ArrayList<>();
             for (int i = 0; i < listArr.length; i++) {
                 att.add(listArr[i]);
             }
 
-            e = new Event(id, name, room, numberOfParticipants, dateTime, att, host);
+            Event e = new Event(id, name, room, numberOfParticipants, dateTime, att, host);
             eventMap.put(id, e);
         }
     }
-
+    
+    public void existingTrainingEvents(){
+        trainingMap = new TreeMap<>();
+        Training t = new Training();
+        
+        while (trainingFileIn.hasNextLine()) {
+            String line = trainingFileIn.nextLine();
+            String[] s = line.split("|");
+            int id = Integer.parseInt(s[0]);
+        }
+    }
     /**
      * Create and Fill a TreeMap of Alumni pulled from a Text File
      */
@@ -197,7 +212,7 @@ public class InOut {
         Alumni a = new Alumni();
         while (alumniFileIn.hasNextLine()) {
             String line = alumniFileIn.nextLine();
-            String[] s = line.split(",");
+            String[] s = line.split("|");
             int id = Integer.parseInt(s[0]);
             String name = s[1];
             String address = s[2];
