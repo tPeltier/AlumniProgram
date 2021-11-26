@@ -1,4 +1,6 @@
 import java.io.FileNotFoundException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class UI {
     private int id;
@@ -19,8 +21,11 @@ public class UI {
      */
     public void userInterface() throws FileNotFoundException {
         System.out.println("Hello and welcome to the Alumni program");
-        login();
-        loggedIn();
+        boolean isRunning = true;
+        while (isRunning) {
+            login();
+            loggedIn();
+        }
 
     }
 
@@ -75,7 +80,7 @@ public class UI {
             System.out.println("Welcome " + io.getAlumniName(id) + " what would you like to do?");
             System.out.println(
                     "Please enter a number for what you want to do \n1. for Alumni settings(Display, edit, and delete) \n"
-                            + "2. for event settings(join, create) \n3. to exit the program");
+                            + "2. for event settings(join, create) \n3. logout");
             int choice = io.intInput();
             switch (choice) {
             case 1:
@@ -86,13 +91,13 @@ public class UI {
                 break;
             case 3:
                 System.out.println("Thanks for using the premium Alumni service \uD83E\uDD70");
-                io.closeEverythingAndSave();
-                System.exit(0);
+                // io.closeEverythingAndSave();
+                // System.exit(0);
+                run = false;
                 break;
             }
         }
     }
-
 
     public void alumniInterface() {
         System.out.println("Alumni Interface\n" + "please enter a choice");
@@ -123,8 +128,8 @@ public class UI {
                 // go back to main menu
                 break;
             }
-
         }
+
     }
 
     public void eventInterface() {
@@ -133,7 +138,7 @@ public class UI {
         while (run) {
             System.out.println(" ----------------------------------------------------- ");
             System.out.println("1. See a list of events \n2. Sign up to attend an Event \n3. Make a donation \n"
-                    + "4. See my donations \n5. Sign up to speak\n6. Delete Event \n7. Edit event \n8. Exit");
+                    + "4. See my donations \n5. Sign up to speak\n6. Create Training event \n7. Delete Event \n8. Edit event \n9. Exit");
             int choice = io.intInput();
             switch (choice) {
             case 1:
@@ -160,6 +165,9 @@ public class UI {
                 createEvent();
                 break;
             case 6:
+                // create training event
+                break;
+            case 7:
                 System.out.println("Are you sure you want to delete this event y/n");
                 String confirmation = io.stringInput().toLowerCase();
                 if (confirmation.charAt(0) == 'y') {
@@ -167,11 +175,11 @@ public class UI {
                     io.deleteEvent(io.intInput());
                 }
                 break;
-            case 7:
+            case 8:
                 // edits events
                 editEvents();
                 break;
-            case 8:
+            case 9:
                 // go back to main menu
                 run = false;
                 break;
@@ -260,7 +268,7 @@ public class UI {
         }
         while (run) {
             System.out.println(
-                    "Enter Event ID: \n1. event name \n2. event time \n3. event room \n4. Number of participants \n5. event date \n6. exit");
+                    "What would you like to change?: \n1. event name \n2. event time \n3. event room \n4. Number of participants \n5. event date \n6. exit");
             int choice = io.intInput();
 
             switch (choice) {
@@ -273,7 +281,11 @@ public class UI {
             case 2:
                 // edit time
                 System.out.println("Enter time of event");
-                io.setTime(eventID, io.stringInput());
+                System.out.println("Enter the hour in 1-24");
+                int hour = io.intInput();
+                System.out.println("Enter the Minute");
+                int minute = io.intInput();
+                io.setTime(eventID, io.getEventYear(id), io.getEventMonth(id), io.getEventDay(id), hour, minute); 
                 break;
 
             case 3:
@@ -291,7 +303,13 @@ public class UI {
             case 5:
                 // edit date
                 System.out.println("Enter date of event:");
-                io.setDate(eventID, io.stringInput());
+                System.out.println("Enter the year ");
+                int year = io.intInput();
+                System.out.println("Enter the month");
+                int month = io.intInput();
+                System.out.println("Enter the day");
+                int day = io.intInput();
+                io.setDate(eventID, year, month, day, io.getEventHour(id), io.getEventMin(id));
                 break;
 
             case 7:
@@ -325,14 +343,25 @@ public class UI {
     public void createEvent() {
         System.out.println("Enter the name of Event");
         String name = io.stringInput();
-        System.out.println("Enter the time of Event");
-        String time = io.stringInput();
+
+        // change to localdatetime
+        System.out.println("Enter date of event:");
+        System.out.println("Enter the year ");
+        int year = io.intInput();
+        System.out.println("Enter the month");
+        int month = io.intInput();
+        System.out.println("Enter the day");
+        int day = io.intInput();
+        System.out.println("Enter the hour");
+        int hour = io.intInput();
+        System.out.println("Enter the minute");
+        int minute = io.intInput();
+        LocalDateTime dateTime = LocalDateTime.of(year, month, day, hour, minute);
+
         System.out.println("Enter the room of Event");
         int room = io.intInput();
         System.out.println("Enter number of participants");
         int numberOfParticipants = io.intInput();
-        System.out.println("Enter the date of Event");
-        String eventDate = io.stringInput();
         System.out.println("Enter the topic of the Event:");
         String topic = io.stringInput();
         System.out.println("Enter a phone number where you can be reached: ");
@@ -343,7 +372,7 @@ public class UI {
         // alumni into a host is dumb)
         Host host = new Host(id, io.getAlumniName(id), io.getAlumniAddress(id), io.getAlumniMajor(id),
                 io.getAlumniGradYear(id), io.getAlumniJob(id), io.getAlumniOrg(id), topic, phone, email);
-        io.createEvent(name, time, room, numberOfParticipants, eventDate, host);
+        io.createEvent(name, room, numberOfParticipants, dateTime, host);
     }
 
     // ----- donation stuff ------
