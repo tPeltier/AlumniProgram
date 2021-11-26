@@ -150,13 +150,7 @@ public class UI {
                 break;
             case 3:
                 // make donation
-                System.out.println("enter the id of the event you want to donate to");
-                int donation = io.intInput();
-                // id var
-                // Could not figure out how to do var!!
-                System.out.println("how much would you like to donate");
-                double ammountToDonate = io.intInput();
-                // donation call int id, int donation amount
+                addDonation();
                 break;
             case 4:
                 // see my donations
