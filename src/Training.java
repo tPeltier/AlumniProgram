@@ -3,17 +3,17 @@ import java.time.LocalDateTime;
 public class Training extends Event {
     private String skill;
     private int openSeats;
-    private int total;
+    private int totalSeats;
   
     public Training() {
         super();
     }
 
-    public Training(int id, String name, String time, int room, int numberOfParticipants, LocalDateTime startDate, Host host, String skill, int openSeats, int total) {
+    public Training(int id, String name, String time, int room, int numberOfParticipants, LocalDateTime startDate, Host host, String skill, int openSeats, int totalSeats) {
         super(id, name, room, numberOfParticipants, startDate, host);
         this.skill = skill;
         this.openSeats = openSeats;
-        this.total = total;
+        this.totalSeats = totalSeats;
     }
 
     /**
@@ -38,7 +38,7 @@ public class Training extends Event {
      * @return total of training
      */
     public int getTotal(){
-        return total;
+        return totalSeats;
     }
 
     /**
@@ -54,14 +54,14 @@ public class Training extends Event {
      * @param newTotal passing value for total of training
      */
     public void setTotal(int newTotal){
-        total = newTotal;
+        totalSeats = newTotal;
     }
 
     /**
      * set open seats for training
      */
     public void setOpenSeats(){
-       openSeats = total - super.getNumberOfParticipants();
+       openSeats = totalSeats - super.getNumberOfParticipants();
     }
     
 
