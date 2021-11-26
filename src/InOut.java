@@ -134,7 +134,7 @@ public class InOut {
 
         while (donationsFileIn.hasNextLine()) {
             String line = donationsFileIn.nextLine();
-            String[] s = line.split("|");
+            String[] s = line.split(",");
             int alumniID = Integer.parseInt(s[0]);
             int eventID = Integer.parseInt(s[1]);
             double amount = Double.parseDouble(s[2]);
@@ -149,18 +149,17 @@ public class InOut {
      */
     public void existingEvents() {
         eventMap = new TreeMap<>();
-        // Event e;
         while (eventFileIn.hasNextLine()) {
             // event info
             String line = eventFileIn.nextLine();
-            String[] s = line.split("|");
+            String[] s = line.split(",");
             int id = Integer.parseInt(s[0]);
             String name = s[1];
             int room = Integer.parseInt(s[2]);
             int numberOfParticipants = Integer.parseInt(s[3]);
             // dateTime info
             String dateTimeString = eventFileIn.nextLine();
-            String[] dt = dateTimeString.split("|");
+            String[] dt = dateTimeString.split(",");
             int year = Integer.parseInt(dt[0]);
             int month = Integer.parseInt(dt[1]);
             int dayOfMonth = Integer.parseInt(dt[2]);
@@ -169,7 +168,7 @@ public class InOut {
             LocalDateTime dateTime = LocalDateTime.of(year, month, dayOfMonth, hour, minute);
             // host info
             String h = eventFileIn.nextLine();
-            String[] hArr = h.split("|");
+            String[] hArr = h.split(",");
             int hostId = Integer.parseInt(hArr[0]);
             String hostName = hArr[1];
             String hostAdd = hArr[2];
@@ -183,7 +182,7 @@ public class InOut {
             Host host = new Host(hostId, hostName, hostAdd, hostMaj, hostGY, hostJob, hostOrg, topic, phone, email);
             // attending alumni info
             String list = eventFileIn.nextLine();
-            String[] listArr = list.split("|");
+            String[] listArr = list.split(",");
             ArrayList<String> att = new ArrayList<>();
             for (int i = 0; i < listArr.length; i++) {
                 att.add(listArr[i]);
@@ -196,12 +195,48 @@ public class InOut {
     
     public void existingTrainingEvents(){
         trainingMap = new TreeMap<>();
-        Training t = new Training();
+        Training t;
         
         while (trainingFileIn.hasNextLine()) {
             String line = trainingFileIn.nextLine();
-            String[] s = line.split("|");
+            String[] s = line.split(",");
             int id = Integer.parseInt(s[0]);
+            String name = s[1];
+            int room = Integer.parseInt(s[2]);
+            int numberOfParticipants = Integer.parseInt(s[3]);
+            // dateTime info
+            String dateTimeString = trainingFileIn.nextLine();
+            String[] dt = dateTimeString.split(",");
+            int year = Integer.parseInt(dt[0]);
+            int month = Integer.parseInt(dt[1]);
+            int dayOfMonth = Integer.parseInt(dt[2]);
+            int hour = Integer.parseInt(dt[3]);
+            int minute = Integer.parseInt(dt[4]);
+            LocalDateTime dateTime = LocalDateTime.of(year, month, dayOfMonth, hour, minute);
+            // host info
+            String h = trainingFileIn.nextLine();
+            String[] hArr = h.split(",");
+            int hostId = Integer.parseInt(hArr[0]);
+            String hostName = hArr[1];
+            String hostAdd = hArr[2];
+            String hostMaj = hArr[3];
+            String hostGY = hArr[4];
+            String hostJob = hArr[5];
+            String hostOrg = hArr[6];
+            String topic = hArr[7];
+            int phone = Integer.parseInt(hArr[8]);
+            String email = hArr[9];
+            Host host = new Host(hostId, hostName, hostAdd, hostMaj, hostGY, hostJob, hostOrg, topic, phone, email);
+            // attending alumni info
+            String list = trainingFileIn.nextLine();
+            String[] listArr = list.split(",");
+            ArrayList<String> att = new ArrayList<>();
+            for (int i = 0; i < listArr.length; i++) {
+                att.add(listArr[i]);
+            }
+
+            Event e = new Event(id, name, room, numberOfParticipants, dateTime, att, host);
+            eventMap.put(id, e);
         }
     }
     /**
@@ -212,7 +247,7 @@ public class InOut {
         Alumni a = new Alumni();
         while (alumniFileIn.hasNextLine()) {
             String line = alumniFileIn.nextLine();
-            String[] s = line.split("|");
+            String[] s = line.split(",");
             int id = Integer.parseInt(s[0]);
             String name = s[1];
             String address = s[2];
