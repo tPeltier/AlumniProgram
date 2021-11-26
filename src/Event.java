@@ -64,10 +64,6 @@ public class Event {
         this.name = name;
     }
 
-    public String getTime() {
-        return this.time;
-    }
-
     public void setTime(String time) {
         this.time = time;
     }
