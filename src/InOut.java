@@ -149,7 +149,6 @@ public class InOut {
             String time = s[2];
             int room = Integer.parseInt(s[3]);
             int numberOfParticipants = Integer.parseInt(s[4]);
-            String startDate = s[5];
             // dateTime info
             String dateTimeString = eventFileIn.nextLine();
             String[] dt = dateTimeString.split(",");
@@ -339,8 +338,8 @@ public class InOut {
      * @param id   event id
      * @param date event date
      */
-    public void setDate(int id, String date) {
-        eventMap.get(id).setStartDate(date);
+    public void setDate(int id, int year, int month, int day, int hour, int min) {
+        eventMap.get(id).setStartDate(year, month, day, hour, min);
     }
 
     public int getHostId(int id){
