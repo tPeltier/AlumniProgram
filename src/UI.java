@@ -263,7 +263,7 @@ public class UI {
         }
         while (run) {
             System.out.println(
-                    "Enter Event ID: \n1. event name \n2. event time \n3. event room \n4. Number of participants \n5. event date \n6. exit");
+                    "What would you like to change?: \n1. event name \n2. event time \n3. event room \n4. Number of participants \n5. event date \n6. exit");
             int choice = io.intInput();
 
             switch (choice) {
@@ -294,7 +294,17 @@ public class UI {
             case 5:
                 // edit date
                 System.out.println("Enter date of event:");
-                io.setDate(eventID, io.stringInput());
+                System.out.println("Enter the year ");
+                int year = io.intInput();
+                System.out.println("Enter the month");
+                int month = io.intInput();
+                System.out.println("Enter the day");
+                int day = io.intInput();
+                System.out.println("Enter the hour");
+                int hour = io.intInput();
+                System.out.println("Enter the minute");
+                int minute = io.intInput();
+                io.setDate(eventID, year, month, day, hour, minute);
                 break;
 
             case 7:
