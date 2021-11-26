@@ -64,8 +64,9 @@ public class Event {
         this.name = name;
     }
 
-    public void setTime(String time) {
-        this.time = time;
+    // testing
+    public void setTime(int year, int month, int day, int hour, int minute) {
+        this.startDate = LocalDateTime.of(year, month, day, hour, minute);
     }
 
     public int getRoom() {
@@ -98,13 +99,13 @@ public class Event {
 
     @Override
     public String toString() {
-        return "{" + " id='" + getId() + "'" + ", name='" + getName() + "'" + ", time='" + getTime() + "'" + ", room='"
+        return "{" + " id='" + getId() + "'" + ", name='" + getName() + "'" + ", time='" + startDate.getHour() + ":" + startDate.getMinute() + "'" + ", room='"
                 + getRoom() + "'" + ", numberOfParticipants='" + getNumberOfParticipants() + "'" + ", startDate='"
                 + getStartDate() + "'" + "}";
     }
 
     public String save() {
-        return getId() + "," + getName() + "," + getTime() + "," + getRoom() + "," + getNumberOfParticipants() + ","
+        return getId() + "," + getName() + "," +  "," + getRoom() + "," + getNumberOfParticipants() + ","
                 + getStartDate();
     }
 

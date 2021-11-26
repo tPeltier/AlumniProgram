@@ -3,6 +3,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.time.LocalDateTime;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -307,8 +308,8 @@ public class InOut {
      * @param id   event id
      * @param time event time
      */
-    public void setTime(int id, String time) {
-        eventMap.get(id).setTime(time);
+    public void setTime(int id, int year, int month, int day, int hour, int minute) {
+        eventMap.get(id).setTime(year, month, day, hour, minute);
     }
 
     /**
