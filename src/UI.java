@@ -150,10 +150,7 @@ public class UI {
                 break;
             case 3:
                 // make donation
-                System.out.println("enter the id of the event you want to donate to");
-                // id var?
-                System.out.println("how much would you like to donate");
-                // donation call int id, int donation amount
+                addDonation();
                 break;
             case 4:
                 // see my donations
