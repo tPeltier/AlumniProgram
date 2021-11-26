@@ -4,7 +4,6 @@ import java.time.LocalDateTime;
 public class Event {
     private int id;
     private String name;
-    private String time;
     private int room;
     private int numberOfParticipants;
     // TODO change date format
@@ -20,11 +19,10 @@ public class Event {
     }
 
     // existing event
-    public Event(int id, String name, String time, int room, int numberOfParticipants, LocalDateTime startDate,
+    public Event(int id, String name, int room, int numberOfParticipants, LocalDateTime startDate,
             ArrayList<String> attendant, Host host) {
         this.id = id;
         this.name = name;
-        this.time = time;
         this.room = room;
         this.numberOfParticipants = numberOfParticipants;
         this.startDate = startDate;
@@ -33,10 +31,9 @@ public class Event {
     }
 
     // adding event
-    public Event(int id, String name, String time, int room, int numberOfParticipants, LocalDateTime startDate, Host host) {
+    public Event(int id, String name, int room, int numberOfParticipants, LocalDateTime startDate, Host host) {
         this.id = id;
         this.name = name;
-        this.time = time;
         this.room = room;
         this.numberOfParticipants = numberOfParticipants;
         this.startDate = startDate;

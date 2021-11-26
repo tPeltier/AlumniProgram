@@ -146,9 +146,8 @@ public class InOut {
             String[] s = line.split(",");
             int id = Integer.parseInt(s[0]);
             String name = s[1];
-            String time = s[2];
-            int room = Integer.parseInt(s[3]);
-            int numberOfParticipants = Integer.parseInt(s[4]);
+            int room = Integer.parseInt(s[2]);
+            int numberOfParticipants = Integer.parseInt(s[3]);
             // dateTime info
             String dateTimeString = eventFileIn.nextLine();
             String[] dt = dateTimeString.split(",");
@@ -180,7 +179,7 @@ public class InOut {
                 att.add(listArr[i]);
             }
 
-            e = new Event(id, name, time, room, numberOfParticipants, dateTime, att, host);
+            e = new Event(id, name, room, numberOfParticipants, dateTime, att, host);
             eventMap.put(id, e);
         }
     }
@@ -355,13 +354,13 @@ public class InOut {
         eventMap.remove(id);
     }
 
-    public void createEvent(String name, String time, int room, int numberOfParticipants, String startDate, Host host) {
+    public void createEvent(String name, int room, int numberOfParticipants, LocalDateTime startDate, Host host) {
         int id = eventMap.lastKey();
         id++;
-        Event e = new Event(id, name, time, room, numberOfParticipants, startDate, host);
+        Event e = new Event(id, name, room, numberOfParticipants, startDate, host);
         eventMap.put(id, e);
     }
-
+    
     // ------- donation list methods ------
 
     /**

@@ -1,4 +1,6 @@
 import java.io.FileNotFoundException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class UI {
     private int id;
@@ -93,7 +95,6 @@ public class UI {
         }
     }
 
-
     public void alumniInterface() {
         System.out.println("Alumni Interface\n" + "please enter a choice");
         boolean run = true;
@@ -160,7 +161,7 @@ public class UI {
                 createEvent();
                 break;
             case 6:
-                //create training event
+                // create training event
                 break;
             case 7:
                 System.out.println("Are you sure you want to delete this event y/n");
@@ -338,14 +339,25 @@ public class UI {
     public void createEvent() {
         System.out.println("Enter the name of Event");
         String name = io.stringInput();
-        System.out.println("Enter the time of Event");
-        String time = io.stringInput();
+
+        // change to localdatetime
+        System.out.println("Enter date of event:");
+        System.out.println("Enter the year ");
+        int year = io.intInput();
+        System.out.println("Enter the month");
+        int month = io.intInput();
+        System.out.println("Enter the day");
+        int day = io.intInput();
+        System.out.println("Enter the hour");
+        int hour = io.intInput();
+        System.out.println("Enter the minute");
+        int minute = io.intInput();
+        LocalDateTime dateTime = LocalDateTime.of(year, month, day, hour, minute);
+
         System.out.println("Enter the room of Event");
         int room = io.intInput();
         System.out.println("Enter number of participants");
         int numberOfParticipants = io.intInput();
-        System.out.println("Enter the date of Event");
-        String eventDate = io.stringInput();
         System.out.println("Enter the topic of the Event:");
         String topic = io.stringInput();
         System.out.println("Enter a phone number where you can be reached: ");
@@ -356,7 +368,7 @@ public class UI {
         // alumni into a host is dumb)
         Host host = new Host(id, io.getAlumniName(id), io.getAlumniAddress(id), io.getAlumniMajor(id),
                 io.getAlumniGradYear(id), io.getAlumniJob(id), io.getAlumniOrg(id), topic, phone, email);
-        io.createEvent(name, time, room, numberOfParticipants, eventDate, host);
+        io.createEvent(name, room, numberOfParticipants, dateTime, host);
     }
 
     // ----- donation stuff ------
