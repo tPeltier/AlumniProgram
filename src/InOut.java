@@ -15,16 +15,21 @@ public class InOut {
     private Scanner eventFileIn;
     private Scanner donationsFileIn;
     private Scanner passwordFileIn;
+    private Scanner traingingFileIn;
     private File donationsFile;
     private File alumniFile;
     private File eventFile;
     private File passwordsFile;
+    private File trainingFile;
     private PrintWriter alumniSaved;
     private PrintWriter eventSaved;
     private PrintWriter donationsSaved;
     private PrintWriter passwordsSaved;
+    private PrintWriter trainingSaved;
     private TreeMap<Integer, Alumni> alumniMap;
     private TreeMap<Integer, Event> eventMap;
+    // TODO Scanner, File, PrintWriter, Fill map at runtime
+    private TreeMap<Integer, Training> trainingMap;
     private HashMap<Integer, String> passwords;
     private ArrayList<Donation> donationList;
 
@@ -42,6 +47,7 @@ public class InOut {
         donationsFileIn = new Scanner(donationsFile);
         passwordsFile = new File("passwords.txt");
         passwordFileIn = new Scanner(passwordsFile);
+        trainingFile -
         in = new Scanner(System.in);
         existingPasswords();
         existingAlumni();
