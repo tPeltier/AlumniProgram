@@ -80,7 +80,7 @@ public class UI {
             System.out.println("Welcome " + io.getAlumniName(id) + " what would you like to do?");
             System.out.println(
                     "Please enter a number for what you want to do \n1. for Alumni settings(Display, edit, and delete) \n"
-                            + "2. for event settings(join, create) \n3. to exit the program");
+                            + "2. for event settings(join, create) \n3. logout");
             int choice = io.intInput();
             switch (choice) {
             case 1:
