@@ -2,6 +2,8 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import java.time.LocalDateTime;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -78,7 +80,6 @@ public class InOut {
             passwordsSaved.println(pw);
         }
 
-
         in.close();
         alumniFileIn.close();
         eventFileIn.close();
@@ -140,15 +141,22 @@ public class InOut {
         eventMap = new TreeMap<>();
         Event e = new Event();
         while (eventFileIn.hasNextLine()) {
-            // event info 
+            // event info
             String line = eventFileIn.nextLine();
             String[] s = line.split(",");
             int id = Integer.parseInt(s[0]);
             String name = s[1];
-            String time = s[2];
-            int room = Integer.parseInt(s[3]);
-            int numberOfParticipants = Integer.parseInt(s[4]);
-            String startDate = s[5];
+            int room = Integer.parseInt(s[2]);
+            int numberOfParticipants = Integer.parseInt(s[3]);
+            // dateTime info
+            String dateTimeString = eventFileIn.nextLine();
+            String[] dt = dateTimeString.split(",");
+            int year = Integer.parseInt(dt[0]);
+            int month = Integer.parseInt(dt[1]);
+            int dayOfMonth = Integer.parseInt(dt[2]);
+            int hour = Integer.parseInt(dt[3]);
+            int minute = Integer.parseInt(dt[4]);
+            LocalDateTime dateTime = LocalDateTime.of(year, month, dayOfMonth, hour, minute);
             // host info
             String h = eventFileIn.nextLine();
             String[] hArr = h.split(",");
@@ -162,7 +170,7 @@ public class InOut {
             String topic = hArr[7];
             int phone = Integer.parseInt(hArr[8]);
             String email = hArr[9];
-            Host host = new Host(hostId, hostName, hostAdd, hostMaj, hostGY,hostJob, hostOrg, topic, phone, email);
+            Host host = new Host(hostId, hostName, hostAdd, hostMaj, hostGY, hostJob, hostOrg, topic, phone, email);
             // attending alumni info
             String list = eventFileIn.nextLine();
             String[] listArr = list.split(",");
@@ -171,7 +179,7 @@ public class InOut {
                 att.add(listArr[i]);
             }
 
-            e = new Event(id, name, time, room, numberOfParticipants, startDate, att, host);
+            e = new Event(id, name, room, numberOfParticipants, dateTime, att, host);
             eventMap.put(id, e);
         }
     }
@@ -299,8 +307,9 @@ public class InOut {
      * @param id   event id
      * @param time event time
      */
-    public void setTime(int id, String time) {
-        eventMap.get(id).setTime(time);
+    // TODO get year, month, day from the event obj. only the time is changing
+    public void setTime(int id, int year, int month, int day, int hour, int minute) {
+        eventMap.get(id).setTime(year, month, day, hour, minute);
     }
 
     /**
@@ -329,11 +338,31 @@ public class InOut {
      * @param id   event id
      * @param date event date
      */
-    public void setDate(int id, String date) {
-        eventMap.get(id).setStartDate(date);
+    public void setDate(int id, int year, int month, int day, int hour, int min) {
+        eventMap.get(id).setStartDate(year, month, day, hour, min);
     }
 
-    public int getHostId(int id){
+    public int getEventYear(int id) {
+        return eventMap.get(id).getYear();
+    }
+
+    public int getEventMonth(int id) {
+        return eventMap.get(id).getMonth();
+    }
+
+    public int getEventDay(int id) {
+        return eventMap.get(id).getDay();
+    }
+
+    public int getEventHour(int id) {
+        return eventMap.get(id).getHour();
+    }
+
+    public int getEventMin(int id) {
+        return eventMap.get(id).getMinute();
+    }
+
+    public int getHostId(int id) {
         return eventMap.get(id).getHostId();
     }
 
@@ -346,10 +375,10 @@ public class InOut {
         eventMap.remove(id);
     }
 
-    public void createEvent(String name, String time, int room, int numberOfParticipants, String startDate, Host host) {
+    public void createEvent(String name, int room, int numberOfParticipants, LocalDateTime startDate, Host host) {
         int id = eventMap.lastKey();
         id++;
-        Event e = new Event(id, name, time, room, numberOfParticipants, startDate, host);
+        Event e = new Event(id, name, room, numberOfParticipants, startDate, host);
         eventMap.put(id, e);
     }
 

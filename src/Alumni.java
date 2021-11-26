@@ -65,42 +65,82 @@ public class Alumni {
         this.name = name;
     }
 
+    /**
+     * get address of alumni
+     * @return the address of alumni
+     */
     public String getAddress() {
         return this.address;
     }
 
+    /**
+     * sets address of alumni
+     * @param address passing address of alumni
+     */
     public void setAddress(String address) {
         this.address = address;
     }
 
+    /**
+     * gets major of alumni
+     * @return the major if alumni
+     */
     public String getMajor() {
         return this.major;
     }
 
+    /**
+     * sets major of alumni
+     * @param major passing major of alumni
+     */
     public void setMajor(String major) {
         this.major = major;
     }
 
+    /**
+     * gets year of graduation of alumni
+     * @return year of graduation of alumni
+     */
     public String getGradYear() {
         return this.gradYear;
     }
 
+    /**
+     * sets graduation year of graduation alumni
+     * @param gradYear passing year of graduation for alumni
+     */
     public void setGradYear(String gradYear) {
         this.gradYear = gradYear;
     }
 
+    /**
+     * get job of alumni
+     * @return job of alumni
+     */
     public String getJob() {
         return this.job;
     }
 
+    /**
+     * sets job of alumni
+     * @param job passing value of alumni's job
+     */
     public void setJob(String job) {
         this.job = job;
     }
 
+    /**
+     * gets organization of alumni
+     * @return organization of alumni
+     */
     public String getOrganization() {
         return this.organization;
     }
 
+    /**
+     * sets organization of alumni
+     * @param organization passing the value of the alumni's organization
+     */
     public void setOrganization(String organization) {
         this.organization = organization;
     }
