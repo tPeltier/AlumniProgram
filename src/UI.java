@@ -13,7 +13,6 @@ public class UI {
         io = new InOut();
     }
 
-    // TODO way to logout
     /**
      * 
      * @throws FileNotFoundException
@@ -340,7 +339,6 @@ public class UI {
         System.out.println("Enter the name of Event");
         String name = io.stringInput();
 
-        // change to localdatetime
         System.out.println("Enter date of event:");
         System.out.println("Enter the year ");
         int year = io.intInput();

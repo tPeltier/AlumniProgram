@@ -9,7 +9,6 @@ public class Event {
     private String name;
     private int room;
     private int numberOfParticipants;
-    // TODO change date format
     private LocalDateTime startDate;
     // TODO implement speaker
     private Host host;
