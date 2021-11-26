@@ -17,7 +17,7 @@ public class Training extends Event {
     }
 
     /**
-     * newskill from training
+     * new skill from training
      * @return new skill from training
      */
     public String getSkill(){

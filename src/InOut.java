@@ -306,7 +306,6 @@ public class InOut {
      * @param id   event id
      * @param time event time
      */
-    // TODO get year, month, day from the event obj. only the time is changing
     public void setTime(int id, int year, int month, int day, int hour, int minute) {
         eventMap.get(id).setTime(year, month, day, hour, minute);
     }

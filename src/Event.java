@@ -7,7 +7,6 @@ public class Event {
     private int room;
     private int numberOfParticipants;
     private LocalDateTime startDate;
-    // TODO implement speaker
     private Host host;
     private Alumni guestSpeaker;
     private ArrayList<String> attendants;
@@ -127,7 +126,7 @@ public class Event {
 
     /**
      * set room of event
-     * @param room pasing value of the event room
+     * @param room passing value of the event room
      */
     public void setRoom(int room) {
         this.room = room;
