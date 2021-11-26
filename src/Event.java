@@ -1,4 +1,7 @@
 import java.util.ArrayList;
+
+import javax.swing.text.html.HTMLDocument.RunElement;
+
 import java.time.LocalDateTime;
 
 public class Event {
@@ -41,13 +44,14 @@ public class Event {
     }
 
     // getters and setters
-    public Alumni getAlumni(){
+    public Alumni getAlumni() {
         return guestSpeaker;
     }
-    
-    public void setAlumni(Alumni alumni){
+
+    public void setAlumni(Alumni alumni) {
         guestSpeaker = alumni;
     }
+
     public int getId() {
         return this.id;
     }
@@ -62,6 +66,26 @@ public class Event {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getYear() {
+        return startDate.getYear();
+    }
+
+    public int getMonth() {
+        return startDate.getMonthValue();
+    }
+
+    public int getDay() {
+        return startDate.getDayOfMonth();
+    }
+
+    public int getHour() {
+        return startDate.getHour();
+    }
+
+    public int getMinute() {
+        return startDate.getMinute();
     }
 
     // testing
@@ -99,13 +123,13 @@ public class Event {
 
     @Override
     public String toString() {
-        return "{" + " id='" + getId() + "'" + ", name='" + getName() + "'" + ", time='" + startDate.getHour() + ":" + startDate.getMinute() + "'" + ", room='"
-                + getRoom() + "'" + ", numberOfParticipants='" + getNumberOfParticipants() + "'" + ", startDate='"
-                + getStartDate() + "'" + "}";
+        return "{" + " id='" + getId() + "'" + ", name='" + getName() + "'" + ", time='" + startDate.getHour() + ":"
+                + startDate.getMinute() + "'" + ", room='" + getRoom() + "'" + ", numberOfParticipants='"
+                + getNumberOfParticipants() + "'" + ", startDate='" + getStartDate() + "'" + "}";
     }
 
     public String save() {
-        return getId() + "," + getName() + "," +  "," + getRoom() + "," + getNumberOfParticipants() + ","
+        return getId() + "," + getName() + "," + "," + getRoom() + "," + getNumberOfParticipants() + ","
                 + getStartDate();
     }
 

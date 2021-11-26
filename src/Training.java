@@ -10,7 +10,7 @@ public class Training extends Event {
     }
 
     public Training(int id, String name, String time, int room, int numberOfParticipants, LocalDateTime startDate, Host host, String skill, int openSeats, int total) {
-        super(id, name, time, room, numberOfParticipants, startDate, host);
+        super(id, name, room, numberOfParticipants, startDate, host);
         this.skill = skill;
         this.openSeats = openSeats;
         this.total = total;

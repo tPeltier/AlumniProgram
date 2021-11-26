@@ -21,8 +21,11 @@ public class UI {
      */
     public void userInterface() throws FileNotFoundException {
         System.out.println("Hello and welcome to the Alumni program");
-        login();
-        loggedIn();
+        boolean isRunning = true;
+        while (isRunning) {
+            login();
+            loggedIn();
+        }
 
     }
 
@@ -88,8 +91,9 @@ public class UI {
                 break;
             case 3:
                 System.out.println("Thanks for using the premium Alumni service \uD83E\uDD70");
-                io.closeEverythingAndSave();
-                System.exit(0);
+                // io.closeEverythingAndSave();
+                // System.exit(0);
+                run = false;
                 break;
             }
         }
@@ -124,8 +128,8 @@ public class UI {
                 // go back to main menu
                 break;
             }
-
         }
+
     }
 
     public void eventInterface() {
@@ -277,7 +281,11 @@ public class UI {
             case 2:
                 // edit time
                 System.out.println("Enter time of event");
-                io.setTime(eventID, io.stringInput());
+                System.out.println("Enter the hour in 1-24");
+                int hour = io.intInput();
+                System.out.println("Enter the Minute");
+                int minute = io.intInput();
+                io.setTime(eventID, io.getEventYear(id), io.getEventMonth(id), io.getEventDay(id), hour, minute); 
                 break;
 
             case 3:
@@ -301,11 +309,7 @@ public class UI {
                 int month = io.intInput();
                 System.out.println("Enter the day");
                 int day = io.intInput();
-                System.out.println("Enter the hour");
-                int hour = io.intInput();
-                System.out.println("Enter the minute");
-                int minute = io.intInput();
-                io.setDate(eventID, year, month, day, hour, minute);
+                io.setDate(eventID, year, month, day, io.getEventHour(id), io.getEventMin(id));
                 break;
 
             case 7:

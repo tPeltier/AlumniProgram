@@ -80,7 +80,6 @@ public class InOut {
             passwordsSaved.println(pw);
         }
 
-
         in.close();
         alumniFileIn.close();
         eventFileIn.close();
@@ -142,7 +141,7 @@ public class InOut {
         eventMap = new TreeMap<>();
         Event e = new Event();
         while (eventFileIn.hasNextLine()) {
-            // event info 
+            // event info
             String line = eventFileIn.nextLine();
             String[] s = line.split(",");
             int id = Integer.parseInt(s[0]);
@@ -171,7 +170,7 @@ public class InOut {
             String topic = hArr[7];
             int phone = Integer.parseInt(hArr[8]);
             String email = hArr[9];
-            Host host = new Host(hostId, hostName, hostAdd, hostMaj, hostGY,hostJob, hostOrg, topic, phone, email);
+            Host host = new Host(hostId, hostName, hostAdd, hostMaj, hostGY, hostJob, hostOrg, topic, phone, email);
             // attending alumni info
             String list = eventFileIn.nextLine();
             String[] listArr = list.split(",");
@@ -343,7 +342,27 @@ public class InOut {
         eventMap.get(id).setStartDate(year, month, day, hour, min);
     }
 
-    public int getHostId(int id){
+    public int getEventYear(int id) {
+        return eventMap.get(id).getYear();
+    }
+
+    public int getEventMonth(int id) {
+        return eventMap.get(id).getMonth();
+    }
+
+    public int getEventDay(int id) {
+        return eventMap.get(id).getDay();
+    }
+
+    public int getEventHour(int id) {
+        return eventMap.get(id).getHour();
+    }
+
+    public int getEventMin(int id) {
+        return eventMap.get(id).getMinute();
+    }
+
+    public int getHostId(int id) {
         return eventMap.get(id).getHostId();
     }
 
@@ -362,7 +381,7 @@ public class InOut {
         Event e = new Event(id, name, room, numberOfParticipants, startDate, host);
         eventMap.put(id, e);
     }
-    
+
     // ------- donation list methods ------
 
     /**
