@@ -21,6 +21,7 @@ public class Event {
         // empty
     }
 
+
     // existing event
     public Event(int id, String name, int room, int numberOfParticipants, LocalDateTime startDate,
             ArrayList<String> attendant, Host host) {
@@ -43,30 +44,57 @@ public class Event {
         this.host = host;
     }
 
+
     // getters and setters
-    public Alumni getAlumni() {
+
+    /**
+     * get guest speaker
+     * @return guest speaker
+     */
+    public Alumni getAlumni(){
         return guestSpeaker;
     }
 
-    public void setAlumni(Alumni alumni) {
+    /**
+     * set guest speaker
+     * @param alumni passing value of guest speaker
+     */
+    public void setAlumni(Alumni alumni){
         guestSpeaker = alumni;
     }
 
+    /**
+     *get id of event
+     * @return id of event
+     */
     public int getId() {
         return this.id;
     }
 
+    /**
+     * gets id of host
+     * @return host id
+     */
     public int getHostId() {
         return host.getId();
     }
 
+    /**
+     * gets name of event
+     * @return event name
+     */
     public String getName() {
         return this.name;
     }
 
+    /**
+     * set name of event
+     * @param name passing value of event name
+     */
     public void setName(String name) {
         this.name = name;
     }
+
 
     public int getYear() {
         return startDate.getYear();
@@ -93,21 +121,38 @@ public class Event {
         this.startDate = LocalDateTime.of(year, month, day, hour, minute);
     }
 
+    /**
+     * get room of event
+     * @return room of event
+     */
     public int getRoom() {
         return this.room;
     }
 
+    /**
+     * set room of event
+     * @param room pasing value of the event room
+     */
     public void setRoom(int room) {
         this.room = room;
     }
 
+    /**
+     * gets number of participants for event
+     * @return number of participants for the event
+     */
     public int getNumberOfParticipants() {
         return this.numberOfParticipants;
     }
 
+    /**
+     * set number of participants for event
+     * @param numberOfParticipants passing values for number of participants for event
+     */
     public void setNumberOfParticipants(int numberOfParticipants) {
         this.numberOfParticipants = numberOfParticipants;
     }
+
 
     public LocalDateTime getStartDate() {
         return this.startDate;
@@ -115,6 +160,7 @@ public class Event {
 
     public void setStartDate(int year, int month, int dayOfMonth, int hour, int minute) {
         startDate = LocalDateTime.of(year, month, dayOfMonth, hour, minute);
+
     }
 
     public void addAttendant(String name) {
