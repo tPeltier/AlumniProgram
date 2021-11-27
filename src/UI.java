@@ -562,20 +562,22 @@ public class UI {
     }
 
     public void deleteEvent() {
+        System.out.println("Please enter the ID of the event that you want to delete");
+        int eventDeletionID = io.intInput();
         System.out.println("Are you sure you want to delete this event y/n");
         String confirmation = io.stringInput().toLowerCase();
         if (confirmation.charAt(0) == 'y') {
-            System.out.println("please enter the id of the event that you want to delete");
-            io.deleteEvent(io.intInput());
+            io.deleteEvent(eventDeletionID);
         }
     }
 
     public void deleteTrainingEvent() {
+        System.out.println("please enter the ID of the Training event that you want to delete");
+        int trainingDeletionID = io.intInput();
         System.out.println("Are you sure you want to delete this Training Event y/n");
         String confirmation = io.stringInput().toLowerCase();
         if (confirmation.charAt(0) == 'y') {
-            System.out.println("please enter the id of the Training event that you want to delete");
-            io.deleteTraining(io.intInput());
+            io.deleteTraining(trainingDeletionID);
         }
     }
 
