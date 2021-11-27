@@ -83,7 +83,7 @@ public class Training extends Event {
     // TODO MAKE HUMAN READABLE
     public String toString() {
         return "{" +
-            " ID ='" + super.getId() + "'" +
+            " ID ='" + super.getID() + "'" +
             ", Name ='" + super.getName() + "'" +
             ", Room ='" + super.getRoom() + "'" +
             ", Number of Participants ='" + super.getNumberOfParticipants() + "'" +

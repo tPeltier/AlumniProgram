@@ -129,7 +129,7 @@ public class InOut {
 
     public boolean checkId(int id) {
         for (Alumni alumni : alumniMap.values()) {
-            if (id == alumni.getId())
+            if (id == alumni.getID())
                 return true;
         }
         return false;

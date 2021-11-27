@@ -19,7 +19,7 @@ public class Host extends Alumni {
      * @return host id
      */
     public int getHostId() {
-        return super.getId();
+        return super.getID();
     }
 
     /**
@@ -71,6 +71,6 @@ public class Host extends Alumni {
     }
 
     public String save() {
-        return super.getId() + "," + super.getName() + "," + super.getAddress() + "," + super.getMajor()  + "," + super.getGradYear() + "," + super.getJob() + "," + super.getOrganization()  + "," + getTopic() + "," + getPhoneNumber() + "," + getEmailAddress();
+        return super.getID() + "," + super.getName() + "," + super.getAddress() + "," + super.getMajor()  + "," + super.getGradYear() + "," + super.getJob() + "," + super.getOrganization()  + "," + getTopic() + "," + getPhoneNumber() + "," + getEmailAddress();
     }
 }
