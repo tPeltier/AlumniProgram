@@ -47,7 +47,7 @@ public class Training extends Event {
      * get total of training
      * @return total of training
      */
-    public int getTotal(){
+    public int getTotalSeats(){
         return totalSeats;
     }
 
@@ -63,7 +63,7 @@ public class Training extends Event {
      * set total of training
      * @param newTotal passing value for total of training
      */
-    public void setTotal(int newTotal){
+    public void setTotalSeats(int newTotal){
         totalSeats = newTotal;
     }
 
@@ -74,6 +74,19 @@ public class Training extends Event {
        openSeats = totalSeats - super.getNumberOfParticipants();
     }
     
+    public String save() {
+        // TODO figure out save order
+       return  "";
+    }
+
+    @Override
+    public String toString() {
+        return "{" +
+            " skill='" + getSkill() + "'" +
+            ", openSeats='" + getOpenSeats() + "'" +
+            ", totalSeats='" + getTotalSeats() + "'" +
+            "}";
+    }
 
 
 }
