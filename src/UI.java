@@ -82,7 +82,7 @@ public class UI {
             int choice = io.intInput();
             switch (choice) {
                 case 1:
-                    alumniInterface();
+                    run = alumniInterface();
                     break;
                 case 2:
                     eventInterface();
@@ -97,14 +97,15 @@ public class UI {
         }
     }
 
-    public void alumniInterface() {
+    public boolean alumniInterface() {
         System.out.println("Alumni Interface\n" + "please enter a choice");
         boolean run = true;
+        int choice = 0;
         while (run) {
             System.out.println(" ----------------------------------------------------- ");
             System.out.println("1. See a list of current Alumni \n2. Edit your profile info \n"
                     + "3. Delete your account \n4. Go back to the main menu");
-            int choice = io.intInput();
+            choice = io.intInput();
             switch (choice) {
                 case 1:
                     // list of alumni
@@ -117,6 +118,7 @@ public class UI {
                 case 3:
                     // Delete Alumni
                     deleteAlumni();
+                    run = false;
                     break;
                 case 4:
                     run = false;
@@ -124,6 +126,8 @@ public class UI {
                     break;
             }
         }
+        if (choice == 3) return false;
+        else return true;
     }
 
     public void eventInterface() {
@@ -229,7 +233,6 @@ public class UI {
                     break;
                 case 8:
                     // exit
-                    System.out.println("NO CHANGES");
                     io.displayAlumni();
                     run = false;
                     break;
@@ -553,8 +556,8 @@ public class UI {
         System.out.println("Are you sure you want to delete this Alumni y/n");
         String confirmation = io.stringInput().toLowerCase();
         if (confirmation.charAt(0) == 'y') {
-            System.out.println("please enter the id of the Alumni that you want to delete");
-            io.deleteAlumni(io.intInput());
+            io.deleteAlumni(id);
+            System.out.println("THIS ACCOUNT HAS BEEN REMOVED");
         }
     }
 
