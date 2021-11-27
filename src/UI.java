@@ -131,27 +131,27 @@ public class UI {
         boolean run = true;
         while (run) {
             System.out.println(" ----------------------------------------------------- ");
-            System.out.println("1. See a list of events \n2. Sign up to attend an Event or training \n3. Make a donation \n"
-                    + "4. See my donations \n5. Edit event or training event \n6. Delete Event or Training\n7. Exit");
+            System.out.println(
+                    "1. See a list of events \n2. Sign up to attend an Event or training \n3. Make a donation \n"
+                            + "4. See my donations \n5. Create Event or Training \n6. Edit event or training event \n7. Delete Event or Training\n8. Exit");
             int choice = io.intInput();
             switch (choice) {
                 case 1:
                     // list of events
-                    //TODO submenu for choosing between training and events
+                    // TODO submenu for choosing between training and events
                     // io.displayEvents();
                     io.displayTraining();
                     break;
                 case 2:
                     // sign up for events
-
-                    //TODO join training event
+                    // TODO join training event
                     System.out.println("What Event would you like to attend?");
                     io.joinEvent(id, io.getAlumniName(io.intInput()));
                     System.out.println("");
                     break;
                 case 3:
                     // make donation
-                    //TODO maybe include Training
+                    // TODO maybe include Training
                     addDonation();
                     break;
                 case 4:
@@ -159,14 +159,18 @@ public class UI {
                     displayDonationsAlumni();
                     break;
                 case 5:
+                    // Creates events and Training events
+                    eventCreationSubMenu();
+                    break;
+                case 6:
                     // edit event or training
                     editEventSubMenu();
                     break;
-                case 6:
+                case 7:
                     // Delete events and training
                     deletionSubMenu();
                     break;
-                case 7:
+                case 8:
                     // go back to main menu
                     run = false;
                     break;
@@ -333,7 +337,7 @@ public class UI {
         boolean owner = false;
         int trainingEventID = 0;
         while (!owner) {
-            
+
             io.displayTraining();
             System.out.println("Enter the training event id:");
             trainingEventID = io.intInput();
@@ -366,7 +370,8 @@ public class UI {
                     int hour = io.intInput();
                     System.out.println("Enter the Minute");
                     int minute = io.intInput();
-                    io.setTrainingDate(trainingEventID, io.getEventYear(id), io.getEventMonth(id), io.getEventDay(id), hour,
+                    io.setTrainingDate(trainingEventID, io.getEventYear(id), io.getEventMonth(id), io.getEventDay(id),
+                            hour,
                             minute);
                     break;
 
@@ -496,7 +501,7 @@ public class UI {
         System.out.println("Enter the Skill being trained");
         String skill = io.stringInput();
         System.out.println("Enter a phone number where you can be reached: ");
-        int phone = io.intInput();
+        long phone = io.longInput();
         System.out.println("Enter an email where you can be reached: ");
         String email = io.stringInput();
         // TODO untuck this mess (there's got to be a better way, this copying of an
@@ -505,7 +510,24 @@ public class UI {
                 io.getAlumniGradYear(id), io.getAlumniJob(id), io.getAlumniOrg(id), topic, phone, email);
         io.createTrainingEvent(name, room, numberOfParticipants, dateTime, host, skill, totalSeats, totalSeats);
     }
-    
+
+    public void eventCreationSubMenu() {
+        System.out.println("Enter what you would to: \n1. Create Event \n2. Create Training event \n3. Go back to the menu");
+        int choice = io.intInput();
+        switch (choice) {
+            case 1:
+                // Create event
+                createEvent();
+                break;
+            case 2:
+                // Create Training Event
+                createTrainingEvent();
+                break;
+            case 3:
+                // Exit to main menu
+                break;
+        }
+    }
 
     // ----- donation stuff ------
     public void addDonation() {
@@ -555,7 +577,8 @@ public class UI {
     }
 
     public void deletionSubMenu() {
-        System.out.println("Enter what you want to do \n1. Delete Event \n2. Delete Training \n3. Go back to main menu");
+        System.out
+                .println("Enter what you want to do \n1. Delete Event \n2. Delete Training \n3. Go back to main menu");
         int choice = io.intInput();
         switch (choice) {
             case 1:

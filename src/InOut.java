@@ -548,6 +548,18 @@ public class InOut {
         return n;
     }
 
+    public long longInput() {
+        long n;
+        do {
+            while (!in.hasNextLong()) {
+                String s = in.next();
+                System.out.printf("\"%s\" is not a valid number", s);
+            }
+            n = in.nextLong();
+            in.nextLine();
+        } while (n < 0);
+        return n;
+    }
     /**
      * Get User Double Input
      * 

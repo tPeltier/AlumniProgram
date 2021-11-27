@@ -37,6 +37,7 @@ public class Event {
         this.numberOfParticipants = numberOfParticipants;
         this.startDate = startDate;
         this.host = host;
+        attendants = new ArrayList<>();
     }
 
 

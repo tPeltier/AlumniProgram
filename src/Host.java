@@ -1,10 +1,10 @@
 
 public class Host extends Alumni {
     String topic;
-    int phoneNumber;
+    long phoneNumber;
     String emailAddress;
 
-    public Host(int id, String name, String address, String major, String gradYear, String job,String organization, String topic, int phoneNumber, String emailAddress) {
+    public Host(int id, String name, String address, String major, String gradYear, String job,String organization, String topic, long phoneNumber, String emailAddress) {
         super(id, name, address, major, gradYear, job, organization);
         this.topic = topic;
         this.phoneNumber = phoneNumber;
@@ -34,7 +34,7 @@ public class Host extends Alumni {
      * get host phone number
      * @return host phone number
      */
-    public int getPhoneNumber() {
+    public long getPhoneNumber() {
         return phoneNumber;
     }
 
@@ -58,7 +58,7 @@ public class Host extends Alumni {
      * set phone number of host
      * @param phoneNumber passing value for phone number of host
      */
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(long phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
