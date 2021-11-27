@@ -80,13 +80,20 @@ public class Training extends Event {
     }
 
     @Override
+    // TODO MAKE HUMAN READABLE
     public String toString() {
         return "{" +
+            " ID ='" + super.getId() + "'" +
+            ", Name ='" + super.getName() + "'" +
+            ", Room ='" + super.getRoom() + "'" +
+            ", Number of Participants ='" + super.getNumberOfParticipants() + "'" +
+            ", Date ='" + super.getStartDate() + "'" +
             " skill='" + getSkill() + "'" +
             ", openSeats='" + getOpenSeats() + "'" +
             ", totalSeats='" + getTotalSeats() + "'" +
             "}";
     }
+    
 
 
 }

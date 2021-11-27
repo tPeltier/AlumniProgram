@@ -88,9 +88,9 @@ public class UI {
                     eventInterface();
                     break;
                 case 3:
+                    // TODO emoji broke D:
                     System.out.println("Thanks for using the premium Alumni service \uD83E\uDD70");
-                    // io.closeEverythingAndSave();
-                    // System.exit(0);
+                    System.out.println("----------------------------------------------------- ");
                     run = false;
                     break;
             }
@@ -124,7 +124,6 @@ public class UI {
                     break;
             }
         }
-
     }
 
     public void eventInterface() {
@@ -133,20 +132,26 @@ public class UI {
         while (run) {
             System.out.println(" ----------------------------------------------------- ");
             System.out.println("1. See a list of events \n2. Sign up to attend an Event or training \n3. Make a donation \n"
-                    + "4. See my donations \n5. Create event or training event \n6. Delete Event or Training \n7. Edit event \n8. Exit");
+                    + "4. See my donations \n5. Edit event or training event \n6. Delete Event or Training\n7. Exit");
             int choice = io.intInput();
             switch (choice) {
                 case 1:
                     // list of events
-                    io.displayEvents();
+                    //TODO submenu for choosing between training and events
+                    // io.displayEvents();
+                    io.displayTraining();
                     break;
                 case 2:
                     // sign up for events
+
                     //TODO join training event
-                    io.joinEvent(id, io.getAlumniName(id));
+                    System.out.println("What Event would you like to attend?");
+                    io.joinEvent(id, io.getAlumniName(io.intInput()));
+                    System.out.println("");
                     break;
                 case 3:
                     // make donation
+                    //TODO maybe include Training
                     addDonation();
                     break;
                 case 4:
@@ -154,7 +159,7 @@ public class UI {
                     displayDonationsAlumni();
                     break;
                 case 5:
-                    // create event
+                    // edit event or training
                     editEventSubMenu();
                     break;
                 case 6:
@@ -162,10 +167,6 @@ public class UI {
                     deletionSubMenu();
                     break;
                 case 7:
-                    // edits events
-                    editEvents();
-                    break;
-                case 8:
                     // go back to main menu
                     run = false;
                     break;
@@ -504,6 +505,7 @@ public class UI {
                 io.getAlumniGradYear(id), io.getAlumniJob(id), io.getAlumniOrg(id), topic, phone, email);
         io.createTrainingEvent(name, room, numberOfParticipants, dateTime, host, skill, totalSeats, totalSeats);
     }
+    
 
     // ----- donation stuff ------
     public void addDonation() {
@@ -553,6 +555,7 @@ public class UI {
     }
 
     public void deletionSubMenu() {
+        System.out.println("Enter what you want to do \n1. Delete Event \n2. Delete Training \n3. Go back to main menu");
         int choice = io.intInput();
         switch (choice) {
             case 1:

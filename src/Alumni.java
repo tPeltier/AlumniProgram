@@ -163,6 +163,7 @@ public class Alumni {
     
 
     @Override
+    // TODO MAKE HUMAN READABLE 
     public String toString() {
         return "{" +
             " id='" + getId() + "'" +

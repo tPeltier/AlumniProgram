@@ -149,6 +149,7 @@ public class Event {
     }
 
 
+    // make human readable
     public LocalDateTime getStartDate() {
         return this.startDate;
     }
@@ -163,6 +164,8 @@ public class Event {
     }
 
     @Override
+    // TODO fix the display of date time
+    // TODO MAKE HUMAN READABLE
     public String toString() {
         return "{" + " id='" + getId() + "'" + ", name='" + getName() + "'" + ", time='" + startDate.getHour() + ":"
                 + startDate.getMinute() + "'" + ", room='" + getRoom() + "'" + ", numberOfParticipants='"
