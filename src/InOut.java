@@ -54,6 +54,7 @@ public class InOut {
         existingAlumni();
         existingEvents();
         existingDonations();
+        existingTrainingEvents();
     }
 
     /**
@@ -88,12 +89,12 @@ public class InOut {
             passwordsSaved.println(pw);
         }
 
-        // for (Training training : trainingMap.values()) {
-        // trainingSaved.println(training.save());
-        // trainingSaved.println(training.saveDateTime());
-        // trainingSaved.println(training.saveHost());
-        // trainingSaved.println(training.saveAttendants());
-        // }
+        for (Training training : trainingMap.values()) {
+        trainingSaved.println(training.save());
+        trainingSaved.println(training.saveDateTime());
+        trainingSaved.println(training.saveHost());
+        trainingSaved.println(training.saveAttendants());
+        }
         // TODO save training to file
 
         in.close();

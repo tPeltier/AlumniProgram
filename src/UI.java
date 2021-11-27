@@ -132,8 +132,8 @@ public class UI {
         boolean run = true;
         while (run) {
             System.out.println(" ----------------------------------------------------- ");
-            System.out.println("1. See a list of events \n2. Sign up to attend an Event \n3. Make a donation \n"
-                    + "4. See my donations \n5. Sign up to speak\n6. Create Training event \n7. Delete Event or Training \n8. Edit event \n9. Exit");
+            System.out.println("1. See a list of events \n2. Sign up to attend an Event or training \n3. Make a donation \n"
+                    + "4. See my donations \n5. Create event or training event \n6. Delete Event or Training \n7. Edit event \n8. Exit");
             int choice = io.intInput();
             switch (choice) {
                 case 1:
@@ -142,6 +142,7 @@ public class UI {
                     break;
                 case 2:
                     // sign up for events
+                    //TODO join training event
                     io.joinEvent(id, io.getAlumniName(id));
                     break;
                 case 3:
@@ -157,18 +158,14 @@ public class UI {
                     editEventSubMenu();
                     break;
                 case 6:
-                    // create training event
-                    createTrainingEvent();
-                    break;
-                case 7:
                     // Delete events and training
                     deletionSubMenu();
                     break;
-                case 8:
+                case 7:
                     // edits events
                     editEvents();
                     break;
-                case 9:
+                case 8:
                     // go back to main menu
                     run = false;
                     break;
@@ -355,7 +352,6 @@ public class UI {
             int choice = io.intInput();
 
             switch (choice) {
-                // TODO change methods to handle training value
                 case 1:
                     // edit name
                     System.out.println("Enter name of event:");
