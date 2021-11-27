@@ -26,7 +26,7 @@ public class UI {
         }
 
     }
-
+    //TODO prevent users from entering a number out of range
     public void login() throws FileNotFoundException {
         boolean loggedIn = false;
         while (!loggedIn) {
@@ -126,8 +126,10 @@ public class UI {
                     break;
             }
         }
-        if (choice == 3) return false;
-        else return true;
+        if (choice == 3)
+            return false;
+        else
+            return true;
     }
 
     public void eventInterface() {
@@ -141,17 +143,12 @@ public class UI {
             int choice = io.intInput();
             switch (choice) {
                 case 1:
-                    // list of events
-                    // TODO submenu for choosing between training and events
-                    io.displayEvents();
-                    io.displayTraining();
+                    // list of events and training
+                    eventViewerSubMenu();
                     break;
                 case 2:
-                    // sign up for events
-                    // TODO join training event
-                    System.out.println("What Event would you like to attend?");
-                    io.joinEvent(id, io.getAlumniName(io.intInput()));
-                    System.out.println("");
+                    // sign up for events or training
+                   attendEventSubMenu();
                     break;
                 case 3:
                     // make donation
@@ -515,7 +512,8 @@ public class UI {
     }
 
     public void eventCreationSubMenu() {
-        System.out.println("Enter what you would to: \n1. Create Event \n2. Create Training event \n3. Go back to the menu");
+        System.out.println(
+                "Enter what you would to: \n1. Create Event \n2. Create Training event \n3. Go back to the menu");
         int choice = io.intInput();
         switch (choice) {
             case 1:
@@ -528,6 +526,46 @@ public class UI {
                 break;
             case 3:
                 // Exit to main menu
+                break;
+        }
+    }
+
+    public void eventViewerSubMenu() {
+        System.out.println("Enter what you would like to do: \n1. Display Events \n2. Display Training Events \n3. Return to menu ");
+        int choice = io.intInput();
+        switch (choice) {
+            case 1:
+                // Display events
+                io.displayEvents();
+                break;
+            case 2:
+                // Display training events
+                io.displayTraining();
+                break;
+            case 3:
+                // Return to the menu
+                break;
+        }
+    }
+    //TODO handle seats
+    public void attendEventSubMenu() {
+        System.out.println("Enter what you would like to do \n1. Attend an Event \n2. Attend a Training Event \n3. return to menu ");
+        int choice = io.intInput();
+        switch (choice) {
+            case 1:
+            //attend event
+            io.displayEvents();
+            System.out.println("What Event would you like to attend?");
+            io.joinEvent(id, io.getAlumniName(io.intInput()));
+                break;
+            case 2:
+            //attend training
+            io.displayTraining();
+            System.out.println("What Training Event would you like to attend?");
+            io.joinTraining(id, io.getAlumniName(io.intInput()));
+                break;
+            case 3:
+            //exit to menu
                 break;
         }
     }
