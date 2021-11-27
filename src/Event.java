@@ -11,13 +11,25 @@ public class Event implements CommonMethods {
     private Alumni guestSpeaker;
     private ArrayList<String> attendants;
 
-    // constructors
+    /**
+     * Empty Event constructor
+     */
     public Event() {
         // empty
     }
 
 
     // existing event
+    /**
+     * Constructor for existing Events
+     * @param id Event ID
+     * @param name Event Name
+     * @param room Room where Event is happening
+     * @param numberOfParticipants Number of people participating
+     * @param startDate LocalDateTime information about the Event
+     * @param attendant ArrayList of attending members names
+     * @param host Host object for the host of the Event
+     */
     public Event(int id, String name, int room, int numberOfParticipants, LocalDateTime startDate,
             ArrayList<String> attendant, Host host) {
         this.id = id;
@@ -30,6 +42,15 @@ public class Event implements CommonMethods {
     }
 
     // adding event
+    /**
+     * Constructor for adding Events
+     * @param id Event ID
+     * @param name Event Name
+     * @param room Room where Event is happening
+     * @param numberOfParticipants Number of people participating
+     * @param startDate LocalDateTime information about the Event
+     * @param host Host object for the host of the Event
+     */
     public Event(int id, String name, int room, int numberOfParticipants, LocalDateTime startDate, Host host) {
         this.id = id;
         this.name = name;
@@ -40,126 +61,158 @@ public class Event implements CommonMethods {
         attendants = new ArrayList<>();
     }
 
-
-    // getters and setters
-
     /**
-     * get guest speaker
-     * @return guest speaker
+     * Get guest speaker obj
+     * @return Guest speaker Alumni object
      */
     public Alumni getAlumni(){
         return guestSpeaker;
     }
 
     /**
-     * set guest speaker
-     * @param alumni passing value of guest speaker
+     * Set the guest speaker
+     * @param alumni Alumni to be guest speaker
      */
     public void setAlumni(Alumni alumni){
         guestSpeaker = alumni;
     }
 
     /**
-     *get id of event
-     * @return id of event
+     * Get ID of Event
+     * @return ID of Event
      */
     public int getID() {
         return this.id;
     }
 
     /**
-     * gets id of host
-     * @return host id
+     * Gets ID of Host
+     * @return Host ID
      */
     public int getHostId() {
         return host.getID();
     }
 
     /**
-     * gets name of event
-     * @return event name
+     * Gets name of Event
+     * @return Event name
      */
     public String getName() {
         return this.name;
     }
 
     /**
-     * set name of event
-     * @param name passing value of event name
+     * Set name of Event
+     * @param name Name of Event
      */
     public void setName(String name) {
         this.name = name;
     }
 
 
+    /**
+     * Get the year that the Event is occurring in
+     * @return Year that the Event is held in
+     */
     public int getYear() {
         return startDate.getYear();
     }
 
+    /**
+     * Get the month that the Event is occurring in
+     * @return Month that the Event is held in
+     */
     public int getMonth() {
         return startDate.getMonthValue();
     }
 
+    /**
+     * Get the day that the Event is occurring on 
+     * @return Day that the Event is held on
+     */
     public int getDay() {
         return startDate.getDayOfMonth();
     }
 
+    /**
+     * Get the hour that the Event starts
+     * @return Hour that the Event starts
+     */
     public int getHour() {
         return startDate.getHour();
     }
 
+    /**
+     * Get the minute that the Event starts
+     * @return Minute that the Event starts
+     */
     public int getMinute() {
         return startDate.getMinute();
     }
 
-    // testing
+    /**
+     * Set the date / time information for the Event
+     * @param year Year of Event
+     * @param month Month of Event
+     * @param day Day of Event
+     * @param hour Starting hour of Event
+     * @param minute Starting minute of Event
+     */
     public void setTime(int year, int month, int day, int hour, int minute) {
         this.startDate = LocalDateTime.of(year, month, day, hour, minute);
     }
 
+    // TODO these methods are the same, we need to pick one
+    public void setStartDate(int year, int month, int dayOfMonth, int hour, int minute) {
+        startDate = LocalDateTime.of(year, month, dayOfMonth, hour, minute);
+
+    }
+
     /**
-     * get room of event
-     * @return room of event
+     * Get room number of Event
+     * @return Room number of Event
      */
     public int getRoom() {
         return this.room;
     }
 
     /**
-     * set room of event
-     * @param room passing value of the event room
+     * Set room number of event
+     * @param room Room Number of Event
      */
     public void setRoom(int room) {
         this.room = room;
     }
 
     /**
-     * gets number of participants for event
-     * @return number of participants for the event
+     * Gets number of participants for Event
+     * @return Number of participants for the Event
      */
     public int getNumberOfParticipants() {
         return this.numberOfParticipants;
     }
 
     /**
-     * set number of participants for event
-     * @param numberOfParticipants passing values for number of participants for event
+     * Set number of participants for event
+     * @param numberOfParticipants Number of participants for the Event
      */
     public void setNumberOfParticipants(int numberOfParticipants) {
         this.numberOfParticipants = numberOfParticipants;
     }
 
 
-    // make human readable
+    // TODO make human readable
+    // TODO IS THIS NEEDED?
     public LocalDateTime getStartDate() {
         return this.startDate;
     }
 
-    public void setStartDate(int year, int month, int dayOfMonth, int hour, int minute) {
-        startDate = LocalDateTime.of(year, month, dayOfMonth, hour, minute);
 
-    }
 
+    /**
+     * Add an attendants name to attending arrayList
+     * @param name Name of attending Alumni
+     */
     public void addAttendant(String name) {
         attendants.add(name);
     }
@@ -173,18 +226,34 @@ public class Event implements CommonMethods {
                 + getNumberOfParticipants() + "'" + ", startDate='" + getStartDate() + "'" + "}";
     }
 
+    /**
+     * Save the Event's information
+     * @return Event's information formatted to save to text file
+     */
     public String save() {
         return getID() + "," + getName() + "," + getRoom() + "," + getNumberOfParticipants();
     }
 
+    /**
+     * Save the Event's DateTime information
+     * @return Event's DateTime information formatted to save to text file
+     */
     public String saveDateTime() {
         return startDate.getYear() + "," + startDate.getMonthValue() + "," + startDate.getDayOfMonth() + "," + startDate.getHour() + "," + startDate.getMinute();
     }
 
+    /**
+     * Save the Event's Host
+     * @return The save() call for the Host 
+     */
     public String saveHost() {
         return host.save();
     }
 
+    /**
+     * Save the Event's attendant list 
+     * @return EVent's attendant list formatted to save to text file
+     */
     public String saveAttendants() {
         String x = "";
         for (int i = 0; i < attendants.size(); i++) {
