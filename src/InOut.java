@@ -74,6 +74,7 @@ public class InOut {
 
         for (Event event : eventMap.values()) {
             eventSaved.println(event.save());
+            eventSaved.println(event.saveDateTime());
             eventSaved.println(event.saveHost());
             eventSaved.println(event.saveAttendants());
 
@@ -89,6 +90,7 @@ public class InOut {
 
         for (Training training : trainingMap.values()) {
             trainingSaved.println(training.save());
+            trainingSaved.println(training.saveDateTime());
             trainingSaved.println(training.saveHost());
             trainingSaved.println(training.saveAttendants());
         }

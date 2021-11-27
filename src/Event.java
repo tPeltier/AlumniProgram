@@ -174,6 +174,10 @@ public class Event {
                 + getStartDate();
     }
 
+    public String saveDateTime() {
+        return startDate.getYear() + "," + startDate.getMonthValue() + "," + startDate.getDayOfMonth() + "," + startDate.getHour() + "," + startDate.getMinute();
+    }
+
     public String saveHost() {
         return host.save();
     }
