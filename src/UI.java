@@ -60,7 +60,7 @@ public class UI {
                     }
                     break;
                 case 2:
-                    newAlumniInfo();
+                    id = newAlumniInfo();
                     loggedIn = true;
                     break;
                 case 3:
@@ -419,7 +419,7 @@ public class UI {
         }
     }
 
-    public void newAlumniInfo() {
+    public int newAlumniInfo() {
         System.out.println("Enter the name of the Alumni");
         String name = io.stringInput();
         System.out.println("Enter the Address of the Alumni");
@@ -434,7 +434,7 @@ public class UI {
         String organization = io.stringInput();
         System.out.println("Enter a password");
         String password = io.stringInput();
-        io.createAlumni(name, address, major, gradYear, job, organization, password);
+        return io.createAlumni(name, address, major, gradYear, job, organization, password);
 
     }
 

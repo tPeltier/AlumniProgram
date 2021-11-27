@@ -347,13 +347,14 @@ public class InOut {
         alumniMap.get(id).setOrganization(org);
     }
 
-    public void createAlumni(String name, String address, String major, String gradYear, String job,
+    public int createAlumni(String name, String address, String major, String gradYear, String job,
             String organization,
             String password) {
         int id = alumniMap.lastKey();
         id++;
         Alumni a = new Alumni(id, name, address, major, gradYear, job, organization, password);
         alumniMap.put(id, a);
+        return id;
     }
 
     // --------- Event Methods here ---------------
