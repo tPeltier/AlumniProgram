@@ -106,8 +106,7 @@ public class Training extends Event {
      * @return Training's information formatted to save to text file
      */
     public String save() {
-        // TODO figure out save order
-       return  "";
+       return  super.getID() + "," + super.getName() + "," + super.getRoom() + "," + super.getNumberOfParticipants() + "," + getTotalSeats() + "," + getOpenSeats() + "," + getSkill();
     }
 
     @Override
