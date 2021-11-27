@@ -1,6 +1,5 @@
 public interface CommonMethods {
     String getName();
-    String getID();
-    void setName();
-    Void setID();
+    int getID();
+    void setName(String name);
 }
