@@ -452,6 +452,10 @@ public class InOut {
         trainingMap.get(id).setTotalSeats(seats);
     }
 
+    public void joinTraining(int id, String name){
+        trainingMap.get(id).addAttendant(name);
+    }
+
     // ------- remove --------------
     public void deleteAlumni(int id) {
         alumniMap.remove(id);
