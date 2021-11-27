@@ -462,7 +462,7 @@ public class UI {
         System.out.println("Enter the topic of the Event:");
         String topic = io.stringInput();
         System.out.println("Enter a phone number where you can be reached: ");
-        int phone = io.intInput();
+        long phone = io.longInput();
         System.out.println("Enter an email where you can be reached: ");
         String email = io.stringInput();
         // TODO untuck this mess (there's got to be a better way, this copying of an
