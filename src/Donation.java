@@ -8,10 +8,19 @@ public class Donation {
     private double amountDonated;
     private Date dateCreated;
 
+    /**
+     * Empty Donation constructor
+     */
     public Donation() {
 
     }
     
+    /**
+     * Donation constructor for creating a donation
+     * @param alumniId ID of the Alumni making the Donation
+     * @param eventId ID of the Event that is being donated to
+     * @param donationAmount Amount of money being donated
+     */
     public Donation(int alumniId, int  eventId, double donationAmount) {
         dateCreated = new Date();
         this.alumniId = alumniId;
@@ -20,32 +29,32 @@ public class Donation {
     }
 
     /**
-     * get id of alumni
-     * @return alumni's id
+     * Get ID of Alumni
+     * @return Alumni's id
      */
     public int getAlumniId() {
         return alumniId;
     }
 
     /**
-     * get id of the event
-     * @return event id
+     * Get ID of the Event
+     * @return Event ID
      */
     public int getEventId() {
         return eventId;
     }
 
     /**
-     * gets amount donated for event
-     * @return donated amount
+     * Get amount donated to Event
+     * @return Donated amount
      */
     public double getAmountDonated() {
         return amountDonated;
     }
 
     /**
-     * gets creation date for event
-     * @return creation date of event
+     * Get creation date for Event
+     * @return Creation date of Event
      */
     public Date getDateCreated() {
         return dateCreated;
@@ -56,6 +65,10 @@ public class Donation {
         return "Date donation was made: " + dateCreated + " Amount Donated: " + amountDonated + " ID of Donator: " + alumniId + " ID of Event: " + eventId;
     }
 
+    /**
+     * Save the Donation's information
+     * @return Donation's information formatted to save to text file
+     */
     public String save() {
         String money = "" + amountDonated;
         return alumniId + "," + eventId + "," + money;
