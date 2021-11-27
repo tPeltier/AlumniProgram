@@ -28,7 +28,7 @@ public class InOut {
     private PrintWriter trainingSaved;
     private TreeMap<Integer, Alumni> alumniMap;
     private TreeMap<Integer, Event> eventMap;
-    // TODO  PrintWriter
+    // TODO PrintWriter
     private TreeMap<Integer, Training> trainingMap;
     private HashMap<Integer, String> passwords;
     private ArrayList<Donation> donationList;
@@ -89,10 +89,10 @@ public class InOut {
         }
 
         // for (Training training : trainingMap.values()) {
-        //     trainingSaved.println(training.save());
-        //     trainingSaved.println(training.saveDateTime());
-        //     trainingSaved.println(training.saveHost());
-        //     trainingSaved.println(training.saveAttendants());
+        // trainingSaved.println(training.save());
+        // trainingSaved.println(training.saveDateTime());
+        // trainingSaved.println(training.saveHost());
+        // trainingSaved.println(training.saveAttendants());
         // }
         // TODO save training to file
 
@@ -199,8 +199,9 @@ public class InOut {
             eventMap.put(id, e);
         }
     }
-    //Training
-    public void existingTrainingEvents(){
+
+    // Training
+    public void existingTrainingEvents() {
         trainingMap = new TreeMap<>();
         while (trainingFileIn.hasNextLine()) {
             String line = trainingFileIn.nextLine();
@@ -243,10 +244,12 @@ public class InOut {
                 att.add(listArr[i]);
             }
 
-            Training t = new Training(id, name, room, numberOfParticipants, dateTime, att, host, skill, openSeats, totalSeats);
+            Training t = new Training(id, name, room, numberOfParticipants, dateTime, att, host, skill, openSeats,
+                    totalSeats);
             trainingMap.put(id, t);
         }
     }
+
     /**
      * Create and Fill a TreeMap of Alumni pulled from a Text File
      */
@@ -342,8 +345,9 @@ public class InOut {
     public void setAlumniOrg(int id, String org) {
         alumniMap.get(id).setOrganization(org);
     }
-    
-    public void createAlumni(String name, String address, String major, String gradYear, String job, String organization,
+
+    public void createAlumni(String name, String address, String major, String gradYear, String job,
+            String organization,
             String password) {
         int id = alumniMap.lastKey();
         id++;
@@ -369,8 +373,17 @@ public class InOut {
         eventMap.get(id).setName(name);
     }
 
+    /**
+     * sets a name for the event
+     * 
+     * @param id   event id
+     * @param time event time
+     */
+    public void setEventDateTime(int id, int year, int month, int day, int hour, int minute) {
+        eventMap.get(id).setTime(year, month, day, hour, minute);
+    }
 
-    /*
+    /**
      * sets a room for event
      * 
      * @param id   event id
@@ -388,16 +401,6 @@ public class InOut {
      */
     public void setEventNumberOfParticipants(int id, int numberOfParticipants) {
         eventMap.get(id).setNumberOfParticipants(numberOfParticipants);
-    }
-
-    /**
-     * sets event date
-     * 
-     * @param id   event id
-     * @param date event date
-     */
-    public void setEventDate(int id, int year, int month, int day, int hour, int min) {
-        eventMap.get(id).setStartDate(year, month, day, hour, min);
     }
 
     public int getEventYear(int id) {
@@ -425,6 +428,22 @@ public class InOut {
     }
 
     // ------ edit training methods -----
+    public void setTrainingName(int id, String name) {
+        trainingMap.get(id).setName(name);
+    }
+
+    public void setTrainingRoom(int id, int room) {
+        trainingMap.get(id).setRoom(room);
+    }
+
+    public void setTrainingNumberOfParticipants(int id, int participants) {
+        trainingMap.get(id).setNumberOfParticipants(participants);
+    }
+
+    public void setTrainingDate(int id, int year, int month, int dayOfMonth, int hour, int minute) {
+        trainingMap.get(id).setStartDate(year, month, dayOfMonth, hour, minute);
+    }
+
     public void setTrainingSkill(int id, String newSkill) {
         trainingMap.get(id).setSkill(newSkill);
     }
@@ -432,6 +451,7 @@ public class InOut {
     public void setNumOfTotalSeats(int id, int seats) {
         trainingMap.get(id).setTotalSeats(seats);
     }
+
     // ------- remove --------------
     public void deleteAlumni(int id) {
         alumniMap.remove(id);
@@ -441,6 +461,10 @@ public class InOut {
         eventMap.remove(id);
     }
 
+    public void deleteTraining(int id) {
+        trainingMap.remove(id);
+    }
+
     public void createEvent(String name, int room, int numberOfParticipants, LocalDateTime startDate, Host host) {
         int id = eventMap.lastKey();
         id++;
@@ -448,7 +472,8 @@ public class InOut {
         eventMap.put(id, e);
     }
 
-    public void createTrainingEvent(String name, int room, int numberOfParticipants, LocalDateTime startDate, Host host, String skill, int openSeats, int totalSeats){
+    public void createTrainingEvent(String name, int room, int numberOfParticipants, LocalDateTime startDate, Host host,
+            String skill, int openSeats, int totalSeats) {
         int id = trainingMap.lastKey();
         id++;
         Training t = new Training(id, name, room, numberOfParticipants, startDate, host, skill, openSeats, totalSeats);
