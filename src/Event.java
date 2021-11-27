@@ -170,8 +170,7 @@ public class Event {
     }
 
     public String save() {
-        return getId() + "," + getName() + "," + "," + getRoom() + "," + getNumberOfParticipants() + ","
-                + getStartDate();
+        return getId() + "," + getName() + "," + getRoom() + "," + getNumberOfParticipants();
     }
 
     public String saveDateTime() {
