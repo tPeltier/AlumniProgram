@@ -505,6 +505,7 @@ public class InOut {
         for (int i = 0; i < donationList.size(); i++) {
             if (id == donationList.get(i).getAlumniId()) {
                 System.out.println("Donation amount" + donationList.get(i).getAmountDonated());
+                System.out.println("Date and Time of Donation: " + donationList.get(i).getDateCreated());
             }
         }
     }
