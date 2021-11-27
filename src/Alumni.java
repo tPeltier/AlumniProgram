@@ -10,18 +10,23 @@ public class Alumni implements CommonMethods {
     private String password;
     // private boolean admin = false;
 
+    /**
+     * Empty Alumni Constructor
+     */
     public Alumni() {
 
     }
 
     /**
-     * passing in values for alumni
-     * @param name name of alumni
-     * @param address mailing address
-     * @param major School Major for alumni's degree
-     * @param gradYear Year of graduation 
-     * @param job employment of alumni
-     * @param organization employer of alumni
+     * Constructor for the creation of Alumni 
+     * @param id ID of the Alumni
+     * @param name Name of the Alumni
+     * @param address Mailing address of Alumni
+     * @param major Graduating major of Alumni
+     * @param gradYear Year of graduation
+     * @param job Job title of ALumni
+     * @param organization Alumni's Employer's name 
+     * @param password Alumni's password
      */
     public Alumni(int id, String name, String address, String major, String gradYear, String job, String organization, String password) {
         this.id = id;
@@ -34,7 +39,16 @@ public class Alumni implements CommonMethods {
         this.password = password;
     }
 
-    // password-less constructor for host
+    /**
+     * Password-less Alumni constructor for the creation of a Host object
+     * @param id ID of the Alumni
+     * @param name Name of the Alumni
+     * @param address Mailing address of Alumni
+     * @param major Graduating major of Alumni
+     * @param gradYear Year of graduation
+     * @param job Job title of ALumni
+     * @param organization Alumni's Employer's name 
+     */
     public Alumni(int id, String name, String address, String major, String gradYear, String job, String organization) {
         this.id = id;
         this.name = name;
@@ -46,107 +60,112 @@ public class Alumni implements CommonMethods {
     }
 
 
+    /**
+     * Get the ALumni's ID
+     * @return Alumni's ID
+     */
     public int getID() {
         return id;
     }
+
     /**
-     * to get the name of alumni
-     * @return returns the name of alumni 
+     * Get the Alumni's name
+     * @return Alumni's name
      */ 
     public String getName() {
         return this.name;
     }
 
     /**
-     * sets name of alumni
-     * @param name passing name of alumni
+     * Set the name of Alumni
+     * @param name Name to set as Alumni's name
      */
     public void setName(String name) {
         this.name = name;
     }
 
     /**
-     * get address of alumni
-     * @return the address of alumni
+     * Get mailing address of Alumni
+     * @return Mailing address of Alumni
      */
     public String getAddress() {
         return this.address;
     }
 
     /**
-     * sets address of alumni
-     * @param address passing address of alumni
+     * Set the mailing address of Alumni
+     * @param address Mailing address to set for Alumni
      */
     public void setAddress(String address) {
         this.address = address;
     }
 
     /**
-     * gets major of alumni
-     * @return the major if alumni
+     * Get the graduating major of Alumni
+     * @return Alumni's graduating major
      */
     public String getMajor() {
         return this.major;
     }
 
     /**
-     * sets major of alumni
-     * @param major passing major of alumni
+     * Set the graduating major of alumni
+     * @param major Graduating major to set for Alumni
      */
     public void setMajor(String major) {
         this.major = major;
     }
 
     /**
-     * gets year of graduation of alumni
-     * @return year of graduation of alumni
+     * Get the year of graduation of Alumni
+     * @return Graduation year of ALumni
      */
     public String getGradYear() {
         return this.gradYear;
     }
 
     /**
-     * sets graduation year of graduation alumni
-     * @param gradYear passing year of graduation for alumni
+     * Set the graduation year of Alumni
+     * @param gradYear Graduation year to set for ALumni
      */
     public void setGradYear(String gradYear) {
         this.gradYear = gradYear;
     }
 
     /**
-     * get job of alumni
-     * @return job of alumni
+     * Get the job title of alumni
+     * @return Alumni's job title
      */
     public String getJob() {
         return this.job;
     }
 
     /**
-     * sets job of alumni
-     * @param job passing value of alumni's job
+     * Set the job title of Alumni
+     * @param job Job title to set for Alumni
      */
     public void setJob(String job) {
         this.job = job;
     }
 
     /**
-     * gets organization of alumni
-     * @return organization of alumni
+     * Get the organization of Alumni
+     * @return Organization of alumni
      */
     public String getOrganization() {
         return this.organization;
     }
 
     /**
-     * sets organization of alumni
-     * @param organization passing the value of the alumni's organization
+     * Set the organization of alumni
+     * @param organization Organization to set for ALumni
      */
     public void setOrganization(String organization) {
         this.organization = organization;
     }
 
     /**
-    * Gets the Alumni's Password
+    * Get the Alumni's Password
     * @return Alumni's password
     */
     public String getPassword(){
@@ -154,8 +173,8 @@ public class Alumni implements CommonMethods {
     }
 
     /**
-    * sets a new password for the alumni
-    * @param password new password that is a String   
+    * Set a new password for the alumni
+    * @param password Password to set for Alumni
     */
     public void setPassword(String password){
         this.password = password;
@@ -176,6 +195,10 @@ public class Alumni implements CommonMethods {
             "}";
     }
 
+    /**
+     * Save the Alumni's information
+     * @return ALumni's information formatted to save to text file
+     */
     public String save() {
         return getID() + "," + getName() + "," + getAddress() + "," + getMajor() + "," + getGradYear() + "," + getJob() + "," + getOrganization();
     }
