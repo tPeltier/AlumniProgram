@@ -539,7 +539,7 @@ public class InOut {
         do {
             while (!in.hasNextInt()) {
                 String s = in.next();
-                System.out.printf("\"%s\" is not a valid number", s);
+                System.out.printf("\"%s\" is not a valid number%n", s);
             }
             n = in.nextInt();
             in.nextLine();
@@ -552,7 +552,7 @@ public class InOut {
         do {
             while (!in.hasNextLong()) {
                 String s = in.next();
-                System.out.printf("\"%s\" is not a valid number", s);
+                System.out.printf("\"%s\" is not a valid number%n", s);
             }
             n = in.nextLong();
             in.nextLine();
@@ -569,7 +569,7 @@ public class InOut {
         do {
             while (!in.hasNextDouble()) {
                 String s = in.next();
-                System.out.printf("\"%s\" is not a valid number", s);
+                System.out.printf("\"%s\" is not a valid number%n", s);
             }
             n = in.nextDouble();
         } while (n < 0);
