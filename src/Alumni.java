@@ -1,5 +1,5 @@
 
-public class Alumni {
+public class Alumni implements CommonMethods {
     private int id;
     private String name;
     private String address;
@@ -46,7 +46,7 @@ public class Alumni {
     }
 
 
-    public int getId() {
+    public int getID() {
         return id;
     }
     /**
@@ -166,7 +166,7 @@ public class Alumni {
     // TODO MAKE HUMAN READABLE 
     public String toString() {
         return "{" +
-            " id='" + getId() + "'" +
+            " id='" + getID() + "'" +
             ", name='" + getName() + "'" +
             ", address='" + getAddress() + "'" +
             ", major='" + getMajor() + "'" +
@@ -177,6 +177,6 @@ public class Alumni {
     }
 
     public String save() {
-        return getId() + "," + getName() + "," + getAddress() + "," + getMajor() + "," + getGradYear() + "," + getJob() + "," + getOrganization();
+        return getID() + "," + getName() + "," + getAddress() + "," + getMajor() + "," + getGradYear() + "," + getJob() + "," + getOrganization();
     }
 }
