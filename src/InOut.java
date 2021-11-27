@@ -28,7 +28,6 @@ public class InOut {
     private PrintWriter trainingSaved;
     private TreeMap<Integer, Alumni> alumniMap;
     private TreeMap<Integer, Event> eventMap;
-    // TODO PrintWriter
     private TreeMap<Integer, Training> trainingMap;
     private HashMap<Integer, String> passwords;
     private ArrayList<Donation> donationList;
@@ -95,7 +94,6 @@ public class InOut {
         trainingSaved.println(training.saveHost());
         trainingSaved.println(training.saveAttendants());
         }
-        // TODO save training to file
 
         in.close();
         alumniFileIn.close();
