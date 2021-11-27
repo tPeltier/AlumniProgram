@@ -1,4 +1,0 @@
-
-21,1,1,13,0
-1001,Mary,4564 Applegate Rd.,Art,2016,Graphic Design,Sony,topic1,1234,email1
-name1,name2,name3,name4,name5

@@ -143,7 +143,7 @@ public class UI {
                 case 1:
                     // list of events
                     // TODO submenu for choosing between training and events
-                    // io.displayEvents();
+                    io.displayEvents();
                     io.displayTraining();
                     break;
                 case 2:
@@ -575,7 +575,7 @@ public class UI {
         String confirmation = io.stringInput().toLowerCase();
         if (confirmation.charAt(0) == 'y') {
             System.out.println("please enter the id of the Training event that you want to delete");
-            io.deleteEvent(io.intInput());
+            io.deleteTraining(io.intInput());
         }
     }
 
