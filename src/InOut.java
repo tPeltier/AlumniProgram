@@ -28,7 +28,7 @@ public class InOut {
     private PrintWriter trainingSaved;
     private TreeMap<Integer, Alumni> alumniMap;
     private TreeMap<Integer, Event> eventMap;
-    // TODO  PrintWriter, Fill map at runtime
+    // TODO  PrintWriter
     private TreeMap<Integer, Training> trainingMap;
     private HashMap<Integer, String> passwords;
     private ArrayList<Donation> donationList;
@@ -87,6 +87,11 @@ public class InOut {
             passwordsSaved.println(pw);
         }
 
+        for (Training training : trainingMap.values()) {
+            trainingSaved.println(training.save());
+            trainingSaved.println(training.saveHost());
+            trainingSaved.println(training.saveAttendants());
+        }
         // TODO save training to file
 
         in.close();
@@ -192,11 +197,9 @@ public class InOut {
             eventMap.put(id, e);
         }
     }
-    
+    //Training
     public void existingTrainingEvents(){
         trainingMap = new TreeMap<>();
-        Training t;
-        
         while (trainingFileIn.hasNextLine()) {
             String line = trainingFileIn.nextLine();
             String[] s = line.split(",");
@@ -204,6 +207,9 @@ public class InOut {
             String name = s[1];
             int room = Integer.parseInt(s[2]);
             int numberOfParticipants = Integer.parseInt(s[3]);
+            int totalSeats = Integer.parseInt(s[4]);
+            int openSeats = Integer.parseInt(s[5]);
+            String skill = s[6];
             // dateTime info
             String dateTimeString = trainingFileIn.nextLine();
             String[] dt = dateTimeString.split(",");
@@ -235,8 +241,8 @@ public class InOut {
                 att.add(listArr[i]);
             }
 
-            Event e = new Event(id, name, room, numberOfParticipants, dateTime, att, host);
-            eventMap.put(id, e);
+            Training t = new Training(id, name, room, numberOfParticipants, dateTime, att, host, skill, openSeats, totalSeats);
+            trainingMap.put(id, t);
         }
     }
     /**
@@ -329,8 +335,8 @@ public class InOut {
     public void setAlumniOrg(int id, String org) {
         alumniMap.get(id).setOrganization(org);
     }
-
-    public void addAlumni(String name, String address, String major, String gradYear, String job, String organization,
+    
+    public void createAlumni(String name, String address, String major, String gradYear, String job, String organization,
             String password) {
         int id = alumniMap.lastKey();
         id++;
@@ -436,6 +442,12 @@ public class InOut {
         eventMap.put(id, e);
     }
 
+    public void createTrainingEvent(String name, int room, int numberOfParticipants, LocalDateTime startDate, Host host, String skill, int openSeats, int totalSeats){
+        int id = trainingMap.lastKey();
+        id++;
+        Training t = new Training(id, name, room, numberOfParticipants, startDate, host, skill, openSeats, totalSeats);
+        trainingMap.put(id, t);
+    }
     // ------- donation list methods ------
 
     /**

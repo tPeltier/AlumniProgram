@@ -1,4 +1,5 @@
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 public class Training extends Event {
     private String skill;
@@ -9,8 +10,17 @@ public class Training extends Event {
         super();
     }
 
-    public Training(int id, String name, String time, int room, int numberOfParticipants, LocalDateTime startDate, Host host, String skill, int openSeats, int totalSeats) {
+    // new training
+    public Training(int id, String name, int room, int numberOfParticipants, LocalDateTime startDate, Host host, String skill, int openSeats, int totalSeats) {
         super(id, name, room, numberOfParticipants, startDate, host);
+        this.skill = skill;
+        this.openSeats = openSeats;
+        this.totalSeats = totalSeats;
+    }
+
+    // existing training
+    public Training(int id, String name, int room, int numberOfParticipants, LocalDateTime startDate, ArrayList<String> att, Host host, String skill, int openSeats, int totalSeats) {
+        super(id, name, room, numberOfParticipants, startDate, att, host);
         this.skill = skill;
         this.openSeats = openSeats;
         this.totalSeats = totalSeats;

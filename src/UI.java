@@ -331,7 +331,7 @@ public class UI {
         String organization = io.stringInput();
         System.out.println("Enter a password");
         String password = io.stringInput();
-        io.addAlumni(name, address, major, gradYear, job, organization, password);
+        io.createAlumni(name, address, major, gradYear, job, organization, password);
 
     }
 
