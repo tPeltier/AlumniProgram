@@ -88,12 +88,12 @@ public class InOut {
             passwordsSaved.println(pw);
         }
 
-        for (Training training : trainingMap.values()) {
-            trainingSaved.println(training.save());
-            trainingSaved.println(training.saveDateTime());
-            trainingSaved.println(training.saveHost());
-            trainingSaved.println(training.saveAttendants());
-        }
+        // for (Training training : trainingMap.values()) {
+        //     trainingSaved.println(training.save());
+        //     trainingSaved.println(training.saveDateTime());
+        //     trainingSaved.println(training.saveHost());
+        //     trainingSaved.println(training.saveAttendants());
+        // }
         // TODO save training to file
 
         in.close();
@@ -287,6 +287,11 @@ public class InOut {
         }
     }
 
+    public void displayTraining() {
+        for (Training training : trainingMap.values()) {
+            System.out.println(training.toString());
+        }
+    }
     // ---------- getters --------------
 
     public String getAlumniName(int id) {
@@ -360,27 +365,18 @@ public class InOut {
      * @param id   event id
      * @param name event name
      */
-    public void setName(int id, String name) {
+    public void setEventName(int id, String name) {
         eventMap.get(id).setName(name);
     }
 
-    /**
-     * sets a name for the event
-     * 
-     * @param id   event id
-     * @param time event time
-     */
-    public void setTime(int id, int year, int month, int day, int hour, int minute) {
-        eventMap.get(id).setTime(year, month, day, hour, minute);
-    }
 
-    /**
+    /*
      * sets a room for event
      * 
      * @param id   event id
      * @param room event room
      */
-    public void setRoom(int id, int room) {
+    public void setEventRoom(int id, int room) {
         eventMap.get(id).setRoom(room);
     }
 
@@ -390,7 +386,7 @@ public class InOut {
      * @param id                   event id
      * @param numberOfParticipants event numberOfParticipants
      */
-    public void setNumberOfParticipants(int id, int numberOfParticipants) {
+    public void setEventNumberOfParticipants(int id, int numberOfParticipants) {
         eventMap.get(id).setNumberOfParticipants(numberOfParticipants);
     }
 
@@ -400,7 +396,7 @@ public class InOut {
      * @param id   event id
      * @param date event date
      */
-    public void setDate(int id, int year, int month, int day, int hour, int min) {
+    public void setEventDate(int id, int year, int month, int day, int hour, int min) {
         eventMap.get(id).setStartDate(year, month, day, hour, min);
     }
 
@@ -428,6 +424,14 @@ public class InOut {
         return eventMap.get(id).getHostId();
     }
 
+    // ------ edit training methods -----
+    public void setTrainingSkill(int id, String newSkill) {
+        trainingMap.get(id).setSkill(newSkill);
+    }
+
+    public void setNumOfTotalSeats(int id, int seats) {
+        trainingMap.get(id).setTotalSeats(seats);
+    }
     // ------- remove --------------
     public void deleteAlumni(int id) {
         alumniMap.remove(id);
