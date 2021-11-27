@@ -200,14 +200,11 @@ public class Event implements CommonMethods {
         this.numberOfParticipants = numberOfParticipants;
     }
 
-
     // TODO make human readable
     // TODO IS THIS NEEDED?
     public LocalDateTime getStartDate() {
         return this.startDate;
     }
-
-
 
     /**
      * Add an attendants name to attending arrayList
@@ -217,13 +214,17 @@ public class Event implements CommonMethods {
         attendants.add(name);
     }
 
+    /**
+     * Format DateTime information to be human readable
+     * @return DateTime info in human readable format
+     */
+    public String formatDateTime() {
+        return startDate.getMonthValue() + "-" + startDate.getDayOfMonth() + "-" + startDate.getYear() + " at " + startDate.getHour() + ":" + startDate.getMinute();
+    }
+
     @Override
-    // TODO fix the display of date time
-    // TODO MAKE HUMAN READABLE
     public String toString() {
-        return "{" + " id='" + getID() + "'" + ", name='" + getName() + "'" + ", time='" + startDate.getHour() + ":"
-                + startDate.getMinute() + "'" + ", room='" + getRoom() + "'" + ", numberOfParticipants='"
-                + getNumberOfParticipants() + "'" + ", startDate='" + getStartDate() + "'" + "}";
+        return "Event ID: " + getID() + " Event Name: " + getName() + " Event Date and Time: " + formatDateTime() + " Event Room Number: " + getRoom() + " Number of Participants: " + getNumberOfParticipants();
     }
 
     /**
