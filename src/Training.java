@@ -6,11 +6,26 @@ public class Training extends Event {
     private int openSeats;
     private int totalSeats;
   
+    /**
+     * Empty Training constructor
+     */
     public Training() {
         super();
     }
 
-    // new training
+
+    /**
+     * Constructor for creating new Training objects
+     * @param id ID of Training Event
+     * @param name Name of Training Event
+     * @param room Room number of Training Event
+     * @param numberOfParticipants Participants of Training Event
+     * @param startDate Date/Time of Training Event 
+     * @param host Host obj of Training Event
+     * @param skill Skill of Training Event
+     * @param openSeats Open Seats at Training Event
+     * @param totalSeats Total spots of Training Event
+     */
     public Training(int id, String name, int room, int numberOfParticipants, LocalDateTime startDate, Host host, String skill, int openSeats, int totalSeats) {
         super(id, name, room, numberOfParticipants, startDate, host);
         this.skill = skill;
@@ -18,7 +33,19 @@ public class Training extends Event {
         this.totalSeats = totalSeats;
     }
 
-    // existing training
+    /**
+     * Constructor for existing Training objects
+     * @param id ID of Training Event
+     * @param name Name of Training Event
+     * @param room Room number of Training Event
+     * @param numberOfParticipants Participants of Training Event
+     * @param startDate Date/Time of Training Event 
+     * @param att List of names of people attending Training Event
+     * @param host Host obj of Training Event
+     * @param skill Skill of Training Event
+     * @param openSeats Open Seats at Training Event
+     * @param totalSeats Total spots of Training Event
+     */
     public Training(int id, String name, int room, int numberOfParticipants, LocalDateTime startDate, ArrayList<String> att, Host host, String skill, int openSeats, int totalSeats) {
         super(id, name, room, numberOfParticipants, startDate, att, host);
         this.skill = skill;
@@ -27,8 +54,8 @@ public class Training extends Event {
     }
 
     /**
-     * new skill from training
-     * @return new skill from training
+     * Get the skill being taught at the Training
+     * @return Skill of Training
      */
     public String getSkill(){
         return skill;
@@ -36,44 +63,48 @@ public class Training extends Event {
     }
 
     /**
-     * get open seats from training
-     * @return open seats from training
+     * Get open seats of Training
+     * @return Open seats of Training
      */
     public int getOpenSeats(){
         return openSeats;
     }
 
     /**
-     * get total of training
-     * @return total of training
+     * Get total seats of Training
+     * @return Total seats of Training
      */
     public int getTotalSeats(){
         return totalSeats;
     }
 
     /**
-     * set new skill from training
-     * @param newSkill passing value of new skill from training
+     * Set new skill from Training
+     * @param newSkill Skill to be taught at Training
      */
     public void setSkill(String newSkill){
          skill = newSkill;
     }
 
     /**
-     * set total of training
-     * @param newTotal passing value for total of training
+     * Set total seats of Training
+     * @param newTotal Total number of seats available
      */
     public void setTotalSeats(int newTotal){
         totalSeats = newTotal;
     }
 
     /**
-     * set open seats for training
+     * Calculate open seats for training
      */
     public void setOpenSeats(){
        openSeats = totalSeats - super.getNumberOfParticipants();
     }
     
+    /**
+     * Save the Training's information
+     * @return Training's information formatted to save to text file
+     */
     public String save() {
         // TODO figure out save order
        return  "";

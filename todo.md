@@ -1,13 +1,14 @@
 # TODO
 ---
 [] packages
+[] finish save method for training
 [] finish javaDoc
     [x] alumni
     [] app
     [] commonMethods
     [x] donation
-    [] event
-    [] host
+    [x] event
+    [x] host
     [] inOut
     [] invalidEntry
     [] training
