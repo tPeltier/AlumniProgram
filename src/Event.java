@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.time.LocalDateTime;
 
-public class Event {
+public class Event implements CommonMethods {
     private int id;
     private String name;
     private int room;
@@ -63,7 +63,7 @@ public class Event {
      *get id of event
      * @return id of event
      */
-    public int getId() {
+    public int getID() {
         return this.id;
     }
 
@@ -72,7 +72,7 @@ public class Event {
      * @return host id
      */
     public int getHostId() {
-        return host.getId();
+        return host.getID();
     }
 
     /**
@@ -168,13 +168,13 @@ public class Event {
     // TODO fix the display of date time
     // TODO MAKE HUMAN READABLE
     public String toString() {
-        return "{" + " id='" + getId() + "'" + ", name='" + getName() + "'" + ", time='" + startDate.getHour() + ":"
+        return "{" + " id='" + getID() + "'" + ", name='" + getName() + "'" + ", time='" + startDate.getHour() + ":"
                 + startDate.getMinute() + "'" + ", room='" + getRoom() + "'" + ", numberOfParticipants='"
                 + getNumberOfParticipants() + "'" + ", startDate='" + getStartDate() + "'" + "}";
     }
 
     public String save() {
-        return getId() + "," + getName() + "," + getRoom() + "," + getNumberOfParticipants();
+        return getID() + "," + getName() + "," + getRoom() + "," + getNumberOfParticipants();
     }
 
     public String saveDateTime() {
