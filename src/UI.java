@@ -32,6 +32,10 @@ public class UI {
         while (!loggedIn) {
             System.out.println("1. Login to existing account \n2. Create a new account \n3. Exit");
             int choice = io.intInput();
+            if (choice <1 || choice > 3){
+                System.out.println("please enter a valid number");
+                choice = io.intInput();
+            }
             switch (choice) {
                 case 1:
                     System.out.println("Please log in by entering you ID and Password:");
@@ -80,6 +84,10 @@ public class UI {
                     "Please enter a number for what you want to do \n1. for Alumni settings(Display, edit, and delete) \n"
                             + "2. for event settings(join, create) \n3. logout");
             int choice = io.intInput();
+            if (choice <1 || choice > 3){
+                System.out.println("please enter a valid number");
+                choice = io.intInput();
+            }
             switch (choice) {
                 case 1:
                     run = alumniInterface();
@@ -106,6 +114,10 @@ public class UI {
             System.out.println("1. See a list of current Alumni \n2. Edit your profile info \n"
                     + "3. Delete your account \n4. Go back to the main menu");
             choice = io.intInput();
+            if (choice <1 || choice > 3){
+                System.out.println("please enter a valid number");
+                choice = io.intInput();
+            }
             switch (choice) {
                 case 1:
                     // list of alumni
@@ -141,6 +153,10 @@ public class UI {
                     "1. See a list of events \n2. Sign up to attend an Event or training \n3. Make a donation \n"
                             + "4. See my donations \n5. Create Event or Training \n6. Edit event or training event \n7. Delete Event or Training\n8. Exit");
             int choice = io.intInput();
+            if (choice <1 || choice > 8){
+                System.out.println("please enter a valid number");
+                choice = io.intInput();
+            }
             switch (choice) {
                 case 1:
                     // list of events and training
@@ -186,7 +202,10 @@ public class UI {
             System.out.println(
                     "what would you like to change? \n1. edit name \n2. edit address \n3. edit major \n4. edit gradYear \n5. edit job \n6. edit organization \n7. change password \n8. exit");
             int choice = io.intInput();
-
+            if (choice <1 || choice > 8){
+                System.out.println("please enter a valid number");
+                choice = io.intInput();
+            }
             switch (choice) {
                 case 1:
                     // edit name
@@ -243,6 +262,10 @@ public class UI {
         System.out.println(
                 "Enter what you would like to do: \n1. Edit events \n2. Edit Training Events \n3. Go back to the main menu ");
         int choice = io.intInput();
+        if (choice <1 || choice > 3){
+            System.out.println("please enter a valid number");
+            choice = io.intInput();
+        }
         switch (choice) {
             case 1:
                 // edit events
@@ -280,7 +303,10 @@ public class UI {
             System.out.println(
                     "What would you like to change?: \n1. event name \n2. event time \n3. event room \n4. Number of participants \n5. event date \n6. exit");
             int choice = io.intInput();
-
+            if (choice <1 || choice > 6){
+                System.out.println("please enter a valid number");
+                choice = io.intInput();
+            }
             switch (choice) {
                 case 1:
                     // edit name
@@ -355,7 +381,10 @@ public class UI {
             System.out.println(
                     "What would you like to change?: \n1. event name \n2. event time \n3. event room \n4. Number of participants \n5. event date \n6. exit");
             int choice = io.intInput();
-
+            if (choice <1 || choice > 8){
+                System.out.println("please enter a valid number");
+                choice = io.intInput();
+            }
             switch (choice) {
                 case 1:
                     // edit name
@@ -515,6 +544,10 @@ public class UI {
         System.out.println(
                 "Enter what you would to: \n1. Create Event \n2. Create Training event \n3. Go back to the menu");
         int choice = io.intInput();
+        if (choice <1 || choice > 3){
+            System.out.println("please enter a valid number");
+            choice = io.intInput();
+        }
         switch (choice) {
             case 1:
                 // Create event
@@ -533,6 +566,10 @@ public class UI {
     public void eventViewerSubMenu() {
         System.out.println("Enter what you would like to do: \n1. Display Events \n2. Display Training Events \n3. Return to menu ");
         int choice = io.intInput();
+        if (choice <1 || choice > 3){
+            System.out.println("please enter a valid number");
+            choice = io.intInput();
+        }
         switch (choice) {
             case 1:
                 // Display events
@@ -551,6 +588,10 @@ public class UI {
     public void attendEventSubMenu() {
         System.out.println("Enter what you would like to do \n1. Attend an Event \n2. Attend a Training Event \n3. return to menu ");
         int choice = io.intInput();
+        if (choice <1 || choice > 3){
+            System.out.println("please enter a valid number");
+            choice = io.intInput();
+        }
         switch (choice) {
             case 1:
             //attend event
@@ -623,6 +664,10 @@ public class UI {
         System.out
                 .println("Enter what you want to do \n1. Delete Event \n2. Delete Training \n3. Go back to main menu");
         int choice = io.intInput();
+        if (choice <1 || choice > 3){
+            System.out.println("please enter a valid number");
+            choice = io.intInput();
+        }
         switch (choice) {
             case 1:
                 // delete event
