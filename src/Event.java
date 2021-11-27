@@ -252,7 +252,7 @@ public class Event implements CommonMethods {
 
     /**
      * Save the Event's attendant list 
-     * @return EVent's attendant list formatted to save to text file
+     * @return Event's attendant list formatted to save to text file
      */
     public String saveAttendants() {
         String x = "";

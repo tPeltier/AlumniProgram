@@ -2,10 +2,10 @@
 ---
 [] packages
 [] finish javaDoc
-    [] alumni
+    [x] alumni
     [] app
     [] commonMethods
-    [] donation
+    [x] donation
     [] event
     [] host
     [] inOut
@@ -15,9 +15,12 @@
 [] finish reports
     [] events by year
     [] listing guest speakers
+    [] list of people attending an event
     [x] listing alumni
     [] ect
 [] change from saving to temps to saving to live files
+[] look into how we are handling people attending events (as in what we are asking for while creating events/training)
+[] do we want to save alumni objects instead of just names in the attendants arraylist
 [] make localDateTimes out of the date in the donation (see below)
 [] donations to training???
 [] unit testing
@@ -25,6 +28,7 @@
     [] when display hours we need to +1 to the hour and min because it goes 0-23 0-59 (right?)
 [] make "real" events and alumni & make more of them 
 [] make it so you can only delete events you own (like editing)
+[] rearrange methods so that things are ezier to read
 ---
 **fix**
 * donation 
