@@ -66,6 +66,8 @@ public class Event implements CommonMethods {
         attendants = new ArrayList<>();
     }
 
+    // ==================== GETTERS ====================
+
     /**
      * Get guest speaker obj
      * 
@@ -76,21 +78,16 @@ public class Event implements CommonMethods {
     }
 
     /**
-     * Set the guest speaker
+     * Get the day that the Event is occurring on
      * 
-     * @param alumni Alumni to be guest speaker
+     * @return Day that the Event is held on
      */
-    public void setAlumni(Alumni alumni) {
-        guestSpeaker = alumni;
+    public int getDay() {
+        return startDate.getDayOfMonth();
     }
 
-    /**
-     * Get ID of Event
-     * 
-     * @return ID of Event
-     */
-    public int getID() {
-        return this.id;
+    public String getHost() {
+        return host.toString();
     }
 
     /**
@@ -100,55 +97,6 @@ public class Event implements CommonMethods {
      */
     public int getHostId() {
         return host.getID();
-    }
-
-    public String getHost() {
-        return host.toString();
-    }
-
-    /**
-     * Gets name of Event
-     * 
-     * @return Event name
-     */
-    public String getName() {
-        return this.name;
-    }
-
-    /**
-     * Set name of Event
-     * 
-     * @param name Name of Event
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    /**
-     * Get the year that the Event is occurring in
-     * 
-     * @return Year that the Event is held in
-     */
-    public int getYear() {
-        return startDate.getYear();
-    }
-
-    /**
-     * Get the month that the Event is occurring in
-     * 
-     * @return Month that the Event is held in
-     */
-    public int getMonth() {
-        return startDate.getMonthValue();
-    }
-
-    /**
-     * Get the day that the Event is occurring on
-     * 
-     * @return Day that the Event is held on
-     */
-    public int getDay() {
-        return startDate.getDayOfMonth();
     }
 
     /**
@@ -161,6 +109,15 @@ public class Event implements CommonMethods {
     }
 
     /**
+     * Get ID of Event
+     * 
+     * @return ID of Event
+     */
+    public int getID() {
+        return this.id;
+    }
+
+    /**
      * Get the minute that the Event starts
      * 
      * @return Minute that the Event starts
@@ -169,6 +126,109 @@ public class Event implements CommonMethods {
         return startDate.getMinute();
     }
 
+    /**
+     * Get the month that the Event is occurring in
+     * 
+     * @return Month that the Event is held in
+     */
+    public int getMonth() {
+        return startDate.getMonthValue();
+    }
+
+    /**
+     * Gets name of Event
+     * 
+     * @return Event name
+     */
+    public String getName() {
+        return this.name;
+    }
+
+    // change this to be total - filled
+    public int getOpenSpots() {
+        return this.openSpots;
+    }
+
+    /**
+     * Get room number of Event
+     * 
+     * @return Room number of Event
+     */
+    public int getRoom() {
+        return this.room;
+    }
+
+    /**
+     * Gets number of participants for Event
+     * 
+     * @return Number of participants for the Event
+     */
+    public int getSpotsFilled() {
+        return this.spotsFilled;
+    }
+
+    public int getTotalSpots() {
+        return this.totalSpots;
+    }
+
+    /**
+     * Get the year that the Event is occurring in
+     * 
+     * @return Year that the Event is held in
+     */
+    public int getYear() {
+        return startDate.getYear();
+    }
+
+    // ==================== SETTERS ====================
+
+    /**
+     * Set the guest speaker
+     * 
+     * @param alumni Alumni to be guest speaker
+     */
+    public void setAlumni(Alumni alumni) {
+        guestSpeaker = alumni;
+    }
+
+    /**
+     * Set name of Event
+     * 
+     * @param name Name of Event
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setOpenSpots() {
+        openSpots = totalSpots - attendants.size();
+    }
+
+    /**
+     * Set room number of event
+     * 
+     * @param room Room Number of Event
+     */
+    public void setRoom(int room) {
+        this.room = room;
+    }
+
+    /**
+     * Set number of participants for event
+     * 
+     * @param spotsFilled Number of participants for the Event
+     */
+    public void setSpotsFilled() {
+        spotsFilled = attendants.size();
+    }
+
+    // TODO these methods are the same, we need to pick one
+    public void setStartDate(int year, int month, int dayOfMonth, int hour, int minute) {
+        startDate = LocalDateTime.of(year, month, dayOfMonth, hour, minute);
+
+    }
+
+    // TODO these methods are the same, we need to pick one
     /**
      * Set the date / time information for the Event
      * 
@@ -182,65 +242,11 @@ public class Event implements CommonMethods {
         this.startDate = LocalDateTime.of(year, month, day, hour, minute);
     }
 
-    // TODO these methods are the same, we need to pick one
-    public void setStartDate(int year, int month, int dayOfMonth, int hour, int minute) {
-        startDate = LocalDateTime.of(year, month, dayOfMonth, hour, minute);
-
-    }
-
-    /**
-     * Get room number of Event
-     * 
-     * @return Room number of Event
-     */
-    public int getRoom() {
-        return this.room;
-    }
-
-    /**
-     * Set room number of event
-     * 
-     * @param room Room Number of Event
-     */
-    public void setRoom(int room) {
-        this.room = room;
-    }
-
-    /**
-     * Gets number of participants for Event
-     * 
-     * @return Number of participants for the Event
-     */
-    public int getSpotsFilled() {
-        return this.spotsFilled;
-    }
-
-    /**
-     * Set number of participants for event
-     * 
-     * @param spotsFilled Number of participants for the Event
-     */
-    public void setSpotsFilled() {
-        spotsFilled = attendants.size();
-    }
-
-    public int getTotalSpots() {
-        return this.totalSpots;
-    }
-
     public void setTotalSpots(int totalSpots) {
         this.totalSpots = totalSpots;
     }
 
-    public void setOpenSpots() {
-        openSpots = totalSpots - attendants.size();
-    }
-
-    // change this to be total - filled
-    public int getOpenSpots() {
-        return this.openSpots;
-    }
-
+    // ==================== RAND ====================
     /**
      * Add an attendants name to attending arrayList
      * 
@@ -264,7 +270,7 @@ public class Event implements CommonMethods {
     public String displayAttendants() {
         String att = "";
         // for (String name : attendants) {
-        //     att += name + ", "; 
+        // att += name + ", ";
         // }
         // TODO is there a way to do this with an enhanced loop?
         for (int i = 0; i < attendants.size(); i++) {
@@ -295,6 +301,7 @@ public class Event implements CommonMethods {
                 + "Number of Spots Filled: " + getSpotsFilled();
     }
 
+    // ==================== SAVING ====================
     /**
      * Save the Event's information
      * 

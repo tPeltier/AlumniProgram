@@ -185,7 +185,7 @@ public class Alumni implements CommonMethods {
     }
     
 
-    // ----- RAND -----
+    // ==================== RAND ====================
 
     @Override
     public String toString() {

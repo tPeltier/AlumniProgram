@@ -30,6 +30,8 @@ public class Donation {
         this.amountDonated = donationAmount;
     }
 
+    // ==================== GETTERS ====================
+
     /**
      * Get amount donated to Event
      * 
@@ -65,6 +67,8 @@ public class Donation {
     public int getEventId() {
         return eventId;
     }
+
+    // ==================== RAND ====================
 
     public void dateToLDT() {
         String date = "" + dateCreated;
