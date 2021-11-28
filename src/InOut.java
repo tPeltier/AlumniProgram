@@ -89,10 +89,10 @@ public class InOut {
         }
 
         for (Training training : trainingMap.values()) {
-        trainingSaved.println(training.save());
-        trainingSaved.println(training.saveDateTime());
-        trainingSaved.println(training.saveHost());
-        trainingSaved.println(training.saveAttendants());
+            trainingSaved.println(training.save());
+            trainingSaved.println(training.saveDateTime());
+            trainingSaved.println(training.saveHost());
+            trainingSaved.println(training.saveAttendants());
         }
 
         in.close();
@@ -452,7 +452,7 @@ public class InOut {
         trainingMap.get(id).setTotalSeats(seats);
     }
 
-    public void joinTraining(int id, String name){
+    public void joinTraining(int id, String name) {
         trainingMap.get(id).addAttendant(name);
     }
 
@@ -540,61 +540,88 @@ public class InOut {
      * @return User input : int
      */
     public int intInput() {
-        int n;
-        do {
-            while (!in.hasNextInt() || in.nextInt() < 0) {
-                String s = in.next();
-                System.out.printf("\"%s\" is not a valid number%n", s);
-            }
-            n = in.nextInt();
-            in.nextLine();
-        } while (n < 0);
+        int n = 0;
+        if (!in.hasNextInt()) {
+            String s = in.next();
+            System.out.println(" ----------------------------------------------------- ");
+            System.out.printf("\"%s\" is not a valid number%n", s);
+            System.out.println(" ----------------------------------------------------- ");
+            return n;
+        }
+        n = in.nextInt();
+        if (n < 1) {
+            System.out.println(" ----------------------------------------------------- ");
+            System.out.println(n + " is not a valid number.");
+            System.out.println(" ----------------------------------------------------- ");
+        }
+        in.nextLine();
         return n;
     }
+
     /**
-     * Get User Integer Input
+     * Get User Integer Input within a boundary
      * 
      * @return User input : int
      */
     public int intInput(int boundary) {
-        int n;
-        do {
-            while (!in.hasNextInt() || in.nextInt() < 0 || in.nextInt() > boundary) {
-                String s = in.next();
-                System.out.printf("\"%s\" is not a valid number%n", s);
-            }
-            n = in.nextInt();
-            in.nextLine();
-        } while (n < 0);
+        int n = 0;
+        if (!in.hasNextInt()) {
+            String s = in.next();
+            System.out.println(" ----------------------------------------------------- ");
+            System.out.printf("\"%s\" is not a valid number%n", s);
+            System.out.println(" ----------------------------------------------------- ");
+            return n;
+        }
+        n = in.nextInt();
+        if (n > boundary || n < 1) {
+            System.out.println(" ----------------------------------------------------- ");
+            System.out.println(n + " is not a valid number.");
+            System.out.println(" ----------------------------------------------------- ");
+        }
+        in.nextLine();
         return n;
     }
 
     public long longInput() {
-        long n;
-        do {
-            while (!in.hasNextLong() || in.nextInt() < 0) {
-                String s = in.next();
-                System.out.printf("\"%s\" is not a valid number%n", s);
-            }
-            n = in.nextLong();
-            in.nextLine();
-        } while (n < 0);
+        long n = 0;
+        if (!in.hasNextLong()) {
+            String s = in.next();
+            System.out.println(" ----------------------------------------------------- ");
+            System.out.printf("\"%s\" is not a valid number%n", s);
+            System.out.println(" ----------------------------------------------------- ");
+            return n;
+        }
+        n = in.nextLong();
+        if (n < 1) {
+            System.out.println(" ----------------------------------------------------- ");
+            System.out.println(n + " is not a valid number.");
+            System.out.println(" ----------------------------------------------------- ");
+        }
+        in.nextLine();
         return n;
     }
+
     /**
      * Get User Double Input
      * 
      * @return User input : double
      */
     public double doubleInput() {
-        double n;
-        do {
-            while (!in.hasNextDouble() || in.nextInt() < 0) {
-                String s = in.next();
-                System.out.printf("\"%s\" is not a valid number%n", s);
-            }
-            n = in.nextDouble();
-        } while (n < 0);
+        double n = 0;
+        if (!in.hasNextDouble()) {
+            String s = in.next();
+            System.out.println(" ----------------------------------------------------- ");
+            System.out.printf("\"%s\" is not a valid number%n", s);
+            System.out.println(" ----------------------------------------------------- ");
+            return n;
+        }
+        n = in.nextDouble();
+        if (n < 1) {
+            System.out.println(" ----------------------------------------------------- ");
+            System.out.println(n + " is not a valid number.");
+            System.out.println(" ----------------------------------------------------- ");
+        }
+        in.nextLine();
         return n;
     }
 }

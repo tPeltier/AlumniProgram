@@ -35,11 +35,7 @@ public class UI {
         boolean loggedIn = false;
         while (!loggedIn) {
             System.out.println("1. Login to existing account \n2. Create a new account \n3. Exit");
-            int choice = io.intInput();
-            if (choice <1 || choice > 3){
-                System.out.println("please enter a valid number");
-                choice = io.intInput();
-            }
+            int choice = io.intInput(3);
             switch (choice) {
                 case 1:
                     System.out.println("Please log in by entering you ID and Password:");
