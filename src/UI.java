@@ -702,7 +702,7 @@ public class UI {
         boolean owner = false;
         int trainingDeletionID = 0;
         while (!owner) {
-            io.displayEvents();
+            io.displayTraining();
             System.out.println("Please enter the ID of the event that you want to delete");
             trainingDeletionID = io.intInput();
             try {
