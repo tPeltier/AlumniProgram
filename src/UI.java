@@ -374,7 +374,7 @@ public class UI {
             trainingEventID = io.intInput();
             try {
                 if (id != io.getHostId(trainingEventID)) {
-                    throw new InvalidEntry("YOU DID NOT OWN THIS EVENT");
+                    throw new InvalidEntry("YOU DID NOT OWN THIS TRAINING EVENT");
                 } else
                     owner = true;
             } catch (InvalidEntry e) {
@@ -707,7 +707,7 @@ public class UI {
             trainingDeletionID = io.intInput();
             try {
                 if (id != io.getHostId(trainingDeletionID)) {
-                    throw new InvalidEntry("YOU DID NOT OWN THIS EVENT");
+                    throw new InvalidEntry("YOU DID NOT OWN THIS TRAINING EVENT");
                 } else
                     owner = true;
             } catch (InvalidEntry e) {
