@@ -325,20 +325,23 @@ public class InOut {
 
     public void displayMyAttendance(int id) {
         System.out.println("My Events:");
+        int counter = 0;
         for (Event event : eventMap.values()) {
-            if (event.checkForAttendance(alumniMap.get(id).getName()))
+            if (event.checkForAttendance(alumniMap.get(id).getName())) {
                 System.out.println("You are attending " + event.getName() + " ID # " + event.getID());
-            else
-                System.out.println("Not currently attending any Events");
+                counter++;
+            }
         }
+        if (counter == 0) System.out.println("Not currently attending any Events");
+        counter = 0;
         System.out.println("My Training:");
         for (Training training : trainingMap.values()) {
-            if (training.checkForAttendance(alumniMap.get(id).getName()))
+            if (training.checkForAttendance(alumniMap.get(id).getName())) {
                 System.out.println("You are attending " + training.getName() + " ID # " + training.getID());
-            else
-                System.out.println("Not currently attending any Training");
-
+                counter++;
+            }
         }
+        if (counter == 0) System.out.println("Not currently attending any Training");
     }
 
     public boolean alreadyAttendingEvent(int id, int eventID) {
