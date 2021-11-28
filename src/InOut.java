@@ -292,14 +292,29 @@ public class InOut {
         }
     }
     // ---------- getters --------------
+    /**
+     * Get toString call for an Alumni Obj
+     * @param id Alumni ID
+     * @return Alumni toString
+     */
     public String getAlumni(int id) {
        return alumniMap.get(id).toString(); 
     }
 
+    /**
+     * Get toString call for an Event Obj
+     * @param id Event ID
+     * @return Event toString
+     */
     public String getEvent(int id) {
         return eventMap.get(id).toString();
     }
 
+    /**
+     * Get toString call for a Training Obj
+     * @param id Training ID
+     * @return Training toString
+     */
     public String getTraining(int id) {
         return trainingMap.get(id).toString();
     }
