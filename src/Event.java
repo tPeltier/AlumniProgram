@@ -97,6 +97,10 @@ public class Event implements CommonMethods {
         return host.getID();
     }
 
+    public String getHost() {
+        return host.toString();
+    }
+
     /**
      * Gets name of Event
      * @return Event name

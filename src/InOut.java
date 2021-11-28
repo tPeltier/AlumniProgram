@@ -274,6 +274,7 @@ public class InOut {
     public void displayEvents() {
         for (Event events : eventMap.values()) {
             System.out.println(events.toString());
+            System.out.println(events.getHost());
         }
     }
 
@@ -289,6 +290,7 @@ public class InOut {
     public void displayTraining() {
         for (Training training : trainingMap.values()) {
             System.out.println(training.toString());
+            System.out.println(training.getHost());
         }
     }
     // ---------- getters --------------
@@ -308,6 +310,14 @@ public class InOut {
      */
     public String getEvent(int id) {
         return eventMap.get(id).toString();
+    }
+
+    public String getEventHost(int id) {
+        return eventMap.get(id).getHost();
+    }
+
+    public String getTrainingHost(int id) {
+        return trainingMap.get(id).getHost();
     }
 
     /**
