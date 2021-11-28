@@ -165,27 +165,10 @@ public class InOut {
             int totalSpots = Integer.parseInt(s[3]);
             // dateTime info
             String dateTimeString = eventFileIn.nextLine();
-            String[] dt = dateTimeString.split(",");
-            int year = Integer.parseInt(dt[0]);
-            int month = Integer.parseInt(dt[1]);
-            int dayOfMonth = Integer.parseInt(dt[2]);
-            int hour = Integer.parseInt(dt[3]);
-            int minute = Integer.parseInt(dt[4]);
-            LocalDateTime dateTime = LocalDateTime.of(year, month, dayOfMonth, hour, minute);
+            LocalDateTime dateTime = extractDateTime(dateTimeString);
             // host info
             String h = eventFileIn.nextLine();
-            String[] hArr = h.split(",");
-            int hostId = Integer.parseInt(hArr[0]);
-            String hostName = hArr[1];
-            String hostAdd = hArr[2];
-            String hostMaj = hArr[3];
-            String hostGY = hArr[4];
-            String hostJob = hArr[5];
-            String hostOrg = hArr[6];
-            String topic = hArr[7];
-            int phone = Integer.parseInt(hArr[8]);
-            String email = hArr[9];
-            Host host = new Host(hostId, hostName, hostAdd, hostMaj, hostGY, hostJob, hostOrg, topic, phone, email);
+            Host host = extractHost(h);
             // attending alumni info
             String list = eventFileIn.nextLine();
             String[] listArr = list.split(",");
@@ -199,6 +182,8 @@ public class InOut {
         }
     }
 
+   
+    
     // Training
     public void existingTrainingEvents() {
         trainingMap = new TreeMap<>();
@@ -212,27 +197,11 @@ public class InOut {
             String skill = s[4];
             // dateTime info
             String dateTimeString = trainingFileIn.nextLine();
-            String[] dt = dateTimeString.split(",");
-            int year = Integer.parseInt(dt[0]);
-            int month = Integer.parseInt(dt[1]);
-            int dayOfMonth = Integer.parseInt(dt[2]);
-            int hour = Integer.parseInt(dt[3]);
-            int minute = Integer.parseInt(dt[4]);
-            LocalDateTime dateTime = LocalDateTime.of(year, month, dayOfMonth, hour, minute);
+            LocalDateTime dateTime = extractDateTime(dateTimeString);
+            
             // host info
             String h = trainingFileIn.nextLine();
-            String[] hArr = h.split(",");
-            int hostId = Integer.parseInt(hArr[0]);
-            String hostName = hArr[1];
-            String hostAdd = hArr[2];
-            String hostMaj = hArr[3];
-            String hostGY = hArr[4];
-            String hostJob = hArr[5];
-            String hostOrg = hArr[6];
-            String topic = hArr[7];
-            int phone = Integer.parseInt(hArr[8]);
-            String email = hArr[9];
-            Host host = new Host(hostId, hostName, hostAdd, hostMaj, hostGY, hostJob, hostOrg, topic, phone, email);
+            Host host = extractHost(h);
             // attending alumni info
             String list = trainingFileIn.nextLine();
             String[] listArr = list.split(",");
@@ -245,6 +214,35 @@ public class InOut {
             trainingMap.put(id, t);
         }
     }
+
+    private LocalDateTime extractDateTime(String dateTimeString) {
+        String[] dt = dateTimeString.split(",");
+        int year = Integer.parseInt(dt[0]);
+        int month = Integer.parseInt(dt[1]);
+        int dayOfMonth = Integer.parseInt(dt[2]);
+        int hour = Integer.parseInt(dt[3]);
+        int minute = Integer.parseInt(dt[4]);
+        LocalDateTime dateTime = LocalDateTime.of(year, month, dayOfMonth, hour, minute);
+        return dateTime;
+    }
+    
+    private Host extractHost(String h) {
+        String[] hArr = h.split(",");
+        int hostId = Integer.parseInt(hArr[0]);
+        String hostName = hArr[1];
+        String hostAdd = hArr[2];
+        String hostMaj = hArr[3];
+        String hostGY = hArr[4];
+        String hostJob = hArr[5];
+        String hostOrg = hArr[6];
+        String topic = hArr[7];
+        int phone = Integer.parseInt(hArr[8]);
+        String email = hArr[9];
+        Host host = new Host(hostId, hostName, hostAdd, hostMaj, hostGY, hostJob, hostOrg, topic, phone, email);
+        return host;
+    }
+
+
 
     /**
      * Create and Fill a TreeMap of Alumni pulled from a Text File
