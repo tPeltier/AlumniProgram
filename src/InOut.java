@@ -163,8 +163,6 @@ public class InOut {
             String name = s[1];
             int room = Integer.parseInt(s[2]);
             int totalSpots = Integer.parseInt(s[3]);
-            int spotsFilled = Integer.parseInt(s[4]);
-            int openSpots = Integer.parseInt(s[5]);
             // dateTime info
             String dateTimeString = eventFileIn.nextLine();
             String[] dt = dateTimeString.split(",");
@@ -196,7 +194,7 @@ public class InOut {
                 att.add(listArr[i]);
             }
 
-            Event e = new Event(id, name, room, totalSpots, spotsFilled, openSpots, dateTime, att, host);
+            Event e = new Event(id, name, room, totalSpots, dateTime, att, host);
             eventMap.put(id, e);
         }
     }
@@ -211,9 +209,7 @@ public class InOut {
             String name = s[1];
             int room = Integer.parseInt(s[2]);
             int totalSpots = Integer.parseInt(s[3]);
-            int spotsFilled = Integer.parseInt(s[4]);
-            int openSpots = Integer.parseInt(s[5]);
-            String skill = s[6];
+            String skill = s[4];
             // dateTime info
             String dateTimeString = trainingFileIn.nextLine();
             String[] dt = dateTimeString.split(",");
@@ -245,7 +241,7 @@ public class InOut {
                 att.add(listArr[i]);
             }
 
-            Training t = new Training(id, name, room, totalSpots, openSpots, spotsFilled, dateTime, att, host, skill);
+            Training t = new Training(id, name, room, totalSpots, dateTime, att, host, skill);
             trainingMap.put(id, t);
         }
     }
