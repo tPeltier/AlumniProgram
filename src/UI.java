@@ -307,7 +307,7 @@ public class UI {
         }
         while (run) {
             System.out.println(
-                    "What would you like to change?: \n1. event name \n2. event time \n3. event room \n4. Number of participants \n5. event date \n6. exit");
+                    "What would you like to change?: \n1. event name \n2. event time \n3. event room \n4. Total Number of Spots\n5. event date \n6. exit");
             int choice = io.intInput(6);
             switch (choice) {
                 case 1:
@@ -335,8 +335,8 @@ public class UI {
 
                 case 4:
                     // edit number of participants
-                    System.out.println("Enter number of participants:");
-                    io.setEventNumberOfParticipants(eventID, io.intInput());
+                    System.out.println("Enter number of total spots:");
+                    io.setNumOfTotalSpotsEvents(id, io.intInput());
                     break;
 
                 case 5:
@@ -384,7 +384,7 @@ public class UI {
         }
         while (run) {
             System.out.println(
-                    "What would you like to change?: \n1. Training event name \n2. Training event time \n3. Training event room \n4. Number of participants \n5. event date \n6. Edit Skill \n7. Edit Number of seats \n8. exit");
+                    "What would you like to change?: \n1. Training event name \n2. Training event time \n3. Training event room \n4. Total Number of Spots\n5. event date \n6. Edit Skill \n7. exit");
             int choice = io.intInput(8);
             switch (choice) {
                 case 1:
@@ -414,7 +414,7 @@ public class UI {
                 case 4:
                     // edit number of participants
                     System.out.println("Enter number of participants:");
-                    io.setTrainingNumberOfParticipants(trainingEventID, io.intInput());
+                    io.setNumOfTotalSpotsTraining(id, io.intInput());
                     break;
 
                 case 5:
@@ -434,13 +434,8 @@ public class UI {
                     String skill = io.stringInput();
                     io.setTrainingSkill(trainingEventID, skill);
                     break;
+               
                 case 7:
-                    // edit number of seats
-                    System.out.println("Enter the new number of seats");
-                    int seats = io.intInput();
-                    io.setNumOfTotalSeats(trainingEventID, seats);
-                    break;
-                case 8:
                     // exit
                     System.out.println("NO CHANGES");
                     run = false;
@@ -481,23 +476,12 @@ public class UI {
         System.out.println("Enter the name of Event");
         String name = io.stringInput();
 
-        System.out.println("Enter date of event:");
-        System.out.println("Enter the year ");
-        int year = io.intInput();
-        System.out.println("Enter the month");
-        int month = io.intInput();
-        System.out.println("Enter the day");
-        int day = io.intInput();
-        System.out.println("Enter the hour");
-        int hour = io.intInput();
-        System.out.println("Enter the minute");
-        int minute = io.intInput();
-        LocalDateTime dateTime = LocalDateTime.of(year, month, day, hour, minute);
+        LocalDateTime dateTime = makeDateTime();
 
         System.out.println("Enter the room of Event");
         int room = io.intInput();
-        System.out.println("Enter number of participants");
-        int numberOfParticipants = io.intInput();
+        System.out.println("Enter the total number of spots available");
+        int totalSpots = io.intInput();
         System.out.println("Enter the topic of the Event:");
         String topic = io.stringInput();
         System.out.println("Enter a phone number where you can be reached: ");
@@ -508,7 +492,7 @@ public class UI {
         // alumni into a host is dumb)
         Host host = new Host(id, io.getAlumniName(id), io.getAlumniAddress(id), io.getAlumniMajor(id),
                 io.getAlumniGradYear(id), io.getAlumniJob(id), io.getAlumniOrg(id), topic, phone, email);
-        io.createEvent(name, room, numberOfParticipants, dateTime, host);
+        io.createEvent(name, room, totalSpots, dateTime, host);
     }
 
     /**
@@ -519,6 +503,28 @@ public class UI {
         System.out.println("Enter the name of Event");
         String name = io.stringInput();
 
+        LocalDateTime dateTime = makeDateTime();
+
+        System.out.println("Enter the room of Event");
+        int room = io.intInput();
+        System.out.println("Enter total number of spots available");
+        int totalSpots = io.intInput();
+        System.out.println("Enter the topic of the Event:");
+        String topic = io.stringInput();
+        System.out.println("Enter the Skill being trained");
+        String skill = io.stringInput();
+        System.out.println("Enter a phone number where you can be reached: ");
+        long phone = io.longInput();
+        System.out.println("Enter an email where you can be reached: ");
+        String email = io.stringInput();
+        // TODO untuck this mess (there's got to be a better way, this copying of an
+        // alumni into a host is dumb)
+        Host host = new Host(id, io.getAlumniName(id), io.getAlumniAddress(id), io.getAlumniMajor(id),
+                io.getAlumniGradYear(id), io.getAlumniJob(id), io.getAlumniOrg(id), topic, phone, email);
+        io.createTrainingEvent(name, room, totalSpots, dateTime, host, skill);
+    }
+
+    private LocalDateTime makeDateTime() {
         System.out.println("Enter date of event:");
         System.out.println(" ----------------------------------------------------- ");
         System.out.println("Enter the year ");
@@ -532,26 +538,7 @@ public class UI {
         System.out.println("Enter the minute");
         int minute = io.intInput();
         LocalDateTime dateTime = LocalDateTime.of(year, month, day, hour, minute);
-
-        System.out.println("Enter the room of Event");
-        int room = io.intInput();
-        System.out.println("Enter number of participants");
-        int numberOfParticipants = io.intInput();
-        System.out.println("Enter the topic of the Event:");
-        String topic = io.stringInput();
-        System.out.println("Enter the total number of seats");
-        int totalSeats = io.intInput();
-        System.out.println("Enter the Skill being trained");
-        String skill = io.stringInput();
-        System.out.println("Enter a phone number where you can be reached: ");
-        long phone = io.longInput();
-        System.out.println("Enter an email where you can be reached: ");
-        String email = io.stringInput();
-        // TODO untuck this mess (there's got to be a better way, this copying of an
-        // alumni into a host is dumb)
-        Host host = new Host(id, io.getAlumniName(id), io.getAlumniAddress(id), io.getAlumniMajor(id),
-                io.getAlumniGradYear(id), io.getAlumniJob(id), io.getAlumniOrg(id), topic, phone, email);
-        io.createTrainingEvent(name, room, numberOfParticipants, dateTime, host, skill, totalSeats, totalSeats);
+        return dateTime;
     }
 
     /**

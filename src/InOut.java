@@ -460,15 +460,15 @@ public class InOut {
         trainingMap.remove(id);
     }
 
-    public void createEvent(String name, int room, int numberOfParticipants, LocalDateTime startDate, Host host) {
+    public void createEvent(String name, int room, int totalSpots, LocalDateTime startDate, Host host) {
         int id = eventMap.lastKey();
         id++;
-        Event e = new Event(id, name, room, numberOfParticipants, startDate, host);
+        Event e = new Event(id, name, room, totalSpots, startDate, host);
         eventMap.put(id, e);
     }
 
     public void createTrainingEvent(String name, int room, int totalSpots, LocalDateTime startDate, Host host,
-            String skill, int openSeats, int totalSeats) {
+            String skill) {
         int id = trainingMap.lastKey();
         id++;
         Training t = new Training(id, name, room, totalSpots, startDate, host, skill);
