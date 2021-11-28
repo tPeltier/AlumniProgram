@@ -14,6 +14,7 @@ public class UI {
         io = new InOut();
     }
 
+    // ==================== MENUS ====================
     /**
      * Starts and loops the user interface until the user closes the program
      * 
@@ -204,6 +205,128 @@ public class UI {
             }
         }
     }
+
+    // ==================== SUBMENUS ====================
+
+    /**
+     * Allows the Alumni to choose Whether to join an Event or Training Event
+     */
+    public void attendEventSubMenu() {
+        System.out.println(
+                "What you would like to do? \n1. Attend an Event \n2. Attend a Training Event \n3. Return to Menu ");
+        int choice = io.intInput(3);
+        switch (choice) {
+            case 1:
+                // attend event
+                io.displayEvents();
+                System.out.println("What Event would you like to attend?");
+                int eventID = io.intInput();
+                if (io.alreadyAttendingEvent(id, eventID)) {
+                    System.out.println("You are already attending this Event");
+                } else {
+                    io.joinEvent(eventID, io.getAlumniName(id));
+                }
+                break;
+            case 2:
+                // attend training
+                io.displayTraining();
+                System.out.println("What Training Event would you like to attend?");
+                int trainingID = io.intInput();
+                if (io.alreadyAttendingTraining(id, trainingID)) {
+                    System.out.println("You are already attending this Training");
+                } else {
+                    io.joinTraining(id, io.getAlumniName(io.intInput()));
+                }
+                break;
+            case 3:
+                // exit to menu
+                break;
+        }
+    }
+
+    private void displayAttendantsSubMenu() {
+        System.out.println(
+                "Would you like to view attendants for an Event or a Training?\n1. Events\n2. Training\n3. Exit");
+        int choice = io.intInput(3);
+        switch (choice) {
+            case 1:
+                // Display attendants for an Event
+                io.displayEvents();
+                System.out.println("What Event would you like to check?");
+                io.displayAttendantsEvent(io.intInput());
+                break;
+            case 2:
+                // Display attendants for a Training
+                io.displayTraining();
+                System.out.println("What Training would you like to check?");
+                io.displayAttendantsTraining(io.intInput());
+                break;
+            case 3:
+                // Return to Menu
+                break;
+        }
+    }
+
+    /**
+     * Allows the Alumni to choose to create an Event or Training event
+     */
+    public void eventCreationSubMenu() {
+        System.out.println(
+                "What you would to? \n1. Create Event \n2. Create Training Event \n3. Return to the Menu");
+        int choice = io.intInput(3);
+        switch (choice) {
+            case 1:
+                // Create event
+                createEvent();
+                break;
+            case 2:
+                // Create Training Event
+                createTrainingEvent();
+                break;
+            case 3:
+                // Exit to main menu
+                break;
+        }
+    }
+
+    /**
+     * Allows the Alumni to choose between displaying a list of events and Training
+     * events
+     */
+    public void eventViewerSubMenu() {
+        System.out.println(
+                "What you would like to do? \n1. Display Events \n2. Display Training Events \n3. Display Events in a given year\n4. Display All Hosts\n5. Display Attendants for a given Event or Training\n6. Return to menu ");
+        int choice = io.intInput(6);
+        switch (choice) {
+            case 1:
+                // Display events
+                io.displayEvents();
+                break;
+            case 2:
+                // Display training events
+                io.displayTraining();
+                break;
+            case 3:
+                // Display Events and Training by Year
+                System.out.println("Enter a Year:");
+                io.displayByYear(io.intInput());
+                break;
+            case 4:
+                // Display Hosts for both events and trainings
+                io.displayHosts();
+                break;
+            case 5:
+                // Display Attendants for a given Event or Training
+                displayAttendantsSubMenu();
+                break;
+            case 6:
+                // Return to the menu
+                break;
+        }
+    }
+
+    
+    // ==================== EDIT ====================
 
     /**
      * Allows Alumni to Edit everything but their ID number
@@ -454,6 +577,8 @@ public class UI {
         }
     }
 
+    // ==================== CREATE ====================
+
     /**
      * Allows the user to Create a new account and enter all their information
      * 
@@ -547,122 +672,6 @@ public class UI {
         return dateTime;
     }
 
-    /**
-     * Allows the Alumni to choose to create an Event or Training event
-     */
-    public void eventCreationSubMenu() {
-        System.out.println(
-                "What you would to? \n1. Create Event \n2. Create Training Event \n3. Return to the Menu");
-        int choice = io.intInput(3);
-        switch (choice) {
-            case 1:
-                // Create event
-                createEvent();
-                break;
-            case 2:
-                // Create Training Event
-                createTrainingEvent();
-                break;
-            case 3:
-                // Exit to main menu
-                break;
-        }
-    }
-
-    /**
-     * Allows the Alumni to choose between displaying a list of events and Training
-     * events
-     */
-    public void eventViewerSubMenu() {
-        System.out.println(
-                "What you would like to do? \n1. Display Events \n2. Display Training Events \n3. Display Events in a given year\n4. Display All Hosts\n5. Display Attendants for a given Event or Training\n6. Return to menu ");
-        int choice = io.intInput(6);
-        switch (choice) {
-            case 1:
-                // Display events
-                io.displayEvents();
-                break;
-            case 2:
-                // Display training events
-                io.displayTraining();
-                break;
-            case 3:
-                // Display Events and Training by Year
-                System.out.println("Enter a Year:");
-                io.displayByYear(io.intInput());
-                break;
-            case 4:
-                // Display Hosts for both events and trainings
-                io.displayHosts();
-                break;
-            case 5:
-                // Display Attendants for a given Event or Training
-                displayAttendantsSubMenu();
-                break;
-            case 6:
-                // Return to the menu
-                break;
-        }
-    }
-
-    private void displayAttendantsSubMenu() {
-        System.out.println("Would you like to view attendants for an Event or a Training?\n1. Events\n2. Training\n3. Exit");
-        int choice = io.intInput(3);
-        switch (choice) {
-            case 1:
-                // Display attendants for an Event
-                io.displayEvents();
-                System.out.println("What Event would you like to check?");
-                io.displayAttendantsEvent(io.intInput());
-                break;
-            case 2:
-                // Display attendants for a Training
-                io.displayTraining();
-                System.out.println("What Training would you like to check?");
-                io.displayAttendantsTraining(io.intInput());
-                break;
-            case 3:
-                // Return to Menu
-                break;
-        }
-    }
-
-    /**
-     * Allows the Alumni to choose Whether to join an Event or Training Event
-     */
-    public void attendEventSubMenu() {
-        System.out.println(
-                "What you would like to do? \n1. Attend an Event \n2. Attend a Training Event \n3. Return to Menu ");
-        int choice = io.intInput(3);
-        switch (choice) {
-            case 1:
-                // attend event
-                io.displayEvents();
-                System.out.println("What Event would you like to attend?");
-                int eventID = io.intInput();
-                if (io.alreadyAttendingEvent(id, eventID)) {
-                    System.out.println("You are already attending this Event");
-                } else {
-                    io.joinEvent(eventID, io.getAlumniName(id));
-                }
-                break;
-            case 2:
-                // attend training
-                io.displayTraining();
-                System.out.println("What Training Event would you like to attend?");
-                int trainingID = io.intInput();
-                if (io.alreadyAttendingTraining(id, trainingID)) {
-                    System.out.println("You are already attending this Training");
-                } else {
-                    io.joinTraining(id, io.getAlumniName(io.intInput()));
-                }
-                break;
-            case 3:
-                // exit to menu
-                break;
-        }
-    }
-
     // ----- donation stuff ------
     /**
      * Method for adding a donation to a specific event
@@ -691,7 +700,7 @@ public class UI {
         io.displayDonationsEvents(id);
     }
 
-    // --------------Deletion---------------
+    // ==================== DELETION ====================
 
     /**
      * Method to allow Alumni to Delete their account
