@@ -9,7 +9,6 @@
 
 [] finish javaDoc
     [x] alumni
-    [] app
     [] commonMethods
     [x] donation
     [x] event

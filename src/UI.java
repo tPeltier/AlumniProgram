@@ -373,7 +373,7 @@ public class UI {
         }
         while (run) {
             System.out.println(
-                    "What would you like to change?: \n1. event name \n2. event time \n3. event room \n4. Number of participants \n5. event date \n6. exit");
+                    "What would you like to change?: \n1. Training event name \n2. Training event time \n3. Training event room \n4. Number of participants \n5. event date \n6. Edit Skill \n7. Edit Number of seats \n8. exit");
             int choice = io.intInput(8);
             switch (choice) {
                 case 1:

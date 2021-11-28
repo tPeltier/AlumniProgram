@@ -549,7 +549,7 @@ public class InOut {
                 System.out.println(" ----------------------------------------------------- ");
             }
             n = in.nextInt();
-            if (n < 1) {
+            if (n < 0) {
                 System.out.println(" ----------------------------------------------------- ");
                 System.out.println(n + " is not a valid number.");
                 System.out.println(" ----------------------------------------------------- ");
@@ -594,7 +594,7 @@ public class InOut {
                 System.out.println(" ----------------------------------------------------- ");
             }
             n = in.nextLong();
-            if (n < 1) {
+            if (n < 0) {
                 System.out.println(" ----------------------------------------------------- ");
                 System.out.println(n + " is not a valid number.");
                 System.out.println(" ----------------------------------------------------- ");
@@ -620,7 +620,7 @@ public class InOut {
                 System.out.println(" ----------------------------------------------------- ");
             }
             n = in.nextDouble();
-            if (n < 1) {
+            if (n < 0) {
                 System.out.println(" ----------------------------------------------------- ");
                 System.out.println(n + " is not a valid number.");
                 System.out.println(" ----------------------------------------------------- ");
