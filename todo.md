@@ -24,10 +24,10 @@
     [] list of events/training alumni is attending
     [x] listing alumni
     [] ect
-[] look into how we are handling people attending events (as in what we are asking for while creating events/training)
+[] look into how we are handling people attending events 
     [x] make events also have a total number of open spots and what not
     [] do we want to save alumni objects instead of just names in the attendants arrayList
-    [] make it to where you can only sign up for an event once
+    [x] make it to where you can only sign up for an event once
 [x] make toString human readable
     [x] alumni
     [x] events
