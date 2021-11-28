@@ -3,9 +3,8 @@
 [] packages
 [] change from saving to temps to saving to live files
 [] unit testing
-
-### this could be incorrect, check
-[x] finish save method for training
+[] rearrange methods so that things are ezier to read
+[] make "real" events and alumni & make more of them 
 
 [] finish javaDoc
     [x] alumni
@@ -21,36 +20,33 @@
     [] events by year
     [] listing guest speakers
     [] list of people attending an event
+    [] display host for event/training
+    [] list of events/training alumni is attending
     [x] listing alumni
     [] ect
 [] look into how we are handling people attending events (as in what we are asking for while creating events/training)
     [] make events also have a total number of open spots and what not
     [] do we want to save alumni objects instead of just names in the attendants arraylist
-
-### this might need more work
-[x] make localDateTimes out of the date in the donation (see below)
-
-[] make toString human readable
+    [] make it to where you can only sign up for an event once
+[x] make toString human readable
     [x] alumni
     [x] events
     [x] training
-    [] when display hours we need to +1 to the hour and min because it goes 0-23 0-59 (right?)
-[] make "real" events and alumni & make more of them 
 [x] make it so you can only delete events you own (like editing)
-[] rearrange methods so that things are ezier to read
----
-**fix**
-* donation 
-    * date created will be wrong every time the program runs it'll reset
+
+### this might need more work
+[x] make localDateTimes out of the date in the donation (see below)
+### this could be incorrect, check
+[x] finish save method for training
 ---
 # LIST OF BUGS:
 [x] negative numbers need help
 [] out of bounds handling for time and date entry 
-[] fix training menu
-[] add check to see if event/training/alumni exist while deleting?
+[x] fix training menu
+[x] add check to see if event/training/alumni exist while deleting?
 [] deleting events/training causes errors while signing up to other events (nullPointer)
-[] entering the wrong id sometimes doesn't display the options again
-[]
+[x] entering the wrong id sometimes doesn't display the options again
+[] we need to only allow 0-23 and 0-59 for time input
 []
 []
 []
