@@ -171,19 +171,13 @@ public class InOut {
             Host host = extractHost(h);
             // attending alumni info
             String list = eventFileIn.nextLine();
-            String[] listArr = list.split(",");
-            ArrayList<String> att = new ArrayList<>();
-            for (int i = 0; i < listArr.length; i++) {
-                att.add(listArr[i]);
-            }
+            ArrayList<String> att = extractAttendants(list);
 
             Event e = new Event(id, name, room, totalSpots, dateTime, att, host);
             eventMap.put(id, e);
         }
     }
 
-   
-    
     // Training
     public void existingTrainingEvents() {
         trainingMap = new TreeMap<>();
@@ -198,17 +192,13 @@ public class InOut {
             // dateTime info
             String dateTimeString = trainingFileIn.nextLine();
             LocalDateTime dateTime = extractDateTime(dateTimeString);
-            
+
             // host info
             String h = trainingFileIn.nextLine();
             Host host = extractHost(h);
             // attending alumni info
             String list = trainingFileIn.nextLine();
-            String[] listArr = list.split(",");
-            ArrayList<String> att = new ArrayList<>();
-            for (int i = 0; i < listArr.length; i++) {
-                att.add(listArr[i]);
-            }
+            ArrayList<String> att = extractAttendants(list);
 
             Training t = new Training(id, name, room, totalSpots, dateTime, att, host, skill);
             trainingMap.put(id, t);
@@ -225,7 +215,7 @@ public class InOut {
         LocalDateTime dateTime = LocalDateTime.of(year, month, dayOfMonth, hour, minute);
         return dateTime;
     }
-    
+
     private Host extractHost(String h) {
         String[] hArr = h.split(",");
         int hostId = Integer.parseInt(hArr[0]);
@@ -242,7 +232,14 @@ public class InOut {
         return host;
     }
 
-
+    private ArrayList<String> extractAttendants(String list) {
+        String[] listArr = list.split(",");
+        ArrayList<String> att = new ArrayList<>();
+        for (int i = 0; i < listArr.length; i++) {
+            att.add(listArr[i]);
+        }
+        return att;
+    }
 
     /**
      * Create and Fill a TreeMap of Alumni pulled from a Text File
@@ -338,7 +335,8 @@ public class InOut {
                 counter++;
             }
         }
-        if (counter == 0) System.out.println("Not currently attending any Events");
+        if (counter == 0)
+            System.out.println("Not currently attending any Events");
         counter = 0;
         System.out.println("My Training:");
         for (Training training : trainingMap.values()) {
@@ -347,7 +345,8 @@ public class InOut {
                 counter++;
             }
         }
-        if (counter == 0) System.out.println("Not currently attending any Training");
+        if (counter == 0)
+            System.out.println("Not currently attending any Training");
     }
 
     public boolean alreadyAttendingEvent(int id, int eventID) {
