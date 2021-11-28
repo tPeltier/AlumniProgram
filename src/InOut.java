@@ -34,6 +34,7 @@ public class InOut {
 
     /**
      * Initiate File, Scanner and PrintWriter
+     * Call Methods to fill Maps with existing information
      * 
      * @throws FileNotFoundException
      */
@@ -57,6 +58,7 @@ public class InOut {
     }
 
     /**
+     * Save All Information to Files
      * Close all Scanners and PrintWriters
      * 
      * @throws FileNotFoundException
@@ -109,7 +111,7 @@ public class InOut {
     // --- EXISTING ---
 
     /**
-     * Create and Fill a TreeMap of Alumni pulled from a Text File
+     * Create and Fill a TreeMap with Alumni Objects from a text file
      */
     public void existingAlumni() {
         alumniMap = new TreeMap<>();
@@ -130,6 +132,9 @@ public class InOut {
         }
     }
 
+    /**
+     * Create and fill a ArrayList with Donation Objects from text file
+     */
     public void existingDonations() {
         donationList = new ArrayList<>();
 
@@ -146,7 +151,7 @@ public class InOut {
     }
 
     /**
-     * Create and Fill a TreeMap of Events pulled from a Text File
+     * Create and Fill a TreeMap with Events from a text file
      */
     public void existingEvents() {
         eventMap = new TreeMap<>();
@@ -173,6 +178,9 @@ public class InOut {
         }
     }
 
+    /**
+     * Create and Fill a HashMap with Passwords from text file
+     */
     public void existingPasswords() {
         passwords = new HashMap<>();
 
@@ -186,6 +194,9 @@ public class InOut {
 
     }
 
+    /**
+     * Create and fill a TreeMap with Training Events from a text file
+     */
     public void existingTrainingEvents() {
         trainingMap = new TreeMap<>();
         while (trainingFileIn.hasNextLine()) {
@@ -212,6 +223,12 @@ public class InOut {
         }
     }
 
+    /**
+     * Extract Attendants from a string and add them to an ArrayList
+     * 
+     * @param list Line from text file containing Attendants
+     * @return ArrayList of Attendants
+     */
     private ArrayList<String> extractAttendants(String list) {
         String[] listArr = list.split(",");
         ArrayList<String> att = new ArrayList<>();
@@ -221,6 +238,12 @@ public class InOut {
         return att;
     }
 
+    /**
+     * Extract LocalDateTime information from a string and create a LDT obj
+     * 
+     * @param dateTimeString Line from text file containing LDT info
+     * @return LocalDateTime Object
+     */
     private LocalDateTime extractDateTime(String dateTimeString) {
         String[] dt = dateTimeString.split(",");
         int year = Integer.parseInt(dt[0]);
@@ -232,6 +255,12 @@ public class InOut {
         return dateTime;
     }
 
+    /**
+     * Extract Host information from a string and create a Host obj
+     * 
+     * @param h Line form text file containing Host info
+     * @return Host object
+     */
     private Host extractHost(String h) {
         String[] hArr = h.split(",");
         int hostId = Integer.parseInt(hArr[0]);
@@ -262,26 +291,62 @@ public class InOut {
         return alumniMap.get(id).toString();
     }
 
+    /**
+     * Get Mailing Address of Alumni
+     * 
+     * @param id Alumni ID
+     * @return Alumni's Mailing Address
+     */
     public String getAlumniAddress(int id) {
         return alumniMap.get(id).getAddress();
     }
 
+    /**
+     * Get Graduation Year of Alumni
+     * 
+     * @param id Alumni ID
+     * @return Alumni's Graduation Year
+     */
     public String getAlumniGradYear(int id) {
         return alumniMap.get(id).getGradYear();
     }
 
+    /**
+     * Get Job Tile of ALumni
+     * 
+     * @param id Alumni ID
+     * @return Alumni's Job Title
+     */
     public String getAlumniJob(int id) {
         return alumniMap.get(id).getJob();
     }
 
+    /**
+     * Get Major of ALumni
+     * 
+     * @param id Alumni ID
+     * @return Alumni's Major
+     */
     public String getAlumniMajor(int id) {
         return alumniMap.get(id).getMajor();
     }
 
+    /**
+     * Get Name of ALumni
+     * 
+     * @param id Alumni ID
+     * @return Alumni's Name
+     */
     public String getAlumniName(int id) {
         return alumniMap.get(id).getName();
     }
 
+    /**
+     * Get Employing Organization of Alumni
+     * 
+     * @param id Alumni ID
+     * @return Alumni's Employing Organization
+     */
     public String getAlumniOrg(int id) {
         return alumniMap.get(id).getOrganization();
     }
@@ -298,30 +363,72 @@ public class InOut {
         return eventMap.get(id).toString();
     }
 
+    /**
+     * Get Host of Event
+     * 
+     * @param id Event ID
+     * @return Event's Host
+     */
     public String getEventHost(int id) {
         return eventMap.get(id).getHost();
     }
 
+    /**
+     * Get Year of Event
+     * 
+     * @param id Event ID
+     * @return Year in which Event takes place
+     */
     public int getEventYear(int id) {
         return eventMap.get(id).getYear();
     }
 
+    /**
+     * Get Month of Event
+     * 
+     * @param id Event ID
+     * @return Month in which Event takes place
+     */
     public int getEventMonth(int id) {
         return eventMap.get(id).getMonth();
     }
 
+    /**
+     * Get Day of Event
+     * 
+     * @param id Event ID
+     * @return Day on which Event takes place
+     */
     public int getEventDay(int id) {
         return eventMap.get(id).getDay();
     }
 
+    /**
+     * Get Hour of Event
+     * 
+     * @param id Event ID
+     * @return Hour that the Event starts
+     */
     public int getEventHour(int id) {
         return eventMap.get(id).getHour();
     }
 
+    /**
+     * Get Minute of Event
+     * 
+     * @param id Event ID
+     * @return Minute that the Event starts
+     */
     public int getEventMin(int id) {
         return eventMap.get(id).getMinute();
     }
 
+    /**
+     * Get ID of Host of Event
+     * 
+     * @param id Event ID
+     * @return Event's Host's ID
+     */
     public int getHostId(int id) {
         return eventMap.get(id).getHostId();
     }
@@ -337,12 +444,24 @@ public class InOut {
         return trainingMap.get(id).toString();
     }
 
+    /**
+     * Get Host of Training
+     * 
+     * @param id Training ID
+     * @return Training's Host's toString
+     */
     public String getTrainingHost(int id) {
         return trainingMap.get(id).getHost();
     }
 
     // ----- RAND -----
 
+    /**
+     * Get Password for Alumni
+     * 
+     * @param id Alumni ID
+     * @return ALumni's Password
+     */
     public String getPassword(int id) {
         return passwords.get(id);
     }
@@ -351,26 +470,62 @@ public class InOut {
 
     // ----- ALUMNI -----
 
+    /**
+     * Set the Mailing Address for Alumni
+     * 
+     * @param id      Alumni ID
+     * @param address New Mailing Address for Alumni
+     */
     public void setAlumniAddress(int id, String address) {
         alumniMap.get(id).setAddress(address);
     }
 
+    /**
+     * Set the Graduation Year for Alumni
+     * 
+     * @param id       ALumni ID
+     * @param gradYear New Graduation Year for Alumni
+     */
     public void setAlumniGradYear(int id, String gradYear) {
         alumniMap.get(id).setGradYear(gradYear);
     }
 
+    /**
+     * Set the Job Title for ALumni
+     * 
+     * @param id  ALumni ID
+     * @param job New Job Title for ALumni
+     */
     public void setAlumniJob(int id, String job) {
         alumniMap.get(id).setJob(job);
     }
 
+    /**
+     * Set the Major for Alumni
+     * 
+     * @param id    ALumni ID
+     * @param major New Major for ALumni
+     */
     public void setAlumniMajor(int id, String major) {
         alumniMap.get(id).setMajor(major);
     }
 
+    /**
+     * Set Name for Alumni
+     * 
+     * @param id   Alumni ID
+     * @param name New Name for Alumni
+     */
     public void setAlumniName(int id, String name) {
         alumniMap.get(id).setName(name);
     }
 
+    /**
+     * Set Employing Organization for ALumni
+     * 
+     * @param id  Alumni ID
+     * @param org New Employing Organization for ALumni
+     */
     public void setAlumniOrg(int id, String org) {
         alumniMap.get(id).setOrganization(org);
     }
@@ -378,30 +533,34 @@ public class InOut {
     // ----- EVENTS -----
 
     /**
-     * sets a name for the event
+     * Set a LocalDateTime for an Event
      * 
-     * @param id   event id
-     * @param time event time
+     * @param id     Event ID
+     * @param year   Year in which Event is happening
+     * @param month  Month in which Event is happening
+     * @param day    Day on which Event is happening
+     * @param hour   Hour that the Event starts
+     * @param minute Minute that the Event starts
      */
     public void setEventDateTime(int id, int year, int month, int day, int hour, int minute) {
         eventMap.get(id).setTime(year, month, day, hour, minute);
     }
 
     /**
-     * sets event name
+     * Set Name for Event
      * 
-     * @param id   event id
-     * @param name event name
+     * @param id   Event ID
+     * @param name New Name for Event
      */
     public void setEventName(int id, String name) {
         eventMap.get(id).setName(name);
     }
 
     /**
-     * sets a room for event
+     * Set a Room Number for Event
      * 
-     * @param id   event id
-     * @param room event room
+     * @param id   Event ID
+     * @param room New Room Number for Event
      */
     public void setEventRoom(int id, int room) {
         eventMap.get(id).setRoom(room);
@@ -409,32 +568,78 @@ public class InOut {
 
     // ----- TRAINING -----
 
+    /**
+     * Set a LocalDateTime for a Training Event
+     * 
+     * @param id         Training ID
+     * @param year       Year in which Training is happening
+     * @param month      Month in which Training is happening
+     * @param dayOfMonth Day on which Training is happening
+     * @param hour       Hour that the Training starts
+     * @param minute     Minute that the Training starts
+     */
     public void setTrainingDate(int id, int year, int month, int dayOfMonth, int hour, int minute) {
         trainingMap.get(id).setStartDate(year, month, dayOfMonth, hour, minute);
     }
 
+    /**
+     * Set Name for Training Event
+     * 
+     * @param id   Training ID
+     * @param name New Name for Training Event
+     */
     public void setTrainingName(int id, String name) {
         trainingMap.get(id).setName(name);
     }
 
+    /**
+     * Set Room Number for Training Event
+     * 
+     * @param id   Training ID
+     * @param room New Room Number for Training Event
+     */
     public void setTrainingRoom(int id, int room) {
         trainingMap.get(id).setRoom(room);
     }
 
+    /**
+     * Set Skill for Training Event
+     * 
+     * @param id       Training ID
+     * @param newSkill New Skill for Training Event
+     */
     public void setTrainingSkill(int id, String newSkill) {
         trainingMap.get(id).setSkill(newSkill);
     }
 
     // ----- RAND ----
 
+    /**
+     * Set Password for an Alumni
+     * 
+     * @param id    Alumni ID
+     * @param newPw New Password for Alumni
+     */
     public void setPassword(int id, String newPw) {
         passwords.put(id, newPw);
     }
 
+    /**
+     * Set Total Number of Spots Available at an Event
+     * 
+     * @param id    Event ID
+     * @param spots New Number of Total Available Spots
+     */
     public void setNumOfTotalSpotsEvents(int id, int spots) {
         eventMap.get(id).setTotalSpots(spots);
     }
 
+    /**
+     * Set Total Number of Spots Available at an Training Event
+     * 
+     * @param id    Training ID
+     * @param spots New number of Total Available Spots
+     */
     public void setNumOfTotalSpotsTraining(int id, int spots) {
         trainingMap.get(id).setTotalSpots(spots);
     }
@@ -450,14 +655,29 @@ public class InOut {
         }
     }
 
+    /**
+     * Display Attendants for an Event
+     * 
+     * @param eventID Event ID
+     */
     public void displayAttendantsEvent(int eventID) {
         System.out.println(eventMap.get(eventID).displayAttendants());
     }
 
+    /**
+     * Display Attendants for a Training Event
+     * 
+     * @param trainingID Training ID
+     */
     public void displayAttendantsTraining(int trainingID) {
         System.out.println(trainingMap.get(trainingID).displayAttendants());
     }
 
+    /**
+     * Display Events and Training Events that happen within a specified year
+     * 
+     * @param year Year to display
+     */
     public void displayByYear(int year) {
         int check = Integer.parseInt(Integer.toString(year).substring(2, 4));
         System.out.println("Events happening in the year " + year);
@@ -473,9 +693,9 @@ public class InOut {
     }
 
     /**
-     * Displays the Donations made by a certain Alumni
+     * Displays the Donations made by an Alumni
      * 
-     * @param id ID of the Alumni
+     * @param id Alumni ID
      */
     public void displayDonationsAlumni(int id) {
         for (int i = 0; i < donationList.size(); i++) {
@@ -487,9 +707,9 @@ public class InOut {
     }
 
     /**
-     * Displays the Donations for a certain Event
+     * Displays the Donations for an Event
      * 
-     * @param id ID of the Event
+     * @param id Event ID
      */
     public void displayDonationsEvents(int id) {
         for (int i = 0; i < donationList.size(); i++) {
@@ -501,7 +721,7 @@ public class InOut {
     }
 
     /**
-     * Display the Events Map
+     * Display the Events Map and their Host
      */
     public void displayEvents() {
         for (Event events : eventMap.values()) {
@@ -525,6 +745,11 @@ public class InOut {
 
     }
 
+    /**
+     * Display the Events and Training Events that an Alumni is attending
+     * 
+     * @param id Alumni ID
+     */
     public void displayMyAttendance(int id) {
         System.out.println("My Events:");
         int counter = 0;
@@ -548,6 +773,9 @@ public class InOut {
             System.out.println("Not currently attending any Training");
     }
 
+    /**
+     * Display Training Events and their Host
+     */
     public void displayTraining() {
         for (Training training : trainingMap.values()) {
             System.out.println(training.toString());
@@ -557,6 +785,12 @@ public class InOut {
 
     // ==================== CHECKERS ====================
 
+    /**
+     * Check to see if an ALumni's ID exists in the ALumni map
+     * 
+     * @param id Alumni ID
+     * @return Whether the Alumni is in the map or not
+     */
     public boolean checkId(int id) {
         for (Alumni alumni : alumniMap.values()) {
             if (id == alumni.getID())
@@ -565,6 +799,13 @@ public class InOut {
         return false;
     }
 
+    /**
+     * Check to see if an Alumni is already attending an Event
+     * 
+     * @param id      Alumni ID
+     * @param eventID Event ID
+     * @return Whether the ALumni is already attending
+     */
     public boolean alreadyAttendingEvent(int id, int eventID) {
         if (eventMap.get(eventID).checkForAttendance(alumniMap.get(id).getName()))
             return true;
@@ -572,6 +813,13 @@ public class InOut {
             return false;
     }
 
+    /**
+     * Check to see if an Alumni is already attending a Training Event
+     * 
+     * @param id         Alumni ID
+     * @param trainingID Training ID
+     * @return Whether the Alumni is already attending
+     */
     public boolean alreadyAttendingTraining(int id, int trainingID) {
         if (trainingMap.get(trainingID).checkForAttendance(alumniMap.get(id).getName()))
             return true;
@@ -581,6 +829,18 @@ public class InOut {
 
     // ==================== CREATE ====================
 
+    /**
+     * Create and place an Alumni Object into the AlumniMap
+     * 
+     * @param name         Alumni's Name
+     * @param address      Alumni's Mailing Address
+     * @param major        Alumni's Major
+     * @param gradYear     Alumni's Graduation Year
+     * @param job          Alumni's Job Title
+     * @param organization Alumni's Employing Organization
+     * @param password     Alumni's Password
+     * @return Alumni's ID
+     */
     public int createAlumni(String name, String address, String major, String gradYear, String job,
             String organization,
             String password) {
@@ -591,6 +851,15 @@ public class InOut {
         return id;
     }
 
+    /**
+     * Create and place an Event Object into the EventMap
+     * 
+     * @param name       Event's Name
+     * @param room       Event's Room Number
+     * @param totalSpots Total spots available at the Event
+     * @param startDate  Starting date for the Event
+     * @param host       Event's Host
+     */
     public void createEvent(String name, int room, int totalSpots, LocalDateTime startDate, Host host) {
         int id = eventMap.lastKey();
         id++;
@@ -598,6 +867,16 @@ public class InOut {
         eventMap.put(id, e);
     }
 
+    /**
+     * Create and place a Training Event into the TrainingMap
+     * 
+     * @param name       Training Event's Name
+     * @param room       Training Event's Room Number
+     * @param totalSpots Total spots available at the Training Event
+     * @param startDate  Starting date for the Training Event
+     * @param host       Training Event's Host
+     * @param skill      Skill being taught at the Training Event
+     */
     public void createTrainingEvent(String name, int room, int totalSpots, LocalDateTime startDate, Host host,
             String skill) {
         int id = trainingMap.lastKey();
@@ -608,19 +887,34 @@ public class InOut {
 
     // ==================== DELETE ====================
 
+    /**
+     * Delete Specified Alumni from ALumniMap
+     * 
+     * @param id Alumni ID
+     */
     public void deleteAlumni(int id) {
         alumniMap.remove(id);
     }
 
+    /**
+     * Delete Specified Event from EventMap
+     * 
+     * @param id Event ID
+     */
     public void deleteEvent(int id) {
         eventMap.remove(id);
     }
 
+    /**
+     * Delete Specified Training Event from TrainingMap
+     * 
+     * @param id
+     */
     public void deleteTraining(int id) {
         trainingMap.remove(id);
     }
 
-    // ==================== ADDERS ====================  
+    // ==================== ADDERS ====================
 
     /**
      * Add a Donation and put it in the Donation List
@@ -633,10 +927,22 @@ public class InOut {
         donationList.add(new Donation(alumniId, eventId, donationAmount));
     }
 
+    /**
+     * Register an ALumni (by Name) for an Event
+     * 
+     * @param id   Event ID
+     * @param name Name of attending ALumni
+     */
     public void joinEvent(int id, String name) {
         eventMap.get(id).addAttendant(name);
     }
 
+    /**
+     * Register an ALumni (by Name) for an Training Event
+     * 
+     * @param id   Training Event ID
+     * @param name Name of attending ALumni
+     */
     public void joinTraining(int id, String name) {
         trainingMap.get(id).addAttendant(name);
     }
@@ -703,6 +1009,10 @@ public class InOut {
         return n;
     }
 
+    /**
+     * Get User Long input
+     * @return User input : Long
+     */
     public long longInput() {
         long n;
         do {
