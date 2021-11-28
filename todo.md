@@ -30,14 +30,13 @@
 ### this might need more work
 [x] make localDateTimes out of the date in the donation (see below)
 
-[] donations to training???
 [] make toString human readable
     [x] alumni
     [x] events
     [x] training
     [] when display hours we need to +1 to the hour and min because it goes 0-23 0-59 (right?)
 [] make "real" events and alumni & make more of them 
-[] make it so you can only delete events you own (like editing)
+[x] make it so you can only delete events you own (like editing)
 [] rearrange methods so that things are ezier to read
 ---
 **fix**

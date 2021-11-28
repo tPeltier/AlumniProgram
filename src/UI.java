@@ -7,6 +7,7 @@ public class UI {
 
     /**
      * Constructor for UI
+     * 
      * @throws FileNotFoundException
      */
     public UI() throws FileNotFoundException {
@@ -15,6 +16,7 @@ public class UI {
 
     /**
      * Starts and loops the user interface until the user closes the program
+     * 
      * @throws FileNotFoundException
      */
     public void userInterface() throws FileNotFoundException {
@@ -29,6 +31,7 @@ public class UI {
 
     /**
      * Allows the Alumni to login and assigns their ID to the ID variable
+     * 
      * @throws FileNotFoundException
      */
     public void login() throws FileNotFoundException {
@@ -74,8 +77,11 @@ public class UI {
             }
         }
     }
+
     /**
-     * Main menu that is accessed after logging in. Allows Alumni to navigate to Alumni or Event interface.
+     * Main menu that is accessed after logging in. Allows Alumni to navigate to
+     * Alumni or Event interface.
+     * 
      * @throws FileNotFoundException
      */
     public void loggedIn() throws FileNotFoundException {
@@ -106,6 +112,7 @@ public class UI {
 
     /**
      * Interface for Handling basic Alumni functions. list/edit/delete
+     * 
      * @return True or False based on if the Alumni deletes their account
      */
     public boolean alumniInterface() {
@@ -162,7 +169,7 @@ public class UI {
                     break;
                 case 2:
                     // sign up for events or training
-                   attendEventSubMenu();
+                    attendEventSubMenu();
                     break;
                 case 3:
                     // make donation
@@ -192,6 +199,7 @@ public class UI {
             }
         }
     }
+
     /**
      * Allows Alumni to Edit everything but their ID number
      */
@@ -253,6 +261,7 @@ public class UI {
         }
 
     }
+
     /**
      * Allows the user to choose between Editing Events or Editing Training Events
      */
@@ -274,6 +283,7 @@ public class UI {
                 break;
         }
     }
+
     /**
      * Menu for editing everything in events aside from the ID number
      */
@@ -349,6 +359,7 @@ public class UI {
             }
         }
     }
+
     /**
      * Menu for Editing everything in the training event aside from the ID
      */
@@ -437,8 +448,10 @@ public class UI {
             }
         }
     }
+
     /**
      * Allows the user to Create a new account and enter all their information
+     * 
      * @return new Alumni Object
      */
     public int newAlumniInfo() {
@@ -459,8 +472,10 @@ public class UI {
         return io.createAlumni(name, address, major, gradYear, job, organization, password);
 
     }
+
     /**
-     * Allows the Alumni to Create an event that they will host and enter all relevant information
+     * Allows the Alumni to Create an event that they will host and enter all
+     * relevant information
      */
     public void createEvent() {
         System.out.println("Enter the name of Event");
@@ -495,8 +510,10 @@ public class UI {
                 io.getAlumniGradYear(id), io.getAlumniJob(id), io.getAlumniOrg(id), topic, phone, email);
         io.createEvent(name, room, numberOfParticipants, dateTime, host);
     }
+
     /**
-     * Allows the Alumni to Create a training event and enter all the relevant information
+     * Allows the Alumni to Create a training event and enter all the relevant
+     * information
      */
     public void createTrainingEvent() {
         System.out.println("Enter the name of Event");
@@ -536,6 +553,7 @@ public class UI {
                 io.getAlumniGradYear(id), io.getAlumniJob(id), io.getAlumniOrg(id), topic, phone, email);
         io.createTrainingEvent(name, room, numberOfParticipants, dateTime, host, skill, totalSeats, totalSeats);
     }
+
     /**
      * Allows the Alumni to choose to create an Event or Training event
      */
@@ -557,11 +575,14 @@ public class UI {
                 break;
         }
     }
+
     /**
-     * Allows the Alumni to choose between displaying a list of events and Training events
+     * Allows the Alumni to choose between displaying a list of events and Training
+     * events
      */
     public void eventViewerSubMenu() {
-        System.out.println("Enter what you would like to do: \n1. Display Events \n2. Display Training Events \n3. Return to menu ");
+        System.out.println(
+                "Enter what you would like to do: \n1. Display Events \n2. Display Training Events \n3. Return to menu ");
         int choice = io.intInput(3);
         switch (choice) {
             case 1:
@@ -578,28 +599,29 @@ public class UI {
         }
     }
 
-    //TODO handle seats
+    // TODO handle seats
     /**
      * Allows the Alumni to choose Whether to join an Event or Training Event
      */
     public void attendEventSubMenu() {
-        System.out.println("Enter what you would like to do \n1. Attend an Event \n2. Attend a Training Event \n3. return to menu ");
+        System.out.println(
+                "Enter what you would like to do \n1. Attend an Event \n2. Attend a Training Event \n3. return to menu ");
         int choice = io.intInput(3);
         switch (choice) {
             case 1:
-            //attend event
-            io.displayEvents();
-            System.out.println("What Event would you like to attend?");
-            io.joinEvent(id, io.getAlumniName(io.intInput()));
+                // attend event
+                io.displayEvents();
+                System.out.println("What Event would you like to attend?");
+                io.joinEvent(id, io.getAlumniName(io.intInput()));
                 break;
             case 2:
-            //attend training
-            io.displayTraining();
-            System.out.println("What Training Event would you like to attend?");
-            io.joinTraining(id, io.getAlumniName(io.intInput()));
+                // attend training
+                io.displayTraining();
+                System.out.println("What Training Event would you like to attend?");
+                io.joinTraining(id, io.getAlumniName(io.intInput()));
                 break;
             case 3:
-            //exit to menu
+                // exit to menu
                 break;
         }
     }
@@ -622,6 +644,7 @@ public class UI {
     public void displayDonationsAlumni() {
         io.displayDonationsAlumni(id);
     }
+
     /**
      * Allows the Alumni to see Donations associated with events
      */
@@ -644,30 +667,61 @@ public class UI {
             System.out.println("THIS ACCOUNT HAS BEEN REMOVED");
         }
     }
+
     /**
      * Method for Deleting Events
      */
     public void deleteEvent() {
-        System.out.println("Please enter the ID of the event that you want to delete");
-        int eventDeletionID = io.intInput();
+        boolean owner = false;
+        int eventDeletionID = 0;
+        while (!owner) {
+            io.displayEvents();
+            System.out.println("Please enter the ID of the event that you want to delete");
+            eventDeletionID = io.intInput();
+            try {
+                if (id != io.getHostId(eventDeletionID)) {
+                    throw new InvalidEntry("YOU DID NOT OWN THIS EVENT");
+                } else
+                    owner = true;
+            } catch (InvalidEntry e) {
+                System.out.println(e.getMessage());
+                return;
+            }
+        }
         System.out.println("Are you sure you want to delete this event y/n");
         String confirmation = io.stringInput().toLowerCase();
         if (confirmation.charAt(0) == 'y') {
             io.deleteEvent(eventDeletionID);
         }
     }
+
     /**
      * Method for Deleting Training events
      */
     public void deleteTrainingEvent() {
-        System.out.println("please enter the ID of the Training event that you want to delete");
-        int trainingDeletionID = io.intInput();
+        boolean owner = false;
+        int trainingDeletionID = 0;
+        while (!owner) {
+            io.displayEvents();
+            System.out.println("Please enter the ID of the event that you want to delete");
+            trainingDeletionID = io.intInput();
+            try {
+                if (id != io.getHostId(trainingDeletionID)) {
+                    throw new InvalidEntry("YOU DID NOT OWN THIS EVENT");
+                } else
+                    owner = true;
+            } catch (InvalidEntry e) {
+                System.out.println(e.getMessage());
+                return;
+            }
+        }
         System.out.println("Are you sure you want to delete this Training Event y/n");
         String confirmation = io.stringInput().toLowerCase();
         if (confirmation.charAt(0) == 'y') {
             io.deleteTraining(trainingDeletionID);
         }
     }
+
     /**
      * Menu to let Alumni to choose whether to delete an Event or Training event
      */
