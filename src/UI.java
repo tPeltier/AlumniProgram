@@ -604,13 +604,23 @@ public class UI {
                 // attend event
                 io.displayEvents();
                 System.out.println("What Event would you like to attend?");
-                io.joinEvent(id, io.getAlumniName(io.intInput()));
+                int eventID = io.intInput();
+                if (io.alreadyAttendingEvent(id, eventID)) {
+                    System.out.println("You are already attending this Event");
+                } else {
+                    io.joinEvent(eventID, io.getAlumniName(id));
+                }
                 break;
             case 2:
                 // attend training
                 io.displayTraining();
                 System.out.println("What Training Event would you like to attend?");
-                io.joinTraining(id, io.getAlumniName(io.intInput()));
+                int trainingID = io.intInput();
+                if (io.alreadyAttendingTraining(id, trainingID)) {
+                    System.out.println("You are already attending this Training");
+                } else {
+                    io.joinTraining(id, io.getAlumniName(io.intInput()));
+                }
                 break;
             case 3:
                 // exit to menu
