@@ -162,39 +162,18 @@ public class InOut {
             int id = Integer.parseInt(s[0]);
             String name = s[1];
             int room = Integer.parseInt(s[2]);
-            int numberOfParticipants = Integer.parseInt(s[3]);
+            int totalSpots = Integer.parseInt(s[3]);
             // dateTime info
             String dateTimeString = eventFileIn.nextLine();
-            String[] dt = dateTimeString.split(",");
-            int year = Integer.parseInt(dt[0]);
-            int month = Integer.parseInt(dt[1]);
-            int dayOfMonth = Integer.parseInt(dt[2]);
-            int hour = Integer.parseInt(dt[3]);
-            int minute = Integer.parseInt(dt[4]);
-            LocalDateTime dateTime = LocalDateTime.of(year, month, dayOfMonth, hour, minute);
+            LocalDateTime dateTime = extractDateTime(dateTimeString);
             // host info
             String h = eventFileIn.nextLine();
-            String[] hArr = h.split(",");
-            int hostId = Integer.parseInt(hArr[0]);
-            String hostName = hArr[1];
-            String hostAdd = hArr[2];
-            String hostMaj = hArr[3];
-            String hostGY = hArr[4];
-            String hostJob = hArr[5];
-            String hostOrg = hArr[6];
-            String topic = hArr[7];
-            int phone = Integer.parseInt(hArr[8]);
-            String email = hArr[9];
-            Host host = new Host(hostId, hostName, hostAdd, hostMaj, hostGY, hostJob, hostOrg, topic, phone, email);
+            Host host = extractHost(h);
             // attending alumni info
             String list = eventFileIn.nextLine();
-            String[] listArr = list.split(",");
-            ArrayList<String> att = new ArrayList<>();
-            for (int i = 0; i < listArr.length; i++) {
-                att.add(listArr[i]);
-            }
+            ArrayList<String> att = extractAttendants(list);
 
-            Event e = new Event(id, name, room, numberOfParticipants, dateTime, att, host);
+            Event e = new Event(id, name, room, totalSpots, dateTime, att, host);
             eventMap.put(id, e);
         }
     }
@@ -208,45 +187,58 @@ public class InOut {
             int id = Integer.parseInt(s[0]);
             String name = s[1];
             int room = Integer.parseInt(s[2]);
-            int numberOfParticipants = Integer.parseInt(s[3]);
-            int totalSeats = Integer.parseInt(s[4]);
-            int openSeats = Integer.parseInt(s[5]);
-            String skill = s[6];
+            int totalSpots = Integer.parseInt(s[3]);
+            String skill = s[4];
             // dateTime info
             String dateTimeString = trainingFileIn.nextLine();
-            String[] dt = dateTimeString.split(",");
-            int year = Integer.parseInt(dt[0]);
-            int month = Integer.parseInt(dt[1]);
-            int dayOfMonth = Integer.parseInt(dt[2]);
-            int hour = Integer.parseInt(dt[3]);
-            int minute = Integer.parseInt(dt[4]);
-            LocalDateTime dateTime = LocalDateTime.of(year, month, dayOfMonth, hour, minute);
+            LocalDateTime dateTime = extractDateTime(dateTimeString);
+
             // host info
             String h = trainingFileIn.nextLine();
-            String[] hArr = h.split(",");
-            int hostId = Integer.parseInt(hArr[0]);
-            String hostName = hArr[1];
-            String hostAdd = hArr[2];
-            String hostMaj = hArr[3];
-            String hostGY = hArr[4];
-            String hostJob = hArr[5];
-            String hostOrg = hArr[6];
-            String topic = hArr[7];
-            int phone = Integer.parseInt(hArr[8]);
-            String email = hArr[9];
-            Host host = new Host(hostId, hostName, hostAdd, hostMaj, hostGY, hostJob, hostOrg, topic, phone, email);
+            Host host = extractHost(h);
             // attending alumni info
             String list = trainingFileIn.nextLine();
-            String[] listArr = list.split(",");
-            ArrayList<String> att = new ArrayList<>();
-            for (int i = 0; i < listArr.length; i++) {
-                att.add(listArr[i]);
-            }
+            ArrayList<String> att = extractAttendants(list);
 
-            Training t = new Training(id, name, room, numberOfParticipants, dateTime, att, host, skill, openSeats,
-                    totalSeats);
+            Training t = new Training(id, name, room, totalSpots, dateTime, att, host, skill);
             trainingMap.put(id, t);
         }
+    }
+
+    private LocalDateTime extractDateTime(String dateTimeString) {
+        String[] dt = dateTimeString.split(",");
+        int year = Integer.parseInt(dt[0]);
+        int month = Integer.parseInt(dt[1]);
+        int dayOfMonth = Integer.parseInt(dt[2]);
+        int hour = Integer.parseInt(dt[3]);
+        int minute = Integer.parseInt(dt[4]);
+        LocalDateTime dateTime = LocalDateTime.of(year, month, dayOfMonth, hour, minute);
+        return dateTime;
+    }
+
+    private Host extractHost(String h) {
+        String[] hArr = h.split(",");
+        int hostId = Integer.parseInt(hArr[0]);
+        String hostName = hArr[1];
+        String hostAdd = hArr[2];
+        String hostMaj = hArr[3];
+        String hostGY = hArr[4];
+        String hostJob = hArr[5];
+        String hostOrg = hArr[6];
+        String topic = hArr[7];
+        int phone = Integer.parseInt(hArr[8]);
+        String email = hArr[9];
+        Host host = new Host(hostId, hostName, hostAdd, hostMaj, hostGY, hostJob, hostOrg, topic, phone, email);
+        return host;
+    }
+
+    private ArrayList<String> extractAttendants(String list) {
+        String[] listArr = list.split(",");
+        ArrayList<String> att = new ArrayList<>();
+        for (int i = 0; i < listArr.length; i++) {
+            att.add(listArr[i]);
+        }
+        return att;
     }
 
     /**
@@ -277,6 +269,7 @@ public class InOut {
     public void displayEvents() {
         for (Event events : eventMap.values()) {
             System.out.println(events.toString());
+            System.out.println(events.getHost());
         }
     }
 
@@ -292,9 +285,122 @@ public class InOut {
     public void displayTraining() {
         for (Training training : trainingMap.values()) {
             System.out.println(training.toString());
+            System.out.println(training.getHost());
         }
     }
+
+    /**
+     * Display Host's for both Events and Training
+     */
+    public void displayHosts() {
+        System.out.println("The Hosts for Events are:");
+        for (Event events : eventMap.values()) {
+            System.out.println("For Event " + events.getID() + " " + events.getHost());
+        }
+        System.out.println("The Hosts for Trainings are:");
+        for (Training training : trainingMap.values()) {
+            System.out.println("For Training " + training.getID() + " " + training.getHost());
+        }
+
+    }
+
+    public void displayAttendantsEvent(int eventID) {
+        System.out.println(eventMap.get(eventID).displayAttendants());
+    }
+
+    public void displayAttendantsTraining(int trainingID) {
+        System.out.println(trainingMap.get(trainingID).displayAttendants());
+    }
+
+    public void displayByYear(int year) {
+        int check = Integer.parseInt(Integer.toString(year).substring(2, 4));
+        System.out.println("Events happening in the year " + year);
+        for (Event event : eventMap.values()) {
+            if (event.getYear() == check)
+                System.out.println(event.toString());
+        }
+        System.out.println("Training happening in the year " + year);
+        for (Training training : trainingMap.values()) {
+            if (training.getYear() == check)
+                System.out.println(training.toString());
+        }
+    }
+
+    public void displayMyAttendance(int id) {
+        System.out.println("My Events:");
+        int counter = 0;
+        for (Event event : eventMap.values()) {
+            if (event.checkForAttendance(alumniMap.get(id).getName())) {
+                System.out.println("You are attending " + event.getName() + " ID # " + event.getID());
+                counter++;
+            }
+        }
+        if (counter == 0)
+            System.out.println("Not currently attending any Events");
+        counter = 0;
+        System.out.println("My Training:");
+        for (Training training : trainingMap.values()) {
+            if (training.checkForAttendance(alumniMap.get(id).getName())) {
+                System.out.println("You are attending " + training.getName() + " ID # " + training.getID());
+                counter++;
+            }
+        }
+        if (counter == 0)
+            System.out.println("Not currently attending any Training");
+    }
+
+    public boolean alreadyAttendingEvent(int id, int eventID) {
+        if (eventMap.get(eventID).checkForAttendance(alumniMap.get(id).getName()))
+            return true;
+        else
+            return false;
+    }
+
+    public boolean alreadyAttendingTraining(int id, int trainingID) {
+        if (trainingMap.get(trainingID).checkForAttendance(alumniMap.get(id).getName()))
+            return true;
+        else
+            return false;
+    }
     // ---------- getters --------------
+
+    /**
+     * Get toString call for an Alumni Obj
+     * 
+     * @param id Alumni ID
+     * @return Alumni toString
+     */
+    public String getAlumni(int id) {
+        return alumniMap.get(id).toString();
+    }
+
+    /**
+     * Get toString call for an Event Obj
+     * 
+     * @param id Event ID
+     * @return Event toString
+     */
+    public String getEvent(int id) {
+        return eventMap.get(id).toString();
+    }
+
+    public String getEventHost(int id) {
+        return eventMap.get(id).getHost();
+    }
+
+    public String getTrainingHost(int id) {
+        return trainingMap.get(id).getHost();
+    }
+
+    /**
+     * Get toString call for a Training Obj
+     * 
+     * @param id Training ID
+     * @return Training toString
+     */
+    public String getTraining(int id) {
+        return trainingMap.get(id).toString();
+    }
 
     public String getAlumniName(int id) {
         return alumniMap.get(id).getName();
@@ -393,16 +499,6 @@ public class InOut {
         eventMap.get(id).setRoom(room);
     }
 
-    /**
-     * sets the number of each participant in the event
-     * 
-     * @param id                   event id
-     * @param numberOfParticipants event numberOfParticipants
-     */
-    public void setEventNumberOfParticipants(int id, int numberOfParticipants) {
-        eventMap.get(id).setNumberOfParticipants(numberOfParticipants);
-    }
-
     public int getEventYear(int id) {
         return eventMap.get(id).getYear();
     }
@@ -436,10 +532,6 @@ public class InOut {
         trainingMap.get(id).setRoom(room);
     }
 
-    public void setTrainingNumberOfParticipants(int id, int participants) {
-        trainingMap.get(id).setNumberOfParticipants(participants);
-    }
-
     public void setTrainingDate(int id, int year, int month, int dayOfMonth, int hour, int minute) {
         trainingMap.get(id).setStartDate(year, month, dayOfMonth, hour, minute);
     }
@@ -448,8 +540,12 @@ public class InOut {
         trainingMap.get(id).setSkill(newSkill);
     }
 
-    public void setNumOfTotalSeats(int id, int seats) {
-        trainingMap.get(id).setTotalSeats(seats);
+    public void setNumOfTotalSpotsTraining(int id, int spots) {
+        trainingMap.get(id).setTotalSpots(spots);
+    }
+
+    public void setNumOfTotalSpotsEvents(int id, int spots) {
+        eventMap.get(id).setTotalSpots(spots);
     }
 
     public void joinTraining(int id, String name) {
@@ -469,18 +565,18 @@ public class InOut {
         trainingMap.remove(id);
     }
 
-    public void createEvent(String name, int room, int numberOfParticipants, LocalDateTime startDate, Host host) {
+    public void createEvent(String name, int room, int totalSpots, LocalDateTime startDate, Host host) {
         int id = eventMap.lastKey();
         id++;
-        Event e = new Event(id, name, room, numberOfParticipants, startDate, host);
+        Event e = new Event(id, name, room, totalSpots, startDate, host);
         eventMap.put(id, e);
     }
 
-    public void createTrainingEvent(String name, int room, int numberOfParticipants, LocalDateTime startDate, Host host,
-            String skill, int openSeats, int totalSeats) {
+    public void createTrainingEvent(String name, int room, int totalSpots, LocalDateTime startDate, Host host,
+            String skill) {
         int id = trainingMap.lastKey();
         id++;
-        Training t = new Training(id, name, room, numberOfParticipants, startDate, host, skill, openSeats, totalSeats);
+        Training t = new Training(id, name, room, totalSpots, startDate, host, skill);
         trainingMap.put(id, t);
     }
     // ------- donation list methods ------

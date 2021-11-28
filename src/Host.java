@@ -85,6 +85,11 @@ public class Host extends Alumni {
         this.emailAddress = emailAddress;
     }
 
+    @Override
+    public String toString() {
+        return "the Host is " + super.getName() + " and their area of expertise is " + getTopic() + ". They can be reached by phone at: " + getPhoneNumber() + " or by email at: " + getEmailAddress();
+    }
+
     /**
      * Save the Host's information
      * @return Host's information formatted to save to text file

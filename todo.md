@@ -3,9 +3,10 @@
 [] packages
 [] change from saving to temps to saving to live files
 [] unit testing
-[] rearrange methods so that things are ezier to read
+[] rearrange methods so that things are easier to read (do after unit testing implemented)
 [] make "real" events and alumni & make more of them 
 
+[] add a button to kill inputs?
 [] finish javaDoc
     [x] alumni
     [] commonMethods
@@ -17,23 +18,24 @@
     [x] training
     [x] ui
 [] finish reports
-    [] events by year
+    [x] events by year
     [] listing guest speakers
-    [] list of people attending an event
-    [] display host for event/training
-    [] list of events/training alumni is attending
+        [] need to implement guest speakers into save files
+    [x] list of people attending an event
+    [x] display host for event/training
+    [x] list of events/training alumni is attending
     [x] listing alumni
     [] ect
-[] look into how we are handling people attending events (as in what we are asking for while creating events/training)
-    [] make events also have a total number of open spots and what not
-    [] do we want to save alumni objects instead of just names in the attendants arraylist
-    [] make it to where you can only sign up for an event once
+[] look into how we are handling people attending events 
+    [x] make events also have a total number of open spots and what not
+    [] do we want to save alumni objects instead of just names in the attendants arrayList
+    [x] make it to where you can only sign up for an event once
 [x] make toString human readable
     [x] alumni
     [x] events
     [x] training
 [x] make it so you can only delete events you own (like editing)
-[] display alumni/event/training that was edited right after editing (only that obj, not the whole list)
+[x] display alumni/event/training that was edited right after editing (only that obj, not the whole list)
 
 ### this might need more work
 [x] make localDateTimes out of the date in the donation (see below)
@@ -48,7 +50,13 @@
 [] deleting events/training causes errors while signing up to other events (nullPointer)
 [x] entering the wrong id sometimes doesn't display the options again
 [] we need to only allow 0-23 and 0-59 for time input
+[] 
 []
 []
 []
-[]
+---
+* only ask for total number of seats
+    * everything else is calculated 
+    * open = total - attending
+    * attending = size of arrayList?
+* order should be total, open, attending
