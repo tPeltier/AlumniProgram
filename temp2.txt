@@ -1,8 +1,8 @@
-1001,event1,100,300
+1001,event1,100,300,100,200
 21,1,1,13,0
 1001,Mary,4564 Applegate Rd.,Art,2016,Graphic Design,Sony,topic1,1234,email1
 name1,name2,name3,name4,name5
-1002,event2,200,400
+1002,event2,200,400,350,50
 22,2,2,14,0
 1002,John,3732 Orangepeel Rd.,Biology,2012,Marine Biologist,Tennessee Aquarium,topic2,5678,email2
 name6,name7,name8,name9,name10
