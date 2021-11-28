@@ -1,9 +1,2 @@
-# Computer Science 1020 Fall 2021 Final Project 
-## Group 3
-
-### Group Memebers
-* Joshua Dressel
-* Micheal Farris
-* Timothy Peltier
-* Cornelius Russell
-* Andrew Slater
+# Alumni Program 
+This is Group 3's Alumni Program for Computer Science 2 
