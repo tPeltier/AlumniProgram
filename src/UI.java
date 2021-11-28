@@ -124,8 +124,8 @@ public class UI {
         int choice = 0;
         while (run) {
             System.out.println(" ----------------------------------------------------- ");
-            System.out.println("1. Display a list of current Alumni \n2. Edit your profile information \n"
-                    + "3. Delete your account \n4. Return to the main menu");
+            System.out.println("1. Display a list of current Alumni \n2. See what Events and Training I'm attending\n3. Edit your profile information \n"
+                    + "4. Delete your account \n5. Return to the main menu");
             choice = io.intInput(4);
             switch (choice) {
                 case 1:
@@ -133,15 +133,19 @@ public class UI {
                     io.displayAlumni();
                     break;
                 case 2:
+                    // Display my Events and Training
+                    io.displayMyAttendance(id);
+                    break;
+                case 3:
                     // edit Alumni
                     editAlumni();
                     break;
-                case 3:
+                case 4:
                     // Delete Alumni
                     deleteAlumni();
                     run = false;
                     break;
-                case 4:
+                case 5:
                     run = false;
                     // go back to main menu
                     break;

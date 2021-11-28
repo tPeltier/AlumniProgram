@@ -293,14 +293,14 @@ public class InOut {
             System.out.println(training.getHost());
         }
     }
-    
+
     /**
      * Display Host's for both Events and Training
      */
     public void displayHosts() {
         System.out.println("The Hosts for Events are:");
         for (Event events : eventMap.values()) {
-            System.out.println("For Event " + events.getID() + " "  + events.getHost());
+            System.out.println("For Event " + events.getID() + " " + events.getHost());
         }
         System.out.println("The Hosts for Trainings are:");
         for (Training training : trainingMap.values()) {
@@ -313,36 +313,62 @@ public class InOut {
         int check = Integer.parseInt(Integer.toString(year).substring(2, 4));
         System.out.println("Events happening in the year " + year);
         for (Event event : eventMap.values()) {
-           if (event.getYear() == check) System.out.println(event.toString()); 
+            if (event.getYear() == check)
+                System.out.println(event.toString());
         }
         System.out.println("Training happening in the year " + year);
         for (Training training : trainingMap.values()) {
-            if (training.getYear() == check) System.out.println(training.toString());
+            if (training.getYear() == check)
+                System.out.println(training.toString());
+        }
+    }
+
+    public void displayMyAttendance(int id) {
+        System.out.println("My Events:");
+        for (Event event : eventMap.values()) {
+            if (event.checkForAttendance(alumniMap.get(id).getName()))
+                System.out.println("You are attending " + event.getName() + " ID # " + event.getID());
+            else
+                System.out.println("Not currently attending any Events");
+        }
+        System.out.println("My Training:");
+        for (Training training : trainingMap.values()) {
+            if (training.checkForAttendance(alumniMap.get(id).getName()))
+                System.out.println("You are attending " + training.getName() + " ID # " + training.getID());
+            else
+                System.out.println("Not currently attending any Training");
+
         }
     }
 
     public boolean alreadyAttendingEvent(int id, int eventID) {
-        if (eventMap.get(eventID).checkForAttendance(alumniMap.get(id).getName())) return true;
-        else return false;
+        if (eventMap.get(eventID).checkForAttendance(alumniMap.get(id).getName()))
+            return true;
+        else
+            return false;
     }
 
     public boolean alreadyAttendingTraining(int id, int trainingID) {
-        if (trainingMap.get(trainingID).checkForAttendance(alumniMap.get(id).getName())) return true;
-        else return false;
+        if (trainingMap.get(trainingID).checkForAttendance(alumniMap.get(id).getName()))
+            return true;
+        else
+            return false;
     }
     // ---------- getters --------------
 
     /**
      * Get toString call for an Alumni Obj
+     * 
      * @param id Alumni ID
      * @return Alumni toString
      */
     public String getAlumni(int id) {
-       return alumniMap.get(id).toString(); 
+        return alumniMap.get(id).toString();
     }
 
     /**
      * Get toString call for an Event Obj
+     * 
      * @param id Event ID
      * @return Event toString
      */
@@ -360,6 +386,7 @@ public class InOut {
 
     /**
      * Get toString call for a Training Obj
+     * 
      * @param id Training ID
      * @return Training toString
      */
