@@ -308,7 +308,18 @@ public class InOut {
         }
 
     }
+
+    public boolean alreadyAttendingEvent(int id, int eventID) {
+        if (eventMap.get(eventID).checkForAttendance(alumniMap.get(id).getName())) return true;
+        else return false;
+    }
+
+    public boolean alreadyAttendingTraining(int id, int trainingID) {
+        if (trainingMap.get(trainingID).checkForAttendance(alumniMap.get(id).getName())) return true;
+        else return false;
+    }
     // ---------- getters --------------
+
     /**
      * Get toString call for an Alumni Obj
      * @param id Alumni ID
