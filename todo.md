@@ -22,7 +22,7 @@
     [] listing guest speakers
     [] list of people attending an event
     [x] display host for event/training
-    [] list of events/training alumni is attending
+    [x] list of events/training alumni is attending
     [x] listing alumni
     [] ect
 [] look into how we are handling people attending events 
