@@ -224,7 +224,7 @@ public class Event implements CommonMethods {
 
     @Override
     public String toString() {
-        return "Event ID: " + getID() + " Event Name: " + getName() + " Event Date and Time: " + formatDateTime() + " Event Room Number: " + getRoom() + " Number of Participants: " + getNumberOfParticipants();
+        return "Event ID: " + getID() + " |" + " Event Name: " + getName() + " |" +  " Event Date and Time: " + formatDateTime() + " |" +  " Event Room Number: " + getRoom() + " |" +  " Number of Participants: " + getNumberOfParticipants();
     }
 
     /**

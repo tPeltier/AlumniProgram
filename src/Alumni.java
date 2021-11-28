@@ -183,7 +183,7 @@ public class Alumni implements CommonMethods {
 
     @Override
     public String toString() {
-        return "Alumni ID: " + getID() + " Alumni Name: " + getName() + " Alumni Address: " + getAddress() + " Alumni Major: " + getMajor() + " Alumni Graduation Year: " + getGradYear() + " Alumni Job Title: " + getJob() + " Alumni's Employing Organization: " + getOrganization();
+        return "Alumni ID: " + getID() + " |" + " Alumni Name: " + getName() + " |" + " Alumni Address: " + getAddress() + " |" + " Alumni Major: " + getMajor() + " |" + " Alumni Graduation Year: " + getGradYear() + " |" + " Alumni Job Title: " + getJob() + " |" + " Alumni's Employing Organization: " + getOrganization();
     }
 
     /**
