@@ -20,6 +20,7 @@
 [] finish reports
     [x] events by year
     [] listing guest speakers
+        [] need to implement guest speakers into save files
     [x] list of people attending an event
     [x] display host for event/training
     [x] list of events/training alumni is attending
