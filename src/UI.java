@@ -490,7 +490,7 @@ public class UI {
         int room = io.intInput();
         System.out.println("Enter the total number of spots available:");
         int totalSpots = io.intInput();
-        System.out.println("Enter the Topic of the Event:");
+        System.out.println("Enter the your area of Expertise:");
         String topic = io.stringInput();
         System.out.println("Enter a Phone Number where you can be reached:");
         long phone = io.longInput();
@@ -517,7 +517,7 @@ public class UI {
         int room = io.intInput();
         System.out.println("Enter total number of spots available:");
         int totalSpots = io.intInput();
-        System.out.println("Enter the topic of the Training Event:");
+        System.out.println("Enter the your area of Expertise:");
         String topic = io.stringInput();
         System.out.println("Enter the Skill being Trained at the Training Event:");
         String skill = io.stringInput();
