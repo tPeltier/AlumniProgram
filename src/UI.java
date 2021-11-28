@@ -573,7 +573,7 @@ public class UI {
      */
     public void eventViewerSubMenu() {
         System.out.println(
-                "What you would like to do? \n1. Display Events \n2. Display Training Events \n3. Display All Hosts \n4. Return to menu ");
+                "What you would like to do? \n1. Display Events \n2. Display Training Events \n3. Display Events in a given year\n4. Display All Hosts \n5. Return to menu ");
         int choice = io.intInput(3);
         switch (choice) {
             case 1:
@@ -585,8 +585,15 @@ public class UI {
                 io.displayTraining();
                 break;
             case 3:
-                io.displayHosts();
+                // Display Events and Training by Year
+                System.out.println("Enter a Year:");
+                io.displayByYear(io.intInput());
+                break;
             case 4:
+                // Display Hosts for both events and trainings
+                io.displayHosts();
+                break;
+            case 5:
                 // Return to the menu
                 break;
         }
