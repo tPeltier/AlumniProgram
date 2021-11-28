@@ -2,7 +2,7 @@
 ---
 [] packages
 
-this could be incorrect, check
+### this could be incorrect, check
 [x] finish save method for training
 
 [] finish javaDoc
@@ -26,7 +26,10 @@ this could be incorrect, check
 [] look into how we are handling people attending events (as in what we are asking for while creating events/training)
     [] make events also have a total number of open spots and what not
 [] do we want to save alumni objects instead of just names in the attendants arraylist
-[] make localDateTimes out of the date in the donation (see below)
+
+### this might need more work
+[x] make localDateTimes out of the date in the donation (see below)
+
 [] donations to training???
 [] unit testing
 [] make toString human readable
