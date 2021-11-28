@@ -41,7 +41,7 @@ public class UI {
             int choice = io.intInput(3);
             switch (choice) {
                 case 1:
-                    System.out.println("-Please log in by entering you ID and Password-");
+                    System.out.println("-Please enter you ID and Password to log in-");
                     System.out.println("ID:");
                     id = io.intInput();
                     try {
@@ -88,11 +88,8 @@ public class UI {
         boolean run = true;
         while (run) {
             System.out.println(" ----------------------------------------------------- ");
-            System.out.println("Welcome " + io.getAlumniName(id) + "! What would you like to do?");
-            // TODO Clean this list
-            System.out.println(
-                    "Please enter a number for what you want to do \n1. For Alumni settings(Display, edit, and delete) \n"
-                            + "2. For Event settings(join, create) \n3. Logout");
+            System.out.println("Welcome " + io.getAlumniName(id) + "! Where would you like to go?");
+            System.out.println("1. Alumni Menu \n2. Event Menu \n3. Logout");
             int choice = io.intInput(3);
             switch (choice) {
                 case 1:
@@ -124,8 +121,9 @@ public class UI {
         int choice = 0;
         while (run) {
             System.out.println(" ----------------------------------------------------- ");
-            System.out.println("1. Display a list of current Alumni \n2. See what Events and Training I'm attending\n3. Edit your profile information \n"
-                    + "4. Delete your account \n5. Return to the main menu");
+            System.out.println(
+                    "1. Display a list of current Alumni \n2. See what Events and Training I'm attending\n3. Edit your profile information \n"
+                            + "4. Delete your account \n5. Return to the main menu");
             choice = io.intInput(4);
             switch (choice) {
                 case 1:
