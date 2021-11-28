@@ -60,29 +60,7 @@ public class Alumni implements CommonMethods {
     }
 
 
-    /**
-     * Get the ALumni's ID
-     * @return Alumni's ID
-     */
-    public int getID() {
-        return id;
-    }
-
-    /**
-     * Get the Alumni's name
-     * @return Alumni's name
-     */ 
-    public String getName() {
-        return this.name;
-    }
-
-    /**
-     * Set the name of Alumni
-     * @param name Name to set as Alumni's name
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
+    // ==================== GETTERS ====================
 
     /**
      * Get mailing address of Alumni
@@ -90,30 +68,6 @@ public class Alumni implements CommonMethods {
      */
     public String getAddress() {
         return this.address;
-    }
-
-    /**
-     * Set the mailing address of Alumni
-     * @param address Mailing address to set for Alumni
-     */
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    /**
-     * Get the graduating major of Alumni
-     * @return Alumni's graduating major
-     */
-    public String getMajor() {
-        return this.major;
-    }
-
-    /**
-     * Set the graduating major of alumni
-     * @param major Graduating major to set for Alumni
-     */
-    public void setMajor(String major) {
-        this.major = major;
     }
 
     /**
@@ -125,11 +79,11 @@ public class Alumni implements CommonMethods {
     }
 
     /**
-     * Set the graduation year of Alumni
-     * @param gradYear Graduation year to set for ALumni
+     * Get the ALumni's ID
+     * @return Alumni's ID
      */
-    public void setGradYear(String gradYear) {
-        this.gradYear = gradYear;
+    public int getID() {
+        return id;
     }
 
     /**
@@ -141,11 +95,19 @@ public class Alumni implements CommonMethods {
     }
 
     /**
-     * Set the job title of Alumni
-     * @param job Job title to set for Alumni
+     * Get the graduating major of Alumni
+     * @return Alumni's graduating major
      */
-    public void setJob(String job) {
-        this.job = job;
+    public String getMajor() {
+        return this.major;
+    }
+
+    /**
+     * Get the Alumni's name
+     * @return Alumni's name
+     */ 
+    public String getName() {
+        return this.name;
     }
 
     /**
@@ -157,19 +119,61 @@ public class Alumni implements CommonMethods {
     }
 
     /**
-     * Set the organization of alumni
-     * @param organization Organization to set for ALumni
-     */
-    public void setOrganization(String organization) {
-        this.organization = organization;
-    }
-
-    /**
     * Get the Alumni's Password
     * @return Alumni's password
     */
     public String getPassword(){
         return password;
+    }
+
+    // ==================== SETTERS ====================
+
+    /**
+     * Set the mailing address of Alumni
+     * @param address Mailing address to set for Alumni
+     */
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    /**
+     * Set the graduation year of Alumni
+     * @param gradYear Graduation year to set for ALumni
+     */
+    public void setGradYear(String gradYear) {
+        this.gradYear = gradYear;
+    }
+
+    /**
+     * Set the job title of Alumni
+     * @param job Job title to set for Alumni
+     */
+    public void setJob(String job) {
+        this.job = job;
+    }
+
+    /**
+     * Set the graduating major of alumni
+     * @param major Graduating major to set for Alumni
+     */
+    public void setMajor(String major) {
+        this.major = major;
+    }
+
+    /**
+     * Set the name of Alumni
+     * @param name Name to set as Alumni's name
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * Set the organization of alumni
+     * @param organization Organization to set for ALumni
+     */
+    public void setOrganization(String organization) {
+        this.organization = organization;
     }
 
     /**
@@ -180,6 +184,8 @@ public class Alumni implements CommonMethods {
         this.password = password;
     }
     
+
+    // ----- RAND -----
 
     @Override
     public String toString() {
