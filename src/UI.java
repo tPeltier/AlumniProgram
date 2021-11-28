@@ -577,7 +577,7 @@ public class UI {
      */
     public void eventViewerSubMenu() {
         System.out.println(
-                "What you would like to do? \n1. Display Events \n2. Display Training Events \n3. Return to menu ");
+                "What you would like to do? \n1. Display Events \n2. Display Training Events \n3. Display All Hosts \n4. Return to menu ");
         int choice = io.intInput(3);
         switch (choice) {
             case 1:
@@ -589,6 +589,8 @@ public class UI {
                 io.displayTraining();
                 break;
             case 3:
+                io.displayHosts();
+            case 4:
                 // Return to the menu
                 break;
         }
