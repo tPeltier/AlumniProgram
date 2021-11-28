@@ -309,6 +309,14 @@ public class InOut {
 
     }
 
+    public void displayAttendantsEvent(int eventID) {
+        System.out.println(eventMap.get(eventID).displayAttendants());
+    }
+
+    public void displayAttendantsTraining(int trainingID) {
+        System.out.println(trainingMap.get(trainingID).displayAttendants());
+    }
+
     public void displayByYear(int year) {
         int check = Integer.parseInt(Integer.toString(year).substring(2, 4));
         System.out.println("Events happening in the year " + year);
