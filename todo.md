@@ -3,7 +3,7 @@
 [] packages
 [] change from saving to temps to saving to live files
 [] unit testing
-[] rearrange methods so that things are easier to read
+[] rearrange methods so that things are easier to read (do after unit testing implemented)
 [] make "real" events and alumni & make more of them 
 
 [] add a button to kill inputs?
@@ -20,7 +20,7 @@
 [] finish reports
     [x] events by year
     [] listing guest speakers
-    [] list of people attending an event
+    [x] list of people attending an event
     [x] display host for event/training
     [x] list of events/training alumni is attending
     [x] listing alumni
@@ -49,7 +49,7 @@
 [] deleting events/training causes errors while signing up to other events (nullPointer)
 [x] entering the wrong id sometimes doesn't display the options again
 [] we need to only allow 0-23 and 0-59 for time input
-[]
+[] 
 []
 []
 []
