@@ -92,8 +92,7 @@ public class Training extends Event {
      * @return Training's information formatted to save to text file
      */
     public String save() {
-        return super.getID() + "," + super.getName() + "," + super.getRoom() + "," + super.getTotalSpots() + ","
-                + super.getSpotsFilled() + "," + super.getOpenSpots() + "," + getSkill();
+        return super.save() + "," + getSkill();
     }
 
 }

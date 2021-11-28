@@ -114,8 +114,7 @@ public class Host extends Alumni {
      * @return Host's information formatted to save to text file
      */
     public String save() {
-        return super.getID() + "," + super.getName() + "," + super.getAddress() + "," + super.getMajor() + ","
-                + super.getGradYear() + "," + super.getJob() + "," + super.getOrganization() + "," + getTopic() + ","
+        return super.save() + "," + getTopic() + ","
                 + getPhoneNumber() + "," + getEmailAddress();
     }
 }
