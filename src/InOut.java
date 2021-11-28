@@ -309,6 +309,18 @@ public class InOut {
 
     }
 
+    public void displayByYear(int year) {
+        int check = Integer.parseInt(Integer.toString(year).substring(2, 4));
+        System.out.println("Events happening in the year " + year);
+        for (Event event : eventMap.values()) {
+           if (event.getYear() == check) System.out.println(event.toString()); 
+        }
+        System.out.println("Training happening in the year " + year);
+        for (Training training : trainingMap.values()) {
+            if (training.getYear() == check) System.out.println(training.toString());
+        }
+    }
+
     public boolean alreadyAttendingEvent(int id, int eventID) {
         if (eventMap.get(eventID).checkForAttendance(alumniMap.get(id).getName())) return true;
         else return false;
