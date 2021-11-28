@@ -53,16 +53,7 @@ public class Training extends Event {
 
     // ==================== GETTERS ====================
 
-    /**
-     * Get open seats of Training
-     * 
-     * @return Open seats of Training
-     */
-    public int getOpenSpots() {
-        return super.getOpenSpots();
-    }
-
-    /**
+     /**
      * Get the skill being taught at the Training
      * 
      * @return Skill of Training
@@ -72,23 +63,7 @@ public class Training extends Event {
 
     }
 
-    /**
-     * Get total seats of Training
-     * 
-     * @return Total seats of Training
-     */
-    public int getTotalSpots() {
-        return super.getTotalSpots();
-    }
-
     // ==================== SETTERS ====================
-
-    /**
-     * Calculate open seats for training
-     */
-    public void setOpenSeats() {
-        super.setOpenSpots();
-    }
 
     /**
      * Set new skill from Training
@@ -98,16 +73,6 @@ public class Training extends Event {
     public void setSkill(String newSkill) {
         skill = newSkill;
     }
-
-    /**
-     * Set total seats of Training
-     * 
-     * @param totalSpots Total number of seats available
-     */
-    public void setTotalSpots(int totalSpots) {
-        super.setTotalSpots(totalSpots);
-    }
-
     // ==================== RAND ====================
 
     @Override
