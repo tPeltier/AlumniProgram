@@ -542,7 +542,24 @@ public class InOut {
     public int intInput() {
         int n;
         do {
-            while (!in.hasNextInt()) {
+            while (!in.hasNextInt() || in.nextInt() < 0) {
+                String s = in.next();
+                System.out.printf("\"%s\" is not a valid number%n", s);
+            }
+            n = in.nextInt();
+            in.nextLine();
+        } while (n < 0);
+        return n;
+    }
+    /**
+     * Get User Integer Input
+     * 
+     * @return User input : int
+     */
+    public int intInput(int boundary) {
+        int n;
+        do {
+            while (!in.hasNextInt() || in.nextInt() < 0 || in.nextInt() > boundary) {
                 String s = in.next();
                 System.out.printf("\"%s\" is not a valid number%n", s);
             }
@@ -555,7 +572,7 @@ public class InOut {
     public long longInput() {
         long n;
         do {
-            while (!in.hasNextLong()) {
+            while (!in.hasNextLong() || in.nextInt() < 0) {
                 String s = in.next();
                 System.out.printf("\"%s\" is not a valid number%n", s);
             }
@@ -572,7 +589,7 @@ public class InOut {
     public double doubleInput() {
         double n;
         do {
-            while (!in.hasNextDouble()) {
+            while (!in.hasNextDouble() || in.nextInt() < 0) {
                 String s = in.next();
                 System.out.printf("\"%s\" is not a valid number%n", s);
             }

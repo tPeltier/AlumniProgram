@@ -1,6 +1,8 @@
 # TODO
 ---
 [] packages
+[] change from saving to temps to saving to live files
+[] unit testing
 
 ### this could be incorrect, check
 [x] finish save method for training
@@ -22,7 +24,6 @@
     [] list of people attending an event
     [x] listing alumni
     [] ect
-[] change from saving to temps to saving to live files
 [] look into how we are handling people attending events (as in what we are asking for while creating events/training)
     [] make events also have a total number of open spots and what not
     [] do we want to save alumni objects instead of just names in the attendants arraylist
@@ -31,7 +32,6 @@
 [x] make localDateTimes out of the date in the donation (see below)
 
 [] donations to training???
-[] unit testing
 [] make toString human readable
     [x] alumni
     [x] events
@@ -46,7 +46,7 @@
     * date created will be wrong every time the program runs it'll reset
 ---
 # LIST OF BUGS:
-[] negative numbers need help
+[x] negative numbers need help
 [] out of bounds handling for time and date entry 
 [] fix training menu
 [] add check to see if event/training/alumni exist while deleting?
