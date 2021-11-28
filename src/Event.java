@@ -38,7 +38,7 @@ public class Event implements CommonMethods {
         this.name = name;
         this.room = room;
         this.totalSpots = totalSpots;
-        this.openSpots = totalSpots = attendant.size();
+        this.openSpots = totalSpots - attendant.size();
         this.spotsFilled = attendant.size();
         this.startDate = startDate;
         this.attendants = attendant;
