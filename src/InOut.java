@@ -106,33 +106,28 @@ public class InOut {
 
     }
 
-    public void existingPasswords() {
-        passwords = new HashMap<>();
+    // --- EXISTING ---
 
-        while (passwordFileIn.hasNextLine()) {
-            String line = passwordFileIn.nextLine();
+    /**
+     * Create and Fill a TreeMap of Alumni pulled from a Text File
+     */
+    public void existingAlumni() {
+        alumniMap = new TreeMap<>();
+        Alumni a = new Alumni();
+        while (alumniFileIn.hasNextLine()) {
+            String line = alumniFileIn.nextLine();
             String[] s = line.split(",");
             int id = Integer.parseInt(s[0]);
-            String pw = s[1];
-            passwords.put(id, pw);
+            String name = s[1];
+            String address = s[2];
+            String major = s[3];
+            String gradYear = s[4];
+            String job = s[5];
+            String organization = s[6];
+            String password = getPassword(id);
+            a = new Alumni(id, name, address, major, gradYear, job, organization, password);
+            alumniMap.put(id, a);
         }
-
-    }
-
-    public String getPassword(int id) {
-        return passwords.get(id);
-    }
-
-    public void setPassword(int id, String newPw) {
-        passwords.put(id, newPw);
-    }
-
-    public boolean checkId(int id) {
-        for (Alumni alumni : alumniMap.values()) {
-            if (id == alumni.getID())
-                return true;
-        }
-        return false;
     }
 
     public void existingDonations() {
@@ -178,7 +173,19 @@ public class InOut {
         }
     }
 
-    // Training
+    public void existingPasswords() {
+        passwords = new HashMap<>();
+
+        while (passwordFileIn.hasNextLine()) {
+            String line = passwordFileIn.nextLine();
+            String[] s = line.split(",");
+            int id = Integer.parseInt(s[0]);
+            String pw = s[1];
+            passwords.put(id, pw);
+        }
+
+    }
+
     public void existingTrainingEvents() {
         trainingMap = new TreeMap<>();
         while (trainingFileIn.hasNextLine()) {
@@ -203,6 +210,15 @@ public class InOut {
             Training t = new Training(id, name, room, totalSpots, dateTime, att, host, skill);
             trainingMap.put(id, t);
         }
+    }
+
+    private ArrayList<String> extractAttendants(String list) {
+        String[] listArr = list.split(",");
+        ArrayList<String> att = new ArrayList<>();
+        for (int i = 0; i < listArr.length; i++) {
+            att.add(listArr[i]);
+        }
+        return att;
     }
 
     private LocalDateTime extractDateTime(String dateTimeString) {
@@ -232,137 +248,9 @@ public class InOut {
         return host;
     }
 
-    private ArrayList<String> extractAttendants(String list) {
-        String[] listArr = list.split(",");
-        ArrayList<String> att = new ArrayList<>();
-        for (int i = 0; i < listArr.length; i++) {
-            att.add(listArr[i]);
-        }
-        return att;
-    }
+    // ==================== GETTERS ====================
 
-    /**
-     * Create and Fill a TreeMap of Alumni pulled from a Text File
-     */
-    public void existingAlumni() {
-        alumniMap = new TreeMap<>();
-        Alumni a = new Alumni();
-        while (alumniFileIn.hasNextLine()) {
-            String line = alumniFileIn.nextLine();
-            String[] s = line.split(",");
-            int id = Integer.parseInt(s[0]);
-            String name = s[1];
-            String address = s[2];
-            String major = s[3];
-            String gradYear = s[4];
-            String job = s[5];
-            String organization = s[6];
-            String password = getPassword(id);
-            a = new Alumni(id, name, address, major, gradYear, job, organization, password);
-            alumniMap.put(id, a);
-        }
-    }
-
-    /**
-     * Display the Events Map
-     */
-    public void displayEvents() {
-        for (Event events : eventMap.values()) {
-            System.out.println(events.toString());
-            System.out.println(events.getHost());
-        }
-    }
-
-    /**
-     * Display the Alumni Map
-     */
-    public void displayAlumni() {
-        for (Alumni alumni : alumniMap.values()) {
-            System.out.println(alumni.toString());
-        }
-    }
-
-    public void displayTraining() {
-        for (Training training : trainingMap.values()) {
-            System.out.println(training.toString());
-            System.out.println(training.getHost());
-        }
-    }
-
-    /**
-     * Display Host's for both Events and Training
-     */
-    public void displayHosts() {
-        System.out.println("The Hosts for Events are:");
-        for (Event events : eventMap.values()) {
-            System.out.println("For Event " + events.getID() + " " + events.getHost());
-        }
-        System.out.println("The Hosts for Trainings are:");
-        for (Training training : trainingMap.values()) {
-            System.out.println("For Training " + training.getID() + " " + training.getHost());
-        }
-
-    }
-
-    public void displayAttendantsEvent(int eventID) {
-        System.out.println(eventMap.get(eventID).displayAttendants());
-    }
-
-    public void displayAttendantsTraining(int trainingID) {
-        System.out.println(trainingMap.get(trainingID).displayAttendants());
-    }
-
-    public void displayByYear(int year) {
-        int check = Integer.parseInt(Integer.toString(year).substring(2, 4));
-        System.out.println("Events happening in the year " + year);
-        for (Event event : eventMap.values()) {
-            if (event.getYear() == check)
-                System.out.println(event.toString());
-        }
-        System.out.println("Training happening in the year " + year);
-        for (Training training : trainingMap.values()) {
-            if (training.getYear() == check)
-                System.out.println(training.toString());
-        }
-    }
-
-    public void displayMyAttendance(int id) {
-        System.out.println("My Events:");
-        int counter = 0;
-        for (Event event : eventMap.values()) {
-            if (event.checkForAttendance(alumniMap.get(id).getName())) {
-                System.out.println("You are attending " + event.getName() + " ID # " + event.getID());
-                counter++;
-            }
-        }
-        if (counter == 0)
-            System.out.println("Not currently attending any Events");
-        counter = 0;
-        System.out.println("My Training:");
-        for (Training training : trainingMap.values()) {
-            if (training.checkForAttendance(alumniMap.get(id).getName())) {
-                System.out.println("You are attending " + training.getName() + " ID # " + training.getID());
-                counter++;
-            }
-        }
-        if (counter == 0)
-            System.out.println("Not currently attending any Training");
-    }
-
-    public boolean alreadyAttendingEvent(int id, int eventID) {
-        if (eventMap.get(eventID).checkForAttendance(alumniMap.get(id).getName()))
-            return true;
-        else
-            return false;
-    }
-
-    public boolean alreadyAttendingTraining(int id, int trainingID) {
-        if (trainingMap.get(trainingID).checkForAttendance(alumniMap.get(id).getName()))
-            return true;
-        else
-            return false;
-    }
-    // ---------- getters --------------
+    // ----- ALUMNI -----
 
     /**
      * Get toString call for an Alumni Obj
@@ -373,6 +261,32 @@ public class InOut {
     public String getAlumni(int id) {
         return alumniMap.get(id).toString();
     }
+
+    public String getAlumniAddress(int id) {
+        return alumniMap.get(id).getAddress();
+    }
+
+    public String getAlumniGradYear(int id) {
+        return alumniMap.get(id).getGradYear();
+    }
+
+    public String getAlumniJob(int id) {
+        return alumniMap.get(id).getJob();
+    }
+
+    public String getAlumniMajor(int id) {
+        return alumniMap.get(id).getMajor();
+    }
+
+    public String getAlumniName(int id) {
+        return alumniMap.get(id).getName();
+    }
+
+    public String getAlumniOrg(int id) {
+        return alumniMap.get(id).getOrganization();
+    }
+
+    // ----- EVENTS -----
 
     /**
      * Get toString call for an Event Obj
@@ -386,117 +300,6 @@ public class InOut {
 
     public String getEventHost(int id) {
         return eventMap.get(id).getHost();
-    }
-
-    public String getTrainingHost(int id) {
-        return trainingMap.get(id).getHost();
-    }
-
-    /**
-     * Get toString call for a Training Obj
-     * 
-     * @param id Training ID
-     * @return Training toString
-     */
-    public String getTraining(int id) {
-        return trainingMap.get(id).toString();
-    }
-
-    public String getAlumniName(int id) {
-        return alumniMap.get(id).getName();
-    }
-
-    public String getAlumniAddress(int id) {
-        return alumniMap.get(id).getAddress();
-    }
-
-    public String getAlumniMajor(int id) {
-        return alumniMap.get(id).getMajor();
-    }
-
-    public String getAlumniGradYear(int id) {
-        return alumniMap.get(id).getGradYear();
-    }
-
-    public String getAlumniJob(int id) {
-        return alumniMap.get(id).getJob();
-    }
-
-    public String getAlumniOrg(int id) {
-        return alumniMap.get(id).getOrganization();
-    }
-
-    // ---------- setters--------------
-    public void setAlumniName(int id, String name) {
-        alumniMap.get(id).setName(name);
-    }
-
-    public void setAlumniAddress(int id, String address) {
-        alumniMap.get(id).setAddress(address);
-    }
-
-    public void setAlumniMajor(int id, String major) {
-        alumniMap.get(id).setMajor(major);
-    }
-
-    public void setAlumniGradYear(int id, String gradYear) {
-        alumniMap.get(id).setGradYear(gradYear);
-    }
-
-    public void setAlumniJob(int id, String job) {
-        alumniMap.get(id).setJob(job);
-    }
-
-    public void setAlumniOrg(int id, String org) {
-        alumniMap.get(id).setOrganization(org);
-    }
-
-    public int createAlumni(String name, String address, String major, String gradYear, String job,
-            String organization,
-            String password) {
-        int id = alumniMap.lastKey();
-        id++;
-        Alumni a = new Alumni(id, name, address, major, gradYear, job, organization, password);
-        alumniMap.put(id, a);
-        return id;
-    }
-
-    // --------- Event Methods here ---------------
-
-    public void joinEvent(int id, String name) {
-        eventMap.get(id).addAttendant(name);
-    }
-
-    // -----------Edit Event Methods----------------
-
-    /**
-     * sets event name
-     * 
-     * @param id   event id
-     * @param name event name
-     */
-    public void setEventName(int id, String name) {
-        eventMap.get(id).setName(name);
-    }
-
-    /**
-     * sets a name for the event
-     * 
-     * @param id   event id
-     * @param time event time
-     */
-    public void setEventDateTime(int id, int year, int month, int day, int hour, int minute) {
-        eventMap.get(id).setTime(year, month, day, hour, minute);
-    }
-
-    /**
-     * sets a room for event
-     * 
-     * @param id   event id
-     * @param room event room
-     */
-    public void setEventRoom(int id, int room) {
-        eventMap.get(id).setRoom(room);
     }
 
     public int getEventYear(int id) {
@@ -522,8 +325,94 @@ public class InOut {
     public int getHostId(int id) {
         return eventMap.get(id).getHostId();
     }
+    // ----- TRAINING -----
 
-    // ------ edit training methods -----
+    /**
+     * Get toString call for a Training Obj
+     * 
+     * @param id Training ID
+     * @return Training toString
+     */
+    public String getTraining(int id) {
+        return trainingMap.get(id).toString();
+    }
+
+    public String getTrainingHost(int id) {
+        return trainingMap.get(id).getHost();
+    }
+
+    // ----- RAND -----
+
+    public String getPassword(int id) {
+        return passwords.get(id);
+    }
+
+    // ==================== SETTERS ====================
+
+    // ----- ALUMNI -----
+
+    public void setAlumniAddress(int id, String address) {
+        alumniMap.get(id).setAddress(address);
+    }
+
+    public void setAlumniGradYear(int id, String gradYear) {
+        alumniMap.get(id).setGradYear(gradYear);
+    }
+
+    public void setAlumniJob(int id, String job) {
+        alumniMap.get(id).setJob(job);
+    }
+
+    public void setAlumniMajor(int id, String major) {
+        alumniMap.get(id).setMajor(major);
+    }
+
+    public void setAlumniName(int id, String name) {
+        alumniMap.get(id).setName(name);
+    }
+
+    public void setAlumniOrg(int id, String org) {
+        alumniMap.get(id).setOrganization(org);
+    }
+
+    // ----- EVENTS -----
+
+    /**
+     * sets a name for the event
+     * 
+     * @param id   event id
+     * @param time event time
+     */
+    public void setEventDateTime(int id, int year, int month, int day, int hour, int minute) {
+        eventMap.get(id).setTime(year, month, day, hour, minute);
+    }
+
+    /**
+     * sets event name
+     * 
+     * @param id   event id
+     * @param name event name
+     */
+    public void setEventName(int id, String name) {
+        eventMap.get(id).setName(name);
+    }
+
+    /**
+     * sets a room for event
+     * 
+     * @param id   event id
+     * @param room event room
+     */
+    public void setEventRoom(int id, int room) {
+        eventMap.get(id).setRoom(room);
+    }
+
+    // ----- TRAINING -----
+
+    public void setTrainingDate(int id, int year, int month, int dayOfMonth, int hour, int minute) {
+        trainingMap.get(id).setStartDate(year, month, dayOfMonth, hour, minute);
+    }
+
     public void setTrainingName(int id, String name) {
         trainingMap.get(id).setName(name);
     }
@@ -532,64 +421,55 @@ public class InOut {
         trainingMap.get(id).setRoom(room);
     }
 
-    public void setTrainingDate(int id, int year, int month, int dayOfMonth, int hour, int minute) {
-        trainingMap.get(id).setStartDate(year, month, dayOfMonth, hour, minute);
-    }
-
     public void setTrainingSkill(int id, String newSkill) {
         trainingMap.get(id).setSkill(newSkill);
     }
 
-    public void setNumOfTotalSpotsTraining(int id, int spots) {
-        trainingMap.get(id).setTotalSpots(spots);
+    // ----- RAND ----
+
+    public void setPassword(int id, String newPw) {
+        passwords.put(id, newPw);
     }
 
     public void setNumOfTotalSpotsEvents(int id, int spots) {
         eventMap.get(id).setTotalSpots(spots);
     }
 
-    public void joinTraining(int id, String name) {
-        trainingMap.get(id).addAttendant(name);
+    public void setNumOfTotalSpotsTraining(int id, int spots) {
+        trainingMap.get(id).setTotalSpots(spots);
     }
 
-    // ------- remove --------------
-    public void deleteAlumni(int id) {
-        alumniMap.remove(id);
-    }
-
-    public void deleteEvent(int id) {
-        eventMap.remove(id);
-    }
-
-    public void deleteTraining(int id) {
-        trainingMap.remove(id);
-    }
-
-    public void createEvent(String name, int room, int totalSpots, LocalDateTime startDate, Host host) {
-        int id = eventMap.lastKey();
-        id++;
-        Event e = new Event(id, name, room, totalSpots, startDate, host);
-        eventMap.put(id, e);
-    }
-
-    public void createTrainingEvent(String name, int room, int totalSpots, LocalDateTime startDate, Host host,
-            String skill) {
-        int id = trainingMap.lastKey();
-        id++;
-        Training t = new Training(id, name, room, totalSpots, startDate, host, skill);
-        trainingMap.put(id, t);
-    }
-    // ------- donation list methods ------
+    // ==================== DISPLAY ====================
 
     /**
-     * Add a Donation and put it in the Donation List
-     * 
-     * @param alumniId       ID of the ALumni making the donation
-     * @param eventId        ID of the Event that the donation is going towards
-     * @param donationAmount Amount of the Donation being made
+     * Display the Alumni Map
      */
-    public void addDonationToList(int alumniId, int eventId, double donationAmount) {
-        donationList.add(new Donation(alumniId, eventId, donationAmount));
+    public void displayAlumni() {
+        for (Alumni alumni : alumniMap.values()) {
+            System.out.println(alumni.toString());
+        }
+    }
+
+    public void displayAttendantsEvent(int eventID) {
+        System.out.println(eventMap.get(eventID).displayAttendants());
+    }
+
+    public void displayAttendantsTraining(int trainingID) {
+        System.out.println(trainingMap.get(trainingID).displayAttendants());
+    }
+
+    public void displayByYear(int year) {
+        int check = Integer.parseInt(Integer.toString(year).substring(2, 4));
+        System.out.println("Events happening in the year " + year);
+        for (Event event : eventMap.values()) {
+            if (event.getYear() == check)
+                System.out.println(event.toString());
+        }
+        System.out.println("Training happening in the year " + year);
+        for (Training training : trainingMap.values()) {
+            if (training.getYear() == check)
+                System.out.println(training.toString());
+        }
     }
 
     /**
@@ -619,6 +499,149 @@ public class InOut {
         }
 
     }
+
+    /**
+     * Display the Events Map
+     */
+    public void displayEvents() {
+        for (Event events : eventMap.values()) {
+            System.out.println(events.toString());
+            System.out.println(events.getHost());
+        }
+    }
+
+    /**
+     * Display Host's for both Events and Training
+     */
+    public void displayHosts() {
+        System.out.println("The Hosts for Events are:");
+        for (Event events : eventMap.values()) {
+            System.out.println("For Event " + events.getID() + " " + events.getHost());
+        }
+        System.out.println("The Hosts for Trainings are:");
+        for (Training training : trainingMap.values()) {
+            System.out.println("For Training " + training.getID() + " " + training.getHost());
+        }
+
+    }
+
+    public void displayMyAttendance(int id) {
+        System.out.println("My Events:");
+        int counter = 0;
+        for (Event event : eventMap.values()) {
+            if (event.checkForAttendance(alumniMap.get(id).getName())) {
+                System.out.println("You are attending " + event.getName() + " ID # " + event.getID());
+                counter++;
+            }
+        }
+        if (counter == 0)
+            System.out.println("Not currently attending any Events");
+        counter = 0;
+        System.out.println("My Training:");
+        for (Training training : trainingMap.values()) {
+            if (training.checkForAttendance(alumniMap.get(id).getName())) {
+                System.out.println("You are attending " + training.getName() + " ID # " + training.getID());
+                counter++;
+            }
+        }
+        if (counter == 0)
+            System.out.println("Not currently attending any Training");
+    }
+
+    public void displayTraining() {
+        for (Training training : trainingMap.values()) {
+            System.out.println(training.toString());
+            System.out.println(training.getHost());
+        }
+    }
+
+    // ==================== CHECKERS ====================
+
+    public boolean checkId(int id) {
+        for (Alumni alumni : alumniMap.values()) {
+            if (id == alumni.getID())
+                return true;
+        }
+        return false;
+    }
+
+    public boolean alreadyAttendingEvent(int id, int eventID) {
+        if (eventMap.get(eventID).checkForAttendance(alumniMap.get(id).getName()))
+            return true;
+        else
+            return false;
+    }
+
+    public boolean alreadyAttendingTraining(int id, int trainingID) {
+        if (trainingMap.get(trainingID).checkForAttendance(alumniMap.get(id).getName()))
+            return true;
+        else
+            return false;
+    }
+
+    // ==================== CREATE ====================
+
+    public int createAlumni(String name, String address, String major, String gradYear, String job,
+            String organization,
+            String password) {
+        int id = alumniMap.lastKey();
+        id++;
+        Alumni a = new Alumni(id, name, address, major, gradYear, job, organization, password);
+        alumniMap.put(id, a);
+        return id;
+    }
+
+    public void createEvent(String name, int room, int totalSpots, LocalDateTime startDate, Host host) {
+        int id = eventMap.lastKey();
+        id++;
+        Event e = new Event(id, name, room, totalSpots, startDate, host);
+        eventMap.put(id, e);
+    }
+
+    public void createTrainingEvent(String name, int room, int totalSpots, LocalDateTime startDate, Host host,
+            String skill) {
+        int id = trainingMap.lastKey();
+        id++;
+        Training t = new Training(id, name, room, totalSpots, startDate, host, skill);
+        trainingMap.put(id, t);
+    }
+
+    // ==================== DELETE ====================
+
+    public void deleteAlumni(int id) {
+        alumniMap.remove(id);
+    }
+
+    public void deleteEvent(int id) {
+        eventMap.remove(id);
+    }
+
+    public void deleteTraining(int id) {
+        trainingMap.remove(id);
+    }
+
+    // ==================== ADDERS ====================  
+
+    /**
+     * Add a Donation and put it in the Donation List
+     * 
+     * @param alumniId       ID of the ALumni making the donation
+     * @param eventId        ID of the Event that the donation is going towards
+     * @param donationAmount Amount of the Donation being made
+     */
+    public void addDonationToList(int alumniId, int eventId, double donationAmount) {
+        donationList.add(new Donation(alumniId, eventId, donationAmount));
+    }
+
+    public void joinEvent(int id, String name) {
+        eventMap.get(id).addAttendant(name);
+    }
+
+    public void joinTraining(int id, String name) {
+        trainingMap.get(id).addAttendant(name);
+    }
+
+    // ==================== INPUT====================
 
     /**
      * Get User Text Input
