@@ -20,7 +20,7 @@ public class UI {
      * @throws FileNotFoundException
      */
     public void userInterface() throws FileNotFoundException {
-        System.out.println("Hello and Welcome to the Alumni Program");
+        System.out.println("Hello and Welcome to the Alumni Program!");
         boolean isRunning = true;
         while (isRunning) {
             login();
@@ -256,7 +256,7 @@ public class UI {
                     break;
                 case 8:
                     // exit
-                    io.displayAlumni();
+                    System.out.println(io.getAlumni(id));
                     run = false;
                     break;
             }
@@ -359,7 +359,7 @@ public class UI {
 
                 case 6:
                     // exit
-                    io.getEvent(eventID);
+                    System.out.println(io.getEvent(eventID));
                     run = false;
                     break;
             }
@@ -445,7 +445,7 @@ public class UI {
 
                 case 7:
                     // exit
-                    io.getTraining(trainingEventID);
+                    System.out.println(io.getTraining(trainingEventID));
                     run = false;
                     break;
             }
