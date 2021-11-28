@@ -6,7 +6,7 @@ public class UI {
     private InOut io;
 
     /**
-     * 
+     * Constructor for UI
      * @throws FileNotFoundException
      */
     public UI() throws FileNotFoundException {
@@ -14,7 +14,7 @@ public class UI {
     }
 
     /**
-     * 
+     * Starts and loops the user interface until the user closes the program
      * @throws FileNotFoundException
      */
     public void userInterface() throws FileNotFoundException {
@@ -26,7 +26,11 @@ public class UI {
         }
 
     }
-    //TODO prevent users from entering a number out of range
+
+    /**
+     * Allows the Alumni to login and assigns their ID to the ID variable
+     * @throws FileNotFoundException
+     */
     public void login() throws FileNotFoundException {
         boolean loggedIn = false;
         while (!loggedIn) {
@@ -74,7 +78,10 @@ public class UI {
             }
         }
     }
-
+    /**
+     * Main menu that is accessed after logging in. Allows Alumni to navigate to Alumni or Event interface.
+     * @throws FileNotFoundException
+     */
     public void loggedIn() throws FileNotFoundException {
         boolean run = true;
         while (run) {
@@ -105,6 +112,10 @@ public class UI {
         }
     }
 
+    /**
+     * Interface for Handling basic Alumni functions. list/edit/delete
+     * @return True or False based on if the Alumni deletes their account
+     */
     public boolean alumniInterface() {
         System.out.println("Alumni Interface\n" + "please enter a choice");
         boolean run = true;
@@ -114,7 +125,7 @@ public class UI {
             System.out.println("1. See a list of current Alumni \n2. Edit your profile info \n"
                     + "3. Delete your account \n4. Go back to the main menu");
             choice = io.intInput();
-            if (choice <1 || choice > 3){
+            if (choice <1 || choice > 4){
                 System.out.println("please enter a valid number");
                 choice = io.intInput();
             }
@@ -144,6 +155,9 @@ public class UI {
             return true;
     }
 
+    /**
+     * Handles basic Event and Training Event functionality. List/Edit/Delete/Donate
+     */
     public void eventInterface() {
         System.out.println("Event Interface");
         boolean run = true;
@@ -194,7 +208,9 @@ public class UI {
             }
         }
     }
-
+    /**
+     * Allows Alumni to Edit everything but their ID number
+     */
     public void editAlumni() {
         boolean run = true;
 
@@ -257,7 +273,9 @@ public class UI {
         }
 
     }
-
+    /**
+     * Allows the user to choose between Editing Events or Editing Training Events
+     */
     public void editEventSubMenu() {
         System.out.println(
                 "Enter what you would like to do: \n1. Edit events \n2. Edit Training Events \n3. Go back to the main menu ");
@@ -280,7 +298,9 @@ public class UI {
                 break;
         }
     }
-
+    /**
+     * Menu for editing everything in events aside from the ID number
+     */
     public void editEvents() {
         boolean run = true;
         boolean owner = false;
@@ -357,7 +377,9 @@ public class UI {
             }
         }
     }
-
+    /**
+     * Menu for Editing everything in the training event aside from the ID
+     */
     public void editTrainingEvents() {
         boolean run = true;
         boolean owner = false;
@@ -447,7 +469,10 @@ public class UI {
             }
         }
     }
-
+    /**
+     * Allows the user to Create a new account and enter all their information
+     * @return new Alumni Object
+     */
     public int newAlumniInfo() {
         System.out.println("Enter the name of the Alumni");
         String name = io.stringInput();
@@ -466,7 +491,9 @@ public class UI {
         return io.createAlumni(name, address, major, gradYear, job, organization, password);
 
     }
-
+    /**
+     * Allows the Alumni to Create an event that they will host and enter all relevant information
+     */
     public void createEvent() {
         System.out.println("Enter the name of Event");
         String name = io.stringInput();
@@ -500,7 +527,9 @@ public class UI {
                 io.getAlumniGradYear(id), io.getAlumniJob(id), io.getAlumniOrg(id), topic, phone, email);
         io.createEvent(name, room, numberOfParticipants, dateTime, host);
     }
-
+    /**
+     * Allows the Alumni to Create a training event and enter all the relevant information
+     */
     public void createTrainingEvent() {
         System.out.println("Enter the name of Event");
         String name = io.stringInput();
@@ -539,7 +568,9 @@ public class UI {
                 io.getAlumniGradYear(id), io.getAlumniJob(id), io.getAlumniOrg(id), topic, phone, email);
         io.createTrainingEvent(name, room, numberOfParticipants, dateTime, host, skill, totalSeats, totalSeats);
     }
-
+    /**
+     * Allows the Alumni to choose to create an Event or Training event
+     */
     public void eventCreationSubMenu() {
         System.out.println(
                 "Enter what you would to: \n1. Create Event \n2. Create Training event \n3. Go back to the menu");
@@ -562,7 +593,9 @@ public class UI {
                 break;
         }
     }
-
+    /**
+     * Allows the Alumni to choose between displaying a list of events and Training events
+     */
     public void eventViewerSubMenu() {
         System.out.println("Enter what you would like to do: \n1. Display Events \n2. Display Training Events \n3. Return to menu ");
         int choice = io.intInput();
@@ -584,7 +617,11 @@ public class UI {
                 break;
         }
     }
+
     //TODO handle seats
+    /**
+     * Allows the Alumni to choose Whether to join an Event or Training Event
+     */
     public void attendEventSubMenu() {
         System.out.println("Enter what you would like to do \n1. Attend an Event \n2. Attend a Training Event \n3. return to menu ");
         int choice = io.intInput();
@@ -612,6 +649,9 @@ public class UI {
     }
 
     // ----- donation stuff ------
+    /**
+     * Method for adding a donation to a specific event
+     */
     public void addDonation() {
         System.out.println("Enter the event ID");
         int eventID = io.intInput();
@@ -620,10 +660,15 @@ public class UI {
         io.addDonationToList(id, eventID, amountDonated);
     }
 
+    /**
+     * Displays a list of the ALumnis donation
+     */
     public void displayDonationsAlumni() {
         io.displayDonationsAlumni(id);
     }
-
+    /**
+     * Allows the Alumni to see Donations associated with events
+     */
     public void displayDonationsEvents() {
         System.out.println("Enter the event id");
         int id = io.intInput();
@@ -631,6 +676,10 @@ public class UI {
     }
 
     // --------------Deletion---------------
+
+    /**
+     * Method to allow Alumni to Delete their account
+     */
     public void deleteAlumni() {
         System.out.println("Are you sure you want to delete this Alumni y/n");
         String confirmation = io.stringInput().toLowerCase();
@@ -639,7 +688,9 @@ public class UI {
             System.out.println("THIS ACCOUNT HAS BEEN REMOVED");
         }
     }
-
+    /**
+     * Method for Deleting Events
+     */
     public void deleteEvent() {
         System.out.println("Please enter the ID of the event that you want to delete");
         int eventDeletionID = io.intInput();
@@ -649,7 +700,9 @@ public class UI {
             io.deleteEvent(eventDeletionID);
         }
     }
-
+    /**
+     * Method for Deleting Training events
+     */
     public void deleteTrainingEvent() {
         System.out.println("please enter the ID of the Training event that you want to delete");
         int trainingDeletionID = io.intInput();
@@ -659,7 +712,9 @@ public class UI {
             io.deleteTraining(trainingDeletionID);
         }
     }
-
+    /**
+     * Menu to let Alumni to choose whether to delete an Event or Training event
+     */
     public void deletionSubMenu() {
         System.out
                 .println("Enter what you want to do \n1. Delete Event \n2. Delete Training \n3. Go back to main menu");
