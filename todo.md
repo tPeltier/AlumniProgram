@@ -6,6 +6,7 @@
 [] rearrange methods so that things are easier to read
 [] make "real" events and alumni & make more of them 
 
+[] add a button to kill inputs?
 [] finish javaDoc
     [x] alumni
     [] commonMethods
@@ -17,7 +18,7 @@
     [x] training
     [x] ui
 [] finish reports
-    [] events by year
+    [x] events by year
     [] listing guest speakers
     [] list of people attending an event
     [x] display host for event/training
