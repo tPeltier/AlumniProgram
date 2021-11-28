@@ -3,18 +3,19 @@
 [] packages
 [] change from saving to temps to saving to live files
 [] unit testing
-[] rearrange methods so that things are easier to read (do after unit testing implemented)
+[x] rearrange methods so that things are easier to read
 [] make "real" events and alumni & make more of them 
 
 [] add a button to kill inputs?
+### Make sure to check javadocs again at end
 [] finish javaDoc
     [x] alumni
-    [] commonMethods
+    [x] commonMethods
     [x] donation
     [x] event
     [x] host
-    [] inOut
-    [] invalidEntry
+    [x] inOut
+    [x] invalidEntry
     [x] training
     [x] ui
 [] finish reports
@@ -28,8 +29,8 @@
     [] ect
 [] look into how we are handling people attending events 
     [x] make events also have a total number of open spots and what not
-    [] do we want to save alumni objects instead of just names in the attendants arrayList
     [x] make it to where you can only sign up for an event once
+    [] do we want to save alumni objects instead of just names in the attendants arrayList
 [x] make toString human readable
     [x] alumni
     [x] events
@@ -50,13 +51,3 @@
 [] deleting events/training causes errors while signing up to other events (nullPointer)
 [x] entering the wrong id sometimes doesn't display the options again
 [] we need to only allow 0-23 and 0-59 for time input
-[] 
-[]
-[]
-[]
----
-* only ask for total number of seats
-    * everything else is calculated 
-    * open = total - attending
-    * attending = size of arrayList?
-* order should be total, open, attending
