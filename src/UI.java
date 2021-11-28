@@ -124,7 +124,7 @@ public class UI {
             System.out.println(
                     "1. Display a list of current Alumni \n2. See what Events and Training I'm attending\n3. Edit your profile information \n"
                             + "4. Delete your account \n5. Return to the main menu");
-            choice = io.intInput(4);
+            choice = io.intInput(5);
             switch (choice) {
                 case 1:
                     // list of alumni
@@ -393,7 +393,7 @@ public class UI {
         while (run) {
             System.out.println(
                     "What would you like to change?: \n1. Training Event Name \n2. Training Event Time \n3. Training Event Room \n4. Total Number of Spots\n5. Event Date \n6. Edit Skill \n7. Exit");
-            int choice = io.intInput(8);
+            int choice = io.intInput(7);
             switch (choice) {
                 case 1:
                     // edit name
@@ -576,7 +576,7 @@ public class UI {
     public void eventViewerSubMenu() {
         System.out.println(
                 "What you would like to do? \n1. Display Events \n2. Display Training Events \n3. Display Events in a given year\n4. Display All Hosts\n5. Display Attendants for a given Event or Training\n6. Return to menu ");
-        int choice = io.intInput(3);
+        int choice = io.intInput(6);
         switch (choice) {
             case 1:
                 // Display events
