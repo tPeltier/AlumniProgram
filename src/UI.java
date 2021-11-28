@@ -319,7 +319,7 @@ public class UI {
                 case 2:
                     // edit time
                     System.out.println("Enter time of event");
-                    System.out.println("Enter the hour in 1-24");
+                    System.out.println("Enter the hour in 0-23");
                     int hour = io.intInput();
                     System.out.println("Enter the Minute");
                     int minute = io.intInput();
@@ -396,7 +396,7 @@ public class UI {
                 case 2:
                     // edit time
                     System.out.println("Enter time of event");
-                    System.out.println("Enter the hour in 1-24");
+                    System.out.println("Enter the hour in 0-23");
                     int hour = io.intInput();
                     System.out.println("Enter the Minute");
                     int minute = io.intInput();
