@@ -44,8 +44,8 @@ public class Training extends Event {
      * @param openSeats Open Seats at Training Event
      * @param totalSeats Total spots of Training Event
      */
-    public Training(int id, String name, int room, int totalSpots, int openSpots, int spotsFilled, LocalDateTime startDate, ArrayList<String> att, Host host, String skill) {
-        super(id, name, room, totalSpots, openSpots, spotsFilled, startDate, att, host);
+    public Training(int id, String name, int room, int totalSpots, LocalDateTime startDate, ArrayList<String> att, Host host, String skill) {
+        super(id, name, room, totalSpots, startDate, att, host);
         this.skill = skill;
     }
 
@@ -93,8 +93,8 @@ public class Training extends Event {
     /**
      * Calculate open seats for training
      */
-    public void setOpenSeats(int openSpots){
-       super.setOpenSpots(openSpots);
+    public void setOpenSeats(){
+       super.setOpenSpots();
     }
     
     /**

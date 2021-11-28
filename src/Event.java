@@ -32,14 +32,14 @@ public class Event implements CommonMethods {
      * @param attendant ArrayList of attending members names
      * @param host Host object for the host of the Event
      */
-    public Event(int id, String name, int room, int totalSpots, int openSpots, int spotsFilled, LocalDateTime startDate,
+    public Event(int id, String name, int room, int totalSpots, LocalDateTime startDate,
             ArrayList<String> attendant, Host host) {
         this.id = id;
         this.name = name;
         this.room = room;
         this.totalSpots = totalSpots;
-        this.openSpots = openSpots;
-        this.spotsFilled = spotsFilled;
+        this.openSpots = totalSpots = attendant.size();
+        this.spotsFilled = attendant.size();
         this.startDate = startDate;
         this.attendants = attendant;
         this.host = host;
@@ -200,8 +200,8 @@ public class Event implements CommonMethods {
      * Set number of participants for event
      * @param spotsFilled Number of participants for the Event
      */
-    public void setSpotsFilled(int spotsFilled) {
-        this.spotsFilled = spotsFilled;
+    public void setSpotsFilled() {
+        spotsFilled = attendants.size();
     }
 
     public int getTotalSpots() {
@@ -212,8 +212,8 @@ public class Event implements CommonMethods {
         this.totalSpots = totalSpots;
     }
 
-    public void setOpenSpots(int openSpots) {
-        this.openSpots = openSpots;
+    public void setOpenSpots() {
+        openSpots = totalSpots - attendants.size();
     }
 
     // change this to be total - filled
@@ -247,7 +247,7 @@ public class Event implements CommonMethods {
      * @return Event's information formatted to save to text file
      */
     public String save() {
-        return getID() + "," + getName() + "," + getRoom() + "," + getTotalSpots() + "," + getSpotsFilled() + "," + getOpenSpots();
+        return getID() + "," + getName() + "," + getRoom() + "," + getTotalSpots();
     }
 
     /**
