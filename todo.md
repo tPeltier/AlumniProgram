@@ -3,7 +3,7 @@
 [] packages
 [] change from saving to temps to saving to live files
 [] unit testing
-[] rearrange methods so that things are ezier to read
+[] rearrange methods so that things are easier to read
 [] make "real" events and alumni & make more of them 
 
 [] finish javaDoc
@@ -26,7 +26,7 @@
     [] ect
 [] look into how we are handling people attending events (as in what we are asking for while creating events/training)
     [x] make events also have a total number of open spots and what not
-    [] do we want to save alumni objects instead of just names in the attendants arraylist
+    [] do we want to save alumni objects instead of just names in the attendants arrayList
     [] make it to where you can only sign up for an event once
 [x] make toString human readable
     [x] alumni
@@ -56,5 +56,5 @@
 * only ask for total number of seats
     * everything else is calculated 
     * open = total - attending
-    * attending = size of arraylist?
+    * attending = size of arrayList?
 * order should be total, open, attending
