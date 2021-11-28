@@ -1,7 +1,10 @@
 # TODO
 ---
 [] packages
-[] finish save method for training
+
+this could be incorrect, check
+[x] finish save method for training
+
 [] finish javaDoc
     [x] alumni
     [] app
@@ -21,6 +24,7 @@
     [] ect
 [] change from saving to temps to saving to live files
 [] look into how we are handling people attending events (as in what we are asking for while creating events/training)
+    [] make events also have a total number of open spots and what not
 [] do we want to save alumni objects instead of just names in the attendants arraylist
 [] make localDateTimes out of the date in the donation (see below)
 [] donations to training???
