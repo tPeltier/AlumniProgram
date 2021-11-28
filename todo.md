@@ -33,7 +33,7 @@
     [x] events
     [x] training
 [x] make it so you can only delete events you own (like editing)
-[] display alumni/event/training that was edited right after editing (only that obj, not the whole list)
+[x] display alumni/event/training that was edited right after editing (only that obj, not the whole list)
 
 ### this might need more work
 [x] make localDateTimes out of the date in the donation (see below)
