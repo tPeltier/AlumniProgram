@@ -20,7 +20,7 @@
     [] events by year
     [] listing guest speakers
     [] list of people attending an event
-    [] display host for event/training
+    [x] display host for event/training
     [] list of events/training alumni is attending
     [x] listing alumni
     [] ect
