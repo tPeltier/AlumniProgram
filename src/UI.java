@@ -575,7 +575,7 @@ public class UI {
      */
     public void eventViewerSubMenu() {
         System.out.println(
-                "What you would like to do? \n1. Display Events \n2. Display Training Events \n3. Display Events in a given year\n4. Display All Hosts \n5. Return to menu ");
+                "What you would like to do? \n1. Display Events \n2. Display Training Events \n3. Display Events in a given year\n4. Display All Hosts\n5. Display Attendants for a given Event or Training\n6. Return to menu ");
         int choice = io.intInput(3);
         switch (choice) {
             case 1:
@@ -596,7 +596,33 @@ public class UI {
                 io.displayHosts();
                 break;
             case 5:
+                // Display Attendants for a given Event or Training
+                displayAttendantsSubMenu();
+                break;
+            case 6:
                 // Return to the menu
+                break;
+        }
+    }
+
+    private void displayAttendantsSubMenu() {
+        System.out.println("Would you like to view attendants for an Event or a Training?\n1. Events\n2. Training\n3. Exit");
+        int choice = io.intInput(3);
+        switch (choice) {
+            case 1:
+                // Display attendants for an Event
+                io.displayEvents();
+                System.out.println("What Event would you like to check?");
+                io.displayAttendantsEvent(io.intInput());
+                break;
+            case 2:
+                // Display attendants for a Training
+                io.displayTraining();
+                System.out.println("What Training would you like to check?");
+                io.displayAttendantsTraining(io.intInput());
+                break;
+            case 3:
+                // Return to Menu
                 break;
         }
     }
