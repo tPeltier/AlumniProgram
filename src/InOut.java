@@ -162,7 +162,9 @@ public class InOut {
             int id = Integer.parseInt(s[0]);
             String name = s[1];
             int room = Integer.parseInt(s[2]);
-            int numberOfParticipants = Integer.parseInt(s[3]);
+            int totalSpots = Integer.parseInt(s[3]);
+            int spotsFilled = Integer.parseInt(s[4]);
+            int openSpots = Integer.parseInt(s[5]);
             // dateTime info
             String dateTimeString = eventFileIn.nextLine();
             String[] dt = dateTimeString.split(",");
@@ -194,7 +196,7 @@ public class InOut {
                 att.add(listArr[i]);
             }
 
-            Event e = new Event(id, name, room, numberOfParticipants, dateTime, att, host);
+            Event e = new Event(id, name, room, totalSpots, spotsFilled, openSpots, dateTime, att, host);
             eventMap.put(id, e);
         }
     }
@@ -208,9 +210,9 @@ public class InOut {
             int id = Integer.parseInt(s[0]);
             String name = s[1];
             int room = Integer.parseInt(s[2]);
-            int numberOfParticipants = Integer.parseInt(s[3]);
-            int totalSeats = Integer.parseInt(s[4]);
-            int openSeats = Integer.parseInt(s[5]);
+            int totalSpots = Integer.parseInt(s[3]);
+            int spotsFilled = Integer.parseInt(s[4]);
+            int openSpots = Integer.parseInt(s[5]);
             String skill = s[6];
             // dateTime info
             String dateTimeString = trainingFileIn.nextLine();
@@ -243,8 +245,7 @@ public class InOut {
                 att.add(listArr[i]);
             }
 
-            Training t = new Training(id, name, room, numberOfParticipants, dateTime, att, host, skill, openSeats,
-                    totalSeats);
+            Training t = new Training(id, name, room, totalSpots, openSpots, spotsFilled, dateTime, att, host, skill);
             trainingMap.put(id, t);
         }
     }
@@ -393,16 +394,6 @@ public class InOut {
         eventMap.get(id).setRoom(room);
     }
 
-    /**
-     * sets the number of each participant in the event
-     * 
-     * @param id                   event id
-     * @param numberOfParticipants event numberOfParticipants
-     */
-    public void setEventNumberOfParticipants(int id, int numberOfParticipants) {
-        eventMap.get(id).setNumberOfParticipants(numberOfParticipants);
-    }
-
     public int getEventYear(int id) {
         return eventMap.get(id).getYear();
     }
@@ -436,10 +427,6 @@ public class InOut {
         trainingMap.get(id).setRoom(room);
     }
 
-    public void setTrainingNumberOfParticipants(int id, int participants) {
-        trainingMap.get(id).setNumberOfParticipants(participants);
-    }
-
     public void setTrainingDate(int id, int year, int month, int dayOfMonth, int hour, int minute) {
         trainingMap.get(id).setStartDate(year, month, dayOfMonth, hour, minute);
     }
@@ -448,8 +435,12 @@ public class InOut {
         trainingMap.get(id).setSkill(newSkill);
     }
 
-    public void setNumOfTotalSeats(int id, int seats) {
-        trainingMap.get(id).setTotalSeats(seats);
+    public void setNumOfTotalSpotsTraining(int id, int spots) {
+        trainingMap.get(id).setTotalSpots(spots);
+    }
+
+    public void setNumOfTotalSpotsEvents(int id, int spots) {
+        eventMap.get(id).setTotalSpots(spots);
     }
 
     public void joinTraining(int id, String name) {
@@ -476,11 +467,11 @@ public class InOut {
         eventMap.put(id, e);
     }
 
-    public void createTrainingEvent(String name, int room, int numberOfParticipants, LocalDateTime startDate, Host host,
+    public void createTrainingEvent(String name, int room, int totalSpots, LocalDateTime startDate, Host host,
             String skill, int openSeats, int totalSeats) {
         int id = trainingMap.lastKey();
         id++;
-        Training t = new Training(id, name, room, numberOfParticipants, startDate, host, skill, openSeats, totalSeats);
+        Training t = new Training(id, name, room, totalSpots, startDate, host, skill);
         trainingMap.put(id, t);
     }
     // ------- donation list methods ------

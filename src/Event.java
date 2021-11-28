@@ -3,9 +3,11 @@ import java.time.LocalDateTime;
 
 public class Event implements CommonMethods {
     private int id;
-    private String name;
     private int room;
-    private int numberOfParticipants;
+    private int openSpots;
+    private int totalSpots;
+    private int spotsFilled;
+    private String name;
     private LocalDateTime startDate;
     private Host host;
     private Alumni guestSpeaker;
@@ -25,17 +27,19 @@ public class Event implements CommonMethods {
      * @param id Event ID
      * @param name Event Name
      * @param room Room where Event is happening
-     * @param numberOfParticipants Number of people participating
+     * @param spotsFilled Number of people participating
      * @param startDate LocalDateTime information about the Event
      * @param attendant ArrayList of attending members names
      * @param host Host object for the host of the Event
      */
-    public Event(int id, String name, int room, int numberOfParticipants, LocalDateTime startDate,
+    public Event(int id, String name, int room, int totalSpots, int openSpots, int spotsFilled, LocalDateTime startDate,
             ArrayList<String> attendant, Host host) {
         this.id = id;
         this.name = name;
         this.room = room;
-        this.numberOfParticipants = numberOfParticipants;
+        this.totalSpots = totalSpots;
+        this.openSpots = openSpots;
+        this.spotsFilled = spotsFilled;
         this.startDate = startDate;
         this.attendants = attendant;
         this.host = host;
@@ -47,15 +51,15 @@ public class Event implements CommonMethods {
      * @param id Event ID
      * @param name Event Name
      * @param room Room where Event is happening
-     * @param numberOfParticipants Number of people participating
+     * @param spotsFilled Number of people participating
      * @param startDate LocalDateTime information about the Event
      * @param host Host object for the host of the Event
      */
-    public Event(int id, String name, int room, int numberOfParticipants, LocalDateTime startDate, Host host) {
+    public Event(int id, String name, int room, int totalSpots, LocalDateTime startDate, Host host) {
         this.id = id;
         this.name = name;
         this.room = room;
-        this.numberOfParticipants = numberOfParticipants;
+        this.totalSpots = totalSpots;
         this.startDate = startDate;
         this.host = host;
         attendants = new ArrayList<>();
@@ -188,22 +192,33 @@ public class Event implements CommonMethods {
      * Gets number of participants for Event
      * @return Number of participants for the Event
      */
-    public int getNumberOfParticipants() {
-        return this.numberOfParticipants;
+    public int getSpotsFilled() {
+        return this.spotsFilled;
     }
 
     /**
      * Set number of participants for event
-     * @param numberOfParticipants Number of participants for the Event
+     * @param spotsFilled Number of participants for the Event
      */
-    public void setNumberOfParticipants(int numberOfParticipants) {
-        this.numberOfParticipants = numberOfParticipants;
+    public void setSpotsFilled(int spotsFilled) {
+        this.spotsFilled = spotsFilled;
     }
 
-    // TODO make human readable
-    // TODO IS THIS NEEDED?
-    public LocalDateTime getStartDate() {
-        return this.startDate;
+    public int getTotalSpots() {
+        return this.totalSpots;
+    }
+    
+    public void setTotalSpots(int totalSpots) {
+        this.totalSpots = totalSpots;
+    }
+
+    public void setOpenSpots(int openSpots) {
+        this.openSpots = openSpots;
+    }
+
+    // change this to be total - filled
+    public int getOpenSpots() {
+        return this.openSpots;
     }
 
     /**
@@ -224,7 +239,7 @@ public class Event implements CommonMethods {
 
     @Override
     public String toString() {
-        return "Event ID: " + getID() + " |" + " Event Name: " + getName() + " |" +  " Event Date and Time: " + formatDateTime() + " |" +  " Event Room Number: " + getRoom() + " |" +  " Number of Participants: " + getNumberOfParticipants();
+        return "Event ID: " + getID() + " |" + " Event Name: " + getName() + " |" +  " Event Date and Time: " + formatDateTime() + " |" +  " Event Room Number: " + getRoom() + " |" + " Total Number of Spots: " + getTotalSpots() + " |" + " Number of Spots Open: " + getOpenSpots() + " |" + "Number of Spots Filled: " + getSpotsFilled();
     }
 
     /**
@@ -232,7 +247,7 @@ public class Event implements CommonMethods {
      * @return Event's information formatted to save to text file
      */
     public String save() {
-        return getID() + "," + getName() + "," + getRoom() + "," + getNumberOfParticipants();
+        return getID() + "," + getName() + "," + getRoom() + "," + getTotalSpots() + "," + getSpotsFilled() + "," + getOpenSpots();
     }
 
     /**

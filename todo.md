@@ -52,3 +52,9 @@
 []
 []
 []
+---
+* only ask for total number of seats
+    * everything else is calculated 
+    * open = total - attending
+    * attending = size of arraylist?
+* order should be total, open, attending
