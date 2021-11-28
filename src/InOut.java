@@ -293,6 +293,21 @@ public class InOut {
             System.out.println(training.getHost());
         }
     }
+    
+    /**
+     * Display Host's for both Events and Training
+     */
+    public void displayHosts() {
+        System.out.println("The Hosts for Events are:");
+        for (Event events : eventMap.values()) {
+            System.out.println("For Event " + events.getID() + " "  + events.getHost());
+        }
+        System.out.println("The Hosts for Trainings are:");
+        for (Training training : trainingMap.values()) {
+            System.out.println("For Training " + training.getID() + " " + training.getHost());
+        }
+
+    }
     // ---------- getters --------------
     /**
      * Get toString call for an Alumni Obj
