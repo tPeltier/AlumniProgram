@@ -296,6 +296,17 @@ public class InOut {
         }
     }
     // ---------- getters --------------
+    public String getAlumni(int id) {
+       return alumniMap.get(id).toString(); 
+    }
+
+    public String getEvent(int id) {
+        return eventMap.get(id).toString();
+    }
+
+    public String getTraining(int id) {
+        return trainingMap.get(id).toString();
+    }
 
     public String getAlumniName(int id) {
         return alumniMap.get(id).getName();

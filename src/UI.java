@@ -359,7 +359,7 @@ public class UI {
 
                 case 6:
                     // exit
-                    System.out.println("NO CHANGES");
+                    io.getEvent(eventID);
                     run = false;
                     break;
             }
@@ -445,7 +445,7 @@ public class UI {
 
                 case 7:
                     // exit
-                    System.out.println("NO CHANGES");
+                    io.getTraining(trainingEventID);
                     run = false;
                     break;
             }
@@ -655,6 +655,7 @@ public class UI {
      * Method to allow Alumni to Delete their account
      */
     public void deleteAlumni() {
+        io.getAlumni(id);
         System.out.println("---Are you sure you want to delete this Alumni?---");
         System.out.println("(y/n)");
         String confirmation = io.stringInput().toLowerCase();
@@ -684,6 +685,7 @@ public class UI {
                 return;
             }
         }
+        io.getEvent(id);
         System.out.println("Are you sure you want to delete this event y/n");
         String confirmation = io.stringInput().toLowerCase();
         if (confirmation.charAt(0) == 'y') {
@@ -711,6 +713,7 @@ public class UI {
                 return;
             }
         }
+        io.getTraining(id);
         System.out.println("---Are you sure you want to delete this Training Event?---");
         System.out.println("(y/n)");
         String confirmation = io.stringInput().toLowerCase();
