@@ -102,8 +102,8 @@ public class Host extends Alumni {
 
     @Override
     public String toString() {
-        return "the Host is " + super.getName() + " and their area of expertise is " + getTopic()
-                + ". They can be reached by phone at: " + getPhoneNumber() + " or by email at: " + getEmailAddress();
+        return "Host: " + super.getName() + " | Area of expertise: " + getTopic()
+                + " | Phone: " + getPhoneNumber() + " | Email: " + getEmailAddress();
     }
 
     // ==================== SAVING ====================
