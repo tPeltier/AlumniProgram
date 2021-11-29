@@ -43,15 +43,6 @@ public class Host extends Alumni {
     }
 
     /**
-     * Get ID of the Host
-     * 
-     * @return Host ID
-     */
-    public int getHostId() {
-        return super.getID();
-    }
-
-    /**
      * Get Host phone number
      * 
      * @return Host phone number
