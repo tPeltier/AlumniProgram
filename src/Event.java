@@ -223,6 +223,7 @@ public class Event implements CommonMethods {
     }
 
     // TODO these methods are the same, we need to pick one
+    // keep
     public void setStartDate(int year, int month, int dayOfMonth, int hour, int minute) {
         startDate = LocalDateTime.of(year, month, dayOfMonth, hour, minute);
 
@@ -238,6 +239,7 @@ public class Event implements CommonMethods {
      * @param hour   Starting hour of Event
      * @param minute Starting minute of Event
      */
+    // del
     public void setTime(int year, int month, int day, int hour, int minute) {
         this.startDate = LocalDateTime.of(year, month, day, hour, minute);
     }
