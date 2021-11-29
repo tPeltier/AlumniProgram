@@ -108,6 +108,8 @@ christian's feed back
 
 2) Not really a bug, but the output of the Display Events section is inconsistent. It outputs most of the data of the event in a format like "Variable: Data" but then jumps to "the Host is Mary and their area of expertise is topic1. They can be reached at .." which feels a bit odd
 
+[x] fix host toString
+
 [] clean up all prints 
 
 3) When I tried to "Attend an Event" and put in an Event ID that isn't listed, I get a Null Pointer Exception. Here's the stack trace, hopefully it helps:
@@ -130,11 +132,19 @@ Exception in thread "main" java.lang.NullPointerException: Cannot invoke "Event.
 
 6) Under "See my Donations" the output formatting is off. For example, I got: "Donation amount205.0" followed  by the date and time. Adding a ": " before the number would clean it up nicely. Kudos on the timestamping.
 
+[] fix donation display
+
 7) Entering an hour and minute separately when creating an event feels strange. I'm sure you're doing this for ease of use on the backend, so I don't fault you for it, it just feels odd.
+
+[] maybe change the way date time is user input
 
 8) I can enter "nah" as an email address when creating an event. Maybe consider a regex validation on email address entries?
 
+[] email regex
+
 9) Null Pointer Exception when entering an invalid Event ID number in Delete Event
+
+[] call check for event method
 
 10) After deleting my own account, I got a Null Pointer Exception. Here's the stack trace:
 
@@ -144,4 +154,8 @@ Exception in thread "main" java.lang.NullPointerException: Cannot invoke "Alumni
 	at UI.userInterface(UI.java:28)
 	at App.main(App.java:9)
 
+[x] make sure that the user is logged out upon deletion
+
 11) Getting an "invalid password" error when trying to log back in, despite being absolutely certain I'm entering the exact same (one letter) password that I entered when creating an account
+
+[] look into password checking
