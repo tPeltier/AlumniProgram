@@ -144,7 +144,7 @@ Exception in thread "main" java.lang.NullPointerException: Cannot invoke "Event.
 
 9) Null Pointer Exception when entering an invalid Event ID number in Delete Event
 
-[] call check for event method
+[x] call check for event method
 
 10) After deleting my own account, I got a Null Pointer Exception. Here's the stack trace:
 
