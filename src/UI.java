@@ -180,7 +180,6 @@ public class UI {
                     break;
                 case 3:
                     // make donation
-                    // TODO maybe include Training
                     addDonation();
                     break;
                 case 4:
@@ -392,9 +391,7 @@ public class UI {
                     run = false;
                     break;
             }
-
         }
-
     }
 
     /**
@@ -661,7 +658,10 @@ public class UI {
                 io.getAlumniGradYear(id), io.getAlumniJob(id), io.getAlumniOrg(id), topic, phone, email);
         io.createTrainingEvent(name, room, totalSpots, dateTime, host, skill);
     }
-
+    /**
+     * Creates and returns a LocalDateTime Object
+     * @return A new LocalDateTime object
+     */
     private LocalDateTime makeDateTime() {
         System.out.println("Enter date of event:");
         System.out.println(" ----------------------------------------------------- ");
