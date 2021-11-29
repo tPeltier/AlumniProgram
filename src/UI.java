@@ -731,25 +731,29 @@ public class UI {
     public void deleteEvent() {
         boolean owner = false;
         int eventDeletionID = 0;
-        while (!owner) {
-            io.displayEvents();
-            System.out.println("Please enter the ID of the Event that you want to Delete:");
-            eventDeletionID = io.intInput();
-            try {
-                if (id != io.getHostId(eventDeletionID)) {
-                    throw new InvalidEntry("-!-YOU DID NOT OWN THIS EVENT-!-");
-                } else
-                    owner = true;
-            } catch (InvalidEntry e) {
-                System.out.println(e.getMessage());
-                return;
+        if (!io.isExistingEvent(eventDeletionID)) {
+            System.out.println("-!-THIS EVENT DOESN'T EXIST-!-");
+        } else {
+            while (!owner) {
+                io.displayEvents();
+                System.out.println("Please enter the ID of the Event that you want to Delete:");
+                eventDeletionID = io.intInput();
+                try {
+                    if (id != io.getHostId(eventDeletionID)) {
+                        throw new InvalidEntry("-!-YOU DID NOT OWN THIS EVENT-!-");
+                    } else
+                        owner = true;
+                } catch (InvalidEntry e) {
+                    System.out.println(e.getMessage());
+                    return;
+                }
             }
-        }
-        io.getEvent(id);
-        System.out.println("Are you sure you want to delete this event y/n");
-        String confirmation = io.stringInput().toLowerCase();
-        if (confirmation.charAt(0) == 'y') {
-            io.deleteEvent(eventDeletionID);
+            io.getEvent(id);
+            System.out.println("Are you sure you want to delete this event y/n");
+            String confirmation = io.stringInput().toLowerCase();
+            if (confirmation.charAt(0) == 'y') {
+                io.deleteEvent(eventDeletionID);
+            }
         }
     }
 
@@ -759,18 +763,23 @@ public class UI {
     public void deleteTrainingEvent() {
         boolean owner = false;
         int trainingDeletionID = 0;
-        while (!owner) {
-            io.displayTraining();
-            System.out.println("Please enter the ID of the Training Event that you want to Delete:");
-            trainingDeletionID = io.intInput();
-            try {
-                if (id != io.getHostId(trainingDeletionID)) {
-                    throw new InvalidEntry("YOU DID NOT OWN THIS TRAINING EVENT");
-                } else
-                    owner = true;
-            } catch (InvalidEntry e) {
-                System.out.println(e.getMessage());
-                return;
+        if (!io.isExistingTraining(trainingDeletionID)) {
+            System.out.println("-!-THIS TRAINING EVENT DOESN'T EXIST-!-");
+
+        } else {
+            while (!owner) {
+                io.displayTraining();
+                System.out.println("Please enter the ID of the Training Event that you want to Delete:");
+                trainingDeletionID = io.intInput();
+                try {
+                    if (id != io.getHostId(trainingDeletionID)) {
+                        throw new InvalidEntry("YOU DID NOT OWN THIS TRAINING EVENT");
+                    } else
+                        owner = true;
+                } catch (InvalidEntry e) {
+                    System.out.println(e.getMessage());
+                    return;
+                }
             }
         }
         io.getTraining(id);
