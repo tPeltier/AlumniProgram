@@ -108,7 +108,7 @@ public class InOut {
 
     }
 
-    // --- EXISTING ---
+    // ==================== EXISTING ====================
 
     /**
      * Create and Fill a TreeMap with Alumni Objects from a text file
