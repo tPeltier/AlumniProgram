@@ -8,7 +8,7 @@ public class Alumni implements CommonMethods {
     private String job;
     private String organization;
     private String password;
-    // private boolean admin = false;
+    
 
     /**
      * Empty Alumni Constructor
