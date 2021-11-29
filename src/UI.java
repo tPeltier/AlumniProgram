@@ -221,10 +221,14 @@ public class UI {
                 io.displayEvents();
                 System.out.println("What Event would you like to attend?");
                 int eventID = io.intInput();
-                if (io.alreadyAttendingEvent(id, eventID)) {
-                    System.out.println("You are already attending this Event");
+                if (!io.isExistingEvent(eventID)) {
+                    System.out.println("-!-THIS EVENT DOESN'T EXIST-!-");
                 } else {
-                    io.joinEvent(eventID, io.getAlumniName(id));
+                    if (io.alreadyAttendingEvent(id, eventID)) {
+                        System.out.println("You are already attending this Event");
+                    } else {
+                        io.joinEvent(eventID, io.getAlumniName(id));
+                    }
                 }
                 break;
             case 2:
@@ -232,10 +236,13 @@ public class UI {
                 io.displayTraining();
                 System.out.println("What Training Event would you like to attend?");
                 int trainingID = io.intInput();
-                if (io.alreadyAttendingTraining(id, trainingID)) {
-                    System.out.println("You are already attending this Training");
-                } else {
-                    io.joinTraining(id, io.getAlumniName(io.intInput()));
+                if (!io.isExistingTraining(trainingID)) {
+                    if (io.alreadyAttendingTraining(id, trainingID)) {
+                        System.out.println("You are already attending this Training");
+                    } else {
+                        io.joinTraining(id, io.getAlumniName(io.intInput()));
+                    }
+
                 }
                 break;
             case 3:
@@ -325,7 +332,6 @@ public class UI {
         }
     }
 
-    
     // ==================== EDIT ====================
 
     /**
