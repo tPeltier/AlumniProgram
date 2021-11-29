@@ -827,6 +827,27 @@ public class InOut {
             return false;
     }
 
+    /**
+     * Checks to see if the Event being requested is in the map
+     * @param eventID ID of Event to be checked
+     * @return true if Event is in map, false if Event is not in map
+     */
+    public boolean isExistingEvent(int eventID) {
+        if (eventMap.containsKey(eventID)) {
+            return true;
+        } else return false;
+    }
+
+    /**
+     * Checks to see if the Training Event being requested is in the map
+     * @param eventID ID of Training Event to be checked
+     * @return true if Event is in map, false if Training Event is not in map
+     */
+    public boolean isExistingTraining(int eventID) {
+        if (trainingMap.containsKey(eventID)) {
+            return true;
+        } else return false;
+    }
     // ==================== CREATE ====================
 
     /**
