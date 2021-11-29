@@ -150,7 +150,8 @@ public class UI {
                     break;
             }
         }
-        if (choice == 3)
+        // if user deletes account, log out
+        if (choice == 4)
             return false;
         else
             return true;
