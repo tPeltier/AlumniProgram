@@ -104,7 +104,11 @@ christian's feed back
 
 1) Input validation -- for example, I successfully entered "no" as the Alumni's Graduation Year when creating a new account. You do validate in some areas though, as I was corrected for trying to enter "no" as the Year when creating an event. May want to ensure you're using that validation at all possible points.
 
+[] change grad year from string to int
+
 2) Not really a bug, but the output of the Display Events section is inconsistent. It outputs most of the data of the event in a format like "Variable: Data" but then jumps to "the Host is Mary and their area of expertise is topic1. They can be reached at .." which feels a bit odd
+
+[] clean up all prints 
 
 3) When I tried to "Attend an Event" and put in an Event ID that isn't listed, I get a Null Pointer Exception. Here's the stack trace, hopefully it helps:
 
@@ -116,10 +120,13 @@ Exception in thread "main" java.lang.NullPointerException: Cannot invoke "Event.
 	at UI.userInterface(UI.java:28)
 	at App.main(App.java:9)
 
+[x] add check for event's existence 
 
 4) As you noted in your email, files aren't writing to the same place they're reading, so accounts aren't persisting through bug testing
 
 5) When donating to an event, there is no confirmation that the donation occurred. It simply accepts the number input and brings back the menu.
+
+[x] display donations after making a donation
 
 6) Under "See my Donations" the output formatting is off. For example, I got: "Donation amount205.0" followed  by the date and time. Adding a ": " before the number would clean it up nicely. Kudos on the timestamping.
 
