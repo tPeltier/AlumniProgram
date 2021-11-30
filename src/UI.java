@@ -687,8 +687,6 @@ public class UI {
         System.out.println("Enter the Amount you would like to Donate:");
         double amountDonated = io.doubleInput();
         io.addDonationToList(id, eventID, amountDonated);
-        System.out.println("Here are your current Donations: ");
-        io.displayDonationsAlumni(id);
     }
 
     /**

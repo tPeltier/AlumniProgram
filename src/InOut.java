@@ -101,7 +101,6 @@ public class InOut {
      */
     public void existingAlumni() {
         alumniMap = new TreeMap<>();
-        Alumni a = new Alumni();
         while (alumniFileIn.hasNextLine()) {
             String line = alumniFileIn.nextLine();
             String[] s = line.split(",");
@@ -113,7 +112,7 @@ public class InOut {
             String job = s[5];
             String organization = s[6];
             String password = s[7];
-            a = new Alumni(id, name, address, major, gradYear, job, organization, password);
+            Alumni a = new Alumni(id, name, address, major, gradYear, job, organization, password);
             alumniMap.put(id, a);
         }
     }
@@ -221,8 +220,7 @@ public class InOut {
         int dayOfMonth = Integer.parseInt(dt[2]);
         int hour = Integer.parseInt(dt[3]);
         int minute = Integer.parseInt(dt[4]);
-        LocalDateTime dateTime = LocalDateTime.of(year, month, dayOfMonth, hour, minute);
-        return dateTime;
+        return LocalDateTime.of(year, month, dayOfMonth, hour, minute);
     }
 
     /**
@@ -243,8 +241,7 @@ public class InOut {
         String topic = hArr[7];
         int phone = Integer.parseInt(hArr[8]);
         String email = hArr[9];
-        Host host = new Host(hostId, hostName, hostAdd, hostMaj, hostGY, hostJob, hostOrg, topic, phone, email);
-        return host;
+        return new Host(hostId, hostName, hostAdd, hostMaj, hostGY, hostJob, hostOrg, topic, phone, email);
     }
 
     // ==================== GETTERS ====================
@@ -662,6 +659,7 @@ public class InOut {
         }
     }
 
+
     /**
      * Displays the Donations made by an Alumni
      * 
@@ -670,7 +668,7 @@ public class InOut {
     public void displayDonationsAlumni(int id) {
         for (int i = 0; i < donationList.size(); i++) {
             if (id == donationList.get(i).getAlumniId()) {
-                System.out.println("Donation amount" + donationList.get(i).getAmountDonated());
+                System.out.println("Donation amount: " + donationList.get(i).getAmountDonated());
                 System.out.println("Date and Time of Donation: " + donationList.get(i).formatDateTime());
             }
         }
@@ -916,6 +914,7 @@ public class InOut {
      */
     public void addDonationToList(int alumniId, int eventId, double donationAmount) {
         donationList.add(new Donation(alumniId, eventId, donationAmount));
+        System.out.println("You donated: " + donationList.get(donationList.size()-1).getAmountDonated() +  " at " + donationList.get(donationList.size()-1).getDateCreated());
     }
 
     /**
