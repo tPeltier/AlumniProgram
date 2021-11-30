@@ -680,7 +680,7 @@ public class InOut {
     public void displayDonationsAlumni(int id) {
         for (int i = 0; i < donationList.size(); i++) {
             if (id == donationList.get(i).getAlumniId()) {
-                System.out.println("Donation amount: " + donationList.get(i).getAmountDonated());
+                System.out.println("Donation Amount: " + donationList.get(i).getAmountDonated());
                 System.out.println("Date and Time of Donation: " + donationList.get(i).formatDateTime());
             }
         }
@@ -694,7 +694,7 @@ public class InOut {
     public void displayDonationsEvents(int id) {
         for (int i = 0; i < donationList.size(); i++) {
             if (id == donationList.get(i).getEventId()) {
-                System.out.println("Donation amount" + donationList.get(i).getAmountDonated());
+                System.out.println("Donation Amount" + donationList.get(i).getAmountDonated());
             }
         }
 
@@ -716,11 +716,11 @@ public class InOut {
     public void displayHosts() {
         System.out.println("The Hosts for Events are:");
         for (Event events : eventMap.values()) {
-            System.out.println("For Event " + events.getID() + " " + events.getHost());
+            System.out.println("Event " + events.getID() + " " + events.getHost());
         }
         System.out.println("The Hosts for Trainings are:");
         for (Training training : trainingMap.values()) {
-            System.out.println("For Training " + training.getID() + " " + training.getHost());
+            System.out.println("Training " + training.getID() + " " + training.getHost());
         }
 
     }
@@ -735,22 +735,22 @@ public class InOut {
         int counter = 0;
         for (Event event : eventMap.values()) {
             if (event.checkForAttendance(id)) {
-                System.out.println("You are attending " + event.getName() + " | ID # " + event.getID());
+                System.out.println("You are attending " + event.getName() + " | Event ID # " + event.getID());
                 counter++;
             }
         }
         if (counter == 0)
-            System.out.println("Not currently attending any Events");
+            System.out.println("NOT CURRENTLY ATTENDING ANY EVENTs");
         counter = 0;
         System.out.println("My Training:");
         for (Training training : trainingMap.values()) {
             if (training.checkForAttendance(id)) {
-                System.out.println("You are attending " + training.getName() + " ID # " + training.getID());
+                System.out.println("You are attending " + training.getName() + " | Training Event ID # " + training.getID());
                 counter++;
             }
         }
         if (counter == 0)
-            System.out.println("Not currently attending any Training");
+            System.out.println("NOT CURRENTLY ATTENDING ANY TRAINING");
     }
 
     /**
@@ -977,13 +977,13 @@ public class InOut {
             while (!in.hasNextInt()) {
                 String s = in.next();
                 System.out.println(" ----------------------------------------------------- ");
-                System.out.printf("\"%s\" is not a valid number%n", s);
+                System.out.printf("\"%s\" IS NOT A VALID NUMBER%n", s);
                 System.out.println(" ----------------------------------------------------- ");
             }
             n = in.nextInt();
             if (n < 0) {
                 System.out.println(" ----------------------------------------------------- ");
-                System.out.println(n + " is not a valid number.");
+                System.out.println(n + " IS NOT A VALID NUMBER.");
                 System.out.println(" ----------------------------------------------------- ");
             }
             in.nextLine();
@@ -1002,14 +1002,14 @@ public class InOut {
         if (!in.hasNextInt()) {
             String s = in.next();
             System.out.println(" ----------------------------------------------------- ");
-            System.out.printf("\"%s\" is not a valid number%n", s);
+            System.out.printf("\"%s\" IS NOT A VALID NUMBER%n", s);
             System.out.println(" ----------------------------------------------------- ");
             return n;
         }
         n = in.nextInt();
         if (n > boundary || n < 1) {
             System.out.println(" ----------------------------------------------------- ");
-            System.out.println(n + " is not a valid number.");
+            System.out.println(n + " IS NOT A VALID NUMBER.");
             System.out.println(" ----------------------------------------------------- ");
         }
         in.nextLine();
@@ -1027,13 +1027,13 @@ public class InOut {
             while (!in.hasNextLong()) {
                 String s = in.next();
                 System.out.println(" ----------------------------------------------------- ");
-                System.out.printf("\"%s\" is not a valid number%n", s);
+                System.out.printf("\"%s\" IS NOT A VALID NUMBER%n", s);
                 System.out.println(" ----------------------------------------------------- ");
             }
             n = in.nextLong();
             if (n < 0) {
                 System.out.println(" ----------------------------------------------------- ");
-                System.out.println(n + " is not a valid number.");
+                System.out.println(n + " IS NOT A VALID NUMBER.");
                 System.out.println(" ----------------------------------------------------- ");
             }
             in.nextLine();
@@ -1053,13 +1053,13 @@ public class InOut {
             while (!in.hasNextDouble()) {
                 String s = in.next();
                 System.out.println(" ----------------------------------------------------- ");
-                System.out.printf("\"%s\" is not a valid number%n", s);
+                System.out.printf("\"%s\" IS NOT A VALID NUMBER%n", s);
                 System.out.println(" ----------------------------------------------------- ");
             }
             n = in.nextDouble();
             if (n < 0) {
                 System.out.println(" ----------------------------------------------------- ");
-                System.out.println(n + " is not a valid number.");
+                System.out.println(n + " IS NOT A VALID NUMBER.");
                 System.out.println(" ----------------------------------------------------- ");
             }
             in.nextLine();
