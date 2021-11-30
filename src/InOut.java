@@ -4,7 +4,6 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Scanner;
 import java.util.TreeMap;
 
@@ -14,22 +13,18 @@ public class InOut {
     private Scanner alumniFileIn;
     private Scanner eventFileIn;
     private Scanner donationsFileIn;
-    private Scanner passwordFileIn;
     private Scanner trainingFileIn;
     private File donationsFile;
     private File alumniFile;
     private File eventFile;
-    private File passwordsFile;
     private File trainingFile;
     private PrintWriter alumniSaved;
     private PrintWriter eventSaved;
     private PrintWriter donationsSaved;
-    private PrintWriter passwordsSaved;
     private PrintWriter trainingSaved;
     private TreeMap<Integer, Alumni> alumniMap;
     private TreeMap<Integer, Event> eventMap;
     private TreeMap<Integer, Training> trainingMap;
-    private HashMap<Integer, String> passwords;
     private ArrayList<Donation> donationList;
 
     /**
@@ -45,12 +40,9 @@ public class InOut {
         eventFileIn = new Scanner(eventFile);
         donationsFile = new File("donations.txt");
         donationsFileIn = new Scanner(donationsFile);
-        passwordsFile = new File("passwords.txt");
-        passwordFileIn = new Scanner(passwordsFile);
         trainingFile = new File("training.txt");
         trainingFileIn = new Scanner(trainingFile);
         in = new Scanner(System.in);
-        existingPasswords();
         existingAlumni();
         existingEvents();
         existingDonations();
@@ -67,7 +59,6 @@ public class InOut {
         alumniSaved = new PrintWriter("temp.txt");
         eventSaved = new PrintWriter("temp2.txt");
         donationsSaved = new PrintWriter("temp3.txt");
-        passwordsSaved = new PrintWriter("temp4.txt");
         trainingSaved = new PrintWriter("temp5.txt");
 
         for (Alumni alumni : alumniMap.values()) {
@@ -86,10 +77,6 @@ public class InOut {
             donationsSaved.println(donation.save());
         }
 
-        for (String pw : passwords.values()) {
-            passwordsSaved.println(pw);
-        }
-
         for (Training training : trainingMap.values()) {
             trainingSaved.println(training.save());
             trainingSaved.println(training.saveDateTime());
@@ -104,7 +91,6 @@ public class InOut {
         eventSaved.close();
         trainingSaved.close();
         donationsSaved.close();
-        passwordsSaved.close();
 
     }
 
@@ -123,10 +109,10 @@ public class InOut {
             String name = s[1];
             String address = s[2];
             String major = s[3];
-            String gradYear = s[4];
+            int gradYear = Integer.parseInt(s[4]);
             String job = s[5];
             String organization = s[6];
-            String password = getPassword(id);
+            String password = s[7];
             a = new Alumni(id, name, address, major, gradYear, job, organization, password);
             alumniMap.put(id, a);
         }
@@ -176,22 +162,6 @@ public class InOut {
             Event e = new Event(id, name, room, totalSpots, dateTime, att, host);
             eventMap.put(id, e);
         }
-    }
-
-    /**
-     * Create and Fill a HashMap with Passwords from text file
-     */
-    public void existingPasswords() {
-        passwords = new HashMap<>();
-
-        while (passwordFileIn.hasNextLine()) {
-            String line = passwordFileIn.nextLine();
-            String[] s = line.split(",");
-            int id = Integer.parseInt(s[0]);
-            String pw = s[1];
-            passwords.put(id, pw);
-        }
-
     }
 
     /**
@@ -267,7 +237,7 @@ public class InOut {
         String hostName = hArr[1];
         String hostAdd = hArr[2];
         String hostMaj = hArr[3];
-        String hostGY = hArr[4];
+        int hostGY = Integer.parseInt(hArr[4]);
         String hostJob = hArr[5];
         String hostOrg = hArr[6];
         String topic = hArr[7];
@@ -307,7 +277,7 @@ public class InOut {
      * @param id Alumni ID
      * @return Alumni's Graduation Year
      */
-    public String getAlumniGradYear(int id) {
+    public int getAlumniGradYear(int id) {
         return alumniMap.get(id).getGradYear();
     }
 
@@ -463,7 +433,7 @@ public class InOut {
      * @return ALumni's Password
      */
     public String getPassword(int id) {
-        return passwords.get(id);
+        return alumniMap.get(id).getPassword();
     }
 
     // ==================== SETTERS ====================
@@ -486,7 +456,7 @@ public class InOut {
      * @param id       ALumni ID
      * @param gradYear New Graduation Year for Alumni
      */
-    public void setAlumniGradYear(int id, String gradYear) {
+    public void setAlumniGradYear(int id, int gradYear) {
         alumniMap.get(id).setGradYear(gradYear);
     }
 
@@ -621,7 +591,7 @@ public class InOut {
      * @param newPw New Password for Alumni
      */
     public void setPassword(int id, String newPw) {
-        passwords.put(id, newPw);
+        alumniMap.get(id).setPassword(newPw);
     }
 
     /**
@@ -862,7 +832,7 @@ public class InOut {
      * @param password     Alumni's Password
      * @return Alumni's ID
      */
-    public int createAlumni(String name, String address, String major, String gradYear, String job,
+    public int createAlumni(String name, String address, String major, int gradYear, String job,
             String organization,
             String password) {
         int id = alumniMap.lastKey();
