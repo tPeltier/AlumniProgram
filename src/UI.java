@@ -727,13 +727,14 @@ public class UI {
     public void deleteEvent() {
         boolean owner = false;
         int eventDeletionID = 0;
+        io.displayEvents();
+        System.out.println("Please enter the ID of the Event that you want to Delete:");
+        eventDeletionID = io.intInput();
         if (!io.isExistingEvent(eventDeletionID)) {
             System.out.println("-!-THIS EVENT DOESN'T EXIST-!-");
         } else {
             while (!owner) {
-                io.displayEvents();
-                System.out.println("Please enter the ID of the Event that you want to Delete:");
-                eventDeletionID = io.intInput();
+
                 try {
                     if (id != io.getHostId(eventDeletionID)) {
                         throw new InvalidEntry("-!-YOU DID NOT OWN THIS EVENT-!-");
@@ -759,14 +760,14 @@ public class UI {
     public void deleteTrainingEvent() {
         boolean owner = false;
         int trainingDeletionID = 0;
+        io.displayTraining();
+        System.out.println("Please enter the ID of the Training Event that you want to Delete:");
+        trainingDeletionID = io.intInput();
         if (!io.isExistingTraining(trainingDeletionID)) {
             System.out.println("-!-THIS TRAINING EVENT DOESN'T EXIST-!-");
 
         } else {
             while (!owner) {
-                io.displayTraining();
-                System.out.println("Please enter the ID of the Training Event that you want to Delete:");
-                trainingDeletionID = io.intInput();
                 try {
                     if (id != io.getHostId(trainingDeletionID)) {
                         throw new InvalidEntry("YOU DID NOT OWN THIS TRAINING EVENT");
