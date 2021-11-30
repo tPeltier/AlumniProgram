@@ -1,5 +1,6 @@
 import java.io.FileNotFoundException;
 import java.time.LocalDateTime;
+import java.util.regex.Pattern;
 
 public class UI {
     private int id;
@@ -679,8 +680,11 @@ public class UI {
         String topic = io.stringInput();
         System.out.println("Enter a Phone Number where you can be reached:");
         long phone = io.longInput();
-        System.out.println("Enter an Email Address where you can be reached:");
-        String email = io.stringInput();
+        String email;
+        do {
+            System.out.println("Enter an Email Address where you can be reached:");
+            email = io.stringInput();
+        } while (!Pattern.compile("^(.+)@(.+)$").matcher(email).matches());
         Host host = new Host(id, io.getAlumniName(id), io.getAlumniAddress(id), io.getAlumniMajor(id),
                 io.getAlumniGradYear(id), io.getAlumniJob(id), io.getAlumniOrg(id), topic, phone, email);
         io.createEvent(name, room, totalSpots, dateTime, host);
@@ -706,8 +710,11 @@ public class UI {
         String skill = io.stringInput();
         System.out.println("Enter a Phone Number where you can be reached:");
         long phone = io.longInput();
-        System.out.println("Enter an Email Address where you can be reached: ");
-        String email = io.stringInput();
+        String email;
+        do {
+            System.out.println("Enter an Email Address where you can be reached:");
+            email = io.stringInput();
+        } while (!Pattern.compile("^(.+)@(.+)$").matcher(email).matches());
         Host host = new Host(id, io.getAlumniName(id), io.getAlumniAddress(id), io.getAlumniMajor(id),
                 io.getAlumniGradYear(id), io.getAlumniJob(id), io.getAlumniOrg(id), topic, phone, email);
         io.createTrainingEvent(name, room, totalSpots, dateTime, host, skill);

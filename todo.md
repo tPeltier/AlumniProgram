@@ -3,10 +3,11 @@
 - [ ] packages
 - [ ] unit testing
 - [ ] regex
-    - [ ] email regex
-    String regex = "^(.+)@(.+)$";
+    - [x] email regex
+        - String regex = "^(.+)@(.+)$";
     - [ ] regex for other places (ie name's should only be letters)
 - [ ] change from saving to temps to saving to live files
+- [ ] no way to change phone, email or area of expertise
 - [ ] implement guest speaker
     - [ ] implement guest speakers into save files
 - [ ] check on donation date time in regards to saved donations
