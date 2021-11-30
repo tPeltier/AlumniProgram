@@ -618,6 +618,7 @@ public class InOut {
      */
     public void displayAlumni() {
         for (Alumni alumni : alumniMap.values()) {
+            System.out.println(" ----------------------------------------------------- ");
             System.out.println(alumni.toString());
         }
     }
@@ -630,6 +631,7 @@ public class InOut {
     public void displayAttendantsEvent(int eventID) {
         System.out.println("Attendants:");
         for (Event event : eventMap.values()) {
+            System.out.println(" ----------------------------------------------------- ");
             int id = event.getAttendants();
             System.out.println(alumniMap.get(id).getName());
         }
@@ -643,6 +645,7 @@ public class InOut {
     public void displayAttendantsTraining(int trainingID) {
         System.out.println("Attendants:");
         for (Training training : trainingMap.values()) {
+            System.out.println(" ----------------------------------------------------- ");
             int id = training.getAttendants();
             System.out.println(alumniMap.get(id).getName());
         }
@@ -663,12 +666,14 @@ public class InOut {
         System.out.println("Events happening in the year " + year);
         for (Event event : eventMap.values()) {
             if (event.getYear() == check)
-                System.out.println(event.toString());
+                System.out.println(" ----------------------------------------------------- ");
+            System.out.println(event.toString());
         }
         System.out.println("Training happening in the year " + year);
         for (Training training : trainingMap.values()) {
             if (training.getYear() == check)
-                System.out.println(training.toString());
+                System.out.println(" ----------------------------------------------------- ");
+            System.out.println(training.toString());
         }
     }
 
@@ -680,6 +685,7 @@ public class InOut {
     public void displayDonationsAlumni(int id) {
         for (int i = 0; i < donationList.size(); i++) {
             if (id == donationList.get(i).getAlumniId()) {
+                System.out.println(" ----------------------------------------------------- ");
                 System.out.println("Donation Amount: " + donationList.get(i).getAmountDonated());
                 System.out.println("Date and Time of Donation: " + donationList.get(i).formatDateTime());
             }
@@ -694,6 +700,7 @@ public class InOut {
     public void displayDonationsEvents(int id) {
         for (int i = 0; i < donationList.size(); i++) {
             if (id == donationList.get(i).getEventId()) {
+                System.out.println(" ----------------------------------------------------- ");
                 System.out.println("Donation Amount" + donationList.get(i).getAmountDonated());
             }
         }
@@ -705,6 +712,7 @@ public class InOut {
      */
     public void displayEvents() {
         for (Event events : eventMap.values()) {
+            System.out.println(" ----------------------------------------------------- ");
             System.out.println(events.toString());
             System.out.println(events.getHost());
         }
@@ -716,10 +724,12 @@ public class InOut {
     public void displayHosts() {
         System.out.println("The Hosts for Events are:");
         for (Event events : eventMap.values()) {
+            System.out.println(" ----------------------------------------------------- ");
             System.out.println("Event " + events.getID() + " " + events.getHost());
         }
         System.out.println("The Hosts for Trainings are:");
         for (Training training : trainingMap.values()) {
+            System.out.println(" ----------------------------------------------------- ");
             System.out.println("Training " + training.getID() + " " + training.getHost());
         }
 
@@ -735,6 +745,7 @@ public class InOut {
         int counter = 0;
         for (Event event : eventMap.values()) {
             if (event.checkForAttendance(id)) {
+                System.out.println(" ----------------------------------------------------- ");
                 System.out.println("You are attending " + event.getName() + " | Event ID # " + event.getID());
                 counter++;
             }
@@ -745,7 +756,9 @@ public class InOut {
         System.out.println("My Training:");
         for (Training training : trainingMap.values()) {
             if (training.checkForAttendance(id)) {
-                System.out.println("You are attending " + training.getName() + " | Training Event ID # " + training.getID());
+                System.out.println(" ----------------------------------------------------- ");
+                System.out.println(
+                        "You are attending " + training.getName() + " | Training Event ID # " + training.getID());
                 counter++;
             }
         }
@@ -758,6 +771,7 @@ public class InOut {
      */
     public void displayTraining() {
         for (Training training : trainingMap.values()) {
+            System.out.println(" ----------------------------------------------------- ");
             System.out.println(training.toString());
             System.out.println(training.getHost());
         }
