@@ -1,77 +1,78 @@
 # TODO
 ---
 ## URGENT
-[] packages
-[] unit testing
-[] email regex
-[] regex for other places (ie name's should only be letters)
-[] change from saving to temps to saving to live files
-[] implement guest speaker
-    [] implement guest speakers into save files
+- [] packages
+- [] unit testing
+- [] email regex
+- [] regex for other places (ie name's should only be letters)
+- [] change from saving to temps to saving to live files
+- [] implement guest speaker
+    - [] implement guest speakers into save files
+- [] check on donation date time in regards to saved donations
 ## LESS URGENT
-[] + sysout"---------" to improve readability
-[] move event registration to alumni menu
-[] reorder some menus to be more intuitive
-[] make "real" events 
-[] make "real" training
-[] make "rea" donations
+- [] + sysout"---------" to improve readability
+- [] move event registration to alumni menu
+- [] reorder some menus to be more intuitive
+- [] make "real" events 
+- [] make "real" training
+- [] make "rea" donations
 ## SUGGESTIONS
-[] maybe change the way date time is user input
-[] add a button to kill inputs?
+- [] maybe change the way date time is user input
+- [] add a button to kill inputs?
 ---
 # DONE
-[x] clean up all prints 
-[x] since a host has to be an alumni why not just save the alumni id and then fill
-[x] fix donation display
-[x] look into password checking
-[x] make "real" alumni 
-[x] out of bounds handling for time and date entry 
-[x] deleting events/training causes errors while signing up to other events (nullPointer)
-[x] change grad year from string to int
-[x] change attendant arrayList to ids and then just call the map to get names to display
-[x] make sure that the user is logged out upon deletion
-[x] rearrange methods so that things are easier to read
-[x] finish javaDoc
-    [x] alumni
-    [x] commonMethods
-    [x] donation
-    [x] event
-    [x] host
-    [x] inOut
-    [x] invalidEntry
-    [x] training
-    [x] ui
-[] finish reports
-    [x] events by year
-    [] listing guest speakers
-    [x] list of people attending an event
-    [x] display host for event/training
-    [x] list of events/training alumni is attending
-    [x] listing alumni
-    [] ect
-[x] look into how we are handling people attending events 
-    [x] make events also have a total number of open spots and what not
-    [x] make it to where you can only sign up for an event once
-[x] make toString human readable
-    [x] alumni
-    [x] events
-    [x] training
-[x] make it so you can only delete events you own (like editing)
-[x] display alumni/event/training that was edited right after editing (only that obj, not the whole list)
+- [x] clean up all prints 
+- [x] since a host has to be an alumni why not just save the alumni id and then fill
+- [x] fix donation display
+- [x] look into password checking
+- [x] make "real" alumni 
+- [x] out of bounds handling for time and date entry 
+- [x] deleting events/training causes errors while signing up to other events (nullPointer)
+- [x] change grad year from string to int
+- [x] change attendant arrayList to ids and then just call the map to get names to display
+- [x] make sure that the user is logged out upon deletion
+- [x] rearrange methods so that things are easier to read
+- [x] finish javaDoc
+    - [x] alumni
+    - [x] commonMethods
+    - [x] donation
+    - [x] event
+    - [x] host
+    - [x] inOut
+    - [x] invalidEntry
+    - [x] training
+    - [x] ui
+- [] finish reports
+    - [x] events by year
+    - [] listing guest speakers
+    - [x] list of people attending an event
+    - [x] display host for event/training
+    - [x] list of events/training alumni is attending
+    - [x] listing alumni
+    - [] ect
+- [x] look into how we are handling people attending events 
+    - [x] make events also have a total number of open spots and what not
+    - [x] make it to where you can only sign up for an event once
+- [x] make toString human readable
+    - [x] alumni
+    - [x] events
+    - [x] training
+- [x] make it so you can only delete events you own (like editing)
+- [x] display alumni/event/training that was edited right after editing (only that obj, not the whole list)
 ### this might need more work
-[x] make localDateTimes out of the date in the donation (see below)
+- [x] make localDateTimes out of the date in the donation (see below)
 ### this could be incorrect, check
-[x] finish save method for training
+- [x] finish save method for training
 ---
 # LIST OF BUGS:
-[x] negative numbers need help
-[x] fix training menu
-[x] add check to see if event/training/alumni exist while deleting?
-[x] entering the wrong id sometimes doesn't display the options again
-[x] fix host toString
-[x] add check for event's existence 
-[x] display donations after making a donation
-[x] call check for event method
+- [x] negative numbers need help
+- [x] fix training menu
+- [x] add check to see if event/training/alumni exist while deleting?
+- [x] entering the wrong id sometimes doesn't display the options again
+- [x] fix host toString
+- [x] add check for event's existence 
+- [x] display donations after making a donation
+- [x] call check for event method
 ---
 Christian's feed back:
 1) Input validation -- for example, I successfully entered "no" as the Alumni's Graduation Year when creating a new account. You do validate in some areas though, as I was corrected for trying to enter "no" as the Year when creating an event. May want to ensure you're using that validation at all possible points.
