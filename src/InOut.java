@@ -628,7 +628,11 @@ public class InOut {
      * @param eventID Event ID
      */
     public void displayAttendantsEvent(int eventID) {
-        System.out.println(eventMap.get(eventID).displayAttendants());
+        System.out.println("Attendants:");
+        for (Event event : eventMap.values()) {
+            int id = event.getAttendants();
+            System.out.println(alumniMap.get(id).getName());
+        }
     }
 
     /**
@@ -637,7 +641,11 @@ public class InOut {
      * @param trainingID Training ID
      */
     public void displayAttendantsTraining(int trainingID) {
-        System.out.println(trainingMap.get(trainingID).displayAttendants());
+        System.out.println("Attendants:");
+        for (Training training : trainingMap.values()) {
+            int id = training.getAttendants();
+            System.out.println(alumniMap.get(id).getName());
+        }
     }
 
     /**
@@ -658,7 +666,6 @@ public class InOut {
                 System.out.println(training.toString());
         }
     }
-
 
     /**
      * Displays the Donations made by an Alumni
@@ -797,24 +804,28 @@ public class InOut {
 
     /**
      * Checks to see if the Event being requested is in the map
+     * 
      * @param eventID ID of Event to be checked
      * @return true if Event is in map, false if Event is not in map
      */
     public boolean isExistingEvent(int eventID) {
         if (eventMap.containsKey(eventID)) {
             return true;
-        } else return false;
+        } else
+            return false;
     }
 
     /**
      * Checks to see if the Training Event being requested is in the map
+     * 
      * @param eventID ID of Training Event to be checked
      * @return true if Event is in map, false if Training Event is not in map
      */
     public boolean isExistingTraining(int eventID) {
         if (trainingMap.containsKey(eventID)) {
             return true;
-        } else return false;
+        } else
+            return false;
     }
     // ==================== CREATE ====================
 
@@ -914,7 +925,8 @@ public class InOut {
      */
     public void addDonationToList(int alumniId, int eventId, double donationAmount) {
         donationList.add(new Donation(alumniId, eventId, donationAmount));
-        System.out.println("You donated: " + donationList.get(donationList.size()-1).getAmountDonated() +  " at " + donationList.get(donationList.size()-1).getDateCreated());
+        System.out.println("You donated: " + donationList.get(donationList.size() - 1).getAmountDonated() + " at "
+                + donationList.get(donationList.size() - 1).getDateCreated());
     }
 
     /**
@@ -1001,6 +1013,7 @@ public class InOut {
 
     /**
      * Get User Long input
+     * 
      * @return User input : Long
      */
     public long longInput() {

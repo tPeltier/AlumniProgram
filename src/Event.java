@@ -269,20 +269,11 @@ public class Event implements CommonMethods {
         return att;
     }
 
-    public String displayAttendants() {
-        String att = "";
-        // for (String name : attendants) {
-        // att += name + ", ";
-        // }
-        // TODO is there a way to do this with an enhanced loop?
-        for (int i = 0; i < attendants.size(); i++) {
-            if (i == attendants.size() - 1) {
-                att += attendants.get(i);
-            } else {
-                att += attendants.get(i) + ",";
-            }
+    public int getAttendants() {
+        for (Integer id : attendants) {
+            return id;
         }
-        return att;
+        return 0;
     }
 
     /**
