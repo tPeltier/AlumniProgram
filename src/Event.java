@@ -11,7 +11,7 @@ public class Event implements CommonMethods {
     private LocalDateTime startDate;
     private Host host;
     private Alumni guestSpeaker;
-    private ArrayList<String> attendants;
+    private ArrayList<Integer> attendants;
 
     /**
      * Empty Event constructor
@@ -33,7 +33,7 @@ public class Event implements CommonMethods {
      * @param host        Host object for the host of the Event
      */
     public Event(int id, String name, int room, int totalSpots, LocalDateTime startDate,
-            ArrayList<String> attendant, Host host) {
+            ArrayList<Integer> attendant, Host host) {
         this.id = id;
         this.name = name;
         this.room = room;
@@ -254,14 +254,14 @@ public class Event implements CommonMethods {
      * 
      * @param name Name of attending Alumni
      */
-    public void addAttendant(String name) {
-        attendants.add(name);
+    public void addAttendant(int id) {
+        attendants.add(id);
     }
 
-    public boolean checkForAttendance(String name) {
+    public boolean checkForAttendance(int id) {
         boolean att = false;
         for (int i = 0; i < attendants.size(); i++) {
-            if (name.equals(attendants.get(i))) {
+            if (id == (attendants.get(i))) {
                 att = true;
             } else
                 att = false;

@@ -224,7 +224,7 @@ public class UI {
                     if (io.alreadyAttendingEvent(id, eventID)) {
                         System.out.println("You are already attending this Event");
                     } else {
-                        io.joinEvent(eventID, io.getAlumniName(id));
+                        io.joinEvent(eventID, id);
                     }
                 }
                 break;
@@ -237,7 +237,7 @@ public class UI {
                     if (io.alreadyAttendingTraining(id, trainingID)) {
                         System.out.println("You are already attending this Training");
                     } else {
-                        io.joinTraining(id, io.getAlumniName(io.intInput()));
+                        io.joinTraining(trainingID, id);
                     }
 
                 }

@@ -8,11 +8,11 @@
 [] regex for other places (ie name's should only be letters)
 
 [] maybe change the way date time is user input
-[] fix donation display
+[x] fix donation display
 [] clean up all prints 
 [] change from saving to temps to saving to live files
 
-[] look into password checking
+[x] look into password checking
 [] unit testing
 
 [] make "real" events and alumni & make more of them 
@@ -109,6 +109,11 @@
 
 [x] entering the wrong id sometimes doesn't display the options again
 
+[x] fix host toString
+[x] add check for event's existence 
+[x] display donations after making a donation
+
+[x] call check for event method
 ---
 
 ---
@@ -116,11 +121,7 @@ christian's feed back
 
 1) Input validation -- for example, I successfully entered "no" as the Alumni's Graduation Year when creating a new account. You do validate in some areas though, as I was corrected for trying to enter "no" as the Year when creating an event. May want to ensure you're using that validation at all possible points.
 
-
 2) Not really a bug, but the output of the Display Events section is inconsistent. It outputs most of the data of the event in a format like "Variable: Data" but then jumps to "the Host is Mary and their area of expertise is topic1. They can be reached at .." which feels a bit odd
-
-[x] fix host toString
-
 
 3) When I tried to "Attend an Event" and put in an Event ID that isn't listed, I get a Null Pointer Exception. Here's the stack trace, hopefully it helps:
 
@@ -132,26 +133,17 @@ Exception in thread "main" java.lang.NullPointerException: Cannot invoke "Event.
 	at UI.userInterface(UI.java:28)
 	at App.main(App.java:9)
 
-[x] add check for event's existence 
-
 4) As you noted in your email, files aren't writing to the same place they're reading, so accounts aren't persisting through bug testing
 
 5) When donating to an event, there is no confirmation that the donation occurred. It simply accepts the number input and brings back the menu.
 
-[x] display donations after making a donation
-
 6) Under "See my Donations" the output formatting is off. For example, I got: "Donation amount205.0" followed  by the date and time. Adding a ": " before the number would clean it up nicely. Kudos on the timestamping.
-
 
 7) Entering an hour and minute separately when creating an event feels strange. I'm sure you're doing this for ease of use on the backend, so I don't fault you for it, it just feels odd.
 
-
 8) I can enter "nah" as an email address when creating an event. Maybe consider a regex validation on email address entries?
 
-
 9) Null Pointer Exception when entering an invalid Event ID number in Delete Event
-
-[x] call check for event method
 
 10) After deleting my own account, I got a Null Pointer Exception. Here's the stack trace:
 
@@ -161,6 +153,4 @@ Exception in thread "main" java.lang.NullPointerException: Cannot invoke "Alumni
 	at UI.userInterface(UI.java:28)
 	at App.main(App.java:9)
 
-
 11) Getting an "invalid password" error when trying to log back in, despite being absolutely certain I'm entering the exact same (one letter) password that I entered when creating an account
-

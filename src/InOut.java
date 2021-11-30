@@ -156,7 +156,7 @@ public class InOut {
             Host host = extractHost(h);
             // attending alumni info
             String list = eventFileIn.nextLine();
-            ArrayList<String> att = extractAttendants(list);
+            ArrayList<Integer> att = extractAttendants(list);
 
             Event e = new Event(id, name, room, totalSpots, dateTime, att, host);
             eventMap.put(id, e);
@@ -185,7 +185,7 @@ public class InOut {
             Host host = extractHost(h);
             // attending alumni info
             String list = trainingFileIn.nextLine();
-            ArrayList<String> att = extractAttendants(list);
+            ArrayList<Integer> att = extractAttendants(list);
 
             Training t = new Training(id, name, room, totalSpots, dateTime, att, host, skill);
             trainingMap.put(id, t);
@@ -198,11 +198,11 @@ public class InOut {
      * @param list Line from text file containing Attendants
      * @return ArrayList of Attendants
      */
-    private ArrayList<String> extractAttendants(String list) {
+    private ArrayList<Integer> extractAttendants(String list) {
         String[] listArr = list.split(",");
-        ArrayList<String> att = new ArrayList<>();
+        ArrayList<Integer> att = new ArrayList<>();
         for (int i = 0; i < listArr.length; i++) {
-            att.add(listArr[i]);
+            att.add(Integer.parseInt(listArr[i]));
         }
         return att;
     }
@@ -722,7 +722,7 @@ public class InOut {
         System.out.println("My Events:");
         int counter = 0;
         for (Event event : eventMap.values()) {
-            if (event.checkForAttendance(alumniMap.get(id).getName())) {
+            if (event.checkForAttendance(id)) {
                 System.out.println("You are attending " + event.getName() + " ID # " + event.getID());
                 counter++;
             }
@@ -732,7 +732,7 @@ public class InOut {
         counter = 0;
         System.out.println("My Training:");
         for (Training training : trainingMap.values()) {
-            if (training.checkForAttendance(alumniMap.get(id).getName())) {
+            if (training.checkForAttendance(id)) {
                 System.out.println("You are attending " + training.getName() + " ID # " + training.getID());
                 counter++;
             }
@@ -775,7 +775,7 @@ public class InOut {
      * @return Whether the ALumni is already attending
      */
     public boolean alreadyAttendingEvent(int id, int eventID) {
-        if (eventMap.get(eventID).checkForAttendance(alumniMap.get(id).getName()))
+        if (eventMap.get(eventID).checkForAttendance(id))
             return true;
         else
             return false;
@@ -789,7 +789,7 @@ public class InOut {
      * @return Whether the Alumni is already attending
      */
     public boolean alreadyAttendingTraining(int id, int trainingID) {
-        if (trainingMap.get(trainingID).checkForAttendance(alumniMap.get(id).getName()))
+        if (trainingMap.get(trainingID).checkForAttendance(id))
             return true;
         else
             return false;
@@ -923,8 +923,8 @@ public class InOut {
      * @param id   Event ID
      * @param name Name of attending ALumni
      */
-    public void joinEvent(int id, String name) {
-        eventMap.get(id).addAttendant(name);
+    public void joinEvent(int eventId, int id) {
+        eventMap.get(eventId).addAttendant(id);
     }
 
     /**
@@ -933,8 +933,8 @@ public class InOut {
      * @param id   Training Event ID
      * @param name Name of attending ALumni
      */
-    public void joinTraining(int id, String name) {
-        trainingMap.get(id).addAttendant(name);
+    public void joinTraining(int eventId, int id) {
+        trainingMap.get(eventId).addAttendant(id);
     }
 
     // ==================== INPUT====================
