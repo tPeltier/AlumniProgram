@@ -234,12 +234,13 @@ public class UI {
                 System.out.println("What Training Event would you like to attend?");
                 int trainingID = io.intInput();
                 if (!io.isExistingTraining(trainingID)) {
+                    System.out.println("-!-THIS TRAINING EVENT DOESN'T EXIST-!-");
+                } else {
                     if (io.alreadyAttendingTraining(id, trainingID)) {
                         System.out.println("You are already attending this Training");
                     } else {
                         io.joinTraining(trainingID, id);
                     }
-
                 }
                 break;
             case 3:
@@ -257,13 +258,23 @@ public class UI {
                 // Display attendants for an Event
                 io.displayEvents();
                 System.out.println("What Event would you like to check?");
-                io.displayAttendantsEvent(io.intInput());
+                int eventID = io.intInput();
+                if (!io.isExistingEvent(eventID)) {
+                    System.out.println("-!-THIS EVENT DOESN'T EXIST-!-");
+                } else {
+                    io.displayAttendantsEvent(eventID);
+                }
                 break;
             case 2:
                 // Display attendants for a Training
                 io.displayTraining();
                 System.out.println("What Training would you like to check?");
-                io.displayAttendantsTraining(io.intInput());
+                int trainingID = io.intInput();
+                if (!io.isExistingTraining(trainingID)) {
+                    System.out.println("-!-THIS TRAINING EVENT DOESN'T EXIST-!-");
+                } else {
+                    io.displayAttendantsTraining(trainingID);
+                }
                 break;
             case 3:
                 // Return to Menu
@@ -419,74 +430,94 @@ public class UI {
         boolean run = true;
         boolean owner = false;
         int eventID = 0;
-        while (!owner) {
-            io.displayEvents();
-            System.out.println("Enter the Event ID:");
-            eventID = io.intInput();
-            try {
-                if (id != io.getHostId(eventID)) {
-                    throw new InvalidEntry("-!-YOU DID NOT OWN THIS EVENT-!-");
-                } else
-                    owner = true;
-            } catch (InvalidEntry e) {
-                System.out.println(e.getMessage());
-                return;
+        io.displayEvents();
+        System.out.println("Enter the Event ID:");
+        eventID = io.intInput();
+        if (!io.isExistingEvent(eventID)) {
+            System.out.println("-!-THIS EVENT DOESN'T EXIST-!-");
+        } else {
+            while (!owner) {
+                try {
+                    if (id != io.getHostId(eventID)) {
+                        throw new InvalidEntry("-!-YOU DID NOT OWN THIS EVENT-!-");
+                    } else
+                        owner = true;
+                } catch (InvalidEntry e) {
+                    System.out.println(e.getMessage());
+                    return;
+                }
             }
-        }
-        while (run) {
-            System.out.println(
-                    "What would you like to change?: \n1. Event Name \n2. Event Time \n3. Event Room \n4. Total Number of Spots\n5. Event Date \n6. Exit");
-            int choice = io.intInput(6);
-            switch (choice) {
-                case 1:
-                    // edit name
-                    System.out.println("Enter name of event:");
-                    io.setEventName(eventID, io.stringInput());
-                    break;
+            while (run) {
+                System.out.println(
+                        "What would you like to change?: \n1. Event Name \n2. Event Time \n3. Event Room \n4. Total Number of Spots\n5. Event Date \n6. Exit");
+                int choice = io.intInput(6);
+                switch (choice) {
+                    case 1:
+                        // edit name
+                        System.out.println("Enter name of event:");
+                        io.setEventName(eventID, io.stringInput());
+                        break;
 
-                case 2:
-                    // edit time
-                    // TODO only allow 0-23 and 0-59
-                    System.out.println("Enter time of event");
-                    System.out.println(" ----------------------------------------------------- ");
-                    System.out.println("Enter the Hour in 0-23:");
-                    int hour = io.intInput();
-                    System.out.println("Enter the Minute in 0-59");
-                    int minute = io.intInput();
-                    io.setEventDateTime(eventID, io.getEventYear(id), io.getEventMonth(id), io.getEventDay(id), hour,
-                            minute);
-                    break;
+                    case 2:
+                        // edit time
+                        // TODO only allow 0-23 and 0-59
+                        System.out.println("Enter time of event");
+                        System.out.println(" ----------------------------------------------------- ");
+                        int hour;
+                        int minute;
+                        do {
+                            System.out.println("Enter the Hour in 0-23:");
+                            hour = io.intInput();
+                        } while (hour > 23);
+                        do {
+                            System.out.println("Enter the Minute in 0-59");
+                            minute = io.intInput();
+                        } while (minute > 59);
+                        io.setEventDateTime(eventID, io.getEventYear(id), io.getEventMonth(id), io.getEventDay(id),
+                                hour,
+                                minute);
+                        break;
 
-                case 3:
-                    // edit room
-                    System.out.println("Enter Event Room:");
-                    io.setEventRoom(eventID, io.intInput());
-                    break;
+                    case 3:
+                        // edit room
+                        System.out.println("Enter Event Room:");
+                        io.setEventRoom(eventID, io.intInput());
+                        break;
 
-                case 4:
-                    // edit number of participants
-                    System.out.println("Enter total number of spots available:");
-                    io.setNumOfTotalSpotsEvents(id, io.intInput());
-                    break;
+                    case 4:
+                        // edit number of participants
+                        System.out.println("Enter total number of spots available:");
+                        io.setNumOfTotalSpotsEvents(id, io.intInput());
+                        break;
 
-                case 5:
-                    // edit date
-                    System.out.println("Enter date of event");
-                    System.out.println(" ----------------------------------------------------- ");
-                    System.out.println("Enter the year:");
-                    int year = io.intInput();
-                    System.out.println("Enter the month:");
-                    int month = io.intInput();
-                    System.out.println("Enter the day:");
-                    int day = io.intInput();
-                    io.setEventDateTime(eventID, year, month, day, io.getEventHour(id), io.getEventMin(id));
-                    break;
+                    case 5:
+                        // edit date
+                        System.out.println("Enter date of event");
+                        System.out.println(" ----------------------------------------------------- ");
+                        int year;
+                        int month;
+                        int day;
+                        do {
+                            System.out.println("Enter a Year:");
+                            year = io.intInput();
+                        } while (year < 1000);
+                        do {
+                            System.out.println("Enter the month:");
+                            month = io.intInput();
+                        } while (month < 12);
+                        do {
+                            System.out.println("Enter the day:");
+                            day = io.intInput();
+                        } while (day < 31);
+                        io.setEventDateTime(eventID, year, month, day, io.getEventHour(id), io.getEventMin(id));
+                        break;
 
-                case 6:
-                    // exit
-                    System.out.println(io.getEvent(eventID));
-                    run = false;
-                    break;
+                    case 6:
+                        // exit
+                        System.out.println(io.getEvent(eventID));
+                        run = false;
+                        break;
+                }
             }
         }
     }
@@ -498,81 +529,101 @@ public class UI {
         boolean run = true;
         boolean owner = false;
         int trainingEventID = 0;
-        while (!owner) {
+        io.displayTraining();
+        System.out.println("Enter the Training Event ID:");
+        trainingEventID = io.intInput();
+        if (!io.isExistingTraining(trainingEventID)) {
+            System.out.println("-!-THIS TRAINING EVENT DOESN'T EXIST-!-");
+        } else {
+            while (!owner) {
 
-            io.displayTraining();
-            System.out.println("Enter the Training Event ID:");
-            trainingEventID = io.intInput();
-            try {
-                if (id != io.getHostId(trainingEventID)) {
-                    throw new InvalidEntry("-!-YOU DID NOT OWN THIS TRAINING EVENT-!-");
-                } else
-                    owner = true;
-            } catch (InvalidEntry e) {
-                System.out.println(e.getMessage());
-                return;
+                try {
+                    if (id != io.getHostId(trainingEventID)) {
+                        throw new InvalidEntry("-!-YOU DID NOT OWN THIS TRAINING EVENT-!-");
+                    } else
+                        owner = true;
+                } catch (InvalidEntry e) {
+                    System.out.println(e.getMessage());
+                    return;
+                }
             }
-        }
-        while (run) {
-            System.out.println(
-                    "What would you like to change?: \n1. Training Event Name \n2. Training Event Time \n3. Training Event Room \n4. Total Number of Spots\n5. Event Date \n6. Edit Skill \n7. Exit");
-            int choice = io.intInput(7);
-            switch (choice) {
-                case 1:
-                    // edit name
-                    System.out.println("Enter Name of Event:");
-                    io.setTrainingName(trainingEventID, io.stringInput());
-                    break;
+            while (run) {
+                System.out.println(
+                        "What would you like to change?: \n1. Training Event Name \n2. Training Event Time \n3. Training Event Room \n4. Total Number of Spots\n5. Event Date \n6. Edit Skill \n7. Exit");
+                int choice = io.intInput(7);
+                switch (choice) {
+                    case 1:
+                        // edit name
+                        System.out.println("Enter Name of Event:");
+                        io.setTrainingName(trainingEventID, io.stringInput());
+                        break;
 
-                case 2:
-                    // edit time
-                    System.out.println("Enter Time of Event");
-                    System.out.println(" ----------------------------------------------------- ");
-                    System.out.println("Enter the Hour in 0-23:");
-                    int hour = io.intInput();
-                    System.out.println("Enter the Minute in 0-59:");
-                    int minute = io.intInput();
-                    io.setTrainingDate(trainingEventID, io.getEventYear(id), io.getEventMonth(id), io.getEventDay(id),
-                            hour,
-                            minute);
-                    break;
+                    case 2:
+                        // edit time
+                        System.out.println("Enter Time of Event");
+                        System.out.println(" ----------------------------------------------------- ");
+                        int hour;
+                        int minute;
+                        do {
+                            System.out.println("Enter the Hour in 0-23:");
+                            hour = io.intInput();
+                        } while (hour > 23);
+                        do {
+                            System.out.println("Enter the Minute in 0-59");
+                            minute = io.intInput();
+                        } while (minute > 59);
+                        io.setTrainingDate(trainingEventID, io.getEventYear(id), io.getEventMonth(id),
+                                io.getEventDay(id),
+                                hour,
+                                minute);
+                        break;
 
-                case 3:
-                    // edit room
-                    System.out.println("Enter Event Room:");
-                    io.setTrainingRoom(trainingEventID, io.intInput());
-                    break;
+                    case 3:
+                        // edit room
+                        System.out.println("Enter Event Room:");
+                        io.setTrainingRoom(trainingEventID, io.intInput());
+                        break;
 
-                case 4:
-                    // edit number of participants
-                    System.out.println("Enter total number of spots available:");
-                    io.setNumOfTotalSpotsTraining(id, io.intInput());
-                    break;
+                    case 4:
+                        // edit number of participants
+                        System.out.println("Enter total number of spots available:");
+                        io.setNumOfTotalSpotsTraining(id, io.intInput());
+                        break;
 
-                case 5:
-                    // edit date
-                    System.out.println("Enter Date of Event");
-                    System.out.println(" ----------------------------------------------------- ");
-                    System.out.println("Enter the Year:");
-                    int year = io.intInput();
-                    System.out.println("Enter the Month:");
-                    int month = io.intInput();
-                    System.out.println("Enter the Day:");
-                    int day = io.intInput();
-                    io.setTrainingDate(trainingEventID, year, month, day, io.getEventHour(id), io.getEventMin(id));
-                    break;
-                case 6:
-                    // edit skill
-                    System.out.println("Enter new Skill");
-                    String skill = io.stringInput();
-                    io.setTrainingSkill(trainingEventID, skill);
-                    break;
+                    case 5:
+                        // edit date
+                        System.out.println("Enter Date of Event");
+                        System.out.println(" ----------------------------------------------------- ");
+                        int year;
+                        int month;
+                        int day;
+                        do {
+                            System.out.println("Enter a Year:");
+                            year = io.intInput();
+                        } while (year < 1000);
+                        do {
+                            System.out.println("Enter the month:");
+                            month = io.intInput();
+                        } while (month < 12);
+                        do {
+                            System.out.println("Enter the day:");
+                            day = io.intInput();
+                        } while (day < 31);
+                        io.setTrainingDate(trainingEventID, year, month, day, io.getEventHour(id), io.getEventMin(id));
+                        break;
+                    case 6:
+                        // edit skill
+                        System.out.println("Enter new Skill");
+                        String skill = io.stringInput();
+                        io.setTrainingSkill(trainingEventID, skill);
+                        break;
 
-                case 7:
-                    // exit
-                    System.out.println(io.getTraining(trainingEventID));
-                    run = false;
-                    break;
+                    case 7:
+                        // exit
+                        System.out.println(io.getTraining(trainingEventID));
+                        run = false;
+                        break;
+                }
             }
         }
     }
@@ -661,18 +712,33 @@ public class UI {
      * @return A new LocalDateTime object
      */
     private LocalDateTime makeDateTime() {
+        int year;
+        int month;
+        int day;
+        int hour;
+        int minute;
         System.out.println("Enter date of event:");
         System.out.println(" ----------------------------------------------------- ");
-        System.out.println("Enter the Year:");
-        int year = io.intInput();
-        System.out.println("Enter the Month:");
-        int month = io.intInput();
-        System.out.println("Enter the Day:");
-        int day = io.intInput();
-        System.out.println("Enter the Hour:");
-        int hour = io.intInput();
-        System.out.println("Enter the Minute:");
-        int minute = io.intInput();
+        do {
+            System.out.println("Enter a Year:");
+            year = io.intInput();
+        } while (year < 1000);
+        do {
+            System.out.println("Enter the Month:");
+            month = io.intInput();
+        } while (month < 12);
+        do {
+            System.out.println("Enter the Day:");
+            day = io.intInput();
+        } while (day < 31);
+        do {
+            System.out.println("Enter the Hour in 0-23:");
+            hour = io.intInput();
+        } while (hour > 23);
+        do {
+            System.out.println("Enter the Minute in 0-59");
+            minute = io.intInput();
+        } while (minute > 59);
         return LocalDateTime.of(year, month, day, hour, minute);
     }
 
@@ -683,9 +749,13 @@ public class UI {
     public void addDonation() {
         System.out.println("Enter the Event ID:");
         int eventID = io.intInput();
-        System.out.println("Enter the Amount you would like to Donate:");
-        double amountDonated = io.doubleInput();
-        io.addDonationToList(id, eventID, amountDonated);
+        if (!io.isExistingEvent(eventID)) {
+            System.out.println("-!-THIS EVENT DOESN'T EXIST-!-");
+        } else {
+            System.out.println("Enter the Amount you would like to Donate:");
+            double amountDonated = io.doubleInput();
+            io.addDonationToList(id, eventID, amountDonated);
+        }
     }
 
     /**
@@ -701,7 +771,11 @@ public class UI {
     public void displayDonationsEvents() {
         System.out.println("Enter the Event ID:");
         int id = io.intInput();
-        io.displayDonationsEvents(id);
+        if (!io.isExistingTraining(id)) {
+            System.out.println("-!-THIS EVENT DOESN'T EXIST-!-");
+        } else {
+            io.displayDonationsEvents(id);
+        }
     }
 
     // ==================== DELETION ====================
@@ -777,13 +851,13 @@ public class UI {
                     return;
                 }
             }
-        }
-        io.getTraining(id);
-        System.out.println("---Are you sure you want to delete this Training Event?---");
-        System.out.println("(y/n)");
-        String confirmation = io.stringInput().toLowerCase();
-        if (confirmation.charAt(0) == 'y') {
-            io.deleteTraining(trainingDeletionID);
+            io.getTraining(id);
+            System.out.println("---Are you sure you want to delete this Training Event?---");
+            System.out.println("(y/n)");
+            String confirmation = io.stringInput().toLowerCase();
+            if (confirmation.charAt(0) == 'y') {
+                io.deleteTraining(trainingDeletionID);
+            }
         }
     }
 
