@@ -129,8 +129,15 @@ public class InOut {
             int alumniID = Integer.parseInt(s[0]);
             int eventID = Integer.parseInt(s[1]);
             double amount = Double.parseDouble(s[2]);
+            int year = Integer.parseInt(s[3]);
+            int month = Integer.parseInt(s[4]);
+            int day = Integer.parseInt(s[5]);
+            int hour = Integer.parseInt(s[6]);
+            int min = Integer.parseInt(s[7]);
+            int sec = Integer.parseInt(s[8]);
+            LocalDateTime ldt = extractDateTimeDonation(year, month, day, hour, min, sec);
             new Donation(alumniID, eventID, amount);
-            donationList.add(new Donation(alumniID, eventID, amount));
+            donationList.add(new Donation(alumniID, eventID, amount, ldt));
         }
 
     }
@@ -223,6 +230,9 @@ public class InOut {
         return LocalDateTime.of(year, month, dayOfMonth, hour, minute);
     }
 
+    private LocalDateTime extractDateTimeDonation(int year, int month, int day, int hour, int min, int sec) {
+        return LocalDateTime.of(year, month, day, hour, min, sec);
+    }
     /**
      * Extract Host information from a string and create a Host obj
      * 

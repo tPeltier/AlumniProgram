@@ -30,6 +30,20 @@ public class Donation {
         this.amountDonated = donationAmount;
     }
 
+    /**
+     * Existing Donation constructor
+     * @param alumniID
+     * @param eventID
+     * @param donationAmount
+     * @param ldt
+     */
+    public Donation(int alumniID, int eventID, double donationAmount, LocalDateTime ldt) {
+        this.ldt = ldt;
+        this.alumniId = alumniID;
+        this.eventId = eventID;
+        this.amountDonated = amountDonated;
+    }
+
     // ==================== GETTERS ====================
 
     /**
@@ -70,7 +84,7 @@ public class Donation {
 
     // ==================== RAND ====================
 
-    public void dateToLDT() {
+    private void dateToLDT() {
         String date = "" + dateCreated;
         date = date.replaceAll("\\s+", "");
         int month = monthToMonthValue();
@@ -82,7 +96,7 @@ public class Donation {
         ldt = LocalDateTime.of(year, month, dayOfMonth, hour, minute, second);
     }
 
-    public int monthToMonthValue() {
+    private int monthToMonthValue() {
         int month = 0;
         String date = "" + dateCreated;
         date = date.replaceAll("\\s+", "");
@@ -137,7 +151,7 @@ public class Donation {
      * @return Donation's information formatted to save to text file
      */
     public String save() {
-        String money = "" + amountDonated;
-        return alumniId + "%" + eventId + "%" + money;
+        String donation = "" + amountDonated;
+        return alumniId + "%" + eventId + "%" + donation + "%"  + ldt.getYear() + "%" + ldt.getMonthValue() + "%" + ldt.getDayOfMonth() + "%" + ldt.getHour() + "%" + ldt.getMinute() + "%" + ldt.getSecond();
     }
 }

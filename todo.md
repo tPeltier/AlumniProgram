@@ -1,6 +1,8 @@
 # TODO
 ## URGENT
 - [ ] packages
+    - drives
+    - resources
 - [ ] unit testing
 - [ ] regex
     - [x] email regex
@@ -15,9 +17,10 @@
 - [ ] + sysout"---------" to improve readability
 - [ ] reorder some menus to be more intuitive
     - [ ] move event registration to alumni menu
+    - [ ] move see my donations to alumni menu
 - [ ] make "real" events 
 - [ ] make "real" training
-- [ ] make "rea" donations
+- [ ] make "real" donations
 ## SUGGESTIONS
 - [ ] maybe change the way date time is user input
 - [ ] add a button to kill inputs?
