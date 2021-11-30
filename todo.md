@@ -1,23 +1,23 @@
 # TODO
 ## URGENT
-- [] packages
-- [] unit testing
-- [] email regex
-- [] regex for other places (ie name's should only be letters)
-- [] change from saving to temps to saving to live files
-- [] implement guest speaker
-    - [] implement guest speakers into save files
-- [] check on donation date time in regards to saved donations
+- [ ] packages
+- [ ] unit testing
+- [ ] email regex
+- [ ] regex for other places (ie name's should only be letters)
+- [ ] change from saving to temps to saving to live files
+- [ ] implement guest speaker
+    - [ ] implement guest speakers into save files
+- [ ] check on donation date time in regards to saved donations
 ## LESS URGENT
-- [] + sysout"---------" to improve readability
-- [] move event registration to alumni menu
-- [] reorder some menus to be more intuitive
-- [] make "real" events 
-- [] make "real" training
-- [] make "rea" donations
+- [ ] + sysout"---------" to improve readability
+- [ ] move event registration to alumni menu
+- [ ] reorder some menus to be more intuitive
+- [ ] make "real" events 
+- [ ] make "real" training
+- [ ] make "rea" donations
 ## SUGGESTIONS
-- [] maybe change the way date time is user input
-- [] add a button to kill inputs?
+- [ ] maybe change the way date time is user input
+- [ ] add a button to kill inputs?
 ---
 # DONE
 - [x] clean up all prints 
@@ -41,14 +41,14 @@
     - [x] invalidEntry
     - [x] training
     - [x] ui
-- [] finish reports
+- [ ] finish reports
     - [x] events by year
     - [] listing guest speakers
     - [x] list of people attending an event
     - [x] display host for event/training
     - [x] list of events/training alumni is attending
     - [x] listing alumni
-    - [] ect
+    - [ ] ect
 - [x] look into how we are handling people attending events 
     - [x] make events also have a total number of open spots and what not
     - [x] make it to where you can only sign up for an event once
