@@ -4,6 +4,7 @@
 - [ ] unit testing
 - [ ] regex
     - [ ] email regex
+    String regex = "^(.+)@(.+)$";
     - [ ] regex for other places (ie name's should only be letters)
 - [ ] change from saving to temps to saving to live files
 - [ ] implement guest speaker
