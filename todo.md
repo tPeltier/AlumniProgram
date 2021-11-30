@@ -8,6 +8,7 @@
 [] regex for other places (ie name's should only be letters)
 
 [] maybe change the way date time is user input
+[] move event registration to alumni menu
 [x] fix donation display
 [] clean up all prints 
 [] change from saving to temps to saving to live files

@@ -312,8 +312,7 @@ public class UI {
                 break;
             case 3:
                 // Display Events and Training by Year
-                System.out.println("Enter a Year:");
-                io.displayByYear(io.intInput());
+                io.displayByYear();
                 break;
             case 4:
                 // Display Hosts for both events and trainings

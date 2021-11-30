@@ -653,7 +653,12 @@ public class InOut {
      * 
      * @param year Year to display
      */
-    public void displayByYear(int year) {
+    public void displayByYear() {
+        int year = 0;
+        do {
+            System.out.println("Enter a Year:");
+            year = intInput();
+        } while (year < 1000);
         int check = Integer.parseInt(Integer.toString(year).substring(2, 4));
         System.out.println("Events happening in the year " + year);
         for (Event event : eventMap.values()) {
@@ -730,7 +735,7 @@ public class InOut {
         int counter = 0;
         for (Event event : eventMap.values()) {
             if (event.checkForAttendance(id)) {
-                System.out.println("You are attending " + event.getName() + " ID # " + event.getID());
+                System.out.println("You are attending " + event.getName() + " | ID # " + event.getID());
                 counter++;
             }
         }
