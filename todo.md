@@ -3,7 +3,7 @@
 [] packages
 
 [x] change grad year from string to int
-[] change attendant arrayList to ids and then just call the map to get names to display
+[x] change attendant arrayList to ids and then just call the map to get names to display
 [] email regex
 [] regex for other places (ie name's should only be letters)
 
