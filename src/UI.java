@@ -219,7 +219,7 @@ public class UI {
                 System.out.println("What Event would you like to attend?");
                 int eventID = io.intInput();
                 if (!io.isExistingEvent(eventID)) {
-                    System.out.println("-!-THIS EVENT DOESN'T EXIST-!-");
+                    System.out.println("-!-THIS EVENT DOES NOT EXIST-!-");
                 } else {
                     if (io.alreadyAttendingEvent(id, eventID)) {
                         System.out.println("-!-YOU ARE ALREADY ATTENDING THIS EVENT-!-");
@@ -234,7 +234,7 @@ public class UI {
                 System.out.println("What Training Event would you like to attend?");
                 int trainingID = io.intInput();
                 if (!io.isExistingTraining(trainingID)) {
-                    System.out.println("-!-THIS TRAINING EVENT DOESN'T EXIST-!-");
+                    System.out.println("-!-THIS TRAINING EVENT DOES NOT EXIST-!-");
                 } else {
                     if (io.alreadyAttendingTraining(id, trainingID)) {
                         System.out.println("-!-YOU ARE ALREADY ATTENDING THIS TRAINING EVENT-!-");
@@ -260,7 +260,7 @@ public class UI {
                 System.out.println("What Event would you like to check?");
                 int eventID = io.intInput();
                 if (!io.isExistingEvent(eventID)) {
-                    System.out.println("-!-THIS EVENT DOESN'T EXIST-!-");
+                    System.out.println("-!-THIS EVENT DOES NOT EXIST-!-");
                 } else {
                     io.displayAttendantsEvent(eventID);
                 }
@@ -271,7 +271,7 @@ public class UI {
                 System.out.println("What Training would you like to check?");
                 int trainingID = io.intInput();
                 if (!io.isExistingTraining(trainingID)) {
-                    System.out.println("-!-THIS TRAINING EVENT DOESN'T EXIST-!-");
+                    System.out.println("-!-THIS TRAINING EVENT DOES NOT EXIST-!-");
                 } else {
                     io.displayAttendantsTraining(trainingID);
                 }
@@ -434,7 +434,7 @@ public class UI {
         System.out.println("Enter the Event ID:");
         eventID = io.intInput();
         if (!io.isExistingEvent(eventID)) {
-            System.out.println("-!-THIS EVENT DOESN'T EXIST-!-");
+            System.out.println("-!-THIS EVENT DOES NOT EXIST-!-");
         } else {
             while (!owner) {
                 try {
@@ -533,7 +533,7 @@ public class UI {
         System.out.println("Enter the Training Event ID:");
         trainingEventID = io.intInput();
         if (!io.isExistingTraining(trainingEventID)) {
-            System.out.println("-!-THIS TRAINING EVENT DOESN'T EXIST-!-");
+            System.out.println("-!-THIS TRAINING EVENT DOES NOT EXIST-!-");
         } else {
             while (!owner) {
 
@@ -756,7 +756,7 @@ public class UI {
         System.out.println("Enter the Event ID:");
         int eventID = io.intInput();
         if (!io.isExistingEvent(eventID)) {
-            System.out.println("-!-THIS EVENT DOESN'T EXIST-!-");
+            System.out.println("-!-THIS EVENT DOES NOT EXIST-!-");
         } else {
             System.out.println("Enter the Amount you would like to Donate:");
             double amountDonated = io.doubleInput();
@@ -778,7 +778,7 @@ public class UI {
         System.out.println("Enter the Event ID:");
         int id = io.intInput();
         if (!io.isExistingTraining(id)) {
-            System.out.println("-!-THIS EVENT DOESN'T EXIST-!-");
+            System.out.println("-!-THIS EVENT DOES NOT EXIST-!-");
         } else {
             io.displayDonationsEvents(id);
         }
@@ -810,7 +810,7 @@ public class UI {
         System.out.println("Please enter the ID of the Event that you want to Delete:");
         eventDeletionID = io.intInput();
         if (!io.isExistingEvent(eventDeletionID)) {
-            System.out.println("-!-THIS EVENT DOESN'T EXIST-!-");
+            System.out.println("-!-THIS EVENT DOES NOT EXIST-!-");
         } else {
             while (!owner) {
 
@@ -845,7 +845,7 @@ public class UI {
         System.out.println("Please enter the ID of the Training Event that you want to Delete:");
         trainingDeletionID = io.intInput();
         if (!io.isExistingTraining(trainingDeletionID)) {
-            System.out.println("-!-THIS TRAINING EVENT DOESN'T EXIST-!-");
+            System.out.println("-!-THIS TRAINING EVENT DOES NOT EXIST-!-");
 
         } else {
             while (!owner) {
