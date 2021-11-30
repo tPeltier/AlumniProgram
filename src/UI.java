@@ -3,7 +3,7 @@ import java.time.LocalDateTime;
 
 public class UI {
     private int id;
-    private InOut io;
+    private final InOut io;
 
     /**
      * Constructor for UI
@@ -151,10 +151,7 @@ public class UI {
             }
         }
         // if user deletes account, log out
-        if (choice == 4)
-            return false;
-        else
-            return true;
+        return choice != 4;
     }
 
     /**
@@ -366,7 +363,7 @@ public class UI {
                 case 4:
                     // edit gradYear
                     System.out.println("Enter a new Graduation Year:");
-                    io.setAlumniGradYear(id, io.stringInput());
+                    io.setAlumniGradYear(id, io.intInput());
                     break;
 
                 case 5:
@@ -595,9 +592,9 @@ public class UI {
         String address = io.stringInput();
         System.out.println("Enter the Major of the Alumni:");
         String major = io.stringInput();
-        System.out.println("Enter the Alumni's Graduation Year:");
-        String gradYear = io.stringInput();
-        System.out.println("Enter the Alumni's current Job Title:");
+        System.out.println("Enter the Alumna's Graduation Year:");
+        int gradYear = io.intInput();
+        System.out.println("Enter the Alumna's current Job Title:");
         String job = io.stringInput();
         System.out.println("Enter the company that the Alumni Currently works for:");
         String organization = io.stringInput();
@@ -675,8 +672,7 @@ public class UI {
         int hour = io.intInput();
         System.out.println("Enter the Minute:");
         int minute = io.intInput();
-        LocalDateTime dateTime = LocalDateTime.of(year, month, day, hour, minute);
-        return dateTime;
+        return LocalDateTime.of(year, month, day, hour, minute);
     }
 
     // ----- donation stuff ------
@@ -694,7 +690,7 @@ public class UI {
     }
 
     /**
-     * Displays a list of the ALumni's donation
+     * Displays a list of the Alumna's donation
      */
     public void displayDonationsAlumni() {
         io.displayDonationsAlumni(id);
@@ -792,7 +788,7 @@ public class UI {
     }
 
     /**
-     * Menu to let Alumni to choose whether to delete an Event or Training event
+     * Menu to let Alumni choose whether to delete an Event or Training event
      */
     public void deletionSubMenu() {
         System.out
