@@ -655,8 +655,10 @@ public class UI {
                 io.getAlumniGradYear(id), io.getAlumniJob(id), io.getAlumniOrg(id), topic, phone, email);
         io.createTrainingEvent(name, room, totalSpots, dateTime, host, skill);
     }
+
     /**
      * Creates and returns a LocalDateTime Object
+     * 
      * @return A new LocalDateTime object
      */
     private LocalDateTime makeDateTime() {
