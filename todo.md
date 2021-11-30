@@ -1,9 +1,6 @@
 # TODO
 ---
-\### Project status 
-- [] test
-- [x] test
-## URGENT
+# URGENT
 - [] packages
 - [] unit testing
 - [] email regex
@@ -12,14 +9,14 @@
 - [] implement guest speaker
     - [] implement guest speakers into save files
 - [] check on donation date time in regards to saved donations
-## LESS URGENT
+# LESS URGENT
 - [] + sysout"---------" to improve readability
 - [] move event registration to alumni menu
 - [] reorder some menus to be more intuitive
 - [] make "real" events 
 - [] make "real" training
 - [] make "rea" donations
-## SUGGESTIONS
+# SUGGESTIONS
 - [] maybe change the way date time is user input
 - [] add a button to kill inputs?
 ---
