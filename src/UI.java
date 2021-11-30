@@ -68,7 +68,7 @@ public class UI {
                     }
                     break;
                 case 2:
-                    id = newAlumniInfo();
+                    id = createAlumni();
                     loggedIn = true;
                     break;
                 case 3:
@@ -585,7 +585,7 @@ public class UI {
      * 
      * @return new Alumni Object
      */
-    public int newAlumniInfo() {
+    public int createAlumni() {
         System.out.println("Enter the name of the Alumni:");
         String name = io.stringInput();
         System.out.println("Enter the Address of the Alumni:");
@@ -687,7 +687,7 @@ public class UI {
         System.out.println("Enter the Amount you would like to Donate:");
         double amountDonated = io.doubleInput();
         io.addDonationToList(id, eventID, amountDonated);
-        System.out.println("Here are your current Donations:");
+        System.out.println("Here are your current Donations: ");
         io.displayDonationsAlumni(id);
     }
 
