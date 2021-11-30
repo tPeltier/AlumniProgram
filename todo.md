@@ -9,7 +9,7 @@
 
 [] maybe change the way date time is user input
 [] move event registration to alumni menu
-[] since a host has to be an alumni why not just save the alumni id and then fill
+[x] since a host has to be an alumni why not just save the alumni id and then fill
 [x] fix donation display
 [] clean up all prints 
 [] change from saving to temps to saving to live files
@@ -23,11 +23,9 @@
 
 [] add a button to kill inputs?
 
-[] out of bounds handling for time and date entry 
+[x] out of bounds handling for time and date entry 
 
-    [] we need to only allow 0-23 and 0-59 for time input
-
-[] deleting events/training causes errors while signing up to other events (nullPointer)
+[x] deleting events/training causes errors while signing up to other events (nullPointer)
 
 
 
