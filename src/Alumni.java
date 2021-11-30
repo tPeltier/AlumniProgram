@@ -4,7 +4,7 @@ public class Alumni implements CommonMethods {
     private String name;
     private String address;
     private String major;
-    private String gradYear;
+    private int gradYear;
     private String job;
     private String organization;
     private String password;
@@ -28,7 +28,7 @@ public class Alumni implements CommonMethods {
      * @param organization Alumni's Employer's name 
      * @param password Alumni's password
      */
-    public Alumni(int id, String name, String address, String major, String gradYear, String job, String organization, String password) {
+    public Alumni(int id, String name, String address, String major, int gradYear, String job, String organization, String password) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -49,7 +49,7 @@ public class Alumni implements CommonMethods {
      * @param job Job title of ALumni
      * @param organization Alumni's Employer's name 
      */
-    public Alumni(int id, String name, String address, String major, String gradYear, String job, String organization) {
+    public Alumni(int id, String name, String address, String major, int gradYear, String job, String organization) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -74,7 +74,7 @@ public class Alumni implements CommonMethods {
      * Get the year of graduation of Alumni
      * @return Graduation year of ALumni
      */
-    public String getGradYear() {
+    public int getGradYear() {
         return this.gradYear;
     }
 
@@ -140,7 +140,7 @@ public class Alumni implements CommonMethods {
      * Set the graduation year of Alumni
      * @param gradYear Graduation year to set for ALumni
      */
-    public void setGradYear(String gradYear) {
+    public void setGradYear(int gradYear) {
         this.gradYear = gradYear;
     }
 
@@ -197,6 +197,6 @@ public class Alumni implements CommonMethods {
      * @return ALumni's information formatted to save to text file
      */
     public String save() {
-        return getID() + "," + getName() + "," + getAddress() + "," + getMajor() + "," + getGradYear() + "," + getJob() + "," + getOrganization();
+        return getID() + "," + getName() + "," + getAddress() + "," + getMajor() + "," + getGradYear() + "," + getJob() + "," + getOrganization() + "," + getPassword();
     }
 }
