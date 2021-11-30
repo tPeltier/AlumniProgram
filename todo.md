@@ -6,6 +6,8 @@
 [] email regex
 [] regex for other places (ie name's should only be letters)
 [] change from saving to temps to saving to live files
+[] implement guest speaker
+    [] implement guest speakers into save files
 ## LESS URGENT
 [] + sysout"---------" to improve readability
 [] move event registration to alumni menu
@@ -42,7 +44,6 @@
 [] finish reports
     [x] events by year
     [] listing guest speakers
-        [] need to implement guest speakers into save files
     [x] list of people attending an event
     [x] display host for event/training
     [x] list of events/training alumni is attending
