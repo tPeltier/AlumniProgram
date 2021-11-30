@@ -283,12 +283,12 @@ public class Event implements CommonMethods {
      */
     public String formatDateTime() {
         return startDate.getMonthValue() + "-" + startDate.getDayOfMonth() + "-" + startDate.getYear() + " at "
-                + startDate.getHour() + ":" + startDate.getMinute();
+                + startDate.getHour() + ":" + startDate.getMinute() + "0";
     }
 
     @Override
     public String toString() {
-        return "Event ID: " + getID() + " |" + " Event Name: " + getName() + " |" + " Event Date and Time: "
+        return "ID: " + getID() + " |" + " Name: " + getName() + " |" + " Event Date and Time: "
                 + formatDateTime() + " |" + " Event Room Number: " + getRoom() + " |" + " Total Number of Spots: "
                 + getTotalSpots() + " |" + " Number of Spots Open: " + getOpenSpots() + " |"
                 + "Number of Spots Filled: " + getSpotsFilled();
