@@ -653,6 +653,7 @@ public class UI {
         do {
             System.out.println("Enter a Password:");
             password = io.stringInput();
+            checkPw = "";
             System.out.println("Re-Enter Password:");
             checkPw = io.stringInput();
         } while (!password.equals(checkPw));
