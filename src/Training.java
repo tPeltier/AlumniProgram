@@ -77,11 +77,11 @@ public class Training extends Event {
 
     @Override
     public String toString() {
-        return "Training ID: " + super.getID() + " |" + " Training Name: " + super.getName() + " |"
+        return "ID: " + super.getID() + " |" + " Name: " + super.getName() + " |"
                 + " Training Date and Time: " + super.formatDateTime() + " |" + " Training Room Number: "
                 + super.getRoom() + " |" + " Number of total seats: " + super.getTotalSpots() + " |"
                 + " Number of Spots Open: " + super.getOpenSpots() + " |" + " Number of Spots Filled: "
-                + super.getSpotsFilled() + " |" + " Skill taught at event: " + getSkill();
+                + super.getSpotsFilled() + " |" + " Skill being taught at Training Event: " + getSkill();
     }
 
     // ==================== SAVING ====================
