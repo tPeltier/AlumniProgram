@@ -103,7 +103,7 @@ public class UI {
                     // TODO emoji broke D:
                     // System.out.println("Thanks for using the premium Alumni service
                     // \uD83E\uDD70");
-                    System.out.println("Thanks for using the premium Alumni service! :D");
+                    System.out.println("Thank You for using the Premium Alumni Service! :D");
                     System.out.println("----------------------------------------------------- ");
                     run = false;
                     break;
