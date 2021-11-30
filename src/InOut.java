@@ -103,7 +103,7 @@ public class InOut {
         alumniMap = new TreeMap<>();
         while (alumniFileIn.hasNextLine()) {
             String line = alumniFileIn.nextLine();
-            String[] s = line.split(",");
+            String[] s = line.split("%");
             int id = Integer.parseInt(s[0]);
             String name = s[1];
             String address = s[2];
@@ -125,7 +125,7 @@ public class InOut {
 
         while (donationsFileIn.hasNextLine()) {
             String line = donationsFileIn.nextLine();
-            String[] s = line.split(",");
+            String[] s = line.split("%");
             int alumniID = Integer.parseInt(s[0]);
             int eventID = Integer.parseInt(s[1]);
             double amount = Double.parseDouble(s[2]);
@@ -143,7 +143,7 @@ public class InOut {
         while (eventFileIn.hasNextLine()) {
             // event info
             String line = eventFileIn.nextLine();
-            String[] s = line.split(",");
+            String[] s = line.split("%");
             int id = Integer.parseInt(s[0]);
             String name = s[1];
             int room = Integer.parseInt(s[2]);
@@ -170,7 +170,7 @@ public class InOut {
         trainingMap = new TreeMap<>();
         while (trainingFileIn.hasNextLine()) {
             String line = trainingFileIn.nextLine();
-            String[] s = line.split(",");
+            String[] s = line.split("%");
             int id = Integer.parseInt(s[0]);
             String name = s[1];
             int room = Integer.parseInt(s[2]);
@@ -199,7 +199,7 @@ public class InOut {
      * @return ArrayList of Attendants
      */
     private ArrayList<Integer> extractAttendants(String list) {
-        String[] listArr = list.split(",");
+        String[] listArr = list.split("%");
         ArrayList<Integer> att = new ArrayList<>();
         for (int i = 0; i < listArr.length; i++) {
             att.add(Integer.parseInt(listArr[i]));
@@ -214,7 +214,7 @@ public class InOut {
      * @return LocalDateTime Object
      */
     private LocalDateTime extractDateTime(String dateTimeString) {
-        String[] dt = dateTimeString.split(",");
+        String[] dt = dateTimeString.split("%");
         int year = Integer.parseInt(dt[0]);
         int month = Integer.parseInt(dt[1]);
         int dayOfMonth = Integer.parseInt(dt[2]);
@@ -230,7 +230,7 @@ public class InOut {
      * @return Host object
      */
     private Host extractHost(String h) {
-        String[] hArr = h.split(",");
+        String[] hArr = h.split("%");
         int hostId = Integer.parseInt(hArr[0]);
         String hostName = hArr[1];
         String hostAdd = hArr[2];
