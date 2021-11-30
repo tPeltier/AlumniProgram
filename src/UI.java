@@ -504,11 +504,11 @@ public class UI {
                         do {
                             System.out.println("Enter the Month:");
                             month = io.intInput();
-                        } while (month < 12);
+                        } while (month > 12);
                         do {
                             System.out.println("Enter the Day:");
                             day = io.intInput();
-                        } while (day < 31);
+                        } while (day > 31);
                         io.setEventDateTime(eventID, year, month, day, io.getEventHour(id), io.getEventMin(id));
                         break;
 
@@ -604,11 +604,11 @@ public class UI {
                         do {
                             System.out.println("Enter the Month:");
                             month = io.intInput();
-                        } while (month < 12);
+                        } while (month > 12);
                         do {
                             System.out.println("Enter the Day:");
                             day = io.intInput();
-                        } while (day < 31);
+                        } while (day > 31);
                         io.setTrainingDate(trainingEventID, year, month, day, io.getEventHour(id), io.getEventMin(id));
                         break;
                     case 6:
@@ -732,11 +732,11 @@ public class UI {
         do {
             System.out.println("Enter the Month:");
             month = io.intInput();
-        } while (month < 12);
+        } while (month > 12);
         do {
             System.out.println("Enter the Day:");
             day = io.intInput();
-        } while (day < 31);
+        } while (day > 31);
         do {
             System.out.println("Enter the Hour in 0-23:");
             hour = io.intInput();
