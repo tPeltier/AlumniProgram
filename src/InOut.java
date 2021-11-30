@@ -4,7 +4,6 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Scanner;
 import java.util.TreeMap;
 
@@ -14,22 +13,18 @@ public class InOut {
     private Scanner alumniFileIn;
     private Scanner eventFileIn;
     private Scanner donationsFileIn;
-    private Scanner passwordFileIn;
     private Scanner trainingFileIn;
     private File donationsFile;
     private File alumniFile;
     private File eventFile;
-    private File passwordsFile;
     private File trainingFile;
     private PrintWriter alumniSaved;
     private PrintWriter eventSaved;
     private PrintWriter donationsSaved;
-    private PrintWriter passwordsSaved;
     private PrintWriter trainingSaved;
     private TreeMap<Integer, Alumni> alumniMap;
     private TreeMap<Integer, Event> eventMap;
     private TreeMap<Integer, Training> trainingMap;
-    private HashMap<Integer, String> passwords;
     private ArrayList<Donation> donationList;
 
     /**
@@ -45,12 +40,9 @@ public class InOut {
         eventFileIn = new Scanner(eventFile);
         donationsFile = new File("donations.txt");
         donationsFileIn = new Scanner(donationsFile);
-        passwordsFile = new File("passwords.txt");
-        passwordFileIn = new Scanner(passwordsFile);
         trainingFile = new File("training.txt");
         trainingFileIn = new Scanner(trainingFile);
         in = new Scanner(System.in);
-        existingPasswords();
         existingAlumni();
         existingEvents();
         existingDonations();
@@ -67,7 +59,6 @@ public class InOut {
         alumniSaved = new PrintWriter("temp.txt");
         eventSaved = new PrintWriter("temp2.txt");
         donationsSaved = new PrintWriter("temp3.txt");
-        passwordsSaved = new PrintWriter("temp4.txt");
         trainingSaved = new PrintWriter("temp5.txt");
 
         for (Alumni alumni : alumniMap.values()) {
@@ -86,10 +77,6 @@ public class InOut {
             donationsSaved.println(donation.save());
         }
 
-        for (String pw : passwords.values()) {
-            passwordsSaved.println(pw);
-        }
-
         for (Training training : trainingMap.values()) {
             trainingSaved.println(training.save());
             trainingSaved.println(training.saveDateTime());
@@ -104,7 +91,6 @@ public class InOut {
         eventSaved.close();
         trainingSaved.close();
         donationsSaved.close();
-        passwordsSaved.close();
 
     }
 
@@ -115,19 +101,18 @@ public class InOut {
      */
     public void existingAlumni() {
         alumniMap = new TreeMap<>();
-        Alumni a = new Alumni();
         while (alumniFileIn.hasNextLine()) {
             String line = alumniFileIn.nextLine();
-            String[] s = line.split(",");
+            String[] s = line.split("%");
             int id = Integer.parseInt(s[0]);
             String name = s[1];
             String address = s[2];
             String major = s[3];
-            String gradYear = s[4];
+            int gradYear = Integer.parseInt(s[4]);
             String job = s[5];
             String organization = s[6];
-            String password = getPassword(id);
-            a = new Alumni(id, name, address, major, gradYear, job, organization, password);
+            String password = s[7];
+            Alumni a = new Alumni(id, name, address, major, gradYear, job, organization, password);
             alumniMap.put(id, a);
         }
     }
@@ -140,7 +125,7 @@ public class InOut {
 
         while (donationsFileIn.hasNextLine()) {
             String line = donationsFileIn.nextLine();
-            String[] s = line.split(",");
+            String[] s = line.split("%");
             int alumniID = Integer.parseInt(s[0]);
             int eventID = Integer.parseInt(s[1]);
             double amount = Double.parseDouble(s[2]);
@@ -158,7 +143,7 @@ public class InOut {
         while (eventFileIn.hasNextLine()) {
             // event info
             String line = eventFileIn.nextLine();
-            String[] s = line.split(",");
+            String[] s = line.split("%");
             int id = Integer.parseInt(s[0]);
             String name = s[1];
             int room = Integer.parseInt(s[2]);
@@ -171,27 +156,11 @@ public class InOut {
             Host host = extractHost(h);
             // attending alumni info
             String list = eventFileIn.nextLine();
-            ArrayList<String> att = extractAttendants(list);
+            ArrayList<Integer> att = extractAttendants(list);
 
             Event e = new Event(id, name, room, totalSpots, dateTime, att, host);
             eventMap.put(id, e);
         }
-    }
-
-    /**
-     * Create and Fill a HashMap with Passwords from text file
-     */
-    public void existingPasswords() {
-        passwords = new HashMap<>();
-
-        while (passwordFileIn.hasNextLine()) {
-            String line = passwordFileIn.nextLine();
-            String[] s = line.split(",");
-            int id = Integer.parseInt(s[0]);
-            String pw = s[1];
-            passwords.put(id, pw);
-        }
-
     }
 
     /**
@@ -201,7 +170,7 @@ public class InOut {
         trainingMap = new TreeMap<>();
         while (trainingFileIn.hasNextLine()) {
             String line = trainingFileIn.nextLine();
-            String[] s = line.split(",");
+            String[] s = line.split("%");
             int id = Integer.parseInt(s[0]);
             String name = s[1];
             int room = Integer.parseInt(s[2]);
@@ -216,7 +185,7 @@ public class InOut {
             Host host = extractHost(h);
             // attending alumni info
             String list = trainingFileIn.nextLine();
-            ArrayList<String> att = extractAttendants(list);
+            ArrayList<Integer> att = extractAttendants(list);
 
             Training t = new Training(id, name, room, totalSpots, dateTime, att, host, skill);
             trainingMap.put(id, t);
@@ -229,11 +198,11 @@ public class InOut {
      * @param list Line from text file containing Attendants
      * @return ArrayList of Attendants
      */
-    private ArrayList<String> extractAttendants(String list) {
-        String[] listArr = list.split(",");
-        ArrayList<String> att = new ArrayList<>();
+    private ArrayList<Integer> extractAttendants(String list) {
+        String[] listArr = list.split("%");
+        ArrayList<Integer> att = new ArrayList<>();
         for (int i = 0; i < listArr.length; i++) {
-            att.add(listArr[i]);
+            att.add(Integer.parseInt(listArr[i]));
         }
         return att;
     }
@@ -245,14 +214,13 @@ public class InOut {
      * @return LocalDateTime Object
      */
     private LocalDateTime extractDateTime(String dateTimeString) {
-        String[] dt = dateTimeString.split(",");
+        String[] dt = dateTimeString.split("%");
         int year = Integer.parseInt(dt[0]);
         int month = Integer.parseInt(dt[1]);
         int dayOfMonth = Integer.parseInt(dt[2]);
         int hour = Integer.parseInt(dt[3]);
         int minute = Integer.parseInt(dt[4]);
-        LocalDateTime dateTime = LocalDateTime.of(year, month, dayOfMonth, hour, minute);
-        return dateTime;
+        return LocalDateTime.of(year, month, dayOfMonth, hour, minute);
     }
 
     /**
@@ -262,19 +230,18 @@ public class InOut {
      * @return Host object
      */
     private Host extractHost(String h) {
-        String[] hArr = h.split(",");
+        String[] hArr = h.split("%");
         int hostId = Integer.parseInt(hArr[0]);
-        String hostName = hArr[1];
-        String hostAdd = hArr[2];
-        String hostMaj = hArr[3];
-        String hostGY = hArr[4];
-        String hostJob = hArr[5];
-        String hostOrg = hArr[6];
-        String topic = hArr[7];
-        int phone = Integer.parseInt(hArr[8]);
-        String email = hArr[9];
-        Host host = new Host(hostId, hostName, hostAdd, hostMaj, hostGY, hostJob, hostOrg, topic, phone, email);
-        return host;
+        String topic = hArr[1];
+        long phone = Long.parseLong(hArr[2]);
+        String email = hArr[3];
+        String hostName = alumniMap.get(hostId).getName();
+        String hostAdd = alumniMap.get(hostId).getAddress();
+        String hostMaj = alumniMap.get(hostId).getMajor();
+        int hostGY = alumniMap.get(hostId).getGradYear();
+        String hostJob = alumniMap.get(hostId).getJob();
+        String hostOrg = alumniMap.get(hostId).getOrganization();
+        return new Host(hostId, hostName, hostAdd, hostMaj, hostGY, hostJob, hostOrg, topic, phone, email);
     }
 
     // ==================== GETTERS ====================
@@ -307,7 +274,7 @@ public class InOut {
      * @param id Alumni ID
      * @return Alumni's Graduation Year
      */
-    public String getAlumniGradYear(int id) {
+    public int getAlumniGradYear(int id) {
         return alumniMap.get(id).getGradYear();
     }
 
@@ -463,7 +430,7 @@ public class InOut {
      * @return ALumni's Password
      */
     public String getPassword(int id) {
-        return passwords.get(id);
+        return alumniMap.get(id).getPassword();
     }
 
     // ==================== SETTERS ====================
@@ -486,7 +453,7 @@ public class InOut {
      * @param id       ALumni ID
      * @param gradYear New Graduation Year for Alumni
      */
-    public void setAlumniGradYear(int id, String gradYear) {
+    public void setAlumniGradYear(int id, int gradYear) {
         alumniMap.get(id).setGradYear(gradYear);
     }
 
@@ -621,7 +588,7 @@ public class InOut {
      * @param newPw New Password for Alumni
      */
     public void setPassword(int id, String newPw) {
-        passwords.put(id, newPw);
+        alumniMap.get(id).setPassword(newPw);
     }
 
     /**
@@ -651,6 +618,7 @@ public class InOut {
      */
     public void displayAlumni() {
         for (Alumni alumni : alumniMap.values()) {
+            System.out.println(" ----------------------------------------------------- ");
             System.out.println(alumni.toString());
         }
     }
@@ -661,7 +629,12 @@ public class InOut {
      * @param eventID Event ID
      */
     public void displayAttendantsEvent(int eventID) {
-        System.out.println(eventMap.get(eventID).displayAttendants());
+        System.out.println("Attendants:");
+        for (Event event : eventMap.values()) {
+            System.out.println(" ----------------------------------------------------- ");
+            int id = event.getAttendants();
+            System.out.println(alumniMap.get(id).getName());
+        }
     }
 
     /**
@@ -670,7 +643,12 @@ public class InOut {
      * @param trainingID Training ID
      */
     public void displayAttendantsTraining(int trainingID) {
-        System.out.println(trainingMap.get(trainingID).displayAttendants());
+        System.out.println("Attendants:");
+        for (Training training : trainingMap.values()) {
+            System.out.println(" ----------------------------------------------------- ");
+            int id = training.getAttendants();
+            System.out.println(alumniMap.get(id).getName());
+        }
     }
 
     /**
@@ -678,17 +656,24 @@ public class InOut {
      * 
      * @param year Year to display
      */
-    public void displayByYear(int year) {
+    public void displayByYear() {
+        int year = 0;
+        do {
+            System.out.println("Enter a Year:");
+            year = intInput();
+        } while (year < 1000);
         int check = Integer.parseInt(Integer.toString(year).substring(2, 4));
         System.out.println("Events happening in the year " + year);
         for (Event event : eventMap.values()) {
             if (event.getYear() == check)
-                System.out.println(event.toString());
+                System.out.println(" ----------------------------------------------------- ");
+            System.out.println(event.toString());
         }
         System.out.println("Training happening in the year " + year);
         for (Training training : trainingMap.values()) {
             if (training.getYear() == check)
-                System.out.println(training.toString());
+                System.out.println(" ----------------------------------------------------- ");
+            System.out.println(training.toString());
         }
     }
 
@@ -700,7 +685,8 @@ public class InOut {
     public void displayDonationsAlumni(int id) {
         for (int i = 0; i < donationList.size(); i++) {
             if (id == donationList.get(i).getAlumniId()) {
-                System.out.println("Donation amount" + donationList.get(i).getAmountDonated());
+                System.out.println(" ----------------------------------------------------- ");
+                System.out.println("Donation Amount: " + donationList.get(i).getAmountDonated());
                 System.out.println("Date and Time of Donation: " + donationList.get(i).formatDateTime());
             }
         }
@@ -714,7 +700,8 @@ public class InOut {
     public void displayDonationsEvents(int id) {
         for (int i = 0; i < donationList.size(); i++) {
             if (id == donationList.get(i).getEventId()) {
-                System.out.println("Donation amount" + donationList.get(i).getAmountDonated());
+                System.out.println(" ----------------------------------------------------- ");
+                System.out.println("Donation Amount" + donationList.get(i).getAmountDonated());
             }
         }
 
@@ -725,6 +712,7 @@ public class InOut {
      */
     public void displayEvents() {
         for (Event events : eventMap.values()) {
+            System.out.println(" ----------------------------------------------------- ");
             System.out.println(events.toString());
             System.out.println(events.getHost());
         }
@@ -736,11 +724,13 @@ public class InOut {
     public void displayHosts() {
         System.out.println("The Hosts for Events are:");
         for (Event events : eventMap.values()) {
-            System.out.println("For Event " + events.getID() + " " + events.getHost());
+            System.out.println(" ----------------------------------------------------- ");
+            System.out.println("Event " + events.getID() + " " + events.getHost());
         }
         System.out.println("The Hosts for Trainings are:");
         for (Training training : trainingMap.values()) {
-            System.out.println("For Training " + training.getID() + " " + training.getHost());
+            System.out.println(" ----------------------------------------------------- ");
+            System.out.println("Training " + training.getID() + " " + training.getHost());
         }
 
     }
@@ -754,23 +744,26 @@ public class InOut {
         System.out.println("My Events:");
         int counter = 0;
         for (Event event : eventMap.values()) {
-            if (event.checkForAttendance(alumniMap.get(id).getName())) {
-                System.out.println("You are attending " + event.getName() + " ID # " + event.getID());
+            if (event.checkForAttendance(id)) {
+                System.out.println(" ----------------------------------------------------- ");
+                System.out.println("You are attending " + event.getName() + " | Event ID # " + event.getID());
                 counter++;
             }
         }
         if (counter == 0)
-            System.out.println("Not currently attending any Events");
+            System.out.println("NOT CURRENTLY ATTENDING ANY EVENTs");
         counter = 0;
         System.out.println("My Training:");
         for (Training training : trainingMap.values()) {
-            if (training.checkForAttendance(alumniMap.get(id).getName())) {
-                System.out.println("You are attending " + training.getName() + " ID # " + training.getID());
+            if (training.checkForAttendance(id)) {
+                System.out.println(" ----------------------------------------------------- ");
+                System.out.println(
+                        "You are attending " + training.getName() + " | Training Event ID # " + training.getID());
                 counter++;
             }
         }
         if (counter == 0)
-            System.out.println("Not currently attending any Training");
+            System.out.println("NOT CURRENTLY ATTENDING ANY TRAINING");
     }
 
     /**
@@ -778,6 +771,7 @@ public class InOut {
      */
     public void displayTraining() {
         for (Training training : trainingMap.values()) {
+            System.out.println(" ----------------------------------------------------- ");
             System.out.println(training.toString());
             System.out.println(training.getHost());
         }
@@ -807,7 +801,7 @@ public class InOut {
      * @return Whether the ALumni is already attending
      */
     public boolean alreadyAttendingEvent(int id, int eventID) {
-        if (eventMap.get(eventID).checkForAttendance(alumniMap.get(id).getName()))
+        if (eventMap.get(eventID).checkForAttendance(id))
             return true;
         else
             return false;
@@ -821,7 +815,7 @@ public class InOut {
      * @return Whether the Alumni is already attending
      */
     public boolean alreadyAttendingTraining(int id, int trainingID) {
-        if (trainingMap.get(trainingID).checkForAttendance(alumniMap.get(id).getName()))
+        if (trainingMap.get(trainingID).checkForAttendance(id))
             return true;
         else
             return false;
@@ -829,24 +823,28 @@ public class InOut {
 
     /**
      * Checks to see if the Event being requested is in the map
+     * 
      * @param eventID ID of Event to be checked
      * @return true if Event is in map, false if Event is not in map
      */
     public boolean isExistingEvent(int eventID) {
         if (eventMap.containsKey(eventID)) {
             return true;
-        } else return false;
+        } else
+            return false;
     }
 
     /**
      * Checks to see if the Training Event being requested is in the map
+     * 
      * @param eventID ID of Training Event to be checked
      * @return true if Event is in map, false if Training Event is not in map
      */
     public boolean isExistingTraining(int eventID) {
         if (trainingMap.containsKey(eventID)) {
             return true;
-        } else return false;
+        } else
+            return false;
     }
     // ==================== CREATE ====================
 
@@ -862,7 +860,7 @@ public class InOut {
      * @param password     Alumni's Password
      * @return Alumni's ID
      */
-    public int createAlumni(String name, String address, String major, String gradYear, String job,
+    public int createAlumni(String name, String address, String major, int gradYear, String job,
             String organization,
             String password) {
         int id = alumniMap.lastKey();
@@ -946,6 +944,8 @@ public class InOut {
      */
     public void addDonationToList(int alumniId, int eventId, double donationAmount) {
         donationList.add(new Donation(alumniId, eventId, donationAmount));
+        System.out.println("You donated: " + donationList.get(donationList.size() - 1).getAmountDonated() + " at "
+                + donationList.get(donationList.size() - 1).getDateCreated());
     }
 
     /**
@@ -954,8 +954,8 @@ public class InOut {
      * @param id   Event ID
      * @param name Name of attending ALumni
      */
-    public void joinEvent(int id, String name) {
-        eventMap.get(id).addAttendant(name);
+    public void joinEvent(int eventId, int id) {
+        eventMap.get(eventId).addAttendant(id);
     }
 
     /**
@@ -964,8 +964,8 @@ public class InOut {
      * @param id   Training Event ID
      * @param name Name of attending ALumni
      */
-    public void joinTraining(int id, String name) {
-        trainingMap.get(id).addAttendant(name);
+    public void joinTraining(int eventId, int id) {
+        trainingMap.get(eventId).addAttendant(id);
     }
 
     // ==================== INPUT====================
@@ -991,13 +991,13 @@ public class InOut {
             while (!in.hasNextInt()) {
                 String s = in.next();
                 System.out.println(" ----------------------------------------------------- ");
-                System.out.printf("\"%s\" is not a valid number%n", s);
+                System.out.printf("\"%s\" IS NOT A VALID NUMBER%n", s);
                 System.out.println(" ----------------------------------------------------- ");
             }
             n = in.nextInt();
             if (n < 0) {
                 System.out.println(" ----------------------------------------------------- ");
-                System.out.println(n + " is not a valid number.");
+                System.out.println(n + " IS NOT A VALID NUMBER.");
                 System.out.println(" ----------------------------------------------------- ");
             }
             in.nextLine();
@@ -1016,14 +1016,14 @@ public class InOut {
         if (!in.hasNextInt()) {
             String s = in.next();
             System.out.println(" ----------------------------------------------------- ");
-            System.out.printf("\"%s\" is not a valid number%n", s);
+            System.out.printf("\"%s\" IS NOT A VALID NUMBER%n", s);
             System.out.println(" ----------------------------------------------------- ");
             return n;
         }
         n = in.nextInt();
         if (n > boundary || n < 1) {
             System.out.println(" ----------------------------------------------------- ");
-            System.out.println(n + " is not a valid number.");
+            System.out.println(n + " IS NOT A VALID NUMBER.");
             System.out.println(" ----------------------------------------------------- ");
         }
         in.nextLine();
@@ -1032,6 +1032,7 @@ public class InOut {
 
     /**
      * Get User Long input
+     * 
      * @return User input : Long
      */
     public long longInput() {
@@ -1040,13 +1041,13 @@ public class InOut {
             while (!in.hasNextLong()) {
                 String s = in.next();
                 System.out.println(" ----------------------------------------------------- ");
-                System.out.printf("\"%s\" is not a valid number%n", s);
+                System.out.printf("\"%s\" IS NOT A VALID NUMBER%n", s);
                 System.out.println(" ----------------------------------------------------- ");
             }
             n = in.nextLong();
             if (n < 0) {
                 System.out.println(" ----------------------------------------------------- ");
-                System.out.println(n + " is not a valid number.");
+                System.out.println(n + " IS NOT A VALID NUMBER.");
                 System.out.println(" ----------------------------------------------------- ");
             }
             in.nextLine();
@@ -1066,13 +1067,13 @@ public class InOut {
             while (!in.hasNextDouble()) {
                 String s = in.next();
                 System.out.println(" ----------------------------------------------------- ");
-                System.out.printf("\"%s\" is not a valid number%n", s);
+                System.out.printf("\"%s\" IS NOT A VALID NUMBER%n", s);
                 System.out.println(" ----------------------------------------------------- ");
             }
             n = in.nextDouble();
             if (n < 0) {
                 System.out.println(" ----------------------------------------------------- ");
-                System.out.println(n + " is not a valid number.");
+                System.out.println(n + " IS NOT A VALID NUMBER.");
                 System.out.println(" ----------------------------------------------------- ");
             }
             in.nextLine();

@@ -45,7 +45,7 @@ public class Training extends Event {
      * @param openSeats  Open Seats at Training Event
      * @param totalSeats Total spots of Training Event
      */
-    public Training(int id, String name, int room, int totalSpots, LocalDateTime startDate, ArrayList<String> att,
+    public Training(int id, String name, int room, int totalSpots, LocalDateTime startDate, ArrayList<Integer> att,
             Host host, String skill) {
         super(id, name, room, totalSpots, startDate, att, host);
         this.skill = skill;
@@ -77,11 +77,11 @@ public class Training extends Event {
 
     @Override
     public String toString() {
-        return "Training ID: " + super.getID() + " |" + " Training Name: " + super.getName() + " |"
+        return "ID: " + super.getID() + " |" + " Name: " + super.getName() + " |"
                 + " Training Date and Time: " + super.formatDateTime() + " |" + " Training Room Number: "
                 + super.getRoom() + " |" + " Number of total seats: " + super.getTotalSpots() + " |"
                 + " Number of Spots Open: " + super.getOpenSpots() + " |" + " Number of Spots Filled: "
-                + super.getSpotsFilled() + " |" + " Skill taught at event: " + getSkill();
+                + super.getSpotsFilled() + " |" + " Skill being taught at Training Event: " + getSkill();
     }
 
     // ==================== SAVING ====================
@@ -92,7 +92,7 @@ public class Training extends Event {
      * @return Training's information formatted to save to text file
      */
     public String save() {
-        return super.save() + "," + getSkill();
+        return super.save() + "%" + getSkill();
     }
 
 }

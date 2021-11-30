@@ -11,7 +11,7 @@ public class Event implements CommonMethods {
     private LocalDateTime startDate;
     private Host host;
     private Alumni guestSpeaker;
-    private ArrayList<String> attendants;
+    private ArrayList<Integer> attendants;
 
     /**
      * Empty Event constructor
@@ -33,7 +33,7 @@ public class Event implements CommonMethods {
      * @param host        Host object for the host of the Event
      */
     public Event(int id, String name, int room, int totalSpots, LocalDateTime startDate,
-            ArrayList<String> attendant, Host host) {
+            ArrayList<Integer> attendant, Host host) {
         this.id = id;
         this.name = name;
         this.room = room;
@@ -254,14 +254,14 @@ public class Event implements CommonMethods {
      * 
      * @param name Name of attending Alumni
      */
-    public void addAttendant(String name) {
-        attendants.add(name);
+    public void addAttendant(int id) {
+        attendants.add(id);
     }
 
-    public boolean checkForAttendance(String name) {
+    public boolean checkForAttendance(int id) {
         boolean att = false;
         for (int i = 0; i < attendants.size(); i++) {
-            if (name.equals(attendants.get(i))) {
+            if (id == (attendants.get(i))) {
                 att = true;
             } else
                 att = false;
@@ -269,20 +269,11 @@ public class Event implements CommonMethods {
         return att;
     }
 
-    public String displayAttendants() {
-        String att = "";
-        // for (String name : attendants) {
-        // att += name + ", ";
-        // }
-        // TODO is there a way to do this with an enhanced loop?
-        for (int i = 0; i < attendants.size(); i++) {
-            if (i == attendants.size() - 1) {
-                att += attendants.get(i);
-            } else {
-                att += attendants.get(i) + ",";
-            }
+    public int getAttendants() {
+        for (Integer id : attendants) {
+            return id;
         }
-        return att;
+        return 0;
     }
 
     /**
@@ -292,12 +283,12 @@ public class Event implements CommonMethods {
      */
     public String formatDateTime() {
         return startDate.getMonthValue() + "-" + startDate.getDayOfMonth() + "-" + startDate.getYear() + " at "
-                + startDate.getHour() + ":" + startDate.getMinute();
+                + startDate.getHour() + ":" + startDate.getMinute() + "0";
     }
 
     @Override
     public String toString() {
-        return "Event ID: " + getID() + " |" + " Event Name: " + getName() + " |" + " Event Date and Time: "
+        return "ID: " + getID() + " |" + " Name: " + getName() + " |" + " Event Date and Time: "
                 + formatDateTime() + " |" + " Event Room Number: " + getRoom() + " |" + " Total Number of Spots: "
                 + getTotalSpots() + " |" + " Number of Spots Open: " + getOpenSpots() + " |"
                 + "Number of Spots Filled: " + getSpotsFilled();
@@ -310,7 +301,7 @@ public class Event implements CommonMethods {
      * @return Event's information formatted to save to text file
      */
     public String save() {
-        return getID() + "," + getName() + "," + getRoom() + "," + getTotalSpots();
+        return getID() + "%" + getName() + "%" + getRoom() + "%" + getTotalSpots();
     }
 
     /**
@@ -319,8 +310,8 @@ public class Event implements CommonMethods {
      * @return Event's DateTime information formatted to save to text file
      */
     public String saveDateTime() {
-        return startDate.getYear() + "," + startDate.getMonthValue() + "," + startDate.getDayOfMonth() + ","
-                + startDate.getHour() + "," + startDate.getMinute();
+        return startDate.getYear() + "%" + startDate.getMonthValue() + "%" + startDate.getDayOfMonth() + "%"
+                + startDate.getHour() + "%" + startDate.getMinute();
     }
 
     /**
@@ -343,7 +334,7 @@ public class Event implements CommonMethods {
             if (i == attendants.size() - 1) {
                 x += attendants.get(i);
             } else {
-                x += attendants.get(i) + ",";
+                x += attendants.get(i) + "%";
             }
         }
         return x;

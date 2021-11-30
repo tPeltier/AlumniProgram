@@ -127,8 +127,8 @@ public class Donation {
 
     @Override
     public String toString() {
-        return "Date donation was made: " + formatDateTime() + " Amount Donated: " + amountDonated + " ID of Donator: "
-                + alumniId + " ID of Event: " + eventId;
+        return " Amount Donated: " + amountDonated + " | Date donation was made: " + formatDateTime() + " | ID of Donator: "
+                + alumniId + " | ID of Event: " + eventId;
     }
 
     /**
@@ -138,6 +138,6 @@ public class Donation {
      */
     public String save() {
         String money = "" + amountDonated;
-        return alumniId + "," + eventId + "," + money;
+        return alumniId + "%" + eventId + "%" + money;
     }
 }

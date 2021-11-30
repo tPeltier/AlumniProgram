@@ -23,7 +23,7 @@ public class Host extends Alumni {
      * @param phoneNumber  Contact phone number of Host Alumni
      * @param emailAddress Contact email of Host Alumni
      */
-    public Host(int id, String name, String address, String major, String gradYear, String job, String organization,
+    public Host(int id, String name, String address, String major, int gradYear, String job, String organization,
             String topic, long phoneNumber, String emailAddress) {
         super(id, name, address, major, gradYear, job, organization);
         this.topic = topic;
@@ -105,7 +105,7 @@ public class Host extends Alumni {
      * @return Host's information formatted to save to text file
      */
     public String save() {
-        return super.save() + "," + getTopic() + ","
-                + getPhoneNumber() + "," + getEmailAddress();
+        return super.getID() + "%" + getTopic() + "%"
+                + getPhoneNumber() + "%" + getEmailAddress();
     }
 }
