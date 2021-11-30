@@ -9,6 +9,7 @@
 
 [] maybe change the way date time is user input
 [] move event registration to alumni menu
+[] since a host has to be an alumni why not just save the alumni id and then fill
 [x] fix donation display
 [] clean up all prints 
 [] change from saving to temps to saving to live files

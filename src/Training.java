@@ -92,7 +92,7 @@ public class Training extends Event {
      * @return Training's information formatted to save to text file
      */
     public String save() {
-        return super.save() + "," + getSkill();
+        return super.save() + "%" + getSkill();
     }
 
 }

@@ -301,7 +301,7 @@ public class Event implements CommonMethods {
      * @return Event's information formatted to save to text file
      */
     public String save() {
-        return getID() + "," + getName() + "," + getRoom() + "," + getTotalSpots();
+        return getID() + "%" + getName() + "%" + getRoom() + "%" + getTotalSpots();
     }
 
     /**
@@ -310,8 +310,8 @@ public class Event implements CommonMethods {
      * @return Event's DateTime information formatted to save to text file
      */
     public String saveDateTime() {
-        return startDate.getYear() + "," + startDate.getMonthValue() + "," + startDate.getDayOfMonth() + ","
-                + startDate.getHour() + "," + startDate.getMinute();
+        return startDate.getYear() + "%" + startDate.getMonthValue() + "%" + startDate.getDayOfMonth() + "%"
+                + startDate.getHour() + "%" + startDate.getMinute();
     }
 
     /**
@@ -334,7 +334,7 @@ public class Event implements CommonMethods {
             if (i == attendants.size() - 1) {
                 x += attendants.get(i);
             } else {
-                x += attendants.get(i) + ",";
+                x += attendants.get(i) + "%";
             }
         }
         return x;

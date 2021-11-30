@@ -1,8 +1,8 @@
-1001,event1,100,300
-21,1,1,13,0
-1001,Mary,4564 Applegate Rd.,Art,2016,Graphic Design,Sony,null,topic1,1234,email1
-1001,1003
-1002,event2,200,400
-22,2,2,14,0
-1002,John,3732 Orangepeel Rd.,Biology,2012,Marine Biologist,Tennessee Aquarium,null,topic2,5678,email2
-1002,1004
+1001%event1%100%300
+21%1%1%13%0
+1001%James Gosling% 4150 Network Cir, Santa Clara, CA 95054%Computer Science%1983%Developer%Sun Microsystems%null%topic1%1234%email1
+1002%1003
+1002%event2%200%400
+22%2%2%14%0
+1002%Bjarne Stroustrup%600 Mountain Ave, New Providence, NJ 07974%Computer Science%1979%Head of Large-scale Programming Research%AT&T Bell Lab's%null%topic2%5678%email2
+1001%1004

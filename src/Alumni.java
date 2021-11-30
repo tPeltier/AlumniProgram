@@ -197,6 +197,6 @@ public class Alumni implements CommonMethods {
      * @return ALumni's information formatted to save to text file
      */
     public String save() {
-        return getID() + "," + getName() + "," + getAddress() + "," + getMajor() + "," + getGradYear() + "," + getJob() + "," + getOrganization() + "," + getPassword();
+        return getID() + "%" + getName() + "%" + getAddress() + "%" + getMajor() + "%" + getGradYear() + "%" + getJob() + "%" + getOrganization() + "%" + getPassword();
     }
 }
