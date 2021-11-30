@@ -2,16 +2,17 @@
 ## URGENT
 - [ ] packages
 - [ ] unit testing
-- [ ] email regex
-- [ ] regex for other places (ie name's should only be letters)
+- [ ] regex
+    - [ ] email regex
+    - [ ] regex for other places (ie name's should only be letters)
 - [ ] change from saving to temps to saving to live files
 - [ ] implement guest speaker
     - [ ] implement guest speakers into save files
 - [ ] check on donation date time in regards to saved donations
 ## LESS URGENT
 - [ ] + sysout"---------" to improve readability
-- [ ] move event registration to alumni menu
 - [ ] reorder some menus to be more intuitive
+    - [ ] move event registration to alumni menu
 - [ ] make "real" events 
 - [ ] make "real" training
 - [ ] make "rea" donations
