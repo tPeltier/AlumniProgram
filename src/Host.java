@@ -105,7 +105,7 @@ public class Host extends Alumni {
      * @return Host's information formatted to save to text file
      */
     public String save() {
-        return super.save() + "%" + getTopic() + "%"
+        return super.getID() + "%" + getTopic() + "%"
                 + getPhoneNumber() + "%" + getEmailAddress();
     }
 }

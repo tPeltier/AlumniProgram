@@ -232,15 +232,15 @@ public class InOut {
     private Host extractHost(String h) {
         String[] hArr = h.split("%");
         int hostId = Integer.parseInt(hArr[0]);
-        String hostName = hArr[1];
-        String hostAdd = hArr[2];
-        String hostMaj = hArr[3];
-        int hostGY = Integer.parseInt(hArr[4]);
-        String hostJob = hArr[5];
-        String hostOrg = hArr[6];
-        String topic = hArr[7];
-        int phone = Integer.parseInt(hArr[8]);
-        String email = hArr[9];
+        String topic = hArr[1];
+        long phone = Long.parseLong(hArr[2]);
+        String email = hArr[3];
+        String hostName = alumniMap.get(hostId).getName();
+        String hostAdd = alumniMap.get(hostId).getAddress();
+        String hostMaj = alumniMap.get(hostId).getMajor();
+        int hostGY = alumniMap.get(hostId).getGradYear();
+        String hostJob = alumniMap.get(hostId).getJob();
+        String hostOrg = alumniMap.get(hostId).getOrganization();
         return new Host(hostId, hostName, hostAdd, hostMaj, hostGY, hostJob, hostOrg, topic, phone, email);
     }
 

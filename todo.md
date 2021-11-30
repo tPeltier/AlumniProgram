@@ -17,7 +17,9 @@
 [x] look into password checking
 [] unit testing
 
-[] make "real" events and alumni & make more of them 
+[] make "real" events 
+[x] alumni
+[] make more of them 
 
 [] add a button to kill inputs?
 

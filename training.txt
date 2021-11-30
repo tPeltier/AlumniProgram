@@ -1,4 +1,4 @@
 1001%training1%100%300% Master Debator
 21%1%1%13%0
-1004%Dennis Ritchie%14 Penn Plaza, 9th Floor New York, NY 10122%Pysics%1968%Head of System Software Research%Lucent Technologies%clang%1239487%email3
+1004%clang%1239487%email3
 1002%1003%1005
