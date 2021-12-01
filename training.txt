@@ -1,4 +1,4 @@
-1001%training1%100%300%Master Debator
-21%1%1%13%0
-1003%Linux for Experts%3279830%torvalds@osdl.org
-1002%1003%1005
+1001%Contributing to Open Source%100%300%0%Maintaining a Kernel
+21%12%31%13%0
+1003%Writing Kernels%3279830%torvalds@osdl.org
+1002%1004%1005

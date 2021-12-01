@@ -2,20 +2,20 @@
 ## URGENT
 - [ ] unit testing
 - [ ] change from saving to temps to saving to live files
-- [ ] implement guest speakers into save files
 ## LESS URGENT
 - [ ] + sysout"---------" to improve readability
 - [ ] reorder some menus to be more intuitive
     - [ ] move event registration to alumni menu
-- [ ] make "real" events 
-- [ ] make "real" training
-- [ ] make "real" donations
 - [ ] regex for other places (ie name's should only be letters)
 ## SUGGESTIONS
 - [ ] maybe change the way date time is user input
 - [ ] add a button to kill inputs?
 ---
 # DONE
+- [x] make "real" events 
+- [x] make "real" training
+- [x] make "real" donations
+- [x] implement guest speakers into save files
 - [x] move see my donations to alumni menu
 - [x] implement guest speaker
 - [x] empty arrayLists cause errors
@@ -44,14 +44,13 @@
     - [x] invalidEntry
     - [x] training
     - [x] ui
-- [ ] finish reports
+- [x] finish reports
     - [x] events by year
-    - [] listing guest speakers
+    - [x] listing guest speakers
     - [x] list of people attending an event
     - [x] display host for event/training
     - [x] list of events/training alumni is attending
     - [x] listing alumni
-    - [ ] ect
 - [x] look into how we are handling people attending events 
     - [x] make events also have a total number of open spots and what not
     - [x] make it to where you can only sign up for an event once

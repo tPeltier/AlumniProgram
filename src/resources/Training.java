@@ -47,8 +47,8 @@ public class Training extends Event {
      * @param totalSeats Total spots of Training Event
      */
     public Training(int id, String name, int room, int totalSpots, LocalDateTime startDate, ArrayList<Integer> att,
-            Host host, String skill) {
-        super(id, name, room, totalSpots, startDate, att, host);
+            Host host, String skill, Alumni guestSpeaker) {
+        super(id, name, room, totalSpots, startDate, att, host, guestSpeaker);
         this.skill = skill;
     }
 
