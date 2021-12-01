@@ -252,10 +252,13 @@ public class Event implements CommonMethods {
      */
     public void setStartDate(int year, int month, int dayOfMonth, int hour, int minute) {
         startDate = LocalDateTime.of(year, month, dayOfMonth, hour, minute);
-
     }
 
 
+    /**
+     * Set the total number of spots available 
+     * @param totalSpots New number of total spots
+     */
     public void setTotalSpots(int totalSpots) {
         this.totalSpots = totalSpots;
     }
