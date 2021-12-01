@@ -200,7 +200,7 @@ public class Event implements CommonMethods {
      * 
      * @param alumni Alumni to be guest speaker
      */
-    public void setAlumni(Alumni alumni) {
+    public void setGuestSpeaker(Alumni alumni) {
         guestSpeaker = alumni;
     }
 
