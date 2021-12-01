@@ -1,5 +1,7 @@
 # TODO
 ## URGENT
+- [ ] new account gets auto assigned a training
+- [ ] if no donations say so 
 - [ ] unit testing
 - [ ] change from saving to temps to saving to live files
 ## LESS URGENT
