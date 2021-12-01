@@ -73,8 +73,8 @@ public class Event implements CommonMethods {
      * 
      * @return Guest speaker Alumni object
      */
-    public Alumni getAlumni() {
-        return guestSpeaker;
+    public String getGuestSpeaker() {
+        return "The Guest Speaker is: " + guestSpeaker.getName();
     }
 
     /**
