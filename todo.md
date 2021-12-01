@@ -5,6 +5,7 @@
     - resources
 - [ ] unit testing
 - [ ] change from saving to temps to saving to live files
+- [ ] empty arrayLists cause errors
 - [x] implement guest speaker
     - [ ] implement guest speakers into save files
 ## LESS URGENT
