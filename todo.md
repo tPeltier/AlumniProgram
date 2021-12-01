@@ -12,7 +12,7 @@
 - [ ] no way to change phone, email or area of expertise
 - [ ] implement guest speaker
     - [ ] implement guest speakers into save files
-- [ ] check on donation date time in regards to saved donations
+- [x] check on donation date time in regards to saved donations
 ## LESS URGENT
 - [ ] + sysout"---------" to improve readability
 - [ ] reorder some menus to be more intuitive

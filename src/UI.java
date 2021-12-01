@@ -125,7 +125,7 @@ public class UI {
             System.out.println(" ----------------------------------------------------- ");
             System.out.println(
                     "1. Display a list of Current Alumni \n2. See what Events and Training I'm attending\n3. Edit My Profile Information \n"
-                            + "4. Delete my Account \n5. Return to the Main Menu");
+                            + "4. Delete my Account \n5. Return");
             choice = io.intInput(5);
             switch (choice) {
                 case 1:
@@ -165,7 +165,7 @@ public class UI {
             System.out.println(" ----------------------------------------------------- ");
             System.out.println(
                     "1. Display a list of Events \n2. Sign up to attend an Event or Training \n3. Make a Donation to an Event\n"
-                            + "4. See my Donations \n5. Create Event or Training \n6. Edit Event or Training Event \n7. Delete Event or Training\n8. Return to the Main Menu");
+                            + "4. See my Donations \n5. Create Event or Training \n6. Edit Event or Training Event \n7. Delete Event or Training\n8. Return");
             int choice = io.intInput(8);
             switch (choice) {
                 case 1:
@@ -211,7 +211,7 @@ public class UI {
      */
     public void attendEventSubMenu() {
         System.out.println(
-                "What you would like to do? \n1. Attend an Event \n2. Attend a Training Event \n3. Return to the Menu ");
+                "What you would like to do? \n1. Attend an Event \n2. Attend a Training Event \n3. Return");
         int choice = io.intInput(3);
         switch (choice) {
             case 1:
@@ -252,7 +252,7 @@ public class UI {
 
     private void displayAttendantsSubMenu() {
         System.out.println(
-                "Would you like to view attendants for an Event or a Training?\n1. Events\n2. Training\n3. Exit");
+                "Would you like to view attendants for an Event or a Training?\n1. Events\n2. Training\n3. Return");
         int choice = io.intInput(3);
         switch (choice) {
             case 1:
@@ -288,7 +288,7 @@ public class UI {
      */
     public void eventCreationSubMenu() {
         System.out.println(
-                "What you would to? \n1. Create Event \n2. Create Training Event \n3. Return to the Menu");
+                "What you would to? \n1. Create Event \n2. Create Training Event \n3. Return");
         int choice = io.intInput(3);
         switch (choice) {
             case 1:
@@ -311,7 +311,7 @@ public class UI {
      */
     public void eventViewerSubMenu() {
         System.out.println(
-                "What you would like to do? \n1. Display Events \n2. Display Training Events \n3. Display Events in a given year\n4. Display All Hosts\n5. Display Attendants for a given Event or Training\n6. Return to the Menu ");
+                "What you would like to do? \n1. Display Events \n2. Display Training Events \n3. Display Events in a given year\n4. Display All Hosts\n5. Display Attendants for a given Event or Training\n6. Return");
         int choice = io.intInput(6);
         switch (choice) {
             case 1:
@@ -350,7 +350,7 @@ public class UI {
 
         while (run) {
             System.out.println(
-                    "What would you like to change? \n1. Edit Name \n2. Edit Address \n3. Edit Major \n4. Edit Graduation Year \n5. Edit Job \n6. Edit Organization \n7. Change Password \n8. Exit");
+                    "What would you like to change? \n1. Edit Name \n2. Edit Address \n3. Edit Major \n4. Edit Graduation Year \n5. Edit Job \n6. Edit Organization \n7. Change Password \n8. Return");
             int choice = io.intInput(8);
             switch (choice) {
                 case 1:
@@ -407,7 +407,7 @@ public class UI {
      */
     public void editEventSubMenu() {
         System.out.println(
-                "What you would like to do? \n1. Edit events \n2. Edit Training Events \n3. Return to the Main Menu ");
+                "What you would like to do? \n1. Edit events \n2. Edit Training Events \n3. Return");
         int choice = io.intInput(3);
         switch (choice) {
             case 1:
@@ -450,18 +450,20 @@ public class UI {
             }
             while (run) {
                 System.out.println(
-                        "What would you like to change?: \n1. Event Name \n2. Event Time \n3. Event Room \n4. Total Number of Spots\n5. Event Date \n6. Exit");
-                int choice = io.intInput(6);
+                        "What would you like to change?: \n1. Edit Host\n2. Event Name \n3. Event Time \n4. Event Room \n5. Total Number of Spots\n6. Event Date \n7. Return");
+                int choice = io.intInput(7);
                 switch (choice) {
                     case 1:
+                        // edit host
+                        editEventHost();
+                        break;
+                    case 2:
                         // edit name
                         System.out.println("Enter Name of Event:");
                         io.setEventName(eventID, io.stringInput());
                         break;
-
-                    case 2:
+                    case 3:
                         // edit time
-                        // TODO only allow 0-23 and 0-59
                         System.out.println("Enter Time of Event:");
                         System.out.println(" ----------------------------------------------------- ");
                         int hour;
@@ -478,20 +480,19 @@ public class UI {
                                 hour,
                                 minute);
                         break;
-
-                    case 3:
+                    case 4:
                         // edit room
                         System.out.println("Enter Event Room:");
                         io.setEventRoom(eventID, io.intInput());
                         break;
 
-                    case 4:
+                    case 5:
                         // edit number of participants
                         System.out.println("Enter Total Number of Spots Available:");
                         io.setNumOfTotalSpotsEvents(id, io.intInput());
                         break;
 
-                    case 5:
+                    case 6:
                         // edit date
                         System.out.println("Enter Date of Event");
                         System.out.println(" ----------------------------------------------------- ");
@@ -513,7 +514,7 @@ public class UI {
                         io.setEventDateTime(eventID, year, month, day, io.getEventHour(id), io.getEventMin(id));
                         break;
 
-                    case 6:
+                    case 7:
                         // exit
                         System.out.println(io.getEvent(eventID));
                         run = false;
@@ -550,16 +551,20 @@ public class UI {
             }
             while (run) {
                 System.out.println(
-                        "What would you like to change?: \n1. Training Event Name \n2. Training Event Time \n3. Training Event Room \n4. Total Number of Spots\n5. Event Date \n6. Edit Skill \n7. Exit");
+                        "What would you like to change?: \n1. Edit Host\n2. Training Event Name \n3. Training Event Time \n4. Training Event Room \n5. Total Number of Spots\n6. Event Date \n7. Edit Skill \n8. Return");
                 int choice = io.intInput(7);
                 switch (choice) {
                     case 1:
+                        // edit host
+                        editTrainingHost();
+                        break;
+                    case 2:
                         // edit name
                         System.out.println("Enter Name of Event:");
                         io.setTrainingName(trainingEventID, io.stringInput());
                         break;
 
-                    case 2:
+                    case 3:
                         // edit time
                         System.out.println("Enter Time of Event");
                         System.out.println(" ----------------------------------------------------- ");
@@ -579,19 +584,19 @@ public class UI {
                                 minute);
                         break;
 
-                    case 3:
+                    case 4:
                         // edit room
                         System.out.println("Enter Event Room:");
                         io.setTrainingRoom(trainingEventID, io.intInput());
                         break;
 
-                    case 4:
+                    case 5:
                         // edit number of participants
                         System.out.println("Enter Total Number of Spots Available:");
                         io.setNumOfTotalSpotsTraining(id, io.intInput());
                         break;
 
-                    case 5:
+                    case 6:
                         // edit date
                         System.out.println("Enter Date of Event");
                         System.out.println(" ----------------------------------------------------- ");
@@ -612,14 +617,14 @@ public class UI {
                         } while (day > 31);
                         io.setTrainingDate(trainingEventID, year, month, day, io.getEventHour(id), io.getEventMin(id));
                         break;
-                    case 6:
+                    case 7:
                         // edit skill
                         System.out.println("Enter a New Skill");
                         String skill = io.stringInput();
                         io.setTrainingSkill(trainingEventID, skill);
                         break;
 
-                    case 7:
+                    case 8:
                         // exit
                         System.out.println(io.getTraining(trainingEventID));
                         run = false;
@@ -629,6 +634,47 @@ public class UI {
         }
     }
 
+    public void editEventHost() {
+        System.out.println(
+                "Choose what you would like to do: \n1. Edit Topic \n2. Edit Phone number \n3. Edit Email \n4. Return");
+        // remember to pass the number of cases
+        int choice = io.intInput(4);
+        switch (choice) {
+            case 1:
+                // edit topic
+                break;
+            case 2:
+                // phone number
+                break;
+            case 3:
+                // email
+                break;
+            case 4:
+                // exit to menu
+                break;
+        }
+    }
+
+    public void editTrainingHost() {
+        System.out.println(
+                "Choose what you would like to do: \n1. Edit Topic \n2. Edit Phone number \n3. Edit Email \n4. Return");
+        // remember to pass the number if cases
+        int choice = io.intInput(4);
+        switch (choice) {
+            case 1:
+                // edit topic
+                break;
+            case 2:
+                // phone number
+                break;
+            case 3:
+                // email
+                break;
+            case 4:
+                // exit to menu
+                break;
+        }
+    }
     // ==================== CREATE ====================
 
     /**
@@ -883,7 +929,7 @@ public class UI {
      */
     public void deletionSubMenu() {
         System.out
-                .println("Enter what you want to do? \n1. Delete Event \n2. Delete Training \n3. Return to Main Menu");
+                .println("Enter what you want to do? \n1. Delete Event \n2. Delete Training \n3. Return");
         int choice = io.intInput(3);
         switch (choice) {
             case 1:
