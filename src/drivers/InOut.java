@@ -240,6 +240,7 @@ public class InOut {
     private LocalDateTime extractDateTimeDonation(int year, int month, int day, int hour, int min, int sec) {
         return LocalDateTime.of(year, month, day, hour, min, sec);
     }
+
     /**
      * Extract Host information from a string and create a Host obj
      * 
@@ -558,51 +559,61 @@ public class InOut {
 
     /**
      * Set a new Topic for the Host of a Training Event
+     * 
      * @param trainingID ID of Training Event to be Edited
-     * @param topic New topic for Host
+     * @param topic      New topic for Host
      */
-    public void setTrainingHostTopic(int trainingID, String topic){
+    public void setTrainingHostTopic(int trainingID, String topic) {
         trainingMap.get(trainingID).getHost().setTopic(topic);
     }
 
     /**
      * Set a new Phone Number for the Host of a Training Event
-     * @param trainingID ID of Training Event to be Edited
+     * 
+     * @param trainingID  ID of Training Event to be Edited
      * @param phoneNumber New Phone Number for Host
      */
-    public void setTrainingHostPhone(int trainingID, long phoneNumber){
+    public void setTrainingHostPhone(int trainingID, long phoneNumber) {
         trainingMap.get(trainingID).getHost().setPhoneNumber(phoneNumber);
     }
+
     /**
      * Set a new Email Address for the Host of a Training Event
-     * @param trainingID ID of Training Event to be Edited
+     * 
+     * @param trainingID   ID of Training Event to be Edited
      * @param emailAddress New Email Address for Host
      */
-    public void setTrainingHostEmail(int trainingID, String emailAddress){
+    public void setTrainingHostEmail(int trainingID, String emailAddress) {
         trainingMap.get(trainingID).getHost().setEmailAddress(emailAddress);
     }
+
     /**
      * Set a new Topic for the Host of a Event
+     * 
      * @param eventID ID of Event to be Edited
-     * @param topic New Topic for Host
+     * @param topic   New Topic for Host
      */
-    public void setEventHostTopic(int eventID, String topic){
+    public void setEventHostTopic(int eventID, String topic) {
         eventMap.get(eventID).getHost().setTopic(topic);
     }
+
     /**
      * Set a new Phone Number for the Host of a Event
-     * @param eventID ID of Event to be Edited
+     * 
+     * @param eventID     ID of Event to be Edited
      * @param phoneNumber New Phone Number for Host
      */
-    public void setEventHostPhone(int eventID, long phoneNumber){
+    public void setEventHostPhone(int eventID, long phoneNumber) {
         eventMap.get(eventID).getHost().setPhoneNumber(phoneNumber);
     }
+
     /**
      * Set a new Email Address for the Host of a Event
-     * @param eventID ID of Event to be Edited
+     * 
+     * @param eventID      ID of Event to be Edited
      * @param emailAddress New Email Address for Host
      */
-    public void setEventHostEmail(int eventID, String emailAddress){
+    public void setEventHostEmail(int eventID, String emailAddress) {
         eventMap.get(eventID).getHost().setEmailAddress(emailAddress);
     }
 
@@ -704,9 +715,13 @@ public class InOut {
     public void displayAttendantsEvent(int eventID) {
         System.out.println("Attendants:");
         for (Event event : eventMap.values()) {
-            System.out.println(" ----------------------------------------------------- ");
-            int id = event.getAttendants();
-            System.out.println(alumniMap.get(id).getName());
+            if (event.isEmpty()) {
+                System.out.println("-!-NO ATTENDANTS-!-");
+            } else {
+                System.out.println(" ----------------------------------------------------- ");
+                int id = event.getAttendants();
+                System.out.println(alumniMap.get(id).getName());
+            }
         }
     }
 
@@ -718,9 +733,13 @@ public class InOut {
     public void displayAttendantsTraining(int trainingID) {
         System.out.println("Attendants:");
         for (Training training : trainingMap.values()) {
-            System.out.println(" ----------------------------------------------------- ");
-            int id = training.getAttendants();
-            System.out.println(alumniMap.get(id).getName());
+            if (training.isEmpty()) {
+                System.out.println("-!-NO ATTENDANTS-!-");
+            } else {
+                System.out.println(" ----------------------------------------------------- ");
+                int id = training.getAttendants();
+                System.out.println(alumniMap.get(id).getName());
+            }
         }
     }
 
@@ -1016,7 +1035,7 @@ public class InOut {
      */
     public void addDonationToList(int alumniId, int eventId, double donationAmount) {
         donationList.add(new Donation(alumniId, eventId, donationAmount));
-        System.out.println(donationList.get(donationList.size()-1).toString());
+        System.out.println(donationList.get(donationList.size() - 1).toString());
     }
 
     /**
