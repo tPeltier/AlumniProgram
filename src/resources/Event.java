@@ -1,4 +1,5 @@
 package resources;
+
 import java.util.ArrayList;
 import java.time.LocalDateTime;
 
@@ -272,6 +273,12 @@ public class Event implements CommonMethods {
         attendants.add(id);
     }
 
+    /**
+     * Check the attendant arrayList for a specific id
+     * 
+     * @param id ID to be checked for
+     * @return true if the id is in the list, false if not
+     */
     public boolean checkForAttendance(int id) {
         boolean att = false;
         for (int i = 0; i < attendants.size(); i++) {
@@ -283,6 +290,11 @@ public class Event implements CommonMethods {
         return att;
     }
 
+    /**
+     * Get the ID # of the attendants for the event
+     * 
+     * @return ID's of attendants
+     */
     public int getAttendants() {
         for (Integer id : attendants) {
             return id;
@@ -300,10 +312,24 @@ public class Event implements CommonMethods {
                 + startDate.getHour() + ":" + startDate.getMinute() + "0";
     }
 
+    /**
+     * Check to see if there are ANY attendants for an event
+     * 
+     * @return true if arrayList is empty
+     */
+    public boolean isEmpty() {
+        if (attendants.size() == 0)
+            return true;
+        else
+            return false;
+    }
+
     @Override
     public String toString() {
         return "ID: " + getID() + " | Name: " + getName() + " | Event Date and Time: "
-                + formatDateTime() + " | Event Room Number: " + getRoom() + " | Total Number of Spots: " + getTotalSpots() + " | Number of Spots Open: " + getOpenSpots() + " | Number of Spots Filled: " + getSpotsFilled() + " | " + getGuestSpeaker();
+                + formatDateTime() + " | Event Room Number: " + getRoom() + " | Total Number of Spots: "
+                + getTotalSpots() + " | Number of Spots Open: " + getOpenSpots() + " | Number of Spots Filled: "
+                + getSpotsFilled() + " | " + getGuestSpeaker();
     }
 
     // ==================== SAVING ====================
@@ -342,11 +368,15 @@ public class Event implements CommonMethods {
      */
     public String saveAttendants() {
         String x = "";
-        for (int i = 0; i < attendants.size(); i++) {
-            if (i == attendants.size() - 1) {
-                x += attendants.get(i);
-            } else {
-                x += attendants.get(i) + "%";
+        if (isEmpty())
+            return "%";
+        else {
+            for (int i = 0; i < attendants.size(); i++) {
+                if (i == attendants.size() - 1) {
+                    x += attendants.get(i);
+                } else {
+                    x += attendants.get(i) + "%";
+                }
             }
         }
         return x;
