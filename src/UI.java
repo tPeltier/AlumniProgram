@@ -124,8 +124,8 @@ public class UI {
         while (run) {
             System.out.println(" ----------------------------------------------------- ");
             System.out.println(
-                    "1. Display a list of Current Alumni \n2. See what Events and Training I'm attending\n3. Edit My Profile Information \n"
-                            + "4. Delete my Account \n5. Return");
+                    "1. Display a list of Current Alumni \n2. See what Events and Training I'm attending\n3. See my Donations\n4. Edit My Profile Information \n"
+                            + "5. Delete my Account \n6. Return");
             choice = io.intInput(5);
             switch (choice) {
                 case 1:
@@ -137,22 +137,26 @@ public class UI {
                     io.displayMyAttendance(id);
                     break;
                 case 3:
+                    // Displays the Alumni's donations
+                    displayDonationsAlumni();
+                    break;
+                case 4:
                     // edit Alumni
                     editAlumni();
                     break;
-                case 4:
+                case 5:
                     // Delete Alumni
                     deleteAlumni();
                     run = false;
                     break;
-                case 5:
+                case 6:
                     run = false;
                     // go back to main menu
                     break;
             }
         }
         // if user deletes account, log out
-        return choice != 4;
+        return choice != 5;
     }
 
     /**
@@ -165,7 +169,7 @@ public class UI {
             System.out.println(" ----------------------------------------------------- ");
             System.out.println(
                     "1. Display a list of Events \n2. Sign up to attend an Event or Training \n3. Make a Donation to an Event\n"
-                            + "4. See my Donations \n5. Create Event or Training \n6. Edit Event or Training Event \n7. Delete Event or Training\n8. Return");
+                            + "4. Add Guest Speaker \n5. Create Event or Training \n6. Edit Event or Training Event \n7. Delete Event or Training\n8. Return");
             int choice = io.intInput(8);
             switch (choice) {
                 case 1:
@@ -181,8 +185,36 @@ public class UI {
                     addDonation();
                     break;
                 case 4:
-                    // see my donations
-                    displayDonationsAlumni();
+                    // Add guest speaker
+                    boolean owner = false;
+                    int eventID = 0;
+                    io.displayEvents();
+                    do {
+                        System.out.println("Enter the Event ID:");
+                        eventID = io.intInput();
+                        if (!io.isExistingEvent(eventID)) {
+                            System.out.println("-!-THIS EVENT DOES NOT EXIST-!-");
+                        } else {
+                            while (!owner) {
+                                try {
+                                    if (id != io.getHostId(eventID)) {
+                                        throw new InvalidEntry("-!-YOU DO NOT OWN THIS EVENT-!-");
+                                    } else
+                                        owner = true;
+                                } catch (InvalidEntry e) {
+                                    System.out.println(e.getMessage());
+                                    break;
+                                }
+                            }
+                        }
+                    } while (!owner);
+                    int guestSpeakerId;
+                    do {
+                        System.out.println("Enter the ID of the Alumni who will be the Guest Speaker:");
+                        guestSpeakerId = io.intInput();
+                    } while (!io.checkId(guestSpeakerId));
+                    io.setGuestSpeaker(eventID, guestSpeakerId);
+                    System.out.println("Guest Speaker " + io.getAlumniName(guestSpeakerId) + " added to your Event!");
                     break;
                 case 5:
                     // Creates events and Training events
