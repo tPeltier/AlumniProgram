@@ -32,16 +32,16 @@ public class Donation {
 
     /**
      * Existing Donation constructor
-     * @param alumniID
-     * @param eventID
-     * @param donationAmount
-     * @param ldt
+     * @param alumniID ID of the Alumni making the Donation
+     * @param eventID ID of the Event that is being donated to
+     * @param donationAmount Amount of money being donated
+     * @param ldt LocalDateTime obj of donation creation 
      */
     public Donation(int alumniID, int eventID, double donationAmount, LocalDateTime ldt) {
         this.ldt = ldt;
         this.alumniId = alumniID;
         this.eventId = eventID;
-        this.amountDonated = amountDonated;
+        this.amountDonated = donationAmount;
     }
 
     // ==================== GETTERS ====================
