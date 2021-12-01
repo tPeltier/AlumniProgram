@@ -73,8 +73,12 @@ public class Event implements CommonMethods {
      * 
      * @return Guest speaker Alumni object
      */
-    public Alumni getAlumni() {
-        return guestSpeaker;
+    public String getGuestSpeaker() {
+        if (guestSpeaker != null) {
+            return "The Guest Speaker is: " + guestSpeaker.getName();
+        } else {
+            return "No Guest Speaker";
+        }
     }
 
     /**
@@ -196,7 +200,7 @@ public class Event implements CommonMethods {
      * 
      * @param alumni Alumni to be guest speaker
      */
-    public void setAlumni(Alumni alumni) {
+    public void setGuestSpeaker(Alumni alumni) {
         guestSpeaker = alumni;
     }
 
@@ -297,10 +301,8 @@ public class Event implements CommonMethods {
 
     @Override
     public String toString() {
-        return "ID: " + getID() + " |" + " Name: " + getName() + " |" + " Event Date and Time: "
-                + formatDateTime() + " |" + " Event Room Number: " + getRoom() + " |" + " Total Number of Spots: "
-                + getTotalSpots() + " |" + " Number of Spots Open: " + getOpenSpots() + " |"
-                + "Number of Spots Filled: " + getSpotsFilled();
+        return "ID: " + getID() + " | Name: " + getName() + " | Event Date and Time: "
+                + formatDateTime() + " | Event Room Number: " + getRoom() + " | Total Number of Spots: " + getTotalSpots() + " | Number of Spots Open: " + getOpenSpots() + " | Number of Spots Filled: " + getSpotsFilled() + " | " + getGuestSpeaker();
     }
 
     // ==================== SAVING ====================
