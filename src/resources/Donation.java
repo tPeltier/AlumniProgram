@@ -1,3 +1,4 @@
+package resources;
 import java.time.LocalDateTime;
 
 public class Donation {

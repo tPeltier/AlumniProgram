@@ -1,3 +1,4 @@
+package resources;
 public class Host extends Alumni {
     String topic;
     long phoneNumber;
