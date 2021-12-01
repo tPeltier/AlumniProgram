@@ -923,7 +923,7 @@ public class InOut {
      * @return true if Event is in map, false if Training Event is not in map
      */
     public boolean isExistingTraining(int eventID) {
-        return (trainingMap.containsKey(eventID)); {
+        return (trainingMap.containsKey(eventID)); 
     }
     // ==================== CREATE ====================
 

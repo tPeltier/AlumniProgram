@@ -7,7 +7,6 @@
 - [ ] + sysout"---------" to improve readability
 - [ ] reorder some menus to be more intuitive
     - [ ] move event registration to alumni menu
-    - [x] move see my donations to alumni menu
 - [ ] make "real" events 
 - [ ] make "real" training
 - [ ] make "real" donations
@@ -17,6 +16,7 @@
 - [ ] add a button to kill inputs?
 ---
 # DONE
+- [x] move see my donations to alumni menu
 - [x] implement guest speaker
 - [x] empty arrayLists cause errors
 - [x] packages
