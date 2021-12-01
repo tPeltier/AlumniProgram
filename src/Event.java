@@ -301,10 +301,8 @@ public class Event implements CommonMethods {
 
     @Override
     public String toString() {
-        return "ID: " + getID() + " |" + " Name: " + getName() + " |" + " Event Date and Time: "
-                + formatDateTime() + " |" + " Event Room Number: " + getRoom() + " |" + " Total Number of Spots: "
-                + getTotalSpots() + " |" + " Number of Spots Open: " + getOpenSpots() + " |"
-                + "Number of Spots Filled: " + getSpotsFilled();
+        return "ID: " + getID() + " | Name: " + getName() + " | Event Date and Time: "
+                + formatDateTime() + " | Event Room Number: " + getRoom() + " | Total Number of Spots: " + getTotalSpots() + " | Number of Spots Open: " + getOpenSpots() + " | Number of Spots Filled: " + getSpotsFilled() + " | " + getGuestSpeaker();
     }
 
     // ==================== SAVING ====================
