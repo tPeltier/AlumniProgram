@@ -35,7 +35,7 @@ public class Event implements CommonMethods {
      * @param host        Host object for the host of the Event
      */
     public Event(int id, String name, int room, int totalSpots, LocalDateTime startDate,
-            ArrayList<Integer> attendant, Host host) {
+            ArrayList<Integer> attendant, Host host, Alumni guestSpeaker) {
         this.id = id;
         this.name = name;
         this.room = room;
@@ -45,6 +45,7 @@ public class Event implements CommonMethods {
         this.startDate = startDate;
         this.attendants = attendant;
         this.host = host;
+        this.guestSpeaker = guestSpeaker;
     }
 
     // adding event

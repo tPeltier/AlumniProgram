@@ -6,16 +6,14 @@ This is Group 3's Alumni Program for Computer Science 2. It is a program for a f
 ### donations.txt
 `alumni id % event id % donation amount % year % month % day % hour % min % sec`
 ### events.txt
-- event info
+- event info + guest speaker id
 - date time info
 - host info
-- guest speaker
 - attendant arraylist of ids
 ```
-event id % name % room # % total spots
+event id % name % room # % total spots % guest speaker id
 year % month % day % hour % min
 host id % topic % phone # % email 
-guest speaker id %
 attendant id % attendant id % attendant id % attendant id % 
 ```
 ### training.txt

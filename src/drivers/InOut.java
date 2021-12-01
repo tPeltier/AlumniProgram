@@ -162,6 +162,7 @@ public class InOut {
             String name = s[1];
             int room = Integer.parseInt(s[2]);
             int totalSpots = Integer.parseInt(s[3]);
+            Alumni guestSpeaker = extractGuestSpeaker(Integer.parseInt(s[4]));
             // dateTime info
             String dateTimeString = eventFileIn.nextLine();
             LocalDateTime dateTime = extractDateTime(dateTimeString);
@@ -172,7 +173,7 @@ public class InOut {
             String list = eventFileIn.nextLine();
             ArrayList<Integer> att = extractAttendants(list);
 
-            Event e = new Event(id, name, room, totalSpots, dateTime, att, host);
+            Event e = new Event(id, name, room, totalSpots, dateTime, att, host, guestSpeaker);
             eventMap.put(id, e);
         }
     }
@@ -190,6 +191,7 @@ public class InOut {
             int room = Integer.parseInt(s[2]);
             int totalSpots = Integer.parseInt(s[3]);
             String skill = s[4];
+            Alumni guestSpeaker = extractGuestSpeaker(Integer.parseInt(s[5]));
             // dateTime info
             String dateTimeString = trainingFileIn.nextLine();
             LocalDateTime dateTime = extractDateTime(dateTimeString);
@@ -201,7 +203,7 @@ public class InOut {
             String list = trainingFileIn.nextLine();
             ArrayList<Integer> att = extractAttendants(list);
 
-            Training t = new Training(id, name, room, totalSpots, dateTime, att, host, skill);
+            Training t = new Training(id, name, room, totalSpots, dateTime, att, host, skill, guestSpeaker);
             trainingMap.put(id, t);
         }
     }
@@ -235,6 +237,21 @@ public class InOut {
         int hour = Integer.parseInt(dt[3]);
         int minute = Integer.parseInt(dt[4]);
         return LocalDateTime.of(year, month, dayOfMonth, hour, minute);
+    }
+
+    /**
+     * Get the guest speaker alumni obj from 
+     * @param guestSpeakerId
+     * @return
+     */
+    private Alumni extractGuestSpeaker(int guestSpeakerId) {
+        Alumni guestSpeaker;
+        if (guestSpeakerId == 0) {
+            guestSpeaker = null;
+        } else {
+            guestSpeaker = alumniMap.get(guestSpeakerId);
+        }
+        return guestSpeaker;
     }
 
     private LocalDateTime extractDateTimeDonation(int year, int month, int day, int hour, int min, int sec) {
@@ -923,7 +940,7 @@ public class InOut {
      * @return true if Event is in map, false if Training Event is not in map
      */
     public boolean isExistingTraining(int eventID) {
-        return (trainingMap.containsKey(eventID)); 
+        return (trainingMap.containsKey(eventID));
     }
     // ==================== CREATE ====================
 
