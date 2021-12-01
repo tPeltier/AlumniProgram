@@ -86,7 +86,16 @@ public class Event implements CommonMethods {
         return startDate.getDayOfMonth();
     }
 
-    public String getHost() {
+    /**
+     * Get the Host object of the Event
+     * 
+     * @return Host object
+     */
+    public Host getHost() {
+        return host;
+    }
+
+    public String getHosttoString() {
         return host.toString();
     }
 

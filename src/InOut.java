@@ -129,8 +129,15 @@ public class InOut {
             int alumniID = Integer.parseInt(s[0]);
             int eventID = Integer.parseInt(s[1]);
             double amount = Double.parseDouble(s[2]);
+            int year = Integer.parseInt(s[3]);
+            int month = Integer.parseInt(s[4]);
+            int day = Integer.parseInt(s[5]);
+            int hour = Integer.parseInt(s[6]);
+            int min = Integer.parseInt(s[7]);
+            int sec = Integer.parseInt(s[8]);
+            LocalDateTime ldt = extractDateTimeDonation(year, month, day, hour, min, sec);
             new Donation(alumniID, eventID, amount);
-            donationList.add(new Donation(alumniID, eventID, amount));
+            donationList.add(new Donation(alumniID, eventID, amount, ldt));
         }
 
     }
@@ -223,6 +230,9 @@ public class InOut {
         return LocalDateTime.of(year, month, dayOfMonth, hour, minute);
     }
 
+    private LocalDateTime extractDateTimeDonation(int year, int month, int day, int hour, int min, int sec) {
+        return LocalDateTime.of(year, month, day, hour, min, sec);
+    }
     /**
      * Extract Host information from a string and create a Host obj
      * 
@@ -337,7 +347,7 @@ public class InOut {
      * @return Event's Host
      */
     public String getEventHost(int id) {
-        return eventMap.get(id).getHost();
+        return eventMap.get(id).getHosttoString();
     }
 
     /**
@@ -418,7 +428,7 @@ public class InOut {
      * @return Training's Host's toString
      */
     public String getTrainingHost(int id) {
-        return trainingMap.get(id).getHost();
+        return trainingMap.get(id).getHosttoString();
     }
 
     // ----- RAND -----
@@ -531,6 +541,58 @@ public class InOut {
      */
     public void setEventRoom(int id, int room) {
         eventMap.get(id).setRoom(room);
+    }
+
+    // ----- HOST -----
+
+    /**
+     * Set a new Topic for the Host of a Training Event
+     * @param trainingID ID of Training Event to be Edited
+     * @param topic New topic for Host
+     */
+    public void setTrainingHostTopic(int trainingID, String topic){
+        trainingMap.get(trainingID).getHost().setTopic(topic);
+    }
+
+    /**
+     * Set a new Phone Number for the Host of a Training Event
+     * @param trainingID ID of Training Event to be Edited
+     * @param phoneNumber New Phone Number for Host
+     */
+    public void setTrainingHostPhone(int trainingID, long phoneNumber){
+        trainingMap.get(trainingID).getHost().setPhoneNumber(phoneNumber);
+    }
+    /**
+     * Set a new Email Address for the Host of a Training Event
+     * @param trainingID ID of Training Event to be Edited
+     * @param emailAddress New Email Address for Host
+     */
+    public void setTrainingHostEmail(int trainingID, String emailAddress){
+        trainingMap.get(trainingID).getHost().setEmailAddress(emailAddress);
+    }
+    /**
+     * Set a new Topic for the Host of a Event
+     * @param eventID ID of Event to be Edited
+     * @param topic New Topic for Host
+     */
+    public void setEventHostTopic(int eventID, String topic){
+        eventMap.get(eventID).getHost().setTopic(topic);
+    }
+    /**
+     * Set a new Phone Number for the Host of a Event
+     * @param eventID ID of Event to be Edited
+     * @param phoneNumber New Phone Number for Host
+     */
+    public void setEventHostPhone(int eventID, long phoneNumber){
+        eventMap.get(eventID).getHost().setPhoneNumber(phoneNumber);
+    }
+    /**
+     * Set a new Email Address for the Host of a Event
+     * @param eventID ID of Event to be Edited
+     * @param emailAddress New Email Address for Host
+     */
+    public void setEventHostEmail(int eventID, String emailAddress){
+        eventMap.get(eventID).getHost().setEmailAddress(emailAddress);
     }
 
     // ----- TRAINING -----
@@ -686,8 +748,7 @@ public class InOut {
         for (int i = 0; i < donationList.size(); i++) {
             if (id == donationList.get(i).getAlumniId()) {
                 System.out.println(" ----------------------------------------------------- ");
-                System.out.println("Donation Amount: " + donationList.get(i).getAmountDonated());
-                System.out.println("Date and Time of Donation: " + donationList.get(i).formatDateTime());
+                System.out.println(donationList.get(i).toString());
             }
         }
     }
@@ -714,7 +775,7 @@ public class InOut {
         for (Event events : eventMap.values()) {
             System.out.println(" ----------------------------------------------------- ");
             System.out.println(events.toString());
-            System.out.println(events.getHost());
+            System.out.println(events.getHosttoString());
         }
     }
 
@@ -725,12 +786,12 @@ public class InOut {
         System.out.println("The Hosts for Events are:");
         for (Event events : eventMap.values()) {
             System.out.println(" ----------------------------------------------------- ");
-            System.out.println("Event " + events.getID() + " " + events.getHost());
+            System.out.println("Event " + events.getID() + " " + events.getHosttoString());
         }
         System.out.println("The Hosts for Trainings are:");
         for (Training training : trainingMap.values()) {
             System.out.println(" ----------------------------------------------------- ");
-            System.out.println("Training " + training.getID() + " " + training.getHost());
+            System.out.println("Training " + training.getID() + " " + training.getHosttoString());
         }
 
     }
@@ -773,7 +834,7 @@ public class InOut {
         for (Training training : trainingMap.values()) {
             System.out.println(" ----------------------------------------------------- ");
             System.out.println(training.toString());
-            System.out.println(training.getHost());
+            System.out.println(training.getHosttoString());
         }
     }
 
@@ -944,8 +1005,7 @@ public class InOut {
      */
     public void addDonationToList(int alumniId, int eventId, double donationAmount) {
         donationList.add(new Donation(alumniId, eventId, donationAmount));
-        System.out.println("You donated: " + donationList.get(donationList.size() - 1).getAmountDonated() + " at "
-                + donationList.get(donationList.size() - 1).getDateCreated());
+        System.out.println(donationList.get(donationList.size()-1).toString());
     }
 
     /**
