@@ -527,8 +527,8 @@ public class InOut {
      * @param hour   Hour that the Event starts
      * @param minute Minute that the Event starts
      */
-    public void setEventDateTime(int id, int year, int month, int day, int hour, int minute) {
-        eventMap.get(id).setTime(year, month, day, hour, minute);
+    public void setEventDateTime(int id, int year, int month, int dayOfMonth, int hour, int minute) {
+        eventMap.get(id).setStartDate(year, month, dayOfMonth, hour, minute);
     }
 
     /**
