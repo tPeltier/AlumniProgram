@@ -1,3 +1,4 @@
+package resources;
 public class InvalidEntry extends IllegalArgumentException {
     
     /**

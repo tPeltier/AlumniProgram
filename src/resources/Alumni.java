@@ -1,3 +1,4 @@
+package resources;
 
 public class Alumni implements CommonMethods {
     private int id;
