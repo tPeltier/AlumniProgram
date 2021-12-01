@@ -1,5 +1,6 @@
 # TODO
 ## URGENT
+- [ ] if no donations say so 
 - [ ] unit testing
 - [ ] change from saving to temps to saving to live files
 ## LESS URGENT
@@ -12,6 +13,7 @@
 - [ ] add a button to kill inputs?
 ---
 # DONE
+- [x] new account gets auto assigned a training
 - [x] make "real" events 
 - [x] make "real" training
 - [x] make "real" donations
