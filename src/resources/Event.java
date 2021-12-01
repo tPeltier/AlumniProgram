@@ -337,7 +337,9 @@ public class Event implements CommonMethods {
      * @return Event's information formatted to save to text file
      */
     public String save() {
-        return getID() + "%" + getName() + "%" + getRoom() + "%" + getTotalSpots();
+        String guestSpeakerId = "0";
+        if (guestSpeaker != null) guestSpeakerId = "" + guestSpeaker.getID();
+        return getID() + "%" + getName() + "%" + getRoom() + "%" + getTotalSpots() + "%" + guestSpeakerId;
     }
 
     /**
