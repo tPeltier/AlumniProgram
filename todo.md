@@ -9,7 +9,7 @@
         - String regex = "^(.+)@(.+)$";
     - [ ] regex for other places (ie name's should only be letters)
 - [ ] change from saving to temps to saving to live files
-- [ ] no way to change phone, email or area of expertise
+- [x] no way to change phone, email or area of expertise
 - [ ] implement guest speaker
     - [ ] implement guest speakers into save files
 - [x] check on donation date time in regards to saved donations

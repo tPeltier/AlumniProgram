@@ -544,25 +544,57 @@ public class InOut {
     }
 
     // ----- HOST -----
-    // topic, phone number, email
+
+    /**
+     * Set a new Topic for the Host of a Training Event
+     * @param trainingID ID of Training Event to be Edited
+     * @param topic New topic for Host
+     */
     public void setTrainingHostTopic(int trainingID, String topic){
         trainingMap.get(trainingID).getHost().setTopic(topic);
     }
+
+    /**
+     * Set a new Phone Number for the Host of a Training Event
+     * @param trainingID ID of Training Event to be Edited
+     * @param phoneNumber New Phone Number for Host
+     */
     public void setTrainingHostPhone(int trainingID, long phoneNumber){
         trainingMap.get(trainingID).getHost().setPhoneNumber(phoneNumber);
     }
+    /**
+     * Set a new Email Address for the Host of a Training Event
+     * @param trainingID ID of Training Event to be Edited
+     * @param emailAddress New Email Address for Host
+     */
     public void setTrainingHostEmail(int trainingID, String emailAddress){
         trainingMap.get(trainingID).getHost().setEmailAddress(emailAddress);
     }
+    /**
+     * Set a new Topic for the Host of a Event
+     * @param eventID ID of Event to be Edited
+     * @param topic New Topic for Host
+     */
     public void setEventHostTopic(int eventID, String topic){
         eventMap.get(eventID).getHost().setTopic(topic);
     }
+    /**
+     * Set a new Phone Number for the Host of a Event
+     * @param eventID ID of Event to be Edited
+     * @param phoneNumber New Phone Number for Host
+     */
     public void setEventHostPhone(int eventID, long phoneNumber){
         eventMap.get(eventID).getHost().setPhoneNumber(phoneNumber);
     }
+    /**
+     * Set a new Email Address for the Host of a Event
+     * @param eventID ID of Event to be Edited
+     * @param emailAddress New Email Address for Host
+     */
     public void setEventHostEmail(int eventID, String emailAddress){
         eventMap.get(eventID).getHost().setEmailAddress(emailAddress);
     }
+
     // ----- TRAINING -----
 
     /**
