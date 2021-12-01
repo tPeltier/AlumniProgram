@@ -22,7 +22,7 @@ attendant id % attendant id % attendant id % attendant id %
 - host info
 - attendant arraylist of ids
 ```
-training id % name % room # % total spots % skill
+training id % name % room # % total spots % guest speaker id % skill
 year % month % day % hour % min
 host id % topic % phone # % email 
 attendant id % attendant id % attendant id % attendant id % 

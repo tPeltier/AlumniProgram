@@ -1,8 +1,8 @@
-1001%event1%100%300%0
-21%1%1%13%0
-1001%topic1%1234%email1
-1002%1003
-1002%event2%200%400%1003
-22%2%2%14%0
-1002%topic2%5678%email2
+1001%How to make a Language%140%300%1001
+21%12%15%10%0
+1002%Language creation%3875558793%stroustrup@cpp.com
+1004%1003
+1002%How to Accidentally Change the World%230%400%0
+22%3%17%14%0
+1003%Writing Kernels%3279830%torvalds@osdl.org
 1001%1004

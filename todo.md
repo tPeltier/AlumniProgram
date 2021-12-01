@@ -2,7 +2,6 @@
 ## URGENT
 - [ ] unit testing
 - [ ] change from saving to temps to saving to live files
-- [ ] implement guest speakers into save files
 ## LESS URGENT
 - [ ] + sysout"---------" to improve readability
 - [ ] reorder some menus to be more intuitive
@@ -16,6 +15,7 @@
 - [ ] add a button to kill inputs?
 ---
 # DONE
+- [x] implement guest speakers into save files
 - [x] move see my donations to alumni menu
 - [x] implement guest speaker
 - [x] empty arrayLists cause errors
