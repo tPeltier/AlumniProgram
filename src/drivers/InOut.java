@@ -240,7 +240,8 @@ public class InOut {
     }
 
     /**
-     * Get the guest speaker alumni obj from 
+     * Get the guest speaker alumni obj from
+     * 
      * @param guestSpeakerId
      * @return
      */
@@ -774,15 +775,18 @@ public class InOut {
         int check = Integer.parseInt(Integer.toString(year).substring(2, 4));
         System.out.println("Events happening in the year " + year);
         for (Event event : eventMap.values()) {
-            if (event.getYear() == check)
+            if (event.getYear() == check) {
                 System.out.println(" ----------------------------------------------------- ");
             System.out.println(event.toString());
+            }
         }
+        System.out.println(" ----------------------------------------------------- ");
         System.out.println("Training happening in the year " + year);
         for (Training training : trainingMap.values()) {
-            if (training.getYear() == check)
+            if (training.getYear() == check) {
                 System.out.println(" ----------------------------------------------------- ");
             System.out.println(training.toString());
+            }
         }
     }
 
