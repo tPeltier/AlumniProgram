@@ -1,4 +1,4 @@
-1001%training1%100%300%Master Debator%0
+1001%training1%100%300%1004%Kernel Popping
 21%1%1%13%0
 1003%Linux for Experts%3279830%torvalds@osdl.org
 1002%1003%1005

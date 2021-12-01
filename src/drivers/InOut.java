@@ -190,8 +190,8 @@ public class InOut {
             String name = s[1];
             int room = Integer.parseInt(s[2]);
             int totalSpots = Integer.parseInt(s[3]);
-            String skill = s[4];
-            Alumni guestSpeaker = extractGuestSpeaker(Integer.parseInt(s[5]));
+            Alumni guestSpeaker = extractGuestSpeaker(Integer.parseInt(s[4]));
+            String skill = s[5];
             // dateTime info
             String dateTimeString = trainingFileIn.nextLine();
             LocalDateTime dateTime = extractDateTime(dateTimeString);
