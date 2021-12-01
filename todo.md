@@ -6,15 +6,15 @@
 - [ ] + sysout"---------" to improve readability
 - [ ] reorder some menus to be more intuitive
     - [ ] move event registration to alumni menu
-- [ ] make "real" events 
-- [ ] make "real" training
-- [ ] make "real" donations
 - [ ] regex for other places (ie name's should only be letters)
 ## SUGGESTIONS
 - [ ] maybe change the way date time is user input
 - [ ] add a button to kill inputs?
 ---
 # DONE
+- [x] make "real" events 
+- [x] make "real" training
+- [x] make "real" donations
 - [x] implement guest speakers into save files
 - [x] move see my donations to alumni menu
 - [x] implement guest speaker
