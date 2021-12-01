@@ -9,11 +9,13 @@ This is Group 3's Alumni Program for Computer Science 2. It is a program for a f
 - event info
 - date time info
 - host info
+- guest speaker
 - attendant arraylist of ids
 ```
 event id % name % room # % total spots
 year % month % day % hour % min
 host id % topic % phone # % email 
+guest speaker id %
 attendant id % attendant id % attendant id % attendant id % 
 ```
 ### training.txt
