@@ -696,8 +696,7 @@ public class InOut {
         for (int i = 0; i < donationList.size(); i++) {
             if (id == donationList.get(i).getAlumniId()) {
                 System.out.println(" ----------------------------------------------------- ");
-                System.out.println("Donation Amount: " + donationList.get(i).getAmountDonated());
-                System.out.println("Date and Time of Donation: " + donationList.get(i).formatDateTime());
+                System.out.println(donationList.get(i).toString());
             }
         }
     }
@@ -954,8 +953,7 @@ public class InOut {
      */
     public void addDonationToList(int alumniId, int eventId, double donationAmount) {
         donationList.add(new Donation(alumniId, eventId, donationAmount));
-        System.out.println("You donated: " + donationList.get(donationList.size() - 1).getAmountDonated() + " at "
-                + donationList.get(donationList.size() - 1).getDateCreated());
+        System.out.println(donationList.get(donationList.size()-1).toString());
     }
 
     /**
