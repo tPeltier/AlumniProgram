@@ -318,10 +318,7 @@ public class Event implements CommonMethods {
      * @return true if arrayList is empty
      */
     public boolean isEmpty() {
-        if (attendants.size() == 0)
-            return true;
-        else
-            return false;
+        return attendants.size() == 0;
     }
 
     @Override
