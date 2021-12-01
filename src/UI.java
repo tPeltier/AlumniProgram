@@ -455,7 +455,7 @@ public class UI {
                 switch (choice) {
                     case 1:
                         // edit host
-                        editEventHost();
+                        editEventHost(eventID);
                         break;
                     case 2:
                         // edit name
@@ -556,7 +556,7 @@ public class UI {
                 switch (choice) {
                     case 1:
                         // edit host
-                        editTrainingHost();
+                        editTrainingHost(trainingEventID);
                         break;
                     case 2:
                         // edit name
@@ -634,20 +634,29 @@ public class UI {
         }
     }
 
-    public void editEventHost() {
+    public void editEventHost(int eventID) {
         System.out.println(
-                "Choose what you would like to do: \n1. Edit Topic \n2. Edit Phone number \n3. Edit Email \n4. Return");
+                "Choose what you would like to do: \n1. Edit Topic \n2. Edit Phone Number \n3. Edit Email \n4. Return");
         // remember to pass the number of cases
         int choice = io.intInput(4);
         switch (choice) {
             case 1:
                 // edit topic
+                System.out.println("Enter a new Topic:");
+                String topic = io.stringInput();
+                io.setEventHostTopic(eventID, topic);
                 break;
             case 2:
                 // phone number
+                System.out.println("Enter a new Phone Number:");
+                long phoneNumber = io.longInput();
+                io.setEventHostPhone(eventID, phoneNumber);
                 break;
             case 3:
                 // email
+                System.out.println("Enter a new Email Address:");
+                String emailAddress = io.stringInput();
+                io.setEventHostEmail(eventID, emailAddress);
                 break;
             case 4:
                 // exit to menu
@@ -655,20 +664,29 @@ public class UI {
         }
     }
 
-    public void editTrainingHost() {
+    public void editTrainingHost(int trainingID) {
         System.out.println(
-                "Choose what you would like to do: \n1. Edit Topic \n2. Edit Phone number \n3. Edit Email \n4. Return");
+                "Choose what you would like to do: \n1. Edit Topic \n2. Edit Phone Number \n3. Edit Email \n4. Return");
         // remember to pass the number if cases
         int choice = io.intInput(4);
         switch (choice) {
             case 1:
                 // edit topic
+                System.out.println("Enter a new Topic:");
+                String topic = io.stringInput();
+                io.setTrainingHostTopic(trainingID, topic);
                 break;
             case 2:
                 // phone number
+                System.out.println("Enter a new Phone Number:");
+                long phoneNumber = io.longInput();
+                io.setTrainingHostPhone(trainingID, phoneNumber);
                 break;
             case 3:
                 // email
+                System.out.println("Enter a new Email Address:");
+                String emailAddress = io.stringInput();
+                io.setTrainingHostEmail(trainingID, emailAddress);
                 break;
             case 4:
                 // exit to menu

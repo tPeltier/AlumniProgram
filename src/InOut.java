@@ -347,7 +347,7 @@ public class InOut {
      * @return Event's Host
      */
     public String getEventHost(int id) {
-        return eventMap.get(id).getHost();
+        return eventMap.get(id).getHosttoString();
     }
 
     /**
@@ -428,7 +428,7 @@ public class InOut {
      * @return Training's Host's toString
      */
     public String getTrainingHost(int id) {
-        return trainingMap.get(id).getHost();
+        return trainingMap.get(id).getHosttoString();
     }
 
     // ----- RAND -----
@@ -543,6 +543,26 @@ public class InOut {
         eventMap.get(id).setRoom(room);
     }
 
+    // ----- HOST -----
+    // topic, phone number, email
+    public void setTrainingHostTopic(int trainingID, String topic){
+        trainingMap.get(trainingID).getHost().setTopic(topic);
+    }
+    public void setTrainingHostPhone(int trainingID, long phoneNumber){
+        trainingMap.get(trainingID).getHost().setPhoneNumber(phoneNumber);
+    }
+    public void setTrainingHostEmail(int trainingID, String emailAddress){
+        trainingMap.get(trainingID).getHost().setEmailAddress(emailAddress);
+    }
+    public void setEventHostTopic(int eventID, String topic){
+        eventMap.get(eventID).getHost().setTopic(topic);
+    }
+    public void setEventHostPhone(int eventID, long phoneNumber){
+        eventMap.get(eventID).getHost().setPhoneNumber(phoneNumber);
+    }
+    public void setEventHostEmail(int eventID, String emailAddress){
+        eventMap.get(eventID).getHost().setEmailAddress(emailAddress);
+    }
     // ----- TRAINING -----
 
     /**
@@ -723,7 +743,7 @@ public class InOut {
         for (Event events : eventMap.values()) {
             System.out.println(" ----------------------------------------------------- ");
             System.out.println(events.toString());
-            System.out.println(events.getHost());
+            System.out.println(events.getHosttoString());
         }
     }
 
@@ -734,12 +754,12 @@ public class InOut {
         System.out.println("The Hosts for Events are:");
         for (Event events : eventMap.values()) {
             System.out.println(" ----------------------------------------------------- ");
-            System.out.println("Event " + events.getID() + " " + events.getHost());
+            System.out.println("Event " + events.getID() + " " + events.getHosttoString());
         }
         System.out.println("The Hosts for Trainings are:");
         for (Training training : trainingMap.values()) {
             System.out.println(" ----------------------------------------------------- ");
-            System.out.println("Training " + training.getID() + " " + training.getHost());
+            System.out.println("Training " + training.getID() + " " + training.getHosttoString());
         }
 
     }
@@ -782,7 +802,7 @@ public class InOut {
         for (Training training : trainingMap.values()) {
             System.out.println(" ----------------------------------------------------- ");
             System.out.println(training.toString());
-            System.out.println(training.getHost());
+            System.out.println(training.getHosttoString());
         }
     }
 
