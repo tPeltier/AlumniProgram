@@ -4,28 +4,26 @@
     - drives
     - resources
 - [ ] unit testing
-- [ ] regex
-    - [x] email regex
-        - String regex = "^(.+)@(.+)$";
-    - [ ] regex for other places (ie name's should only be letters)
 - [ ] change from saving to temps to saving to live files
-- [x] no way to change phone, email or area of expertise
-- [ ] implement guest speaker
+- [x] implement guest speaker
     - [ ] implement guest speakers into save files
-- [x] check on donation date time in regards to saved donations
 ## LESS URGENT
 - [ ] + sysout"---------" to improve readability
 - [ ] reorder some menus to be more intuitive
     - [ ] move event registration to alumni menu
-    - [ ] move see my donations to alumni menu
+    - [x] move see my donations to alumni menu
 - [ ] make "real" events 
 - [ ] make "real" training
 - [ ] make "real" donations
+- [ ] regex for other places (ie name's should only be letters)
 ## SUGGESTIONS
 - [ ] maybe change the way date time is user input
 - [ ] add a button to kill inputs?
 ---
 # DONE
+- [x] check on donation date time in regards to saved donations
+- [x] no way to change phone, email or area of expertise
+- [x] email regex
 - [x] clean up all prints 
 - [x] since a host has to be an alumni why not just save the alumni id and then fill
 - [x] fix donation display
