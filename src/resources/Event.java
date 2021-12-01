@@ -1,6 +1,7 @@
 package resources;
 
 import java.util.ArrayList;
+
 import java.time.LocalDateTime;
 
 public class Event implements CommonMethods {
@@ -184,6 +185,7 @@ public class Event implements CommonMethods {
 
     /**
      * Get the total number of spots available
+     * 
      * @return number of total spots
      */
     public int getTotalSpots() {
@@ -254,9 +256,9 @@ public class Event implements CommonMethods {
         startDate = LocalDateTime.of(year, month, dayOfMonth, hour, minute);
     }
 
-
     /**
-     * Set the total number of spots available 
+     * Set the total number of spots available
+     * 
      * @param totalSpots New number of total spots
      */
     public void setTotalSpots(int totalSpots) {
@@ -347,6 +349,15 @@ public class Event implements CommonMethods {
     public String saveDateTime() {
         return startDate.getYear() + "%" + startDate.getMonthValue() + "%" + startDate.getDayOfMonth() + "%"
                 + startDate.getHour() + "%" + startDate.getMinute();
+    }
+
+    /**
+     * Save the ID of the guest alumni
+     * 
+     * @return id of the guest speaker
+     */
+    public String saveGuestSpeaker() {
+        return "" + guestSpeaker.getID();
     }
 
     /**
