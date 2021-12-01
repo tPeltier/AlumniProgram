@@ -543,6 +543,10 @@ public class InOut {
         eventMap.get(id).setRoom(room);
     }
 
+    public void setGuestSpeaker(int eventId, int guestSpeakerId) {
+        eventMap.get(eventId).setGuestSpeaker(alumniMap.get(guestSpeakerId));
+    }
+
     // ----- HOST -----
 
     /**
