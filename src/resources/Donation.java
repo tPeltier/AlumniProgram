@@ -64,16 +64,7 @@ public class Donation {
         return alumniId;
     }
 
-    /**
-     * Get creation date for Event
-     * 
-     * @return Creation date of Event
-     */
-    public LocalDateTime getDateCreated() {
-        return ldt;
-    }
-
-    /**
+   /**
      * Get ID of the Event
      * 
      * @return Event ID
@@ -89,7 +80,7 @@ public class Donation {
      * 
      * @return DateTime info in human readable format
      */
-    public String formatDateTime() {
+    private String formatDateTime() {
         return ldt.getMonthValue() + "-" + ldt.getDayOfMonth() + "-" + ldt.getYear() + " at " + ldt.getHour() + ":"
                 + ldt.getMinute() + ":" + ldt.getSecond();
     }
