@@ -44,14 +44,13 @@
     - [x] invalidEntry
     - [x] training
     - [x] ui
-- [ ] finish reports
+- [x] finish reports
     - [x] events by year
-    - [] listing guest speakers
+    - [x] listing guest speakers
     - [x] list of people attending an event
     - [x] display host for event/training
     - [x] list of events/training alumni is attending
     - [x] listing alumni
-    - [ ] ect
 - [x] look into how we are handling people attending events 
     - [x] make events also have a total number of open spots and what not
     - [x] make it to where you can only sign up for an event once
