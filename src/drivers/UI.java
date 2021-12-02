@@ -1,4 +1,5 @@
 package drivers;
+
 import java.io.FileNotFoundException;
 import java.time.LocalDateTime;
 import java.util.regex.Pattern;
@@ -190,35 +191,7 @@ public class UI {
                     break;
                 case 4:
                     // Add guest speaker
-                    boolean owner = false;
-                    int eventID = 0;
-                    io.displayEvents();
-                    do {
-                        System.out.println("Enter the Event ID:");
-                        eventID = io.intInput();
-                        if (!io.isExistingEvent(eventID)) {
-                            System.out.println("-!-THIS EVENT DOES NOT EXIST-!-");
-                        } else {
-                            while (!owner) {
-                                try {
-                                    if (id != io.getHostId(eventID)) {
-                                        throw new InvalidEntry("-!-YOU DO NOT OWN THIS EVENT-!-");
-                                    } else
-                                        owner = true;
-                                } catch (InvalidEntry e) {
-                                    System.out.println(e.getMessage());
-                                    return;
-                                }
-                            }
-                        }
-                    } while (!owner);
-                    int guestSpeakerId;
-                    do {
-                        System.out.println("Enter the ID of the Alumni who will be the Guest Speaker:");
-                        guestSpeakerId = io.intInput();
-                    } while (!io.checkId(guestSpeakerId));
-                    io.setGuestSpeaker(eventID, guestSpeakerId);
-                    System.out.println("Guest Speaker " + io.getAlumniName(guestSpeakerId) + " added to your Event!");
+                    addGuestSpeaker();
                     break;
                 case 5:
                     // Creates events and Training events
@@ -730,6 +703,41 @@ public class UI {
         }
     }
     // ==================== CREATE ====================
+
+    /**
+     * Add a Guest Speaker to an Event
+     */
+    private void addGuestSpeaker() {
+        boolean owner = false;
+        int eventID = 0;
+        io.displayEvents();
+        do {
+            System.out.println("Enter the Event ID:");
+            eventID = io.intInput();
+            if (!io.isExistingEvent(eventID)) {
+                System.out.println("-!-THIS EVENT DOES NOT EXIST-!-");
+            } else {
+                while (!owner) {
+                    try {
+                        if (id != io.getHostId(eventID)) {
+                            throw new InvalidEntry("-!-YOU DO NOT OWN THIS EVENT-!-");
+                        } else
+                            owner = true;
+                    } catch (InvalidEntry e) {
+                        System.out.println(e.getMessage());
+                        return;
+                    }
+                }
+            }
+        } while (!owner);
+        int guestSpeakerId;
+        do {
+            System.out.println("Enter the ID of the Alumni who will be the Guest Speaker:");
+            guestSpeakerId = io.intInput();
+        } while (!io.checkId(guestSpeakerId));
+        io.setGuestSpeaker(eventID, guestSpeakerId);
+        System.out.println("Guest Speaker " + io.getAlumniName(guestSpeakerId) + " added to your Event!");
+    }
 
     /**
      * Allows the user to Create a new account and enter all their information
