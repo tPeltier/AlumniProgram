@@ -130,7 +130,7 @@ public class UI {
             System.out.println(
                     "1. Display a list of Current Alumni \n2. See what Events and Training I'm attending\n3. See my Donations\n4. Edit My Profile Information \n"
                             + "5. Delete my Account \n6. Return");
-            choice = io.intInput(5);
+            choice = io.intInput(6);
             switch (choice) {
                 case 1:
                     // list of alumni
@@ -207,7 +207,7 @@ public class UI {
                                         owner = true;
                                 } catch (InvalidEntry e) {
                                     System.out.println(e.getMessage());
-                                    break;
+                                    return;
                                 }
                             }
                         }
@@ -588,7 +588,7 @@ public class UI {
             while (run) {
                 System.out.println(
                         "What would you like to change?: \n1. Edit Host\n2. Training Event Name \n3. Training Event Time \n4. Training Event Room \n5. Total Number of Spots\n6. Event Date \n7. Edit Skill \n8. Return");
-                int choice = io.intInput(7);
+                int choice = io.intInput(8);
                 switch (choice) {
                     case 1:
                         // edit host
