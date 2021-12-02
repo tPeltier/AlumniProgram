@@ -63,10 +63,10 @@ public class InOut {
      * @throws FileNotFoundException
      */
     public void closeEverythingAndSave() throws FileNotFoundException {
-        alumniSaved = new PrintWriter("temp.txt");
-        eventSaved = new PrintWriter("temp2.txt");
-        donationsSaved = new PrintWriter("temp3.txt");
-        trainingSaved = new PrintWriter("temp5.txt");
+        alumniSaved = new PrintWriter("alumni.txt");
+        eventSaved = new PrintWriter("events.txt");
+        donationsSaved = new PrintWriter("donations.txt");
+        trainingSaved = new PrintWriter("training.txt");
 
         for (Alumni alumni : alumniMap.values()) {
             alumniSaved.println(alumni.save());
