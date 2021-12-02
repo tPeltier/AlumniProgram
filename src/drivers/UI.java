@@ -207,7 +207,7 @@ public class UI {
                                         owner = true;
                                 } catch (InvalidEntry e) {
                                     System.out.println(e.getMessage());
-                                    break;
+                                    return;
                                 }
                             }
                         }
