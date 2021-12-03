@@ -940,7 +940,7 @@ public class UI {
                     return;
                 }
             }
-            io.getEvent(id);
+            io.getEvent(eventDeletionID);
             System.out.println("---ARE YOU SURE YOU WANT TO DELETE THIS EVENT?---");
             System.out.println("(Y/N)");
             String confirmation = io.stringInput().toLowerCase();
@@ -975,7 +975,7 @@ public class UI {
                     return;
                 }
             }
-            io.getTraining(id);
+            io.getTraining(trainingDeletionID);
             System.out.println("---ARE YOU SURE YOU WANT TO DELETE THIS TRAINING EVENT?---");
             System.out.println("(Y/N)");
             String confirmation = io.stringInput().toLowerCase();
