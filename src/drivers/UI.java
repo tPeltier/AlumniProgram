@@ -7,6 +7,9 @@ import java.util.regex.Pattern;
 import resources.Host;
 import resources.InvalidEntry;
 
+/**
+ * Class for user interaction with the program
+ */
 public class UI {
     private int id;
     private final InOut io;
@@ -14,7 +17,7 @@ public class UI {
     /**
      * Constructor for UI
      * 
-     * @throws FileNotFoundException
+     * @throws FileNotFoundException Throws a File not found exception if no file is found
      */
     public UI() throws FileNotFoundException {
         io = new InOut();
@@ -24,7 +27,7 @@ public class UI {
     /**
      * Starts and loops the user interface until the user closes the program
      * 
-     * @throws FileNotFoundException
+     * @throws FileNotFoundException Throws a File not found exception if no file is found
      */
     public void userInterface() throws FileNotFoundException {
         System.out.println("Hello and Welcome to the Alumni Program!");
@@ -39,7 +42,7 @@ public class UI {
     /**
      * Allows the Alumni to login and assigns their ID to the ID variable
      * 
-     * @throws FileNotFoundException
+     * @throws FileNotFoundException Throws a File not found exception if no file is found
      */
     public void login() throws FileNotFoundException {
         boolean loggedIn = false;
@@ -89,7 +92,7 @@ public class UI {
      * Main menu that is accessed after logging in. Allows Alumni to navigate to
      * Alumni or Event interface.
      * 
-     * @throws FileNotFoundException
+     * @throws FileNotFoundException Throws a File not found exception if no file is found
      */
     public void loggedIn() throws FileNotFoundException {
         boolean run = true;

@@ -1,4 +1,8 @@
 package resources;
+
+/**
+ * Subclass of Alumni that holds relevant information for event hosts
+ */
 public class Host extends Alumni {
     String topic;
     long phoneNumber;

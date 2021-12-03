@@ -1,4 +1,8 @@
 package resources;
+
+/**
+ * Interface of commonly used methods
+ */
 public interface CommonMethods {
 
     /**

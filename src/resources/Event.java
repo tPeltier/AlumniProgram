@@ -4,6 +4,9 @@ import java.util.ArrayList;
 
 import java.time.LocalDateTime;
 
+/**
+ * Holds information relevant to events
+ */
 public class Event implements CommonMethods {
     private int id;
     private int room;
@@ -30,10 +33,11 @@ public class Event implements CommonMethods {
      * @param id          Event ID
      * @param name        Event Name
      * @param room        Room where Event is happening
-     * @param spotsFilled Number of people participating
+     * @param totalSpots  Number of spots available
      * @param startDate   LocalDateTime information about the Event
      * @param attendant   ArrayList of attending members names
      * @param host        Host object for the host of the Event
+     * @param guestSpeaker ALumni object passed in as a guest speaker
      */
     public Event(int id, String name, int room, int totalSpots, LocalDateTime startDate,
             ArrayList<Integer> attendant, Host host, Alumni guestSpeaker) {
@@ -56,7 +60,7 @@ public class Event implements CommonMethods {
      * @param id          Event ID
      * @param name        Event Name
      * @param room        Room where Event is happening
-     * @param spotsFilled Number of people participating
+     * @param totalSpots  Number of spots available
      * @param startDate   LocalDateTime information about the Event
      * @param host        Host object for the host of the Event
      */
@@ -73,8 +77,7 @@ public class Event implements CommonMethods {
     // ==================== GETTERS ====================
 
     /**
-     * Get guest speaker obj
-     * 
+     * Get guest speaker object
      * @return Guest speaker Alumni object
      */
     public String getGuestSpeaker() {
@@ -238,7 +241,7 @@ public class Event implements CommonMethods {
     /**
      * Set number of participants for event
      * 
-     * @param spotsFilled Number of participants for the Event
+     *  Number of participants attending for the Event
      */
     public void setSpotsFilled() {
         spotsFilled = attendants.size();
@@ -249,7 +252,7 @@ public class Event implements CommonMethods {
      * 
      * @param year   Year of Event
      * @param month  Month of Event
-     * @param day    Day of Event
+     * @param dayOfMonth Day of event
      * @param hour   Starting hour of Event
      * @param minute Starting minute of Event
      */
@@ -270,7 +273,7 @@ public class Event implements CommonMethods {
     /**
      * Add an attendants name to attending arrayList
      * 
-     * @param name Name of attending Alumni
+     * @param id ID of attending Alumni
      */
     public void addAttendant(int id) {
         attendants.add(id);
