@@ -1,5 +1,7 @@
 package resources;
-
+/**
+ * holds information relevant to each Alumni including thier login information
+ */
 public class Alumni implements CommonMethods {
     private int id;
     private String name;

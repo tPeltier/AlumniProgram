@@ -14,6 +14,9 @@ import resources.Event;
 import resources.Host;
 import resources.Training;
 
+/**
+ * Handles pulling information from maps and moving information to maps
+ */
 public class InOut {
 
     private Scanner in;
@@ -38,7 +41,7 @@ public class InOut {
      * Initiate File, Scanner and PrintWriter
      * Call Methods to fill Maps with existing information
      * 
-     * @throws FileNotFoundException
+     * @throws FileNotFoundException Throws a File not Found exception if no file is found
      */
     public InOut() throws FileNotFoundException {
         alumniFile = new File("alumni.txt");
@@ -60,7 +63,7 @@ public class InOut {
      * Save All Information to Files
      * Close all Scanners and PrintWriters
      * 
-     * @throws FileNotFoundException
+     * @throws FileNotFoundException Throws File not found if there is no file
      */
     public void closeEverythingAndSave() throws FileNotFoundException {
         alumniSaved = new PrintWriter("alumni.txt");
@@ -541,7 +544,7 @@ public class InOut {
      * @param id     Event ID
      * @param year   Year in which Event is happening
      * @param month  Month in which Event is happening
-     * @param day    Day on which Event is happening
+     * @param dayOfMonth    Day on which Event is happening
      * @param hour   Hour that the Event starts
      * @param minute Minute that the Event starts
      */
@@ -763,8 +766,6 @@ public class InOut {
 
     /**
      * Display Events and Training Events that happen within a specified year
-     * 
-     * @param year Year to display
      */
     public void displayByYear() {
         int year = 0;
@@ -1045,7 +1046,7 @@ public class InOut {
     /**
      * Delete Specified Training Event from TrainingMap
      * 
-     * @param id
+     * @param id Training event ID
      */
     public void deleteTraining(int id) {
         trainingMap.remove(id);
@@ -1068,8 +1069,8 @@ public class InOut {
     /**
      * Register an ALumni (by Name) for an Event
      * 
-     * @param id   Event ID
-     * @param name Name of attending ALumni
+     * @param eventId   Event ID
+     * @param id ID of attending ALumni
      */
     public void joinEvent(int eventId, int id) {
         eventMap.get(eventId).addAttendant(id);
@@ -1078,8 +1079,8 @@ public class InOut {
     /**
      * Register an ALumni (by Name) for an Training Event
      * 
-     * @param id   Training Event ID
-     * @param name Name of attending ALumni
+     * @param eventId   Training Event ID
+     * @param id ID of attending ALumni
      */
     public void joinTraining(int eventId, int id) {
         trainingMap.get(eventId).addAttendant(id);
@@ -1127,6 +1128,7 @@ public class InOut {
      * Get User Integer Input within a boundary
      * 
      * @return User input : int
+     * @param boundary the upper limit of the Integer being passed in before an error message
      */
     public int intInput(int boundary) {
         int n = 0;

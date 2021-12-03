@@ -1,6 +1,9 @@
 package resources;
 import java.time.LocalDateTime;
 
+/**
+ * Contains information relevant to individual donations
+ */
 public class Donation {
 
     private int alumniId;

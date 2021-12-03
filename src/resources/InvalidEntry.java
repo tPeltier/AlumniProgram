@@ -1,4 +1,8 @@
 package resources;
+
+/**
+ * Error handling for invalid inputs
+ */
 public class InvalidEntry extends IllegalArgumentException {
     
     /**

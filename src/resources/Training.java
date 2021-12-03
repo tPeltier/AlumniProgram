@@ -2,6 +2,9 @@ package resources;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
+/**
+ * Subclass of event that holds extra information relevant to training events
+ */
 public class Training extends Event {
     private String skill;
 
@@ -21,10 +24,8 @@ public class Training extends Event {
      * @param room       Room number of Training Event
      * @param totalSpots Total spots available
      * @param startDate  Date/Time of Training Event
-     * @param host       Host obj of Training Event
+     * @param host       Host object of Training Event
      * @param skill      Skill of Training Event
-     * @param openSeats  Open Seats at Training Event
-     * @param totalSeats Total spots of Training Event
      */
     public Training(int id, String name, int room, int totalSpots, LocalDateTime startDate, Host host, String skill) {
         super(id, name, room, totalSpots, startDate, host);
@@ -41,10 +42,9 @@ public class Training extends Event {
      * @param totalSpots Total spots available
      * @param startDate  Date/Time of Training Event
      * @param att        List of names of people attending Training Event
-     * @param host       Host obj of Training Event
+     * @param host       Host object of Training Event
      * @param skill      Skill of Training Event
-     * @param openSeats  Open Seats at Training Event
-     * @param totalSeats Total spots of Training Event
+     * @param guestSpeaker Alumni object used for guest speaker
      */
     public Training(int id, String name, int room, int totalSpots, LocalDateTime startDate, ArrayList<Integer> att,
             Host host, String skill, Alumni guestSpeaker) {
