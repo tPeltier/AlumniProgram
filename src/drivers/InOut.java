@@ -777,7 +777,7 @@ public class InOut {
         for (Event event : eventMap.values()) {
             if (event.getYear() == check) {
                 System.out.println(" ----------------------------------------------------- ");
-            System.out.println(event.toString());
+                System.out.println(event.toString());
             }
         }
         System.out.println(" ----------------------------------------------------- ");
@@ -785,7 +785,7 @@ public class InOut {
         for (Training training : trainingMap.values()) {
             if (training.getYear() == check) {
                 System.out.println(" ----------------------------------------------------- ");
-            System.out.println(training.toString());
+                System.out.println(training.toString());
             }
         }
     }
@@ -858,13 +858,16 @@ public class InOut {
         for (Event event : eventMap.values()) {
             if (event.checkForAttendance(id)) {
                 System.out.println(" ----------------------------------------------------- ");
-                System.out.println("You are attending " + event.getName() + " | Event ID # " + event.getID());
+                System.out.println("You are attending: " + event.getName() + " | Event ID # " + event.getID());
                 counter++;
             }
         }
-        if (counter == 0)
+        if (counter == 0) {
+            System.out.println(" ----------------------------------------------------- ");
             System.out.println("NOT CURRENTLY ATTENDING ANY EVENTs");
+        }
         counter = 0;
+        System.out.println(" ----------------------------------------------------- ");
         System.out.println("My Training:");
         for (Training training : trainingMap.values()) {
             if (training.checkForAttendance(id)) {
@@ -874,8 +877,10 @@ public class InOut {
                 counter++;
             }
         }
-        if (counter == 0)
+        if (counter == 0) {
+            System.out.println(" ----------------------------------------------------- ");
             System.out.println("NOT CURRENTLY ATTENDING ANY TRAINING");
+        }
     }
 
     /**
@@ -1007,11 +1012,24 @@ public class InOut {
     // ==================== DELETE ====================
 
     /**
-     * Delete Specified Alumni from ALumniMap
+     * Delete Specified Alumni from ALumniMap and any Events / Training they own
+     * from the corresponding maps
      * 
      * @param id Alumni ID
      */
     public void deleteAlumni(int id) {
+        for (Event event : eventMap.values()) {
+            if (id == event.getHostId()) {
+                int e = event.getID();
+                eventMap.remove(e);
+            }
+        }
+        for (Training training : trainingMap.values()) {
+            if (id == training.getHostId()) {
+                int t = training.getID();
+                trainingMap.remove(t);
+            }
+        }
         alumniMap.remove(id);
     }
 
