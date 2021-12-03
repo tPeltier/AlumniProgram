@@ -1007,11 +1007,23 @@ public class InOut {
     // ==================== DELETE ====================
 
     /**
-     * Delete Specified Alumni from ALumniMap
+     * Delete Specified Alumni from ALumniMap and any Events / Training they own from the corresponding maps
      * 
      * @param id Alumni ID
      */
     public void deleteAlumni(int id) {
+        for (Event event : eventMap.values()) {
+            if (id == event.getHostId()) {
+                int e = event.getID();
+                eventMap.remove(e);
+            }
+        }
+        for (Training training : trainingMap.values()) {
+            if (id == training.getHostId()) {
+                int t = training.getID();
+                trainingMap.remove(t);
+            }
+        }
         alumniMap.remove(id);
     }
 
